@@ -37,6 +37,7 @@ Examples:
 ### Avoid Global
 
 #### revealing module pattern
+
 ```
 myNameSpace = function(){
     var current = null;
@@ -51,6 +52,7 @@ myNameSpace = function(){
 ```
 
 If you don't need any of your vars or functions to be avaiable to the outside, simply wrap the whole construct in another set of parentheses to execute it without assigning any name.
+
 ```
 (function(){
     var current = null;
@@ -73,6 +75,7 @@ Use /\* \*/
 ### Use Shortcut Notation
 
 Examples:
+
 ```
 var direction = ( x > 100 ) ? 1 : -1
 ```
@@ -80,6 +83,7 @@ var direction = ( x > 100 ) ? 1 : -1
 ```
 var x = v || 10;
 ```
+
 > this would automatically give x a value of 10 if v is not defined
 
 ### Modularize - One Function per Task
@@ -91,9 +95,10 @@ One of the most successful tips to keep your code maintainable and clean is to c
 These include *any text used in elements you create*, *CSS class*, *ID names* and *general parameters of the interface you build*.
 
 Examples: easy youtube player project config object
+
 ```
 /*
-  This is the configuration of the player. Most likely you will
+  This is the configuration of the player.meng Most likely you will
   never have to change anything here, but it is good to be able 
   to, isn't it? 
 */
@@ -110,15 +115,11 @@ config = {
       canvas:'eytp-playercanvas',
       player:'eytp-player',
       controls:'eytp-controls',
-
       volumeField:'eytp-volume',
       volumeBar:'eytp-volumebar',
-
       playerForm:'eytp-playerform',
       urlField:'eytp-url',
-
       sizeControl:'eytp-sizecontrol',
-
       searchField:'eytp-searchfield',
       searchForm:'eytp-search',
       searchOutput:'eytp-searchoutput'
@@ -183,17 +184,19 @@ Use functions to avoid it
 ### Optimize Loops
 
 #### For loop read length everytime
+
 ```
 var names = ['George','Ringo','Paul','John'];
-for(var i=0;i<names.length;i++){
+for(var i=0;i < names.length;i++){
   doSomeThingWith(names[i]);
 }
 ```
 
 To Fix
+
 ```
 var names = ['George','Ringo','Paul','John'];
-for(var i=0,j=names.length;i<j;i++){
+for(var i=0,j=names.length;i < j;i++){
   doSomeThingWith(names[i]);
 }
 ```
@@ -214,7 +217,7 @@ function buildMemberList(members){
      typeof members.slice === 'function'){
     var all = members.length;
     var ul = document.createElement('ul');
-    for(var i=0;i<all;i++){
+    for(var i=0;i < all;i++){
       var li = document.createElement('li');
       li.appendChild(document.createTextNode(members[i].name));
       ul.appendChild(li);

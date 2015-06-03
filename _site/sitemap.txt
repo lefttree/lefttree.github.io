@@ -1,12 +1,12 @@
 
-http://username.github.io/archive.html
-http://username.github.io/atom.xml
-http://username.github.io/categories.html
-http://username.github.io/index.html
-http://username.github.io/pages.html
-http://username.github.io/rss.xml
-http://username.github.io/sitemap.txt
-http://username.github.io/tags.html
+http://lefttree.github.io/archive.html
+http://lefttree.github.io/atom.xml
+http://lefttree.github.io/categories.html
+http://lefttree.github.io/index.html
+http://lefttree.github.io/pages.html
+http://lefttree.github.io/rss.xml
+http://lefttree.github.io/sitemap.txt
+http://lefttree.github.io/tags.html
 
-http://username.github.io/test/2015/06/02/test-post
-http://username.github.io/web/2015/06/01/Javascript-theGoodParts
+http://lefttree.github.io/programming%20style/2015/06/03/JS-Best-Practices
+http://lefttree.github.io/web/2015/06/01/Javascript-theGoodParts

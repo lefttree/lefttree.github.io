@@ -1,0 +1,457 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>LeftTree - Javascript Best Practices</title>
+      <meta name="viewport" content="width=device-width">
+
+      <!-- bootstrap -->
+      <link href="/assets/themes/xiang/css/bootstrap.2.2.2.min.css" rel="stylesheet">
+      <!-- syntax highlighting CSS -->
+      <link rel="stylesheet" href="/assets/themes/xiang/css/syntax.css">
+
+      <!-- Custom CSS -->
+      <link rel="stylesheet" href="/assets/themes/xiang/css/main.css">
+
+      <!-- Responsive CSS -->
+      <link rel="stylesheet" href="/assets/themes/xiang/css/responsive.css">
+
+      <!-- Google Fonts -->
+      <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700' rel='stylesheet' type='text/css'>
+      <link href='http://fonts.googleapis.com/css?family=Raleway:300,400,700' rel='stylesheet' type='text/css'>
+      <!-- atom & rss feed -->
+      <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+      <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+  </head>
+  <body>
+    <div class="site">
+      <div class="sidebar" id="sidebar">
+        <div class="header">
+          <h1 class="title"><a href="index.html"><img id="logo" src="/assets/themes/xiang/images/logo.jpg"></a></h1>
+          <span class="tagline">Xiang Li</span>
+        </div>
+        <hr>
+        <!--<div class="posts">-->
+          <!--<ul class="posts-list">-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/programming%20style/2015/06/03/JS-Best-Practices">-->
+                  <!--<span class="post-date">03 Jun 2015</span>-->
+                  <!--Javascript Best Practices-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/web/2015/06/01/Javascript-theGoodParts">-->
+                  <!--<span class="post-date">01 Jun 2015</span>-->
+                  <!--Javascript Good Parts-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+          <!--</ul>-->
+        <!--</div>-->
+        <ul class="nav">
+            
+            
+            
+
+
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+
+
+
+        </ul>
+        <div class="footer">
+          <span id="footer-links">
+            <a href="http://www.xiangli.me" class="footer-link">About</a> <span class="separator">&bull;</span>
+            <!--<a href="" class="footer-link">Twitter</a> <span class="separator">&bull;</span>-->
+            <a href="https://github.com/lefttree" class="footer-link">GitHub</a>
+          </span>
+        </div>
+      </div>
+
+        
+
+<div class="content" id="home">
+  <div id="sidebar-button">
+    <img src="/assets/themes/xiang/images/sidebar-button.png">
+  </div>
+  <div id="post-info">
+    <div id="cover-photo-container">
+      <img id="cover-photo" src="/assets/themes/xiang/images/cover.jpg">
+    </div>
+    <div id="info-container">
+      <h1 id="title">Javascript Best Practices</h1>
+      <span id="date">03 Jun 2015</span>
+    </div>
+  </div>
+
+  <div class="post">
+    <h3>Easy, Short &amp; Readable Names</h3>
+
+<h4>Variables Name</h4>
+
+<p><strong>Hungarian notation</strong> is a good variable name scheme to adopt.</p>
+
+<blockquote>
+<p>typeName</p>
+</blockquote>
+
+<p>Examples:
+- bBusy : boolean
+- chInitial : char
+- cApples : count of items</p>
+
+<h4>Function Name</h4>
+
+<p>Function name should start with a lowercase verb following </p>
+
+<blockquote>
+<p>verbSomething</p>
+</blockquote>
+
+<p>Examples:
+- isOldEnough()
+- getResult()</p>
+
+<h4>Class Name</h4>
+
+<p>the first char should be capital
+Examples:
+- Apple()
+- Node()</p>
+
+<h3>Avoid Global</h3>
+
+<h4>revealing module pattern</h4>
+<div class="highlight"><pre><code class="language-text" data-lang="text">myNameSpace = function(){
+    var current = null;
+    function init(){};
+    function change(){};
+    function verify(){};
+    return{
+        init: init,
+        change: change
+    }
+}();
+</code></pre></div>
+<p>If you don&#39;t need any of your vars or functions to be avaiable to the outside, simply wrap the whole construct in another set of parentheses to execute it without assigning any name.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">(function(){
+    var current = null;
+    function init(){}
+})();
+</code></pre></div>
+<h3>Use strict</h3>
+
+<p>Check code quality with JSLint</p>
+
+<h3>Comment</h3>
+
+<p><strong>Comment as much as needed but no more</strong></p>
+
+<p>Use /* */</p>
+
+<h3>Avoid mixing with css</h3>
+
+<h3>Use Shortcut Notation</h3>
+
+<p>Examples:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">var direction = ( x &gt; 100 ) ? 1 : -1
+</code></pre></div><div class="highlight"><pre><code class="language-text" data-lang="text">var x = v || 10;
+</code></pre></div>
+<blockquote>
+<p>this would automatically give x a value of 10 if v is not defined</p>
+</blockquote>
+
+<h3>Modularize - One Function per Task</h3>
+
+<h3>Configuration and Translation</h3>
+
+<p>One of the most successful tips to keep your code maintainable and clean is to create a configuration object that contains all the things that are likely to change over time.</p>
+
+<p>These include <em>any text used in elements you create</em>, <em>CSS class</em>, <em>ID names</em> and <em>general parameters of the interface you build</em>.</p>
+
+<p>Examples: easy youtube player project config object</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">/*
+  This is the configuration of the player.meng Most likely you will
+  never have to change anything here, but it is good to be able 
+  to, isn&#39;t it? 
+*/
+config = {
+  CSS:{
+    /* 
+      IDs used in the document. The script will get access to 
+      the different elements of the player with these IDs, so 
+      if you change them in the HTML below, make sure to also 
+      change the name here!
+    */
+    IDs:{
+      container:&#39;eytp-maincontainer&#39;,
+      canvas:&#39;eytp-playercanvas&#39;,
+      player:&#39;eytp-player&#39;,
+      controls:&#39;eytp-controls&#39;,
+      volumeField:&#39;eytp-volume&#39;,
+      volumeBar:&#39;eytp-volumebar&#39;,
+      playerForm:&#39;eytp-playerform&#39;,
+      urlField:&#39;eytp-url&#39;,
+      sizeControl:&#39;eytp-sizecontrol&#39;,
+      searchField:&#39;eytp-searchfield&#39;,
+      searchForm:&#39;eytp-search&#39;,
+      searchOutput:&#39;eytp-searchoutput&#39;
+    },
+    /*
+      These are the names of the CSS classes, the player adds
+      dynamically to the volume bar in certain 
+      situations.
+    */
+    classes:{
+      maxvolume:&#39;maxed&#39;,
+      disabled:&#39;disabled&#39;
+    }
+  },
+  /* 
+    That is the end of the CSS definitions, from here on 
+    you can change settings of the player itself. 
+  */
+  application:{
+    /*
+      The YouTube API base URL. This changed during development of this,
+      so I thought it useful to make it a parameter.
+    */
+    youtubeAPI:&#39;http://gdata.youtube.com/apiplayer/cl.swf&#39;,
+    /* 
+      The YouTube Developer key,
+      please replace this with your own when you host the player!!!!!
+    */
+    devkey:&#39;AI39si7d...Y9fu_cQ&#39;,
+    /*
+      The volume increase/decrease in percent and the volume message 
+      shown in a hidden form field (for screen readers). The $x in the 
+      message will be replaced with the real value.
+    */
+    volumeChange:10,
+    volumeMessage:&#39;volume $x percent&#39;,
+    /*
+      Amount of search results and the error message should there 
+      be no results.
+    */
+    searchResults:6,
+    loadingMessage:&#39;Searching, please wait&#39;,
+    noVideosFoundMessage:&#39;No videos found : (&#39;,
+    /*
+      Amount of seconds to repeat when the user hits the rewind 
+      button.
+    */
+    secondsToRepeat:10,
+    /*
+      Movie dimensions.
+    */
+    movieWidth:400,
+    movieHeight:300
+  }  
+}
+</code></pre></div>
+<h3>Avoid Heavy Nesting</h3>
+
+<p>Use functions to avoid it</p>
+
+<h3>Optimize Loops</h3>
+
+<h4>For loop read length everytime</h4>
+<div class="highlight"><pre><code class="language-text" data-lang="text">var names = [&#39;George&#39;,&#39;Ringo&#39;,&#39;Paul&#39;,&#39;John&#39;];
+for(var i=0;i &lt; names.length;i++){
+  doSomeThingWith(names[i]);
+}
+</code></pre></div>
+<p>To Fix</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">var names = [&#39;George&#39;,&#39;Ringo&#39;,&#39;Paul&#39;,&#39;John&#39;];
+for(var i=0,j=names.length;i &lt; j;i++){
+  doSomeThingWith(names[i]);
+}
+</code></pre></div>
+<h4>Keep computation-heavy code outside</h4>
+
+<ul>
+<li>regular expression</li>
+<li>DOM manipulation</li>
+</ul>
+
+<h3>Keep DOM Access to a minimum</h3>
+
+<h3>Do not Trust Any Data</h3>
+
+<ol>
+<li>It is very important to tes the type of parameters send to your functions(using the <code>typeof</code> keyword)</li>
+</ol>
+<div class="highlight"><pre><code class="language-text" data-lang="text">function buildMemberList(members){
+  if(typeof members === &#39;object&#39; &amp;&amp; 
+     typeof members.slice === &#39;function&#39;){
+    var all = members.length;
+    var ul = document.createElement(&#39;ul&#39;);
+    for(var i=0;i &lt; all;i++){
+      var li = document.createElement(&#39;li&#39;);
+      li.appendChild(document.createTextNode(members[i].name));
+      ul.appendChild(li);
+    }
+    return ul;
+  }
+}
+</code></pre></div>
+<ol>
+<li>Compare and check info read from the DOM</li>
+</ol>
+
+<h3>Do not create too much with Javascript</h3>
+
+<p>Using an HTML template and load it via AJAX</p>
+
+<h3>Do not Use New Object</h3>
+
+<ul>
+<li>Use {} instead of new Object()</li>
+<li>Use &quot;&quot; instead of new String()</li>
+<li>Use 0 instead of new Number()</li>
+<li>Use false instead of new Boolean()</li>
+<li>Use [] instead of new Array()</li>
+<li>Use /()/ instead of new RegExp()</li>
+<li>Use function (){} instead of new function()</li>
+</ul>
+
+  </div>
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-folder-open"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/categories.html#programming style-ref">
+    		programming style <span>1</span>
+    	</a></li>
+    
+  
+
+
+    </ul>
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags.html#javascript-ref">javascript <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#programming style-ref">programming style <span>1</span></a></li>
+    
+  
+
+
+
+    </ul>
+  
+  <hr>  
+  <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/web/2015/06/01/Javascript-theGoodParts" title="Javascript Good Parts">&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next disabled"><a>Next &rarr;</a>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    
+    var disqus_developer = 1;
+    var disqus_shortname = 'lefttreegithubio'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+  </div>
+</div>
+
+
+
+    </div>
+    <script src="/assets/themes/xiang/scripts/responsive.js" type="text/javascript"></script>
+    
+
+
+
+  </body>
+</html>
+

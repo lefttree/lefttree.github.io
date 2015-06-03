@@ -1,132 +1,365 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-        <title>Jekyll Bootstrap</title>
-        <description>Jekyll Bootstrap - Name Lastname</description>
-        <link>http://username.github.io</link>
-        <atom:link href="http://username.github.io/rss.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Wed, 03 Jun 2015 00:22:41 -0700</lastBuildDate>
-        <pubDate>Wed, 03 Jun 2015 00:22:41 -0700</pubDate>
+        <title>LeftTree&#39;s Blog</title>
+        <description>LeftTree&#39;s Blog - Xiang Li</description>
+        <link>http://lefttree.github.io</link>
+        <atom:link href="http://lefttree.github.io/rss.xml" rel="self" type="application/rss+xml" />
+        <lastBuildDate>Wed, 03 Jun 2015 16:27:38 -0700</lastBuildDate>
+        <pubDate>Wed, 03 Jun 2015 16:27:38 -0700</pubDate>
         <ttl>60</ttl>
 
 
         <item>
-                <title>test post</title>
-                <description>
+                <title>Javascript Best Practices</title>
+                <description>&lt;h3&gt;Easy, Short &amp;amp; Readable Names&lt;/h3&gt;
+
+&lt;h4&gt;Variables Name&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;Hungarian notation&lt;/strong&gt; is a good variable name scheme to adopt.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;typeName&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Examples:
+- bBusy : boolean
+- chInitial : char
+- cApples : count of items&lt;/p&gt;
+
+&lt;h4&gt;Function Name&lt;/h4&gt;
+
+&lt;p&gt;Function name should start with a lowercase verb following &lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;verbSomething&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Examples:
+- isOldEnough()
+- getResult()&lt;/p&gt;
+
+&lt;h4&gt;Class Name&lt;/h4&gt;
+
+&lt;p&gt;the first char should be capital
+Examples:
+- Apple()
+- Node()&lt;/p&gt;
+
+&lt;h3&gt;Avoid Global&lt;/h3&gt;
+
+&lt;h4&gt;revealing module pattern&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;myNameSpace = function(){
+    var current = null;
+    function init(){};
+    function change(){};
+    function verify(){};
+    return{
+        init: init,
+        change: change
+    }
+}();
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If you don&amp;#39;t need any of your vars or functions to be avaiable to the outside, simply wrap the whole construct in another set of parentheses to execute it without assigning any name.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;(function(){
+    var current = null;
+    function init(){}
+})();
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Use strict&lt;/h3&gt;
+
+&lt;p&gt;Check code quality with JSLint&lt;/p&gt;
+
+&lt;h3&gt;Comment&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Comment as much as needed but no more&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Use /* */&lt;/p&gt;
+
+&lt;h3&gt;Avoid mixing with css&lt;/h3&gt;
+
+&lt;h3&gt;Use Shortcut Notation&lt;/h3&gt;
+
+&lt;p&gt;Examples:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;var direction = ( x &amp;gt; 100 ) ? 1 : -1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;var x = v || 10;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;this would automatically give x a value of 10 if v is not defined&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3&gt;Modularize - One Function per Task&lt;/h3&gt;
+
+&lt;h3&gt;Configuration and Translation&lt;/h3&gt;
+
+&lt;p&gt;One of the most successful tips to keep your code maintainable and clean is to create a configuration object that contains all the things that are likely to change over time.&lt;/p&gt;
+
+&lt;p&gt;These include &lt;em&gt;any text used in elements you create&lt;/em&gt;, &lt;em&gt;CSS class&lt;/em&gt;, &lt;em&gt;ID names&lt;/em&gt; and &lt;em&gt;general parameters of the interface you build&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Examples: easy youtube player project config object&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;/*
+  This is the configuration of the player.meng Most likely you will
+  never have to change anything here, but it is good to be able 
+  to, isn&amp;#39;t it? 
+*/
+config = {
+  CSS:{
+    /* 
+      IDs used in the document. The script will get access to 
+      the different elements of the player with these IDs, so 
+      if you change them in the HTML below, make sure to also 
+      change the name here!
+    */
+    IDs:{
+      container:&amp;#39;eytp-maincontainer&amp;#39;,
+      canvas:&amp;#39;eytp-playercanvas&amp;#39;,
+      player:&amp;#39;eytp-player&amp;#39;,
+      controls:&amp;#39;eytp-controls&amp;#39;,
+      volumeField:&amp;#39;eytp-volume&amp;#39;,
+      volumeBar:&amp;#39;eytp-volumebar&amp;#39;,
+      playerForm:&amp;#39;eytp-playerform&amp;#39;,
+      urlField:&amp;#39;eytp-url&amp;#39;,
+      sizeControl:&amp;#39;eytp-sizecontrol&amp;#39;,
+      searchField:&amp;#39;eytp-searchfield&amp;#39;,
+      searchForm:&amp;#39;eytp-search&amp;#39;,
+      searchOutput:&amp;#39;eytp-searchoutput&amp;#39;
+    },
+    /*
+      These are the names of the CSS classes, the player adds
+      dynamically to the volume bar in certain 
+      situations.
+    */
+    classes:{
+      maxvolume:&amp;#39;maxed&amp;#39;,
+      disabled:&amp;#39;disabled&amp;#39;
+    }
+  },
+  /* 
+    That is the end of the CSS definitions, from here on 
+    you can change settings of the player itself. 
+  */
+  application:{
+    /*
+      The YouTube API base URL. This changed during development of this,
+      so I thought it useful to make it a parameter.
+    */
+    youtubeAPI:&amp;#39;http://gdata.youtube.com/apiplayer/cl.swf&amp;#39;,
+    /* 
+      The YouTube Developer key,
+      please replace this with your own when you host the player!!!!!
+    */
+    devkey:&amp;#39;AI39si7d...Y9fu_cQ&amp;#39;,
+    /*
+      The volume increase/decrease in percent and the volume message 
+      shown in a hidden form field (for screen readers). The $x in the 
+      message will be replaced with the real value.
+    */
+    volumeChange:10,
+    volumeMessage:&amp;#39;volume $x percent&amp;#39;,
+    /*
+      Amount of search results and the error message should there 
+      be no results.
+    */
+    searchResults:6,
+    loadingMessage:&amp;#39;Searching, please wait&amp;#39;,
+    noVideosFoundMessage:&amp;#39;No videos found : (&amp;#39;,
+    /*
+      Amount of seconds to repeat when the user hits the rewind 
+      button.
+    */
+    secondsToRepeat:10,
+    /*
+      Movie dimensions.
+    */
+    movieWidth:400,
+    movieHeight:300
+  }  
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Avoid Heavy Nesting&lt;/h3&gt;
+
+&lt;p&gt;Use functions to avoid it&lt;/p&gt;
+
+&lt;h3&gt;Optimize Loops&lt;/h3&gt;
+
+&lt;h4&gt;For loop read length everytime&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;var names = [&amp;#39;George&amp;#39;,&amp;#39;Ringo&amp;#39;,&amp;#39;Paul&amp;#39;,&amp;#39;John&amp;#39;];
+for(var i=0;i &amp;lt; names.length;i++){
+  doSomeThingWith(names[i]);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;To Fix&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;var names = [&amp;#39;George&amp;#39;,&amp;#39;Ringo&amp;#39;,&amp;#39;Paul&amp;#39;,&amp;#39;John&amp;#39;];
+for(var i=0,j=names.length;i &amp;lt; j;i++){
+  doSomeThingWith(names[i]);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;Keep computation-heavy code outside&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;regular expression&lt;/li&gt;
+&lt;li&gt;DOM manipulation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Keep DOM Access to a minimum&lt;/h3&gt;
+
+&lt;h3&gt;Do not Trust Any Data&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;It is very important to tes the type of parameters send to your functions(using the &lt;code&gt;typeof&lt;/code&gt; keyword)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;function buildMemberList(members){
+  if(typeof members === &amp;#39;object&amp;#39; &amp;amp;&amp;amp; 
+     typeof members.slice === &amp;#39;function&amp;#39;){
+    var all = members.length;
+    var ul = document.createElement(&amp;#39;ul&amp;#39;);
+    for(var i=0;i &amp;lt; all;i++){
+      var li = document.createElement(&amp;#39;li&amp;#39;);
+      li.appendChild(document.createTextNode(members[i].name));
+      ul.appendChild(li);
+    }
+    return ul;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;Compare and check info read from the DOM&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3&gt;Do not create too much with Javascript&lt;/h3&gt;
+
+&lt;p&gt;Using an HTML template and load it via AJAX&lt;/p&gt;
+
+&lt;h3&gt;Do not Use New Object&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Use {} instead of new Object()&lt;/li&gt;
+&lt;li&gt;Use &amp;quot;&amp;quot; instead of new String()&lt;/li&gt;
+&lt;li&gt;Use 0 instead of new Number()&lt;/li&gt;
+&lt;li&gt;Use false instead of new Boolean()&lt;/li&gt;
+&lt;li&gt;Use [] instead of new Array()&lt;/li&gt;
+&lt;li&gt;Use /()/ instead of new RegExp()&lt;/li&gt;
+&lt;li&gt;Use function (){} instead of new function()&lt;/li&gt;
+&lt;/ul&gt;
 </description>
-                <link>http://username.github.io/test/2015/06/02/test-post</link>
-                <guid>http://username.github.io/test/2015/06/02/test-post</guid>
-                <pubDate>Tue, 02 Jun 2015 00:00:00 -0700</pubDate>
+                <link>http://lefttree.github.io/programming%20style/2015/06/03/JS-Best-Practices</link>
+                <guid>http://lefttree.github.io/programming%20style/2015/06/03/JS-Best-Practices</guid>
+                <pubDate>Wed, 03 Jun 2015 00:00:00 -0700</pubDate>
         </item>
 
         <item>
                 <title>Javascript Good Parts</title>
-                <description>&lt;h2 id=&quot;part-1-good-parts&quot;&gt;Part 1 Good Parts&lt;/h2&gt;
+                <description>&lt;h2&gt;Part 1 Good Parts&lt;/h2&gt;
+
 &lt;p&gt;Javascript is getting more and more popular now&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;Good Parts:
-	- function
-	- loose typing
-	- dynamic objects
-	- object literal notation
+&lt;p&gt;Good Parts:
+  - function
+  - loose typing
+  - dynamic objects
+  - object literal notation
 Bad Parts:
-	- Global variables(&lt;strong&gt;They are evil!&lt;/strong&gt;)&lt;/p&gt;
+  - Global variables(&lt;strong&gt;They are evil!&lt;/strong&gt;)&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h2 id=&quot;part-2-grammar&quot;&gt;Part 2 Grammar&lt;/h2&gt;
-&lt;p&gt;###Comment&lt;/p&gt;
+&lt;h2&gt;Part 2 Grammar&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code&gt;- //  (recommended)
+&lt;h3&gt;Comment&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;- //  (recommended)
 - /* */  (Not safe because it can occur in regex)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;number&quot;&gt;Number&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Number&lt;/h3&gt;
 
 &lt;p&gt;JS only has a single number type. Internally, it is a 64-bit floating point. So 1 and 1.0 are the same value.
 isNaN() function to detect NaN.&lt;/p&gt;
 
-&lt;h3 id=&quot;strings&quot;&gt;Strings&lt;/h3&gt;
+&lt;h3&gt;Strings&lt;/h3&gt;
 
 &lt;p&gt;All characters are 16 bits wide. Immutable.&lt;/p&gt;
 
-&lt;h2 id=&quot;part-3-objects&quot;&gt;Part 3 Objects&lt;/h2&gt;
-&lt;p&gt;###JS types&lt;/p&gt;
+&lt;h2&gt;Part 3 Objects&lt;/h2&gt;
+
+&lt;h3&gt;JS types&lt;/h3&gt;
 
 &lt;p&gt;Immutable
-	- Number
-	- String
-	- boolean
+    - Number
+    - String
+    - boolean
 null
 undefined&lt;/p&gt;
 
 &lt;p&gt;objects
-	- property, can be any string, including &lt;strong&gt;empty string&lt;/strong&gt;
-	- value, can be any JS value except &lt;strong&gt;undefined&lt;/strong&gt;&lt;/p&gt;
+    - property, can be any string, including &lt;strong&gt;empty string&lt;/strong&gt;
+    - value, can be any JS value except &lt;strong&gt;undefined&lt;/strong&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;retrieval&quot;&gt;Retrieval&lt;/h3&gt;
+&lt;h3&gt;Retrieval&lt;/h3&gt;
 
-&lt;p&gt;retrieve a nonexistent member
-&lt;code&gt;javascript
-flight.status // undefined
-&lt;/code&gt;
-The || operator can be used to fill in default values:
-&lt;code&gt;javascript
-var middle = stooge[&quot;middle-name&quot;] || &quot;(none)&quot;;
-&lt;/code&gt;
-Attempting to retrieve valus from &lt;strong&gt;undefined&lt;/strong&gt; will throw a &lt;strong&gt;TypeError&lt;/strong&gt; exception. Can be guarded against with &amp;amp;&amp;amp; operator:
-&lt;code&gt;javascript
-flight.equipment &amp;amp;&amp;amp; flight.equipment.model
-&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;retrieve a nonexistent member&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;flight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// undefined&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The || operator can be used to fill in default values:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;middle&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;stooge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;middle-name&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;(none)&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Attempting to retrieve valus from &lt;strong&gt;undefined&lt;/strong&gt; will throw a &lt;strong&gt;TypeError&lt;/strong&gt; exception. Can be guarded against with &amp;amp;&amp;amp; operator:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;flight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;equipment&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;flight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;equipment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;model&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Reference&lt;/h3&gt;
 
-&lt;h3 id=&quot;reference&quot;&gt;Reference&lt;/h3&gt;
-&lt;p&gt;Objects are passed around by reference. They are &lt;strong&gt;never copied&lt;/strong&gt;.
-&lt;code&gt;javascript
-    var x = another_x;
-    x.nickname = &quot;nick&quot;;
-    var name = another_x.nickname;
-    // name is &quot;nick&quot; because x and another_x are references to the same obj
-&lt;/code&gt;&lt;br /&gt;
-Initialization
-&lt;code&gt;javascript
-    var a = {}, b = {}, c = {}; //a, b and c are differenct obj
-	var a = b = c = {}; //a, b and c refer to the same empty obj
-&lt;/code&gt;
-###Prototype
-The prototype link is used only in retrieval, has no effect on updating.
+&lt;p&gt;Objects are passed around by reference. They are &lt;strong&gt;never copied&lt;/strong&gt;.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;another_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;nickname&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;nick&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;another_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;nickname&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// name is &amp;quot;nick&amp;quot; because x and another_x are references to the same obj&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Initialization&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{};&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//a, b and c are differenct obj&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{};&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//a, b and c refer to the same empty obj&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Prototype&lt;/h3&gt;
+
+&lt;p&gt;The prototype link is used only in retrieval, has no effect on updating.
 When retrieve a property, it would search the prototype link.&lt;/p&gt;
 
-&lt;h3 id=&quot;reflection&quot;&gt;Reflection&lt;/h3&gt;
-&lt;p&gt;typeof 
-&amp;gt; &lt;strong&gt;Note:&lt;/strong&gt;
-&amp;gt; any property on the protorype chain can produce a value&lt;/p&gt;
+&lt;h3&gt;Reflection&lt;/h3&gt;
+
+&lt;p&gt;typeof &lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;
+any property on the protorype chain can produce a value&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;hasOwnProperty
-	- it does not look at the prototype chain&lt;/p&gt;
+    - it does not look at the prototype chain&lt;/p&gt;
 
-&lt;h3 id=&quot;enumeration&quot;&gt;Enumeration&lt;/h3&gt;
-&lt;p&gt;the &lt;strong&gt;for in&lt;/strong&gt; statement can loop over all the property names in an obj. It will include all properties – including functions and prototypes properties. So it is necessary to &lt;strong&gt;filter&lt;/strong&gt; out the values.
-	- hasOwnProperty
-	- typeof 
-&lt;code&gt;javascript
-	var name;
-	for(name in another_stooge){
-		if(typeof(another_stooge[name]) !== &#39;function&#39;){
-			document.writeln(name + &#39;: &#39; + another_stooge[name]);
-		}
-	}
-&lt;/code&gt;
-&amp;gt; &lt;strong&gt;Note:&lt;/strong&gt;
-&amp;gt; There is no guarantee on the order of properties.&lt;/p&gt;
+&lt;h3&gt;Enumeration&lt;/h3&gt;
 
-&lt;h3 id=&quot;delete&quot;&gt;Delete&lt;/h3&gt;
+&lt;p&gt;the &lt;strong&gt;for in&lt;/strong&gt; statement can loop over all the property names in an obj. It will include all properties -- including functions and prototypes properties. So it is necessary to &lt;strong&gt;filter&lt;/strong&gt; out the values.
+    - hasOwnProperty
+    - typeof &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;another_stooge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;another_stooge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!==&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;function&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;writeln&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;: &amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;another_stooge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;
+There is no guarantee on the order of properties.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3&gt;Delete&lt;/h3&gt;
+
 &lt;p&gt;It will remove a property from the object &lt;strong&gt;if it has one&lt;/strong&gt;. It will &lt;strong&gt;not&lt;/strong&gt; touch any  of the objects in the prototype linkage.&lt;/p&gt;
 
-&lt;h3 id=&quot;global-abatement&quot;&gt;Global Abatement&lt;/h3&gt;
+&lt;h3&gt;Global Abatement&lt;/h3&gt;
+
 &lt;p&gt;Avoid global variable. Skip this part, use module pattern.&lt;/p&gt;
 </description>
-                <link>http://username.github.io/web/2015/06/01/Javascript-theGoodParts</link>
-                <guid>http://username.github.io/web/2015/06/01/Javascript-theGoodParts</guid>
+                <link>http://lefttree.github.io/web/2015/06/01/Javascript-theGoodParts</link>
+                <guid>http://lefttree.github.io/web/2015/06/01/Javascript-theGoodParts</guid>
                 <pubDate>Mon, 01 Jun 2015 00:00:00 -0700</pubDate>
         </item>
 

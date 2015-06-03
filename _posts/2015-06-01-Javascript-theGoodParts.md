@@ -53,20 +53,26 @@ objects
 ###Retrieval
 
 retrieve a nonexistent member
+
 ```javascript
 flight.status // undefined
 ```
+
 The || operator can be used to fill in default values:
+
 ```javascript
 var middle = stooge["middle-name"] || "(none)";
 ```
+
 Attempting to retrieve valus from **undefined** will throw a **TypeError** exception. Can be guarded against with && operator:
+
 ```javascript
 flight.equipment && flight.equipment.model
 ```
 
 ###Reference
 Objects are passed around by reference. They are **never copied**.
+
 ```javascript
     var x = another_x;
     x.nickname = "nick";
@@ -74,10 +80,12 @@ Objects are passed around by reference. They are **never copied**.
     // name is "nick" because x and another_x are references to the same obj
 ```  
 Initialization
+
 ```javascript
     var a = {}, b = {}, c = {}; //a, b and c are differenct obj
 	var a = b = c = {}; //a, b and c refer to the same empty obj
 ```
+
 ###Prototype
 The prototype link is used only in retrieval, has no effect on updating.
 When retrieve a property, it would search the prototype link.
@@ -94,6 +102,7 @@ hasOwnProperty
 the **for in** statement can loop over all the property names in an obj. It will include all properties -- including functions and prototypes properties. So it is necessary to **filter** out the values.
 	- hasOwnProperty
 	- typeof 
+
 ```javascript
 	var name;
 	for(name in another_stooge){
@@ -102,6 +111,7 @@ the **for in** statement can loop over all the property names in an obj. It will
 		}
 	}
 ```
+
 > **Note:**
 > There is no guarantee on the order of properties.
 
