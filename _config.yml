@@ -81,7 +81,7 @@ JB :
   comments :
     provider : disqus
     disqus :
-      short_name : lefttree
+      short_name : lefttreegithubio
     livefyre :
       site_id : 123
     intensedebate :
