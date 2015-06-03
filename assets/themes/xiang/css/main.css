@@ -50,6 +50,8 @@ a:hover {
 /*****************************************************************************/
 #logo {
   max-width: 128px;
+  border-radius: 50%;
+  display: block;
 }
 
 .posts a {
@@ -247,6 +249,14 @@ a:hover {
   font-weight: 600;
   font-size: 1.25em;
   text-transform: uppercase;
+}
+
+.index-post-title{
+    color: #8a8a8a;
+    fron-weight: 600;
+    font-family: Monaco, "Courier New", monospace;
+    font-size: 0.85em;
+    text-transform: uppercase;
 }
 
 .post-date {

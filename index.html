@@ -1,22 +1,20 @@
 ---
 layout: page
 title: Xiang Li's Blog
-cover: cover.jpg
 tagline: test
 ---
 {% include JB/setup %}
 
 
 <div class="posts">
-    <ul class="posts-list">
-        {% for post in site.posts %}
-        <li class="post-link">
-        <a class="post-title" href="{{ post.url }}">
-            <span class="post-date">{{ post.date | date_to_string }}</span>
-            {{ post.title }}
-        </a>
-        </li>
-        {% endfor %}
+    <ul class="posts">  
+        {% for post in site.posts limit:20 %}  
+        <li class="post-link">  
+            <span>{{ post.date | date_to_string }}</span> &raquo;  
+            <a class="index-post-title" href="{{ BASE_PATH }}{{ post.url }}">  
+                {{ post.title }}</a>  
+        </li>  
+        {% endfor %}  
     </ul>
 </div>
 <div class="colophon">
