@@ -2,8 +2,8 @@
 layout: post
 title: Javascript Good Parts
 cover: cover.jpg
-date:   2015-06-01 12:00:00
-categories: posts
+category: web
+tags: [web, javascript]
 ---
 
 

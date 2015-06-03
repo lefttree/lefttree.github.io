@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ 
+ <title>Jekyll Bootstrap</title>
+ <link href="http://username.github.io/atom.xml" rel="self"/>
+ <link href="http://username.github.io"/>
+ <updated>2015-06-02T19:15:55-07:00</updated>
+ <id>http://username.github.io</id>
+ <author>
+   <name>Name Lastname</name>
+   <email>blah@email.test</email>
+ </author>
+
+ 
+ <entry>
+   <title>test post</title>
+   <link href="http://username.github.io/test/2015/06/02/test-post"/>
+   <updated>2015-06-02T00:00:00-07:00</updated>
+   <id>http://username.github.io/test/2015/06/02/test-post</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Javascript Good Parts</title>
+   <link href="http://username.github.io/web/2015/06/01/Javascript-theGoodParts"/>
+   <updated>2015-06-01T00:00:00-07:00</updated>
+   <id>http://username.github.io/web/2015/06/01/Javascript-theGoodParts</id>
+   <content type="html">&lt;h2 id=&quot;part-1-good-parts&quot;&gt;Part 1 Good Parts&lt;/h2&gt;
+&lt;p&gt;Javascript is getting more and more popular now&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Good Parts:
+	- function
+	- loose typing
+	- dynamic objects
+	- object literal notation
+Bad Parts:
+	- Global variables(&lt;strong&gt;They are evil!&lt;/strong&gt;)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;part-2-grammar&quot;&gt;Part 2 Grammar&lt;/h2&gt;
+&lt;p&gt;###Comment&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;- //  (recommended)
+- /* */  (Not safe because it can occur in regex)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;number&quot;&gt;Number&lt;/h3&gt;
+
+&lt;p&gt;JS only has a single number type. Internally, it is a 64-bit floating point. So 1 and 1.0 are the same value.
+isNaN() function to detect NaN.&lt;/p&gt;
+
+&lt;h3 id=&quot;strings&quot;&gt;Strings&lt;/h3&gt;
+
+&lt;p&gt;All characters are 16 bits wide. Immutable.&lt;/p&gt;
+
+&lt;h2 id=&quot;part-3-objects&quot;&gt;Part 3 Objects&lt;/h2&gt;
+&lt;p&gt;###JS types&lt;/p&gt;
+
+&lt;p&gt;Immutable
+	- Number
+	- String
+	- boolean
+null
+undefined&lt;/p&gt;
+
+&lt;p&gt;objects
+	- property, can be any string, including &lt;strong&gt;empty string&lt;/strong&gt;
+	- value, can be any JS value except &lt;strong&gt;undefined&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;retrieval&quot;&gt;Retrieval&lt;/h3&gt;
+
+&lt;p&gt;retrieve a nonexistent member
+&lt;code&gt;javascript
+flight.status // undefined
+&lt;/code&gt;
+The || operator can be used to fill in default values:
+&lt;code&gt;javascript
+var middle = stooge[&quot;middle-name&quot;] || &quot;(none)&quot;;
+&lt;/code&gt;
+Attempting to retrieve valus from &lt;strong&gt;undefined&lt;/strong&gt; will throw a &lt;strong&gt;TypeError&lt;/strong&gt; exception. Can be guarded against with &amp;amp;&amp;amp; operator:
+&lt;code&gt;javascript
+flight.equipment &amp;amp;&amp;amp; flight.equipment.model
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;reference&quot;&gt;Reference&lt;/h3&gt;
+&lt;p&gt;Objects are passed around by reference. They are &lt;strong&gt;never copied&lt;/strong&gt;.
+&lt;code&gt;javascript
+    var x = another_x;
+    x.nickname = &quot;nick&quot;;
+    var name = another_x.nickname;
+    // name is &quot;nick&quot; because x and another_x are references to the same obj
+&lt;/code&gt;&lt;br /&gt;
+Initialization
+&lt;code&gt;javascript
+    var a = {}, b = {}, c = {}; //a, b and c are differenct obj
+	var a = b = c = {}; //a, b and c refer to the same empty obj
+&lt;/code&gt;
+###Prototype
+The prototype link is used only in retrieval, has no effect on updating.
+When retrieve a property, it would search the prototype link.&lt;/p&gt;
+
+&lt;h3 id=&quot;reflection&quot;&gt;Reflection&lt;/h3&gt;
+&lt;p&gt;typeof 
+&amp;gt; &lt;strong&gt;Note:&lt;/strong&gt;
+&amp;gt; any property on the protorype chain can produce a value&lt;/p&gt;
+
+&lt;p&gt;hasOwnProperty
+	- it does not look at the prototype chain&lt;/p&gt;
+
+&lt;h3 id=&quot;enumeration&quot;&gt;Enumeration&lt;/h3&gt;
+&lt;p&gt;the &lt;strong&gt;for in&lt;/strong&gt; statement can loop over all the property names in an obj. It will include all properties – including functions and prototypes properties. So it is necessary to &lt;strong&gt;filter&lt;/strong&gt; out the values.
+	- hasOwnProperty
+	- typeof 
+&lt;code&gt;javascript
+	var name;
+	for(name in another_stooge){
+		if(typeof(another_stooge[name]) !== &#39;function&#39;){
+			document.writeln(name + &#39;: &#39; + another_stooge[name]);
+		}
+	}
+&lt;/code&gt;
+&amp;gt; &lt;strong&gt;Note:&lt;/strong&gt;
+&amp;gt; There is no guarantee on the order of properties.&lt;/p&gt;
+
+&lt;h3 id=&quot;delete&quot;&gt;Delete&lt;/h3&gt;
+&lt;p&gt;It will remove a property from the object &lt;strong&gt;if it has one&lt;/strong&gt;. It will &lt;strong&gt;not&lt;/strong&gt; touch any  of the objects in the prototype linkage.&lt;/p&gt;
+
+&lt;h3 id=&quot;global-abatement&quot;&gt;Global Abatement&lt;/h3&gt;
+&lt;p&gt;Avoid global variable. Skip this part, use module pattern.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ 
+</feed>

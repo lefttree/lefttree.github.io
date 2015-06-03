@@ -1,0 +1,331 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Flex - Javascript Good Parts</title>
+      <meta name="viewport" content="width=device-width">
+
+      <!-- bootstrap -->
+      <link href="/assets/themes/xiang/css/bootstrap.2.2.2.min.css" rel="stylesheet">
+      <!-- syntax highlighting CSS -->
+      <link rel="stylesheet" href="/assets/themes/xiang/css/syntax.css">
+
+      <!-- Custom CSS -->
+      <link rel="stylesheet" href="/assets/themes/xiang/css/main.css">
+
+      <!-- Responsive CSS -->
+      <link rel="stylesheet" href="/assets/themes/xiang/css/responsive.css">
+
+      <!-- Google Fonts -->
+      <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700' rel='stylesheet' type='text/css'>
+      <link href='http://fonts.googleapis.com/css?family=Raleway:300,400,700' rel='stylesheet' type='text/css'>
+      <!-- atom & rss feed -->
+      <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+      <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+  </head>
+  <body>
+    <div class="site">
+      <div class="sidebar" id="sidebar">
+        <div class="header">
+          <h1 class="title"><a href="/"><img id="logo" src="/assets/themes/xiang/images/logo.png"></a></h1>
+          <span class="tagline">Xiang Li</span>
+        </div>
+        <hr>
+        <!--<div class="posts">-->
+          <!--<ul class="posts-list">-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/test/2015/06/02/test-post">-->
+                  <!--<span class="post-date">02 Jun 2015</span>-->
+                  <!--test post-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/web/2015/06/01/Javascript-theGoodParts">-->
+                  <!--<span class="post-date">01 Jun 2015</span>-->
+                  <!--Javascript Good Parts-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+          <!--</ul>-->
+        <!--</div>-->
+        <ul class="nav">
+            
+            
+            
+
+
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+
+
+
+        </ul>
+        <div class="footer">
+          <span id="footer-links">
+            <a href="http://www.xiangli.me" class="footer-link">About</a> <span class="separator">&bull;</span>
+            <!--<a href="" class="footer-link">Twitter</a> <span class="separator">&bull;</span>-->
+            <a href="https://github.com/lefttree" class="footer-link">GitHub</a>
+          </span>
+        </div>
+      </div>
+
+        
+
+<div class="content" id="home">
+  <div id="sidebar-button">
+    <img src="/assets/themes/xiang/images/sidebar-button.png">
+  </div>
+  <div id="post-info">
+    <div id="cover-photo-container">
+      <img id="cover-photo" src="/assets/themes/xiang/images/cover.jpg">
+    </div>
+    <div id="info-container">
+      <h1 id="title">Javascript Good Parts</h1>
+      <span id="date">01 Jun 2015</span>
+    </div>
+  </div>
+
+  <div class="post">
+    <h2 id="part-1-good-parts">Part 1 Good Parts</h2>
+<p>Javascript is getting more and more popular now</p>
+
+<blockquote>
+  <p>Good Parts:
+	- function
+	- loose typing
+	- dynamic objects
+	- object literal notation
+Bad Parts:
+	- Global variables(<strong>They are evil!</strong>)</p>
+</blockquote>
+
+<h2 id="part-2-grammar">Part 2 Grammar</h2>
+<p>###Comment</p>
+
+<pre><code>- //  (recommended)
+- /* */  (Not safe because it can occur in regex)
+</code></pre>
+
+<h3 id="number">Number</h3>
+
+<p>JS only has a single number type. Internally, it is a 64-bit floating point. So 1 and 1.0 are the same value.
+isNaN() function to detect NaN.</p>
+
+<h3 id="strings">Strings</h3>
+
+<p>All characters are 16 bits wide. Immutable.</p>
+
+<h2 id="part-3-objects">Part 3 Objects</h2>
+<p>###JS types</p>
+
+<p>Immutable
+	- Number
+	- String
+	- boolean
+null
+undefined</p>
+
+<p>objects
+	- property, can be any string, including <strong>empty string</strong>
+	- value, can be any JS value except <strong>undefined</strong></p>
+
+<h3 id="retrieval">Retrieval</h3>
+
+<p>retrieve a nonexistent member
+<code>javascript
+flight.status // undefined
+</code>
+The || operator can be used to fill in default values:
+<code>javascript
+var middle = stooge["middle-name"] || "(none)";
+</code>
+Attempting to retrieve valus from <strong>undefined</strong> will throw a <strong>TypeError</strong> exception. Can be guarded against with &amp;&amp; operator:
+<code>javascript
+flight.equipment &amp;&amp; flight.equipment.model
+</code></p>
+
+<h3 id="reference">Reference</h3>
+<p>Objects are passed around by reference. They are <strong>never copied</strong>.
+<code>javascript
+    var x = another_x;
+    x.nickname = "nick";
+    var name = another_x.nickname;
+    // name is "nick" because x and another_x are references to the same obj
+</code><br />
+Initialization
+<code>javascript
+    var a = {}, b = {}, c = {}; //a, b and c are differenct obj
+	var a = b = c = {}; //a, b and c refer to the same empty obj
+</code>
+###Prototype
+The prototype link is used only in retrieval, has no effect on updating.
+When retrieve a property, it would search the prototype link.</p>
+
+<h3 id="reflection">Reflection</h3>
+<p>typeof 
+&gt; <strong>Note:</strong>
+&gt; any property on the protorype chain can produce a value</p>
+
+<p>hasOwnProperty
+	- it does not look at the prototype chain</p>
+
+<h3 id="enumeration">Enumeration</h3>
+<p>the <strong>for in</strong> statement can loop over all the property names in an obj. It will include all properties – including functions and prototypes properties. So it is necessary to <strong>filter</strong> out the values.
+	- hasOwnProperty
+	- typeof 
+<code>javascript
+	var name;
+	for(name in another_stooge){
+		if(typeof(another_stooge[name]) !== 'function'){
+			document.writeln(name + ': ' + another_stooge[name]);
+		}
+	}
+</code>
+&gt; <strong>Note:</strong>
+&gt; There is no guarantee on the order of properties.</p>
+
+<h3 id="delete">Delete</h3>
+<p>It will remove a property from the object <strong>if it has one</strong>. It will <strong>not</strong> touch any  of the objects in the prototype linkage.</p>
+
+<h3 id="global-abatement">Global Abatement</h3>
+<p>Avoid global variable. Skip this part, use module pattern.</p>
+
+  </div>
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-folder-open"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/categories.html#web-ref">
+    		web <span>1</span>
+    	</a></li>
+    
+  
+
+
+    </ul>
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags.html#web-ref">web <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#javascript-ref">javascript <span>1</span></a></li>
+    
+  
+
+
+
+    </ul>
+  
+  <hr>  
+  <div class="pagination">
+      <ul>
+      
+        <li class="prev disabled"><a>&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next"><a href="/test/2015/06/02/test-post" title="test post">Next &rarr;</a></li>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    
+    var disqus_developer = 1;
+    var disqus_shortname = 'jekyllbootstrap'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+  </div>
+</div>
+
+
+
+    </div>
+    <script src="/assets/themes/xiang/scripts/responsive.js" type="text/javascript"></script>
+    
+
+
+
+  </body>
+</html>
+

@@ -1,8 +1,23 @@
 ---
-layout: default
-title: Home
+layout: page
+title: Xiang Li's Blog
+cover: cover.jpg
+tagline: test
 ---
+{% include JB/setup %}
 
-{% assign page = site.posts.first %}
-{% assign content = page.content %}
-{% include post.html %}
+
+<div class="posts">
+    <ul class="posts-list">
+        {% for post in site.posts %}
+        <li class="post-link">
+        <a class="post-title" href="{{ post.url }}">
+            <span class="post-date">{{ post.date | date_to_string }}</span>
+            {{ post.title }}
+        </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+<div class="colophon">
+</div>
