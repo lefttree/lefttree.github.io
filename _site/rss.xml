@@ -5,10 +5,182 @@
         <description>LeftTree&#39;s Blog - Xiang Li</description>
         <link>http://lefttree.github.io</link>
         <atom:link href="http://lefttree.github.io/rss.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Thu, 04 Jun 2015 00:45:21 -0700</lastBuildDate>
-        <pubDate>Thu, 04 Jun 2015 00:45:21 -0700</pubDate>
+        <lastBuildDate>Thu, 04 Jun 2015 16:48:51 -0700</lastBuildDate>
+        <pubDate>Thu, 04 Jun 2015 16:48:51 -0700</pubDate>
         <ttl>60</ttl>
 
+
+        <item>
+                <title>HTML5 Storage &amp; Cache</title>
+                <description>&lt;p&gt;&lt;a href=&quot;http://slides.html5rocks.com/&quot;&gt;HTML5 Rocks Slide&lt;/a&gt;
+&lt;a href=&quot;diveintohtml5.info&quot;&gt;Dive into HTML5&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3&gt;Offline/Storage&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;// use localStorage for persistent storage
+// use sessionStorage for per tab storage
+saveButton.addEventListener(&amp;#39;click&amp;#39;, function () {
+  window.localStorage.setItem(&amp;#39;value&amp;#39;, area.value);
+  window.localStorage.setItem(&amp;#39;timestamp&amp;#39;, (new Date()).getTime());
+}, false);
+textarea.value = window.localStorage.getItem(&amp;#39;value&amp;#39;);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;you can use Modernizr to detect support for HTML5 Storage.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;if (Modernizr.localstorage) {
+  // window.localStorage is available!
+} else {
+  // no native support for HTML5 storage :(
+  // maybe try dojox.storage or a third-party solution
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The data is actually stored as a string.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;code&gt;setItem()&lt;/code&gt; and &lt;code&gt;getItem()&lt;/code&gt;
+&lt;code&gt;removeItem()&lt;/code&gt; and &lt;code&gt;clear()&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Track when storage changes&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;if (window.addEventListener) {
+  window.addEventListener(&amp;quot;storage&amp;quot;, handle_storage, false);
+} else {
+  window.attachEvent(&amp;quot;onstorage&amp;quot;, handle_storage);
+};
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;“5 megabytes” is how much storage space each origin gets by default.&lt;/p&gt;
+
+&lt;h3&gt;Web SQL Database&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;var db = window.openDatabase(&amp;quot;DBName&amp;quot;, &amp;quot;1.0&amp;quot;, &amp;quot;description&amp;quot;, 5*1024*1024); //5MB
+db.transaction(function(tx) {
+  tx.executeSql(&amp;quot;SELECT * FROM test&amp;quot;, [], successCallback, errorCallback);
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;IndexedDB&lt;/h3&gt;
+
+&lt;p&gt;Act like a dictionary to me&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;the example is not complete&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3&gt;Application Cache&lt;/h3&gt;
+
+&lt;p&gt;The home page of the offline web application points to this list, called a manifest file, which is just a text file located elsewhere on the web server. 
+A web browser that implements HTML5 offline applications will read the list of URLs from the manifest file, download the resources, cache them locally, and automatically keep the local copies up to date as they change. When the time comes that you try to access the web application without a network connection, your web browser will automatically switch over to the local copies instead.&lt;/p&gt;
+
+&lt;p&gt;An offline web application revolves around a cache manifest file. &lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+&amp;lt;html manifest=&amp;quot;cache.manifest&amp;quot;&amp;gt;
+&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;window.applicationCache.addEventListener(&amp;#39;updateready&amp;#39;, function(e) {
+  if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
+    window.applicationCache.swapCache();
+    if (confirm(&amp;#39;A new version of this site is available. Load it?&amp;#39;)) {
+      window.location.reload();
+    }
+  }
+}, false);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;CACHE MANIFEST
+# version 1.0.0
+
+CACHE:
+/html5/src/logic.js
+/html5/src/style.css
+/html5/src/background.png
+
+NETWORK:
+*
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Your cache manifest file can be located anywhere on your web server, but it must be served with the content type &lt;strong&gt;text/cache-manifest&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Every page of your web application needs a manifest attribute that points to the cache manifest for the entire application.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4&gt;manifest file&lt;/h4&gt;
+
+&lt;p&gt;Divided into three parts: the “explicit” section, the “fallback” section, and the “online whitelist” section. If no section headers, default in the &amp;quot;explicit&amp;quot; section&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;If multipage, should list all HTML pages in the manifest file&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h5&gt;Network Sections&lt;/h5&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;CACHE MANIFEST
+NETWORK:
+/tracking.cgi
+CACHE:
+/clock.css
+/clock.js
+/clock-face.jpg
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;NETWORK: the beginning of the &amp;quot;online whitelist&amp;quot; section, resources in this section are never cached and are not avaiable offline
+CACHE: the beginning of the &amp;quot;explicit&amp;quot; section&lt;/p&gt;
+
+&lt;h5&gt;Fallback Sections&lt;/h5&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;CACHE MANIFEST
+FALLBACK:
+/ /offline.html
+NETWORK:
+*
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This is important. It means that you can have an offline web application that “lazily” adds pages as you visit them. You don’t need to list every single one of your HTML pages in your cache manifest.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The single character (/) will match any page on your site, not just the home page. &lt;/p&gt;
+
+&lt;p&gt;If your browser doesn’t find the page in the appcache, instead of displaying an error message, it will display the page /offline.html&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Is this example complete? No. Wikipedia is more than HTML files. It uses common CSS, JavaScript, and images on each page. Each of these resources would need to be listed explicitly in the CACHE: section of the manifest file, in order for pages to display and behave properly offline.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h5&gt;window.applicationCache&lt;/h5&gt;
+
+&lt;p&gt;Events:
+* downloading
+* progress
+* cached
+* noupdate
+* updateready
+* error&lt;/p&gt;
+
+&lt;h5&gt;Developing &amp;amp; Debugging&lt;/h5&gt;
+
+&lt;p&gt;how your browser checks whether a cache manifest file has changed. 
+&lt;strong&gt;3-phase process&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Via normal HTTP semantics, your browser will check whether the cache manifest has expired. 
+Just like any other file being served over HTTP, your &lt;strong&gt;web server&lt;/strong&gt; will typically include &lt;strong&gt;meta-information&lt;/strong&gt; about the file in the HTTP response headers. Some of these HTTP headers (Expires and Cache-Control) tell your browser how it is allowed to cache the file without ever asking the server whether it has changed. &lt;/li&gt;
+&lt;li&gt;If the cache manifest has expired (according to its HTTP headers), then your browser will ask the server &lt;strong&gt;whether there is a new version, and if so, the browser will download it&lt;/strong&gt;. To do this, your browser issues an HTTP request that includes that &lt;strong&gt;last-modified date&lt;/strong&gt; of the cache manifest, which your web server included in the HTTP response headers the last time your browser downloaded the manifest file. If the web server determines that the manifest file hasn’t changed since that date, it will simply return a 304 (Not Modified) status. &lt;/li&gt;
+&lt;li&gt;If the web server thinks the manifest file has changed since that date, it will return an HTTP 200 (OK) status code, followed by the contents of the new file, along with new Cache-Control headers and a new last-modified date, so that steps 1 and 2 will work properly the next time. (HTTP is cool; web servers are always planning for the future. If your web server absolutely must send you a file, it does everything it can to ensure that it doesn’t need to send it twice for no reason.) &lt;strong&gt;Once it’s downloaded the new cache manifest file, your browser will check the contents against the copy it downloaded last time.&lt;/strong&gt; If the contents of the cache manifest file are the same as they were last time, your browser won’t re-download any of the resources listed in the manifest.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Debug&lt;/strong&gt;
+Step 1:
+So here’s one thing you should absolutely do: reconfigure your web server so that your cache manifest file is not cacheable by HTTP semantics.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;you should either qualify this with a &lt;Files&gt; directive so it only affects your cache manifest file, or create a subdirectory that contains nothing but this .htaccess file and your cache manifest file.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Step 2:
+The easiest way I’ve found to accomplish this is to include a comment line with a revision number.
+```
+CACHE MANIFEST&lt;/p&gt;
+
+&lt;h1&gt;rev 43&lt;/h1&gt;
+
+&lt;p&gt;clock.js
+clock.css
+```&lt;/p&gt;
+</description>
+                <link>http://lefttree.github.io/web/2015/06/04/HTML5-Storage-Cache</link>
+                <guid>http://lefttree.github.io/web/2015/06/04/HTML5-Storage-Cache</guid>
+                <pubDate>Thu, 04 Jun 2015 00:00:00 -0700</pubDate>
+        </item>
 
         <item>
                 <title>Javascript Best Practices</title>

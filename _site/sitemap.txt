@@ -8,5 +8,6 @@ http://lefttree.github.io/rss.xml
 http://lefttree.github.io/sitemap.txt
 http://lefttree.github.io/tags.html
 
+http://lefttree.github.io/web/2015/06/04/HTML5-Storage-Cache
 http://lefttree.github.io/programming%20style/2015/06/03/JS-Best-Practices
 http://lefttree.github.io/web/2015/06/01/Javascript-theGoodParts

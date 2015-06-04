@@ -1,0 +1,250 @@
+<h3 id="easy-short--readable-names">Easy, Short &amp; Readable Names</h3>
+
+<h4 id="variables-name">Variables Name</h4>
+
+<p><strong>Hungarian notation</strong> is a good variable name scheme to adopt.</p>
+
+<blockquote>
+  <p>typeName</p>
+</blockquote>
+
+<p>Examples:
+- bBusy : boolean
+- chInitial : char
+- cApples : count of items</p>
+
+<h4 id="function-name">Function Name</h4>
+<p>Function name should start with a lowercase verb following </p>
+
+<blockquote>
+  <p>verbSomething</p>
+</blockquote>
+
+<p>Examples:
+- isOldEnough()
+- getResult()</p>
+
+<h4 id="class-name">Class Name</h4>
+<p>the first char should be capital
+Examples:
+- Apple()
+- Node()</p>
+
+<h3 id="avoid-global">Avoid Global</h3>
+
+<h4 id="revealing-module-pattern">revealing module pattern</h4>
+
+<p><code>
+myNameSpace = function(){
+    var current = null;
+    function init(){};
+    function change(){};
+    function verify(){};
+    return{
+        init: init,
+        change: change
+    }
+}();
+</code></p>
+
+<p>If you don’t need any of your vars or functions to be avaiable to the outside, simply wrap the whole construct in another set of parentheses to execute it without assigning any name.</p>
+
+<p><code>
+(function(){
+    var current = null;
+    function init(){}
+})();
+</code></p>
+
+<h3 id="use-strict">Use strict</h3>
+
+<p>Check code quality with JSLint</p>
+
+<h3 id="comment">Comment</h3>
+
+<p><strong>Comment as much as needed but no more</strong></p>
+
+<p>Use /* */</p>
+
+<h3 id="avoid-mixing-with-css">Avoid mixing with css</h3>
+
+<h3 id="use-shortcut-notation">Use Shortcut Notation</h3>
+
+<p>Examples:</p>
+
+<p><code>
+var direction = ( x &gt; 100 ) ? 1 : -1
+</code></p>
+
+<p><code>
+var x = v || 10;
+</code></p>
+
+<blockquote>
+  <p>this would automatically give x a value of 10 if v is not defined</p>
+</blockquote>
+
+<h3 id="modularize---one-function-per-task">Modularize - One Function per Task</h3>
+
+<h3 id="configuration-and-translation">Configuration and Translation</h3>
+
+<p>One of the most successful tips to keep your code maintainable and clean is to create a configuration object that contains all the things that are likely to change over time.</p>
+
+<p>These include <em>any text used in elements you create</em>, <em>CSS class</em>, <em>ID names</em> and <em>general parameters of the interface you build</em>.</p>
+
+<p>Examples: easy youtube player project config object</p>
+
+<p><code>
+/*
+  This is the configuration of the player.meng Most likely you will
+  never have to change anything here, but it is good to be able 
+  to, isn't it? 
+*/
+config = {
+  CSS:{
+    /* 
+      IDs used in the document. The script will get access to 
+      the different elements of the player with these IDs, so 
+      if you change them in the HTML below, make sure to also 
+      change the name here!
+    */
+    IDs:{
+      container:'eytp-maincontainer',
+      canvas:'eytp-playercanvas',
+      player:'eytp-player',
+      controls:'eytp-controls',
+      volumeField:'eytp-volume',
+      volumeBar:'eytp-volumebar',
+      playerForm:'eytp-playerform',
+      urlField:'eytp-url',
+      sizeControl:'eytp-sizecontrol',
+      searchField:'eytp-searchfield',
+      searchForm:'eytp-search',
+      searchOutput:'eytp-searchoutput'
+    },
+    /*
+      These are the names of the CSS classes, the player adds
+      dynamically to the volume bar in certain 
+      situations.
+    */
+    classes:{
+      maxvolume:'maxed',
+      disabled:'disabled'
+    }
+  },
+  /* 
+    That is the end of the CSS definitions, from here on 
+    you can change settings of the player itself. 
+  */
+  application:{
+    /*
+      The YouTube API base URL. This changed during development of this,
+      so I thought it useful to make it a parameter.
+    */
+    youtubeAPI:'http://gdata.youtube.com/apiplayer/cl.swf',
+    /* 
+      The YouTube Developer key,
+      please replace this with your own when you host the player!!!!!
+    */
+    devkey:'AI39si7d...Y9fu_cQ',
+    /*
+      The volume increase/decrease in percent and the volume message 
+      shown in a hidden form field (for screen readers). The $x in the 
+      message will be replaced with the real value.
+    */
+    volumeChange:10,
+    volumeMessage:'volume $x percent',
+    /*
+      Amount of search results and the error message should there 
+      be no results.
+    */
+    searchResults:6,
+    loadingMessage:'Searching, please wait',
+    noVideosFoundMessage:'No videos found : (',
+    /*
+      Amount of seconds to repeat when the user hits the rewind 
+      button.
+    */
+    secondsToRepeat:10,
+    /*
+      Movie dimensions.
+    */
+    movieWidth:400,
+    movieHeight:300
+  }  
+}
+</code></p>
+
+<h3 id="avoid-heavy-nesting">Avoid Heavy Nesting</h3>
+
+<p>Use functions to avoid it</p>
+
+<h3 id="optimize-loops">Optimize Loops</h3>
+
+<h4 id="for-loop-read-length-everytime">For loop read length everytime</h4>
+
+<p><code>
+var names = ['George','Ringo','Paul','John'];
+for(var i=0;i &lt; names.length;i++){
+  doSomeThingWith(names[i]);
+}
+</code></p>
+
+<p>To Fix</p>
+
+<p><code>
+var names = ['George','Ringo','Paul','John'];
+for(var i=0,j=names.length;i &lt; j;i++){
+  doSomeThingWith(names[i]);
+}
+</code></p>
+
+<h4 id="keep-computation-heavy-code-outside">Keep computation-heavy code outside</h4>
+<ul>
+  <li>regular expression</li>
+  <li>DOM manipulation</li>
+</ul>
+
+<h3 id="keep-dom-access-to-a-minimum">Keep DOM Access to a minimum</h3>
+
+<h3 id="do-not-trust-any-data">Do not Trust Any Data</h3>
+
+<ol>
+  <li>It is very important to tes the type of parameters send to your functions(using the <code>typeof</code> keyword)</li>
+</ol>
+
+<p><code>
+function buildMemberList(members){
+  if(typeof members === 'object' &amp;&amp; 
+     typeof members.slice === 'function'){
+    var all = members.length;
+    var ul = document.createElement('ul');
+    for(var i=0;i &lt; all;i++){
+      var li = document.createElement('li');
+      li.appendChild(document.createTextNode(members[i].name));
+      ul.appendChild(li);
+    }
+    return ul;
+  }
+}
+</code></p>
+
+<ol>
+  <li>Compare and check info read from the DOM</li>
+</ol>
+
+<h3 id="do-not-create-too-much-with-javascript">Do not create too much with Javascript</h3>
+
+<p>Using an HTML template and load it via AJAX</p>
+
+<h3 id="do-not-use-new-object">Do not Use New Object</h3>
+
+<ul>
+  <li>Use {} instead of new Object()</li>
+  <li>Use “” instead of new String()</li>
+  <li>Use 0 instead of new Number()</li>
+  <li>Use false instead of new Boolean()</li>
+  <li>Use [] instead of new Array()</li>
+  <li>Use /()/ instead of new RegExp()</li>
+  <li>Use function (){} instead of new function()</li>
+</ul>

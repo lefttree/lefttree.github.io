@@ -1,0 +1,176 @@
+<p><a href="http://slides.html5rocks.com/">HTML5 Rocks Slide</a>
+<a href="diveintohtml5.info">Dive into HTML5</a></p>
+
+<h3 id="offlinestorage">Offline/Storage</h3>
+
+<p><code>
+// use localStorage for persistent storage
+// use sessionStorage for per tab storage
+saveButton.addEventListener('click', function () {
+  window.localStorage.setItem('value', area.value);
+  window.localStorage.setItem('timestamp', (new Date()).getTime());
+}, false);
+textarea.value = window.localStorage.getItem('value');
+</code></p>
+
+<p>you can use Modernizr to detect support for HTML5 Storage.
+<code>
+if (Modernizr.localstorage) {
+  // window.localStorage is available!
+} else {
+  // no native support for HTML5 storage :(
+  // maybe try dojox.storage or a third-party solution
+}
+</code>
+&gt;The data is actually stored as a string.</p>
+
+<p><code>setItem()</code> and <code>getItem()</code>
+<code>removeItem()</code> and <code>clear()</code></p>
+
+<p>Track when storage changes
+<code>
+if (window.addEventListener) {
+  window.addEventListener("storage", handle_storage, false);
+} else {
+  window.attachEvent("onstorage", handle_storage);
+};
+</code></p>
+
+<p>“5 megabytes” is how much storage space each origin gets by default.</p>
+
+<h3 id="web-sql-database">Web SQL Database</h3>
+
+<p><code>
+var db = window.openDatabase("DBName", "1.0", "description", 5*1024*1024); //5MB
+db.transaction(function(tx) {
+  tx.executeSql("SELECT * FROM test", [], successCallback, errorCallback);
+});
+</code></p>
+
+<h3 id="indexeddb">IndexedDB</h3>
+
+<p>Act like a dictionary to me
+&gt;the example is not complete</p>
+
+<h3 id="application-cache">Application Cache</h3>
+
+<p>The home page of the offline web application points to this list, called a manifest file, which is just a text file located elsewhere on the web server. 
+A web browser that implements HTML5 offline applications will read the list of URLs from the manifest file, download the resources, cache them locally, and automatically keep the local copies up to date as they change. When the time comes that you try to access the web application without a network connection, your web browser will automatically switch over to the local copies instead.</p>
+
+<p>An offline web application revolves around a cache manifest file. </p>
+
+<p><code>
+&lt;html manifest="cache.manifest"&gt;
+</code></p>
+
+<p><code>
+window.applicationCache.addEventListener('updateready', function(e) {
+  if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
+    window.applicationCache.swapCache();
+    if (confirm('A new version of this site is available. Load it?')) {
+      window.location.reload();
+    }
+  }
+}, false);
+</code></p>
+
+<p>```
+CACHE MANIFEST
+# version 1.0.0</p>
+
+<p>CACHE:
+/html5/src/logic.js
+/html5/src/style.css
+/html5/src/background.png</p>
+
+<p>NETWORK:
+*
+```</p>
+
+<p>Your cache manifest file can be located anywhere on your web server, but it must be served with the content type <strong>text/cache-manifest</strong>.</p>
+
+<blockquote>
+  <p>Every page of your web application needs a manifest attribute that points to the cache manifest for the entire application.</p>
+</blockquote>
+
+<h4 id="manifest-file">manifest file</h4>
+
+<p>Divided into three parts: the “explicit” section, the “fallback” section, and the “online whitelist” section. If no section headers, default in the “explicit” section</p>
+
+<blockquote>
+  <p>If multipage, should list all HTML pages in the manifest file</p>
+</blockquote>
+
+<h5 id="network-sections">Network Sections</h5>
+
+<p><code>
+CACHE MANIFEST
+NETWORK:
+/tracking.cgi
+CACHE:
+/clock.css
+/clock.js
+/clock-face.jpg
+</code></p>
+
+<p>NETWORK: the beginning of the “online whitelist” section, resources in this section are never cached and are not avaiable offline
+CACHE: the beginning of the “explicit” section</p>
+
+<h5 id="fallback-sections">Fallback Sections</h5>
+
+<p><code>
+CACHE MANIFEST
+FALLBACK:
+/ /offline.html
+NETWORK:
+*
+</code></p>
+
+<blockquote>
+  <p>This is important. It means that you can have an offline web application that “lazily” adds pages as you visit them. You don’t need to list every single one of your HTML pages in your cache manifest.</p>
+</blockquote>
+
+<p>The single character (/) will match any page on your site, not just the home page. </p>
+
+<p>If your browser doesn’t find the page in the appcache, instead of displaying an error message, it will display the page /offline.html</p>
+
+<blockquote>
+  <p>Is this example complete? No. Wikipedia is more than HTML files. It uses common CSS, JavaScript, and images on each page. Each of these resources would need to be listed explicitly in the CACHE: section of the manifest file, in order for pages to display and behave properly offline.</p>
+</blockquote>
+
+<h5 id="windowapplicationcache">window.applicationCache</h5>
+
+<p>Events:
+* downloading
+* progress
+* cached
+* noupdate
+* updateready
+* error</p>
+
+<h5 id="developing--debugging">Developing &amp; Debugging</h5>
+
+<p>how your browser checks whether a cache manifest file has changed. 
+<strong>3-phase process</strong></p>
+
+<ol>
+  <li>Via normal HTTP semantics, your browser will check whether the cache manifest has expired. 
+Just like any other file being served over HTTP, your <strong>web server</strong> will typically include <strong>meta-information</strong> about the file in the HTTP response headers. Some of these HTTP headers (Expires and Cache-Control) tell your browser how it is allowed to cache the file without ever asking the server whether it has changed. </li>
+  <li>If the cache manifest has expired (according to its HTTP headers), then your browser will ask the server <strong>whether there is a new version, and if so, the browser will download it</strong>. To do this, your browser issues an HTTP request that includes that <strong>last-modified date</strong> of the cache manifest, which your web server included in the HTTP response headers the last time your browser downloaded the manifest file. If the web server determines that the manifest file hasn’t changed since that date, it will simply return a 304 (Not Modified) status. </li>
+  <li>If the web server thinks the manifest file has changed since that date, it will return an HTTP 200 (OK) status code, followed by the contents of the new file, along with new Cache-Control headers and a new last-modified date, so that steps 1 and 2 will work properly the next time. (HTTP is cool; web servers are always planning for the future. If your web server absolutely must send you a file, it does everything it can to ensure that it doesn’t need to send it twice for no reason.) <strong>Once it’s downloaded the new cache manifest file, your browser will check the contents against the copy it downloaded last time.</strong> If the contents of the cache manifest file are the same as they were last time, your browser won’t re-download any of the resources listed in the manifest.</li>
+</ol>
+
+<p><strong>Debug</strong>
+Step 1:
+So here’s one thing you should absolutely do: reconfigure your web server so that your cache manifest file is not cacheable by HTTP semantics.
+&gt;you should either qualify this with a <files> directive so it only affects your cache manifest file, or create a subdirectory that contains nothing but this .htaccess file and your cache manifest file.</files></p>
+
+<p>Step 2:
+The easiest way I’ve found to accomplish this is to include a comment line with a revision number.
+<code>
+CACHE MANIFEST
+# rev 43
+clock.js
+clock.css
+</code></p>
+
