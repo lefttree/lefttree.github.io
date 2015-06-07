@@ -1,6 +1,7 @@
 ---
 layout: post
 title: HTML5 Storage & Cache
+cover: cover.jpg
 category: web
 tagline: "HTML5"
 tag: [web, html5]
