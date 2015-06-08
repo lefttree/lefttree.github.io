@@ -17,13 +17,14 @@ footer
 ```
 
 type
-- feat
-- fix
-- docs
-- style
-- refactor
-- test
-- chore
+
+* feat
+* fix
+* docs
+* style
+* refactor
+* test
+* chore
 
 ##Example
 
