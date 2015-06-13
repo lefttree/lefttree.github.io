@@ -4,7 +4,7 @@
   <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      <title>LeftTree - Lefttree</title>
+      <title>LeftTree - Git commit style</title>
       <meta name="viewport" content="width=device-width">
 
       <!-- bootstrap -->
@@ -155,67 +155,138 @@
     <img src="/assets/themes/xiang/images/sidebar-button.png">
   </div>
   <div id="post-info">
-    <!--<div id="cover-photo-container">-->
-      <!--<img id="cover-photo" src="/assets/themes/xiang/images/" style="width: 50%; align: middle">-->
-    <!--</div>-->
+    <div id="cover-photo-container">
+      <img id="cover-photo" src="/assets/themes/xiang/images/cover.jpg">
+    </div>
     <div id="info-container">
-      <h1 id="title">Lefttree</h1>
+      <h1 id="title">Git commit style</h1>
+      <span id="date">07 Jun 2015</span>
     </div>
   </div>
 
   <div class="post">
+    <h2>Structure</h2>
+<div class="highlight"><pre><code class="language-text" data-lang="text">type: subject
+
+body
+
+footer
+</code></pre></div>
+<p>type</p>
+
+<ul>
+<li>feat</li>
+<li>fix</li>
+<li>docs</li>
+<li>style</li>
+<li>refactor</li>
+<li>test</li>
+<li>chore</li>
+</ul>
+
+<h2>Example</h2>
+<div class="highlight"><pre><code class="language-text" data-lang="text">feat: Summarize changes in around 50 characters or less
+
+More detailed explanatory text, if necessary. Wrap it to about 72
+characters or so. In some contexts, the first line is treated as the
+subject of the commit and the rest of the text as the body. The
+blank line separating the summary from the body is critical (unless
+you omit the body entirely); various tools like `log`, `shortlog`
+and `rebase` can get confused if you run the two together.
+
+Explain the problem that this commit is solving. Focus on why you
+are making this change as opposed to how (the code explains that).
+Are there side effects or other unintuitive consequenses of this
+change? Here&#39;s the place to explain them.
+
+Further paragraphs come after blank lines.
+
+ - Bullet points are okay, too
+
+ - Typically a hyphen or asterisk is used for the bullet, preceded
+   by a single space, with blank lines in between, but conventions
+   vary here
+
+If you use an issue tracker, put references to them at the bottom,
+like this:
+
+Resolves: #123
+See also: #456, #789
+</code></pre></div>
+  </div>
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-folder-open"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/categories.html#programming style-ref">
+    		programming style <span>2</span>
+    	</a></li>
+    
+  
+
+
+    </ul>
     
 
-<div>
-  <p>Created this blog to help me remember things</p>
-</div>
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-tags"></i></li>
+      
+      
 
-<div class="posts">
-    <ul class="posts">  
-          
-        <li class="post-link">  
-            <span>12 Jun 2015</span> &raquo;  
-            <a class="index-post-title" href="/frontend/2015/06/12/react-twoway-binding">  
-                React Two-way Binding</a>  
-        </li>  
-          
-        <li class="post-link">  
-            <span>12 Jun 2015</span> &raquo;  
-            <a class="index-post-title" href="/frontend/2015/06/12/gulp-setup">  
-                Gulp Setup</a>  
-        </li>  
-          
-        <li class="post-link">  
-            <span>07 Jun 2015</span> &raquo;  
-            <a class="index-post-title" href="/programming%20style/2015/06/07/git-commit-style">  
-                Git commit style</a>  
-        </li>  
-          
-        <li class="post-link">  
-            <span>04 Jun 2015</span> &raquo;  
-            <a class="index-post-title" href="/web/2015/06/04/HTML5-Storage-Cache">  
-                HTML5 Storage & Cache</a>  
-        </li>  
-          
-        <li class="post-link">  
-            <span>03 Jun 2015</span> &raquo;  
-            <a class="index-post-title" href="/programming%20style/2015/06/03/JS-Best-Practices">  
-                Javascript Best Practices</a>  
-        </li>  
-          
-        <li class="post-link">  
-            <span>01 Jun 2015</span> &raquo;  
-            <a class="index-post-title" href="/web/2015/06/01/Javascript-theGoodParts">  
-                Javascript Good Parts</a>  
-        </li>  
-          
+
+  
+     
+    	<li><a href="/tags.html#git-ref">git <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#programming style-ref">programming style <span>2</span></a></li>
+    
+  
+
+
+
     </ul>
-</div>
-<div class="colophon">
-</div>
+  
+  <hr>  
+  <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/web/2015/06/04/HTML5-Storage-Cache" title="HTML5 Storage & Cache">&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next"><a href="/frontend/2015/06/12/gulp-setup" title="Gulp Setup">Next &rarr;</a></li>
+      
+      </ul>
+    </div>
+    <hr>
+    
 
-  </div>
-  <div class="colophon">
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    
+    var disqus_developer = 1;
+    var disqus_shortname = 'lefttreegithubio'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
   </div>
 </div>
 

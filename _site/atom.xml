@@ -4,13 +4,180 @@
  <title>LeftTree&#39;s Blog</title>
  <link href="http://lefttree.github.io/atom.xml" rel="self"/>
  <link href="http://lefttree.github.io"/>
- <updated>2015-06-05T14:45:31-07:00</updated>
+ <updated>2015-06-12T18:38:13-07:00</updated>
  <id>http://lefttree.github.io</id>
  <author>
    <name>Xiang Li</name>
    <email>bylixiang@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>React Two-way Binding</title>
+   <link href="http://lefttree.github.io/frontend/2015/06/12/react-twoway-binding"/>
+   <updated>2015-06-12T00:00:00-07:00</updated>
+   <id>http://lefttree.github.io/frontend/2015/06/12/react-twoway-binding</id>
+   <content type="html">&lt;h4&gt;input&lt;/h4&gt;
+
+&lt;p&gt;valueLink&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;var WithLink = React.createClass({
+  mixins: [React.addons.LinkedStateMixin],
+  getInitialState: function() {
+    return {message: &amp;#39;Hello!&amp;#39;};
+  },
+  render: function() {
+    return &amp;lt;input type=&amp;quot;text&amp;quot; valueLink={this.linkState(&amp;#39;message&amp;#39;)} /&amp;gt;;
+  }
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;need to include react-with-addons.js&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;without valueLink&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;var WithoutLink = React.createClass({
+  mixins: [React.addons.LinkedStateMixin],
+  getInitialState: function() {
+    return {message: &amp;#39;Hello!&amp;#39;};
+  },
+  render: function() {
+    var valueLink = this.linkState(&amp;#39;message&amp;#39;);
+    var handleChange = function(e) {
+      valueLink.requestChange(e.target.value);
+    };
+    return &amp;lt;input type=&amp;quot;text&amp;quot; value={valueLink.value} onChange={handleChange} /&amp;gt;;
+  }
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;select&lt;/h4&gt;
+
+&lt;p&gt;no valueLink, use value and onchange event&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;&amp;lt;select text=&amp;quot;Bandwidth&amp;quot; value={this.state.bw} changeE={this.bwChange}/&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Gulp Setup</title>
+   <link href="http://lefttree.github.io/frontend/2015/06/12/gulp-setup"/>
+   <updated>2015-06-12T00:00:00-07:00</updated>
+   <id>http://lefttree.github.io/frontend/2015/06/12/gulp-setup</id>
+   <content type="html">&lt;p&gt;&lt;code&gt;sudo npm install -g gulp&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;under the development dir
+&lt;code&gt;npm install --save-dev gulp&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;--save-dev&lt;/code&gt; tells npm to add this module into package.json&lt;/p&gt;
+
+&lt;p&gt;install plugins&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;npm install gulp-jshint gulp-sass gulp-concat gulp-uglify gulp-renam --save-dev&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;example gulpfile.js&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;//require gulp   
+var gulp = require(&amp;#39;gulp&amp;#39;);  
+
+//require plugins  
+var jshint = require(&amp;#39;gulp-jshint&amp;#39;);
+var sass = require(&amp;#39;gulp-sass&amp;#39;);
+var concat = require(&amp;#39;gulp-concat&amp;#39;);
+var uglify = require(&amp;#39;gulp-uglify&amp;#39;);
+var rename = require(&amp;#39;gulp-rename&amp;#39;);
+
+//lint task  
+gulp.task(&amp;#39;jshint&amp;#39;,function(){
+    gulp.src(&amp;#39;./js/*.js&amp;#39;)
+    .pipe(jshint())
+    .pipe(jshint.reporter(&amp;#39;default&amp;#39;));
+});
+
+//conpile sass  
+gulp.task(&amp;#39;sass&amp;#39;,function(){
+    gulp.src(&amp;#39;./scss/*.scss&amp;#39;)
+    .pipe(sass())
+    .pipe(gulp.dest(&amp;#39;./css&amp;#39;));
+});  
+
+//concat, minify   
+gulp.task(&amp;#39;scripts&amp;#39;,function(){
+    gulp.src(&amp;#39;./js/*/js&amp;#39;)
+    .pipe(concat(&amp;#39;all.js&amp;#39;))
+    .pipe(gulp.dest(&amp;#39;./dist&amp;#39;))
+    .pipe(rename(&amp;#39;all.min.js&amp;#39;))
+    .pipe(uglify())
+    .pipe(gulp.dest(&amp;#39;./dist&amp;#39;));
+});  
+
+//default   
+gulp.task(&amp;#39;default&amp;#39;,function(){
+    gulp.run(&amp;#39;lint&amp;#39;,&amp;#39;sass&amp;#39;,&amp;#39;scripts&amp;#39;);
+
+    gulp.watch(&amp;#39;./js/*.js&amp;#39;,function(){
+        gulp.run(&amp;#39;lint&amp;#39;,&amp;#39;scripts&amp;#39;);0
+    });
+
+    gulp.watch(&amp;#39;./scss/*.scss&amp;#39;,function(){
+        gulp.run(&amp;#39;sass&amp;#39;);
+    });
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Gulp&amp;#39;s syntax is just like node, and it use streamming&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Git commit style</title>
+   <link href="http://lefttree.github.io/programming%20style/2015/06/07/git-commit-style"/>
+   <updated>2015-06-07T00:00:00-07:00</updated>
+   <id>http://lefttree.github.io/programming%20style/2015/06/07/git-commit-style</id>
+   <content type="html">&lt;h2&gt;Structure&lt;/h2&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;type: subject
+
+body
+
+footer
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;type&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;feat&lt;/li&gt;
+&lt;li&gt;fix&lt;/li&gt;
+&lt;li&gt;docs&lt;/li&gt;
+&lt;li&gt;style&lt;/li&gt;
+&lt;li&gt;refactor&lt;/li&gt;
+&lt;li&gt;test&lt;/li&gt;
+&lt;li&gt;chore&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Example&lt;/h2&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;feat: Summarize changes in around 50 characters or less
+
+More detailed explanatory text, if necessary. Wrap it to about 72
+characters or so. In some contexts, the first line is treated as the
+subject of the commit and the rest of the text as the body. The
+blank line separating the summary from the body is critical (unless
+you omit the body entirely); various tools like `log`, `shortlog`
+and `rebase` can get confused if you run the two together.
+
+Explain the problem that this commit is solving. Focus on why you
+are making this change as opposed to how (the code explains that).
+Are there side effects or other unintuitive consequenses of this
+change? Here&amp;#39;s the place to explain them.
+
+Further paragraphs come after blank lines.
+
+ - Bullet points are okay, too
+
+ - Typically a hyphen or asterisk is used for the bullet, preceded
+   by a single space, with blank lines in between, but conventions
+   vary here
+
+If you use an issue tracker, put references to them at the bottom,
+like this:
+
+Resolves: #123
+See also: #456, #789
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+ </entry>
  
  <entry>
    <title>HTML5 Storage &amp; Cache</title>

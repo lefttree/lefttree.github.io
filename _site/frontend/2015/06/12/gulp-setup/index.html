@@ -4,7 +4,7 @@
   <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      <title>LeftTree - Lefttree</title>
+      <title>LeftTree - Gulp Setup</title>
       <meta name="viewport" content="width=device-width">
 
       <!-- bootstrap -->
@@ -155,67 +155,153 @@
     <img src="/assets/themes/xiang/images/sidebar-button.png">
   </div>
   <div id="post-info">
-    <!--<div id="cover-photo-container">-->
-      <!--<img id="cover-photo" src="/assets/themes/xiang/images/" style="width: 50%; align: middle">-->
-    <!--</div>-->
+    <div id="cover-photo-container">
+      <img id="cover-photo" src="/assets/themes/xiang/images/cover.jpg">
+    </div>
     <div id="info-container">
-      <h1 id="title">Lefttree</h1>
+      <h1 id="title">Gulp Setup</h1>
+      <span id="date">12 Jun 2015</span>
     </div>
   </div>
 
   <div class="post">
-    
+    <p><code>sudo npm install -g gulp</code></p>
 
-<div>
-  <p>Created this blog to help me remember things</p>
-</div>
+<p>under the development dir
+<code>npm install --save-dev gulp</code></p>
 
-<div class="posts">
-    <ul class="posts">  
-          
-        <li class="post-link">  
-            <span>12 Jun 2015</span> &raquo;  
-            <a class="index-post-title" href="/frontend/2015/06/12/react-twoway-binding">  
-                React Two-way Binding</a>  
-        </li>  
-          
-        <li class="post-link">  
-            <span>12 Jun 2015</span> &raquo;  
-            <a class="index-post-title" href="/frontend/2015/06/12/gulp-setup">  
-                Gulp Setup</a>  
-        </li>  
-          
-        <li class="post-link">  
-            <span>07 Jun 2015</span> &raquo;  
-            <a class="index-post-title" href="/programming%20style/2015/06/07/git-commit-style">  
-                Git commit style</a>  
-        </li>  
-          
-        <li class="post-link">  
-            <span>04 Jun 2015</span> &raquo;  
-            <a class="index-post-title" href="/web/2015/06/04/HTML5-Storage-Cache">  
-                HTML5 Storage & Cache</a>  
-        </li>  
-          
-        <li class="post-link">  
-            <span>03 Jun 2015</span> &raquo;  
-            <a class="index-post-title" href="/programming%20style/2015/06/03/JS-Best-Practices">  
-                Javascript Best Practices</a>  
-        </li>  
-          
-        <li class="post-link">  
-            <span>01 Jun 2015</span> &raquo;  
-            <a class="index-post-title" href="/web/2015/06/01/Javascript-theGoodParts">  
-                Javascript Good Parts</a>  
-        </li>  
-          
-    </ul>
-</div>
-<div class="colophon">
-</div>
+<p><code>--save-dev</code> tells npm to add this module into package.json</p>
+
+<p>install plugins</p>
+
+<p><code>npm install gulp-jshint gulp-sass gulp-concat gulp-uglify gulp-renam --save-dev</code></p>
+
+<p>example gulpfile.js</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">//require gulp   
+var gulp = require(&#39;gulp&#39;);  
+
+//require plugins  
+var jshint = require(&#39;gulp-jshint&#39;);
+var sass = require(&#39;gulp-sass&#39;);
+var concat = require(&#39;gulp-concat&#39;);
+var uglify = require(&#39;gulp-uglify&#39;);
+var rename = require(&#39;gulp-rename&#39;);
+
+//lint task  
+gulp.task(&#39;jshint&#39;,function(){
+    gulp.src(&#39;./js/*.js&#39;)
+    .pipe(jshint())
+    .pipe(jshint.reporter(&#39;default&#39;));
+});
+
+//conpile sass  
+gulp.task(&#39;sass&#39;,function(){
+    gulp.src(&#39;./scss/*.scss&#39;)
+    .pipe(sass())
+    .pipe(gulp.dest(&#39;./css&#39;));
+});  
+
+//concat, minify   
+gulp.task(&#39;scripts&#39;,function(){
+    gulp.src(&#39;./js/*/js&#39;)
+    .pipe(concat(&#39;all.js&#39;))
+    .pipe(gulp.dest(&#39;./dist&#39;))
+    .pipe(rename(&#39;all.min.js&#39;))
+    .pipe(uglify())
+    .pipe(gulp.dest(&#39;./dist&#39;));
+});  
+
+//default   
+gulp.task(&#39;default&#39;,function(){
+    gulp.run(&#39;lint&#39;,&#39;sass&#39;,&#39;scripts&#39;);
+
+    gulp.watch(&#39;./js/*.js&#39;,function(){
+        gulp.run(&#39;lint&#39;,&#39;scripts&#39;);0
+    });
+
+    gulp.watch(&#39;./scss/*.scss&#39;,function(){
+        gulp.run(&#39;sass&#39;);
+    });
+});
+</code></pre></div>
+<p>Gulp&#39;s syntax is just like node, and it use streamming</p>
 
   </div>
-  <div class="colophon">
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-folder-open"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/categories.html#frontend-ref">
+    		frontend <span>2</span>
+    	</a></li>
+    
+  
+
+
+    </ul>
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags.html#javascript-ref">javascript <span>4</span></a></li>
+     
+    	<li><a href="/tags.html#frontend-ref">frontend <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#node-ref">node <span>1</span></a></li>
+    
+  
+
+
+
+    </ul>
+  
+  <hr>  
+  <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/programming%20style/2015/06/07/git-commit-style" title="Git commit style">&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next"><a href="/frontend/2015/06/12/react-twoway-binding" title="React Two-way Binding">Next &rarr;</a></li>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    
+    var disqus_developer = 1;
+    var disqus_shortname = 'lefttreegithubio'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
   </div>
 </div>
 
