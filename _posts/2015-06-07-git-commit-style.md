@@ -18,14 +18,14 @@ footer
 
 type
 
-* feat
-* fix
-* docs
-* style
-* refactor
-* test
-* chore
-
+* feat(new feature)
+* fix(bug fix)
+* docs(changes to doc)
+* style(formatting, missing semi colons, etc; no code change)
+* refactor(refactoring production code)
+* test(adding missing tests, refactoring tests, no production code change)
+* chore(updating grunt tasks etc; no production code change)
+i
 ##Example
 
 ```
