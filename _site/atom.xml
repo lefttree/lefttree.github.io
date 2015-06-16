@@ -4,7 +4,7 @@
  <title>LeftTree&#39;s Blog</title>
  <link href="http://lefttree.github.io/atom.xml" rel="self"/>
  <link href="http://lefttree.github.io"/>
- <updated>2015-06-16T15:54:23-07:00</updated>
+ <updated>2015-06-16T15:57:41-07:00</updated>
  <id>http://lefttree.github.io</id>
  <author>
    <name>Xiang Li</name>
@@ -130,25 +130,29 @@ gulp.task(&amp;#39;default&amp;#39;,function(){
    <updated>2015-06-07T00:00:00-07:00</updated>
    <id>http://lefttree.github.io/programming%20style/2015/06/07/git-commit-style</id>
    <content type="html">&lt;h2&gt;Structure&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;type: subject
 
-body
+&lt;p&gt;i
+```
+type: subject&lt;/p&gt;
 
-footer
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;body&lt;/p&gt;
+
+&lt;p&gt;footer
+```&lt;/p&gt;
+
 &lt;p&gt;type&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;feat(new feature)&lt;/li&gt;
-&lt;li&gt;fix(bug fix)&lt;/li&gt;
-&lt;li&gt;docs(changes to doc)&lt;/li&gt;
-&lt;li&gt;style(formatting, missing semi colons, etc; no code change)&lt;/li&gt;
-&lt;li&gt;refactor(refactoring production code)&lt;/li&gt;
-&lt;li&gt;test(adding missing tests, refactoring tests, no production code change)&lt;/li&gt;
-&lt;li&gt;chore(updating grunt tasks etc; no production code change)
-i
-##Example&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;feat&lt;/strong&gt;(new feature)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;fix&lt;/strong&gt;(bug fix)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;docs&lt;/strong&gt;(changes to doc)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;style&lt;/strong&gt;(formatting, missing semi colons, etc; no code change)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;refactor&lt;/strong&gt;(refactoring production code)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;test&lt;/strong&gt;(adding missing tests, refactoring tests, no production code change)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;chore&lt;/strong&gt;(updating grunt tasks etc; no production code change)&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h2&gt;Example&lt;/h2&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;feat: Summarize changes in around 50 characters or less
 
 More detailed explanatory text, if necessary. Wrap it to about 72
