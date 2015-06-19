@@ -4,13 +4,211 @@
  <title>LeftTree&#39;s Blog</title>
  <link href="http://lefttree.github.io/atom.xml" rel="self"/>
  <link href="http://lefttree.github.io"/>
- <updated>2015-06-18T17:14:22-07:00</updated>
+ <updated>2015-06-18T17:18:41-07:00</updated>
  <id>http://lefttree.github.io</id>
  <author>
    <name>Xiang Li</name>
    <email>bylixiang@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Git Workflow</title>
+   <link href="http://lefttree.github.io/programming%20style/2015/06/18/git-workflow"/>
+   <updated>2015-06-18T00:00:00-07:00</updated>
+   <id>http://lefttree.github.io/programming%20style/2015/06/18/git-workflow</id>
+   <content type="html">&lt;h1&gt;Context&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;#current-work-flow&quot;&gt;Current Work Flow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#centralized-workflow&quot;&gt;Centralized Workflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#feature-branch-workflow&quot;&gt;Feature Branch Workflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#gitflow-workflow&quot;&gt;Gitflow Workflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#forking-workflow&quot;&gt;Forking Workflow&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1&gt;Current Work Flow&lt;/h1&gt;
+
+&lt;p&gt;Usually in my work, I use git commands like
+&lt;code&gt;add&lt;/code&gt;, &lt;code&gt;commit&lt;/code&gt;, &lt;code&gt;checkout --&lt;/code&gt;, &lt;code&gt;reset&lt;/code&gt;, &lt;code&gt;rebase&lt;/code&gt;, &lt;code&gt;pull&lt;/code&gt;/&lt;code&gt;push&lt;/code&gt;,
+......&lt;/p&gt;
+
+&lt;p&gt;Work routine is 
+    * pull from remote origin
+    * create new branch, develop new stuff
+    * push branch to remote origin 
+    * code review, and merge branch to master branch on origin&lt;/p&gt;
+
+&lt;p&gt;Local
+    * create new branch
+    * develop weird things lol
+    * test, stash, commit
+    * rebase, combine commits into one
+    * merge to master&lt;/p&gt;
+
+&lt;h1&gt;Content&lt;/h1&gt;
+
+&lt;p&gt;Thanks to &lt;a href=&quot;https://github.com/lefttree/my-git/blob/master/git-workflow-tutorial.md&quot;&gt;xirong&amp;#39;s post&lt;/a&gt;, learnt some standard git workflows.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;This won&amp;#39;t state all the steps here, I wrote this post  for remembering these stuff, so I assume the reader already know git. 
+If you need to learn the details, please go to the original post&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2&gt;Centralized Workflow&lt;/h2&gt;
+
+&lt;h4&gt;Init&lt;/h4&gt;
+
+&lt;p&gt;&lt;code&gt;git init --bare /path/to/repo.git&lt;/code&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;--bare 
+repo.git&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4&gt;Local&lt;/h4&gt;
+
+&lt;p&gt;&lt;code&gt;git pull --rebase origin master&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Fix conflicts&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;git add &amp;lt;some-file&amp;gt; 
+git rebase --continue
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;If encountered problem&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;git rebase --abort&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;after all done&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;git push origin master&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2&gt;Feature Branch Workflow&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Pull request&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Once someone completes a feature, they don’t immediately merge it into master. Instead, they push the feature branch to the central server and file a pull request asking to merge their additions into master. This gives other developers an opportunity to review the changes before they become a part of the main codebase.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Code review&lt;/strong&gt; is a major benefit of pull requests, but they’re actually designed to be a generic way to talk about code. You can think of pull requests as a discussion dedicated to a particular branch.&lt;/p&gt;
+
+&lt;h4&gt;Example&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;Start a new branch&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;git checkout -b&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Push to central repo&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;git push -u origin marys-feature&lt;/code&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;-u adds it as a remote tracking branch, you can just do &lt;code&gt;git push&lt;/code&gt; later&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Pull request&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Send a pull request in Git GUI&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Comment, Change&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;all on the new branch&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;publish&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;git checkout master
+git pull
+git pull origin feature-branch
+git push
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Gitflow Workflow&lt;/h2&gt;
+
+&lt;h4&gt;Historical Branches&lt;/h4&gt;
+
+&lt;p&gt;Instead of a single master branch, this workflow uses two branches to record the history of the project. The master branch stores the official release history, and the develop branch serves as an integration branch for features. It&amp;#39;s also convenient to &lt;strong&gt;tag&lt;/strong&gt; all commits in the master branch with a version number.&lt;/p&gt;
+
+&lt;h4&gt;Feature Branches&lt;/h4&gt;
+
+&lt;p&gt;feature branches use &lt;em&gt;develop&lt;/em&gt; as their parent branch. When a feature is complete, it gets merged back into develop. &lt;strong&gt;Features should never interact directly with master.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4&gt;Release Branches&lt;/h4&gt;
+
+&lt;p&gt;Once develop has acquired enough features for a release (or a predetermined release date is approaching), you fork a release branch off of &lt;code&gt;develop&lt;/code&gt;. Creating this branch starts the next release cycle, so no new features can be added after this point—only bug fixes, documentation generation, and other release-oriented tasks should go in this branch.&lt;/p&gt;
+
+&lt;p&gt;Once it&amp;#39;s ready to ship, the release gets &lt;code&gt;merged into master&lt;/code&gt; and &lt;code&gt;tagged with a version number&lt;/code&gt;. In addition, it should be &lt;code&gt;merged back into develop&lt;/code&gt;, which may have progressed since the release was initiated.&lt;/p&gt;
+
+&lt;h4&gt;Hotfix Branch&lt;/h4&gt;
+
+&lt;p&gt;bug fix, branch off &lt;code&gt;master&lt;/code&gt;, merged back to &lt;code&gt;master&lt;/code&gt; and &lt;code&gt;develop&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4&gt;Example&lt;/h4&gt;
+
+&lt;p&gt;&lt;code&gt;git checkout -b new-feature develop&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;after done&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;git pull origin develop
+git checkout develop
+git merge some-feature
+git push
+git branch -d some-feature
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;prepare release&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;git checkout -b release-0.1 develop&lt;/code&gt;
+This branch is a place to clean up the release, test everything, update the documentation, and do any other kind of preparation for the upcoming release.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;after release is ready&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;git checkout master
+git merge release-0.1
+git push
+git checkout develop
+git merge release-0.1
+git push
+git branch -d release-0.1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;whenever you merge something into master, should tag it
+&lt;code&gt;git tag -a 0.1 -m &amp;quot;Initial public release&amp;quot; master
+git push --tags&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Bug fix&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;git checkout -b issue-#001 master
+# Fix the bug
+git checkout master
+git merge issue-#001
+git push
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Forking Workflow&lt;/h2&gt;
+
+&lt;p&gt;The main advantage of the Forking Workflow is that contributions can be integrated without the need for everybody to push to a single central repository.&lt;/p&gt;
+
+&lt;p&gt;When they&amp;#39;re ready to publish a local commit, they push the commit to their own public repository—not the official one. Then, they file a pull request with the main repository, which lets the project maintainer know that an update is ready to be integrated. The pull request also serves as a convenient discussion thread if there are issues with the contributed code.&lt;/p&gt;
+
+&lt;h4&gt;Example&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;Fork, clone to local&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;git clone https://user@bitbucket.org/user/repo.git&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Whereas the other workflows in this tutorial use a single origin remote that points to the central repository, the Forking Workflow requires two remotes—one for the official repository, and one for the developer’s personal server-side repository.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;git remote add upstream https://bitbucket.org/maintainer/repo
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Work on personal features, push to personal remote&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Pull Request&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Maintainer integrates their features&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Inspect the code directly in the pull request&lt;/li&gt;
+&lt;li&gt;Pull the code into their local repository and manually merge it&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;git fetch https://bitbucket.org/user/repo feature-branch
+# Inspect the changes
+git checkout master
+git merge FETCH_HEAD
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Maintainer push to public origin&lt;/strong&gt;&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>React Two-way Binding</title>
