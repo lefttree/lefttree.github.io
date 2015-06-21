@@ -172,43 +172,50 @@
   </div>
 
   <div class="post">
-    <h4>input</h4>
+    <h4 id="input">input</h4>
 
 <p>valueLink</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">var WithLink = React.createClass({
+
+<p><code>
+var WithLink = React.createClass({
   mixins: [React.addons.LinkedStateMixin],
   getInitialState: function() {
-    return {message: &#39;Hello!&#39;};
+    return {message: 'Hello!'};
   },
   render: function() {
-    return &lt;input type=&quot;text&quot; valueLink={this.linkState(&#39;message&#39;)} /&gt;;
+    return &lt;input type="text" valueLink={this.linkState('message')} /&gt;;
   }
 });
-</code></pre></div>
-<blockquote>
-<p>need to include react-with-addons.js</p>
-</blockquote>
+</code>
+&gt; need to include react-with-addons.js</p>
 
 <p>without valueLink</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">var WithoutLink = React.createClass({
+
+<p><code>
+var WithoutLink = React.createClass({
   mixins: [React.addons.LinkedStateMixin],
   getInitialState: function() {
-    return {message: &#39;Hello!&#39;};
+    return {message: 'Hello!'};
   },
   render: function() {
-    var valueLink = this.linkState(&#39;message&#39;);
+    var valueLink = this.linkState('message');
     var handleChange = function(e) {
       valueLink.requestChange(e.target.value);
     };
-    return &lt;input type=&quot;text&quot; value={valueLink.value} onChange={handleChange} /&gt;;
+    return &lt;input type="text" value={valueLink.value} onChange={handleChange} /&gt;;
   }
 });
-</code></pre></div>
-<h4>select</h4>
+</code></p>
+
+<h4 id="select">select</h4>
 
 <p>no valueLink, use value and onchange event</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">&lt;select text=&quot;Bandwidth&quot; value={this.state.bw} changeE={this.bwChange}/&gt;
-</code></pre></div>
+
+<p><code>
+&lt;select text="Bandwidth" value={this.state.bw} changeE={this.bwChange}/&gt;
+</code></p>
+
+
   </div>
   
     <ul class="tag_box inline">

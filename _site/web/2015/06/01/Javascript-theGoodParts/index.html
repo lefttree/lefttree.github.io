@@ -172,113 +172,128 @@
   </div>
 
   <div class="post">
-    <h2>Part 1 Good Parts</h2>
-
+    <h2 id="part-1-good-parts">Part 1 Good Parts</h2>
 <p>Javascript is getting more and more popular now</p>
 
 <blockquote>
-<p>Good Parts:
-  - function
-  - loose typing
-  - dynamic objects
-  - object literal notation
+  <p>Good Parts:
+	- function
+	- loose typing
+	- dynamic objects
+	- object literal notation
 Bad Parts:
-  - Global variables(<strong>They are evil!</strong>)</p>
+	- Global variables(<strong>They are evil!</strong>)</p>
 </blockquote>
 
-<h2>Part 2 Grammar</h2>
+<h2 id="part-2-grammar">Part 2 Grammar</h2>
+<p>###Comment</p>
 
-<h3>Comment</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">- //  (recommended)
+<pre><code>- //  (recommended)
 - /* */  (Not safe because it can occur in regex)
-</code></pre></div>
-<h3>Number</h3>
+</code></pre>
+
+<h3 id="number">Number</h3>
 
 <p>JS only has a single number type. Internally, it is a 64-bit floating point. So 1 and 1.0 are the same value.
 isNaN() function to detect NaN.</p>
 
-<h3>Strings</h3>
+<h3 id="strings">Strings</h3>
 
 <p>All characters are 16 bits wide. Immutable.</p>
 
-<h2>Part 3 Objects</h2>
-
-<h3>JS types</h3>
+<h2 id="part-3-objects">Part 3 Objects</h2>
+<p>###JS types</p>
 
 <p>Immutable
-    - Number
-    - String
-    - boolean
+	- Number
+	- String
+	- boolean
 null
 undefined</p>
 
 <p>objects
-    - property, can be any string, including <strong>empty string</strong>
-    - value, can be any JS value except <strong>undefined</strong></p>
+	- property, can be any string, including <strong>empty string</strong>
+	- value, can be any JS value except <strong>undefined</strong></p>
 
-<h3>Retrieval</h3>
+<h3 id="retrieval">Retrieval</h3>
 
 <p>retrieve a nonexistent member</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">flight</span><span class="p">.</span><span class="nx">status</span> <span class="c1">// undefined</span>
-</code></pre></div>
-<p>The || operator can be used to fill in default values:</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">middle</span> <span class="o">=</span> <span class="nx">stooge</span><span class="p">[</span><span class="s2">&quot;middle-name&quot;</span><span class="p">]</span> <span class="o">||</span> <span class="s2">&quot;(none)&quot;</span><span class="p">;</span>
-</code></pre></div>
+
+<p><code>javascript
+flight.status // undefined
+</code></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>The</td>
+      <td> </td>
+      <td>operator can be used to fill in default values:</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code>javascript
+var middle = stooge["middle-name"] || "(none)";
+</code></p>
+
 <p>Attempting to retrieve valus from <strong>undefined</strong> will throw a <strong>TypeError</strong> exception. Can be guarded against with &amp;&amp; operator:</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">flight</span><span class="p">.</span><span class="nx">equipment</span> <span class="o">&amp;&amp;</span> <span class="nx">flight</span><span class="p">.</span><span class="nx">equipment</span><span class="p">.</span><span class="nx">model</span>
-</code></pre></div>
-<h3>Reference</h3>
 
+<p><code>javascript
+flight.equipment &amp;&amp; flight.equipment.model
+</code></p>
+
+<h3 id="reference">Reference</h3>
 <p>Objects are passed around by reference. They are <strong>never copied</strong>.</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">    <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">another_x</span><span class="p">;</span>
-    <span class="nx">x</span><span class="p">.</span><span class="nx">nickname</span> <span class="o">=</span> <span class="s2">&quot;nick&quot;</span><span class="p">;</span>
-    <span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">another_x</span><span class="p">.</span><span class="nx">nickname</span><span class="p">;</span>
-    <span class="c1">// name is &quot;nick&quot; because x and another_x are references to the same obj</span>
-</code></pre></div>
-<p>Initialization</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">    <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">{},</span> <span class="nx">b</span> <span class="o">=</span> <span class="p">{},</span> <span class="nx">c</span> <span class="o">=</span> <span class="p">{};</span> <span class="c1">//a, b and c are differenct obj</span>
-    <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">c</span> <span class="o">=</span> <span class="p">{};</span> <span class="c1">//a, b and c refer to the same empty obj</span>
-</code></pre></div>
-<h3>Prototype</h3>
 
+<p><code>javascript
+    var x = another_x;
+    x.nickname = "nick";
+    var name = another_x.nickname;
+    // name is "nick" because x and another_x are references to the same obj
+</code><br />
+Initialization</p>
+
+<p><code>javascript
+    var a = {}, b = {}, c = {}; //a, b and c are differenct obj
+	var a = b = c = {}; //a, b and c refer to the same empty obj
+</code></p>
+
+<h3 id="prototype">Prototype</h3>
 <p>The prototype link is used only in retrieval, has no effect on updating.
 When retrieve a property, it would search the prototype link.</p>
 
-<h3>Reflection</h3>
-
-<p>typeof </p>
-
-<blockquote>
-<p><strong>Note:</strong>
-any property on the protorype chain can produce a value</p>
-</blockquote>
+<h3 id="reflection">Reflection</h3>
+<p>typeof 
+&gt; <strong>Note:</strong>
+&gt; any property on the protorype chain can produce a value</p>
 
 <p>hasOwnProperty
-    - it does not look at the prototype chain</p>
+	- it does not look at the prototype chain</p>
 
-<h3>Enumeration</h3>
+<h3 id="enumeration">Enumeration</h3>
+<p>the <strong>for in</strong> statement can loop over all the property names in an obj. It will include all properties – including functions and prototypes properties. So it is necessary to <strong>filter</strong> out the values.
+	- hasOwnProperty
+	- typeof </p>
 
-<p>the <strong>for in</strong> statement can loop over all the property names in an obj. It will include all properties -- including functions and prototypes properties. So it is necessary to <strong>filter</strong> out the values.
-    - hasOwnProperty
-    - typeof </p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript">    <span class="kd">var</span> <span class="nx">name</span><span class="p">;</span>
-    <span class="k">for</span><span class="p">(</span><span class="nx">name</span> <span class="k">in</span> <span class="nx">another_stooge</span><span class="p">){</span>
-        <span class="k">if</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="nx">another_stooge</span><span class="p">[</span><span class="nx">name</span><span class="p">])</span> <span class="o">!==</span> <span class="s1">&#39;function&#39;</span><span class="p">){</span>
-            <span class="nb">document</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">&#39;: &#39;</span> <span class="o">+</span> <span class="nx">another_stooge</span><span class="p">[</span><span class="nx">name</span><span class="p">]);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-</code></pre></div>
+<p><code>javascript
+	var name;
+	for(name in another_stooge){
+		if(typeof(another_stooge[name]) !== 'function'){
+			document.writeln(name + ': ' + another_stooge[name]);
+		}
+	}
+</code></p>
+
 <blockquote>
-<p><strong>Note:</strong>
+  <p><strong>Note:</strong>
 There is no guarantee on the order of properties.</p>
 </blockquote>
 
-<h3>Delete</h3>
-
+<h3 id="delete">Delete</h3>
 <p>It will remove a property from the object <strong>if it has one</strong>. It will <strong>not</strong> touch any  of the objects in the prototype linkage.</p>
 
-<h3>Global Abatement</h3>
-
+<h3 id="global-abatement">Global Abatement</h3>
 <p>Avoid global variable. Skip this part, use module pattern.</p>
 
   </div>

@@ -172,14 +172,14 @@
   </div>
 
   <div class="post">
-    <h3>Easy, Short &amp; Readable Names</h3>
+    <h3 id="easy-short--readable-names">Easy, Short &amp; Readable Names</h3>
 
-<h4>Variables Name</h4>
+<h4 id="variables-name">Variables Name</h4>
 
 <p><strong>Hungarian notation</strong> is a good variable name scheme to adopt.</p>
 
 <blockquote>
-<p>typeName</p>
+  <p>typeName</p>
 </blockquote>
 
 <p>Examples:
@@ -187,29 +187,29 @@
 - chInitial : char
 - cApples : count of items</p>
 
-<h4>Function Name</h4>
-
+<h4 id="function-name">Function Name</h4>
 <p>Function name should start with a lowercase verb following </p>
 
 <blockquote>
-<p>verbSomething</p>
+  <p>verbSomething</p>
 </blockquote>
 
 <p>Examples:
 - isOldEnough()
 - getResult()</p>
 
-<h4>Class Name</h4>
-
+<h4 id="class-name">Class Name</h4>
 <p>the first char should be capital
 Examples:
 - Apple()
 - Node()</p>
 
-<h3>Avoid Global</h3>
+<h3 id="avoid-global">Avoid Global</h3>
 
-<h4>revealing module pattern</h4>
-<div class="highlight"><pre><code class="language-text" data-lang="text">myNameSpace = function(){
+<h4 id="revealing-module-pattern">revealing module pattern</h4>
+
+<p><code>
+myNameSpace = function(){
     var current = null;
     function init(){};
     function change(){};
@@ -219,48 +219,60 @@ Examples:
         change: change
     }
 }();
-</code></pre></div>
-<p>If you don&#39;t need any of your vars or functions to be avaiable to the outside, simply wrap the whole construct in another set of parentheses to execute it without assigning any name.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">(function(){
+</code></p>
+
+<p>If you don’t need any of your vars or functions to be avaiable to the outside, simply wrap the whole construct in another set of parentheses to execute it without assigning any name.</p>
+
+<p><code>
+(function(){
     var current = null;
     function init(){}
 })();
-</code></pre></div>
-<h3>Use strict</h3>
+</code></p>
+
+<h3 id="use-strict">Use strict</h3>
 
 <p>Check code quality with JSLint</p>
 
-<h3>Comment</h3>
+<h3 id="comment">Comment</h3>
 
 <p><strong>Comment as much as needed but no more</strong></p>
 
 <p>Use /* */</p>
 
-<h3>Avoid mixing with css</h3>
+<h3 id="avoid-mixing-with-css">Avoid mixing with css</h3>
 
-<h3>Use Shortcut Notation</h3>
+<h3 id="use-shortcut-notation">Use Shortcut Notation</h3>
 
 <p>Examples:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">var direction = ( x &gt; 100 ) ? 1 : -1
-</code></pre></div><div class="highlight"><pre><code class="language-text" data-lang="text">var x = v || 10;
-</code></pre></div>
+
+<p><code>
+var direction = ( x &gt; 100 ) ? 1 : -1
+</code></p>
+
+<p><code>
+var x = v || 10;
+</code></p>
+
 <blockquote>
-<p>this would automatically give x a value of 10 if v is not defined</p>
+  <p>this would automatically give x a value of 10 if v is not defined</p>
 </blockquote>
 
-<h3>Modularize - One Function per Task</h3>
+<h3 id="modularize---one-function-per-task">Modularize - One Function per Task</h3>
 
-<h3>Configuration and Translation</h3>
+<h3 id="configuration-and-translation">Configuration and Translation</h3>
 
 <p>One of the most successful tips to keep your code maintainable and clean is to create a configuration object that contains all the things that are likely to change over time.</p>
 
 <p>These include <em>any text used in elements you create</em>, <em>CSS class</em>, <em>ID names</em> and <em>general parameters of the interface you build</em>.</p>
 
 <p>Examples: easy youtube player project config object</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">/*
+
+<p><code>
+/*
   This is the configuration of the player.meng Most likely you will
   never have to change anything here, but it is good to be able 
-  to, isn&#39;t it? 
+  to, isn't it? 
 */
 config = {
   CSS:{
@@ -271,18 +283,18 @@ config = {
       change the name here!
     */
     IDs:{
-      container:&#39;eytp-maincontainer&#39;,
-      canvas:&#39;eytp-playercanvas&#39;,
-      player:&#39;eytp-player&#39;,
-      controls:&#39;eytp-controls&#39;,
-      volumeField:&#39;eytp-volume&#39;,
-      volumeBar:&#39;eytp-volumebar&#39;,
-      playerForm:&#39;eytp-playerform&#39;,
-      urlField:&#39;eytp-url&#39;,
-      sizeControl:&#39;eytp-sizecontrol&#39;,
-      searchField:&#39;eytp-searchfield&#39;,
-      searchForm:&#39;eytp-search&#39;,
-      searchOutput:&#39;eytp-searchoutput&#39;
+      container:'eytp-maincontainer',
+      canvas:'eytp-playercanvas',
+      player:'eytp-player',
+      controls:'eytp-controls',
+      volumeField:'eytp-volume',
+      volumeBar:'eytp-volumebar',
+      playerForm:'eytp-playerform',
+      urlField:'eytp-url',
+      sizeControl:'eytp-sizecontrol',
+      searchField:'eytp-searchfield',
+      searchForm:'eytp-search',
+      searchOutput:'eytp-searchoutput'
     },
     /*
       These are the names of the CSS classes, the player adds
@@ -290,8 +302,8 @@ config = {
       situations.
     */
     classes:{
-      maxvolume:&#39;maxed&#39;,
-      disabled:&#39;disabled&#39;
+      maxvolume:'maxed',
+      disabled:'disabled'
     }
   },
   /* 
@@ -303,26 +315,26 @@ config = {
       The YouTube API base URL. This changed during development of this,
       so I thought it useful to make it a parameter.
     */
-    youtubeAPI:&#39;http://gdata.youtube.com/apiplayer/cl.swf&#39;,
+    youtubeAPI:'http://gdata.youtube.com/apiplayer/cl.swf',
     /* 
       The YouTube Developer key,
       please replace this with your own when you host the player!!!!!
     */
-    devkey:&#39;AI39si7d...Y9fu_cQ&#39;,
+    devkey:'AI39si7d...Y9fu_cQ',
     /*
       The volume increase/decrease in percent and the volume message 
       shown in a hidden form field (for screen readers). The $x in the 
       message will be replaced with the real value.
     */
     volumeChange:10,
-    volumeMessage:&#39;volume $x percent&#39;,
+    volumeMessage:'volume $x percent',
     /*
       Amount of search results and the error message should there 
       be no results.
     */
     searchResults:6,
-    loadingMessage:&#39;Searching, please wait&#39;,
-    noVideosFoundMessage:&#39;No videos found : (&#39;,
+    loadingMessage:'Searching, please wait',
+    noVideosFoundMessage:'No videos found : (',
     /*
       Amount of seconds to repeat when the user hits the rewind 
       button.
@@ -335,71 +347,80 @@ config = {
     movieHeight:300
   }  
 }
-</code></pre></div>
-<h3>Avoid Heavy Nesting</h3>
+</code></p>
+
+<h3 id="avoid-heavy-nesting">Avoid Heavy Nesting</h3>
 
 <p>Use functions to avoid it</p>
 
-<h3>Optimize Loops</h3>
+<h3 id="optimize-loops">Optimize Loops</h3>
 
-<h4>For loop read length everytime</h4>
-<div class="highlight"><pre><code class="language-text" data-lang="text">var names = [&#39;George&#39;,&#39;Ringo&#39;,&#39;Paul&#39;,&#39;John&#39;];
+<h4 id="for-loop-read-length-everytime">For loop read length everytime</h4>
+
+<p><code>
+var names = ['George','Ringo','Paul','John'];
 for(var i=0;i &lt; names.length;i++){
   doSomeThingWith(names[i]);
 }
-</code></pre></div>
+</code></p>
+
 <p>To Fix</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">var names = [&#39;George&#39;,&#39;Ringo&#39;,&#39;Paul&#39;,&#39;John&#39;];
+
+<p><code>
+var names = ['George','Ringo','Paul','John'];
 for(var i=0,j=names.length;i &lt; j;i++){
   doSomeThingWith(names[i]);
 }
-</code></pre></div>
-<h4>Keep computation-heavy code outside</h4>
+</code></p>
 
+<h4 id="keep-computation-heavy-code-outside">Keep computation-heavy code outside</h4>
 <ul>
-<li>regular expression</li>
-<li>DOM manipulation</li>
+  <li>regular expression</li>
+  <li>DOM manipulation</li>
 </ul>
 
-<h3>Keep DOM Access to a minimum</h3>
+<h3 id="keep-dom-access-to-a-minimum">Keep DOM Access to a minimum</h3>
 
-<h3>Do not Trust Any Data</h3>
+<h3 id="do-not-trust-any-data">Do not Trust Any Data</h3>
 
 <ol>
-<li>It is very important to tes the type of parameters send to your functions(using the <code>typeof</code> keyword)</li>
+  <li>It is very important to tes the type of parameters send to your functions(using the <code>typeof</code> keyword)</li>
 </ol>
-<div class="highlight"><pre><code class="language-text" data-lang="text">function buildMemberList(members){
-  if(typeof members === &#39;object&#39; &amp;&amp; 
-     typeof members.slice === &#39;function&#39;){
+
+<p><code>
+function buildMemberList(members){
+  if(typeof members === 'object' &amp;&amp; 
+     typeof members.slice === 'function'){
     var all = members.length;
-    var ul = document.createElement(&#39;ul&#39;);
+    var ul = document.createElement('ul');
     for(var i=0;i &lt; all;i++){
-      var li = document.createElement(&#39;li&#39;);
+      var li = document.createElement('li');
       li.appendChild(document.createTextNode(members[i].name));
       ul.appendChild(li);
     }
     return ul;
   }
 }
-</code></pre></div>
+</code></p>
+
 <ol>
-<li>Compare and check info read from the DOM</li>
+  <li>Compare and check info read from the DOM</li>
 </ol>
 
-<h3>Do not create too much with Javascript</h3>
+<h3 id="do-not-create-too-much-with-javascript">Do not create too much with Javascript</h3>
 
 <p>Using an HTML template and load it via AJAX</p>
 
-<h3>Do not Use New Object</h3>
+<h3 id="do-not-use-new-object">Do not Use New Object</h3>
 
 <ul>
-<li>Use {} instead of new Object()</li>
-<li>Use &quot;&quot; instead of new String()</li>
-<li>Use 0 instead of new Number()</li>
-<li>Use false instead of new Boolean()</li>
-<li>Use [] instead of new Array()</li>
-<li>Use /()/ instead of new RegExp()</li>
-<li>Use function (){} instead of new function()</li>
+  <li>Use {} instead of new Object()</li>
+  <li>Use “” instead of new String()</li>
+  <li>Use 0 instead of new Number()</li>
+  <li>Use false instead of new Boolean()</li>
+  <li>Use [] instead of new Array()</li>
+  <li>Use /()/ instead of new RegExp()</li>
+  <li>Use function (){} instead of new function()</li>
 </ul>
 
   </div>

@@ -172,10 +172,10 @@
   </div>
 
   <div class="post">
-    <p><code>sudo npm install -g gulp</code></p>
+    <p><code>sudo npm install -g gulp   </code></p>
 
 <p>under the development dir
-<code>npm install --save-dev gulp</code></p>
+<code>npm install --save-dev gulp   </code></p>
 
 <p><code>--save-dev</code> tells npm to add this module into package.json</p>
 
@@ -184,54 +184,56 @@
 <p><code>npm install gulp-jshint gulp-sass gulp-concat gulp-uglify gulp-renam --save-dev</code></p>
 
 <p>example gulpfile.js</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">//require gulp   
-var gulp = require(&#39;gulp&#39;);  
 
-//require plugins  
-var jshint = require(&#39;gulp-jshint&#39;);
-var sass = require(&#39;gulp-sass&#39;);
-var concat = require(&#39;gulp-concat&#39;);
-var uglify = require(&#39;gulp-uglify&#39;);
-var rename = require(&#39;gulp-rename&#39;);
+<p>```
+//require gulp <br />
+var gulp = require(‘gulp’);  </p>
 
-//lint task  
-gulp.task(&#39;jshint&#39;,function(){
-    gulp.src(&#39;./js/*.js&#39;)
+<p>//require plugins<br />
+var jshint = require(‘gulp-jshint’);
+var sass = require(‘gulp-sass’);
+var concat = require(‘gulp-concat’);
+var uglify = require(‘gulp-uglify’);
+var rename = require(‘gulp-rename’);</p>
+
+<p>//lint task<br />
+gulp.task(‘jshint’,function(){
+    gulp.src(‘./js/*.js’)
     .pipe(jshint())
-    .pipe(jshint.reporter(&#39;default&#39;));
-});
+    .pipe(jshint.reporter(‘default’));
+});</p>
 
-//conpile sass  
-gulp.task(&#39;sass&#39;,function(){
-    gulp.src(&#39;./scss/*.scss&#39;)
+<p>//conpile sass<br />
+gulp.task(‘sass’,function(){
+    gulp.src(‘./scss/*.scss’)
     .pipe(sass())
-    .pipe(gulp.dest(&#39;./css&#39;));
-});  
+    .pipe(gulp.dest(‘./css’));
+});  </p>
 
-//concat, minify   
-gulp.task(&#39;scripts&#39;,function(){
-    gulp.src(&#39;./js/*/js&#39;)
-    .pipe(concat(&#39;all.js&#39;))
-    .pipe(gulp.dest(&#39;./dist&#39;))
-    .pipe(rename(&#39;all.min.js&#39;))
+<p>//concat, minify <br />
+gulp.task(‘scripts’,function(){
+    gulp.src(‘./js/*/js’)
+    .pipe(concat(‘all.js’))
+    .pipe(gulp.dest(‘./dist’))
+    .pipe(rename(‘all.min.js’))
     .pipe(uglify())
-    .pipe(gulp.dest(&#39;./dist&#39;));
-});  
+    .pipe(gulp.dest(‘./dist’));
+});  </p>
 
-//default   
-gulp.task(&#39;default&#39;,function(){
-    gulp.run(&#39;lint&#39;,&#39;sass&#39;,&#39;scripts&#39;);
+<p>//default <br />
+gulp.task(‘default’,function(){
+    gulp.run(‘lint’,’sass’,’scripts’);</p>
 
-    gulp.watch(&#39;./js/*.js&#39;,function(){
-        gulp.run(&#39;lint&#39;,&#39;scripts&#39;);0
-    });
-
-    gulp.watch(&#39;./scss/*.scss&#39;,function(){
-        gulp.run(&#39;sass&#39;);
-    });
+<pre><code>gulp.watch('./js/*.js',function(){
+    gulp.run('lint','scripts');0
 });
-</code></pre></div>
-<p>Gulp&#39;s syntax is just like node, and it use streamming</p>
+   
+gulp.watch('./scss/*.scss',function(){
+    gulp.run('sass');
+}); }); ```
+</code></pre>
+
+<p>Gulp’s syntax is just like node, and it use streamming</p>
 
   </div>
   
