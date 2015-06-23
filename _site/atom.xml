@@ -4,7 +4,7 @@
  <title>LeftTree&#39;s Blog</title>
  <link href="http://lefttree.github.io/atom.xml" rel="self"/>
  <link href="http://lefttree.github.io"/>
- <updated>2015-06-23T15:06:35-07:00</updated>
+ <updated>2015-06-23T15:29:55-07:00</updated>
  <id>http://lefttree.github.io</id>
  <author>
    <name>Xiang Li</name>
@@ -33,18 +33,24 @@
 &lt;code&gt;add&lt;/code&gt;, &lt;code&gt;commit&lt;/code&gt;, &lt;code&gt;checkout --&lt;/code&gt;, &lt;code&gt;reset&lt;/code&gt;, &lt;code&gt;rebase&lt;/code&gt;, &lt;code&gt;pull&lt;/code&gt;/&lt;code&gt;push&lt;/code&gt;,
 ......&lt;/p&gt;
 
-&lt;p&gt;Work routine is 
-    * pull from remote origin
-    * create new branch, develop new stuff
-    * push branch to remote origin 
-    * code review, and merge branch to master branch on origin&lt;/p&gt;
+&lt;p&gt;Work routine is &lt;/p&gt;
 
-&lt;p&gt;Local
-    * create new branch
-    * develop weird things lol
-    * test, stash, commit
-    * rebase, combine commits into one
-    * merge to master&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;pull from remote origin&lt;/li&gt;
+&lt;li&gt;create new branch, develop new stuff&lt;/li&gt;
+&lt;li&gt;push branch to remote origin &lt;/li&gt;
+&lt;li&gt;code review, and merge branch to master branch on origin&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Local&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;create new branch&lt;/li&gt;
+&lt;li&gt;develop weird things lol&lt;/li&gt;
+&lt;li&gt;test, stash, commit&lt;/li&gt;
+&lt;li&gt;rebase, combine commits into one&lt;/li&gt;
+&lt;li&gt;merge to master&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h1 id=&quot;content&quot;&gt;Content&lt;/h1&gt;
 

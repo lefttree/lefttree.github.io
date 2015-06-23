@@ -21,17 +21,19 @@ Usually in my work, I use git commands like
 ......
 
 Work routine is 
-    * pull from remote origin
-    * create new branch, develop new stuff
-    * push branch to remote origin 
-    * code review, and merge branch to master branch on origin
+  
+- pull from remote origin
+- create new branch, develop new stuff
+- push branch to remote origin 
+- code review, and merge branch to master branch on origin
 
 Local
-    * create new branch
-    * develop weird things lol
-    * test, stash, commit
-    * rebase, combine commits into one
-    * merge to master
+
+- create new branch
+- develop weird things lol
+- test, stash, commit
+- rebase, combine commits into one
+- merge to master
 
 # Content
 
