@@ -38,7 +38,7 @@ Examples:
 
 #### revealing module pattern
 
-```
+```javascript
 myNameSpace = function(){
     var current = null;
     function init(){};
@@ -53,7 +53,7 @@ myNameSpace = function(){
 
 If you don't need any of your vars or functions to be avaiable to the outside, simply wrap the whole construct in another set of parentheses to execute it without assigning any name.
 
-```
+```javascript
 (function(){
     var current = null;
     function init(){}
@@ -76,11 +76,11 @@ Use /\* \*/
 
 Examples:
 
-```
+```javascript
 var direction = ( x > 100 ) ? 1 : -1
 ```
 
-```
+```javascript
 var x = v || 10;
 ```
 
@@ -96,7 +96,7 @@ These include *any text used in elements you create*, *CSS class*, *ID names* an
 
 Examples: easy youtube player project config object
 
-```
+```javascript
 /*
   This is the configuration of the player.meng Most likely you will
   never have to change anything here, but it is good to be able 
@@ -185,7 +185,7 @@ Use functions to avoid it
 
 #### For loop read length everytime
 
-```
+```javascript
 var names = ['George','Ringo','Paul','John'];
 for(var i=0;i < names.length;i++){
   doSomeThingWith(names[i]);
@@ -194,7 +194,7 @@ for(var i=0;i < names.length;i++){
 
 To Fix
 
-```
+```javascript
 var names = ['George','Ringo','Paul','John'];
 for(var i=0,j=names.length;i < j;i++){
   doSomeThingWith(names[i]);
@@ -211,7 +211,7 @@ for(var i=0,j=names.length;i < j;i++){
 
 1. It is very important to tes the type of parameters send to your functions(using the `typeof` keyword)
 
-```
+```javascript
 function buildMemberList(members){
   if(typeof members === 'object' && 
      typeof members.slice === 'function'){

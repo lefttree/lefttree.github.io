@@ -172,14 +172,14 @@
   </div>
 
   <div class="post">
-    <h3 id="easy-short--readable-names">Easy, Short &amp; Readable Names</h3>
+    <h3 id="easy,-short-&amp;-readable-names">Easy, Short &amp; Readable Names</h3>
 
 <h4 id="variables-name">Variables Name</h4>
 
 <p><strong>Hungarian notation</strong> is a good variable name scheme to adopt.</p>
 
 <blockquote>
-  <p>typeName</p>
+<p>typeName</p>
 </blockquote>
 
 <p>Examples:
@@ -188,10 +188,11 @@
 - cApples : count of items</p>
 
 <h4 id="function-name">Function Name</h4>
+
 <p>Function name should start with a lowercase verb following </p>
 
 <blockquote>
-  <p>verbSomething</p>
+<p>verbSomething</p>
 </blockquote>
 
 <p>Examples:
@@ -199,6 +200,7 @@
 - getResult()</p>
 
 <h4 id="class-name">Class Name</h4>
+
 <p>the first char should be capital
 Examples:
 - Apple()
@@ -207,29 +209,23 @@ Examples:
 <h3 id="avoid-global">Avoid Global</h3>
 
 <h4 id="revealing-module-pattern">revealing module pattern</h4>
-
-<p><code>
-myNameSpace = function(){
-    var current = null;
-    function init(){};
-    function change(){};
-    function verify(){};
-    return{
-        init: init,
-        change: change
-    }
-}();
-</code></p>
-
-<p>If you don’t need any of your vars or functions to be avaiable to the outside, simply wrap the whole construct in another set of parentheses to execute it without assigning any name.</p>
-
-<p><code>
-(function(){
-    var current = null;
-    function init(){}
-})();
-</code></p>
-
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">myNameSpace</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="kd">var</span> <span class="nx">current</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="kd">function</span> <span class="nx">init</span><span class="p">(){};</span>
+    <span class="kd">function</span> <span class="nx">change</span><span class="p">(){};</span>
+    <span class="kd">function</span> <span class="nx">verify</span><span class="p">(){};</span>
+    <span class="k">return</span><span class="p">{</span>
+        <span class="nx">init</span><span class="o">:</span> <span class="nx">init</span><span class="p">,</span>
+        <span class="nx">change</span><span class="o">:</span> <span class="nx">change</span>
+    <span class="p">}</span>
+<span class="p">}();</span>
+</code></pre></div>
+<p>If you don&#39;t need any of your vars or functions to be avaiable to the outside, simply wrap the whole construct in another set of parentheses to execute it without assigning any name.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="kd">var</span> <span class="nx">current</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="kd">function</span> <span class="nx">init</span><span class="p">(){}</span>
+<span class="p">})();</span>
+</code></pre></div>
 <h3 id="use-strict">Use strict</h3>
 
 <p>Check code quality with JSLint</p>
@@ -245,17 +241,11 @@ myNameSpace = function(){
 <h3 id="use-shortcut-notation">Use Shortcut Notation</h3>
 
 <p>Examples:</p>
-
-<p><code>
-var direction = ( x &gt; 100 ) ? 1 : -1
-</code></p>
-
-<p><code>
-var x = v || 10;
-</code></p>
-
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">direction</span> <span class="o">=</span> <span class="p">(</span> <span class="nx">x</span> <span class="o">&gt;</span> <span class="mi">100</span> <span class="p">)</span> <span class="o">?</span> <span class="mi">1</span> <span class="o">:</span> <span class="o">-</span><span class="mi">1</span>
+</code></pre></div><div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">v</span> <span class="o">||</span> <span class="mi">10</span><span class="p">;</span>
+</code></pre></div>
 <blockquote>
-  <p>this would automatically give x a value of 10 if v is not defined</p>
+<p>this would automatically give x a value of 10 if v is not defined</p>
 </blockquote>
 
 <h3 id="modularize---one-function-per-task">Modularize - One Function per Task</h3>
@@ -267,88 +257,85 @@ var x = v || 10;
 <p>These include <em>any text used in elements you create</em>, <em>CSS class</em>, <em>ID names</em> and <em>general parameters of the interface you build</em>.</p>
 
 <p>Examples: easy youtube player project config object</p>
-
-<p><code>
-/*
-  This is the configuration of the player.meng Most likely you will
-  never have to change anything here, but it is good to be able 
-  to, isn't it? 
-*/
-config = {
-  CSS:{
-    /* 
-      IDs used in the document. The script will get access to 
-      the different elements of the player with these IDs, so 
-      if you change them in the HTML below, make sure to also 
-      change the name here!
-    */
-    IDs:{
-      container:'eytp-maincontainer',
-      canvas:'eytp-playercanvas',
-      player:'eytp-player',
-      controls:'eytp-controls',
-      volumeField:'eytp-volume',
-      volumeBar:'eytp-volumebar',
-      playerForm:'eytp-playerform',
-      urlField:'eytp-url',
-      sizeControl:'eytp-sizecontrol',
-      searchField:'eytp-searchfield',
-      searchForm:'eytp-search',
-      searchOutput:'eytp-searchoutput'
-    },
-    /*
-      These are the names of the CSS classes, the player adds
-      dynamically to the volume bar in certain 
-      situations.
-    */
-    classes:{
-      maxvolume:'maxed',
-      disabled:'disabled'
-    }
-  },
-  /* 
-    That is the end of the CSS definitions, from here on 
-    you can change settings of the player itself. 
-  */
-  application:{
-    /*
-      The YouTube API base URL. This changed during development of this,
-      so I thought it useful to make it a parameter.
-    */
-    youtubeAPI:'http://gdata.youtube.com/apiplayer/cl.swf',
-    /* 
-      The YouTube Developer key,
-      please replace this with your own when you host the player!!!!!
-    */
-    devkey:'AI39si7d...Y9fu_cQ',
-    /*
-      The volume increase/decrease in percent and the volume message 
-      shown in a hidden form field (for screen readers). The $x in the 
-      message will be replaced with the real value.
-    */
-    volumeChange:10,
-    volumeMessage:'volume $x percent',
-    /*
-      Amount of search results and the error message should there 
-      be no results.
-    */
-    searchResults:6,
-    loadingMessage:'Searching, please wait',
-    noVideosFoundMessage:'No videos found : (',
-    /*
-      Amount of seconds to repeat when the user hits the rewind 
-      button.
-    */
-    secondsToRepeat:10,
-    /*
-      Movie dimensions.
-    */
-    movieWidth:400,
-    movieHeight:300
-  }  
-}
-</code></p>
-
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/*</span>
+<span class="cm">  This is the configuration of the player.meng Most likely you will</span>
+<span class="cm">  never have to change anything here, but it is good to be able </span>
+<span class="cm">  to, isn&#39;t it? </span>
+<span class="cm">*/</span>
+<span class="nx">config</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">CSS</span><span class="o">:</span><span class="p">{</span>
+    <span class="cm">/* </span>
+<span class="cm">      IDs used in the document. The script will get access to </span>
+<span class="cm">      the different elements of the player with these IDs, so </span>
+<span class="cm">      if you change them in the HTML below, make sure to also </span>
+<span class="cm">      change the name here!</span>
+<span class="cm">    */</span>
+    <span class="nx">IDs</span><span class="o">:</span><span class="p">{</span>
+      <span class="nx">container</span><span class="o">:</span><span class="s1">&#39;eytp-maincontainer&#39;</span><span class="p">,</span>
+      <span class="nx">canvas</span><span class="o">:</span><span class="s1">&#39;eytp-playercanvas&#39;</span><span class="p">,</span>
+      <span class="nx">player</span><span class="o">:</span><span class="s1">&#39;eytp-player&#39;</span><span class="p">,</span>
+      <span class="nx">controls</span><span class="o">:</span><span class="s1">&#39;eytp-controls&#39;</span><span class="p">,</span>
+      <span class="nx">volumeField</span><span class="o">:</span><span class="s1">&#39;eytp-volume&#39;</span><span class="p">,</span>
+      <span class="nx">volumeBar</span><span class="o">:</span><span class="s1">&#39;eytp-volumebar&#39;</span><span class="p">,</span>
+      <span class="nx">playerForm</span><span class="o">:</span><span class="s1">&#39;eytp-playerform&#39;</span><span class="p">,</span>
+      <span class="nx">urlField</span><span class="o">:</span><span class="s1">&#39;eytp-url&#39;</span><span class="p">,</span>
+      <span class="nx">sizeControl</span><span class="o">:</span><span class="s1">&#39;eytp-sizecontrol&#39;</span><span class="p">,</span>
+      <span class="nx">searchField</span><span class="o">:</span><span class="s1">&#39;eytp-searchfield&#39;</span><span class="p">,</span>
+      <span class="nx">searchForm</span><span class="o">:</span><span class="s1">&#39;eytp-search&#39;</span><span class="p">,</span>
+      <span class="nx">searchOutput</span><span class="o">:</span><span class="s1">&#39;eytp-searchoutput&#39;</span>
+    <span class="p">},</span>
+    <span class="cm">/*</span>
+<span class="cm">      These are the names of the CSS classes, the player adds</span>
+<span class="cm">      dynamically to the volume bar in certain </span>
+<span class="cm">      situations.</span>
+<span class="cm">    */</span>
+    <span class="nx">classes</span><span class="o">:</span><span class="p">{</span>
+      <span class="nx">maxvolume</span><span class="o">:</span><span class="s1">&#39;maxed&#39;</span><span class="p">,</span>
+      <span class="nx">disabled</span><span class="o">:</span><span class="s1">&#39;disabled&#39;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="cm">/* </span>
+<span class="cm">    That is the end of the CSS definitions, from here on </span>
+<span class="cm">    you can change settings of the player itself. </span>
+<span class="cm">  */</span>
+  <span class="nx">application</span><span class="o">:</span><span class="p">{</span>
+    <span class="cm">/*</span>
+<span class="cm">      The YouTube API base URL. This changed during development of this,</span>
+<span class="cm">      so I thought it useful to make it a parameter.</span>
+<span class="cm">    */</span>
+    <span class="nx">youtubeAPI</span><span class="o">:</span><span class="s1">&#39;http://gdata.youtube.com/apiplayer/cl.swf&#39;</span><span class="p">,</span>
+    <span class="cm">/* </span>
+<span class="cm">      The YouTube Developer key,</span>
+<span class="cm">      please replace this with your own when you host the player!!!!!</span>
+<span class="cm">    */</span>
+    <span class="nx">devkey</span><span class="o">:</span><span class="s1">&#39;AI39si7d...Y9fu_cQ&#39;</span><span class="p">,</span>
+    <span class="cm">/*</span>
+<span class="cm">      The volume increase/decrease in percent and the volume message </span>
+<span class="cm">      shown in a hidden form field (for screen readers). The $x in the </span>
+<span class="cm">      message will be replaced with the real value.</span>
+<span class="cm">    */</span>
+    <span class="nx">volumeChange</span><span class="o">:</span><span class="mi">10</span><span class="p">,</span>
+    <span class="nx">volumeMessage</span><span class="o">:</span><span class="s1">&#39;volume $x percent&#39;</span><span class="p">,</span>
+    <span class="cm">/*</span>
+<span class="cm">      Amount of search results and the error message should there </span>
+<span class="cm">      be no results.</span>
+<span class="cm">    */</span>
+    <span class="nx">searchResults</span><span class="o">:</span><span class="mi">6</span><span class="p">,</span>
+    <span class="nx">loadingMessage</span><span class="o">:</span><span class="s1">&#39;Searching, please wait&#39;</span><span class="p">,</span>
+    <span class="nx">noVideosFoundMessage</span><span class="o">:</span><span class="s1">&#39;No videos found : (&#39;</span><span class="p">,</span>
+    <span class="cm">/*</span>
+<span class="cm">      Amount of seconds to repeat when the user hits the rewind </span>
+<span class="cm">      button.</span>
+<span class="cm">    */</span>
+    <span class="nx">secondsToRepeat</span><span class="o">:</span><span class="mi">10</span><span class="p">,</span>
+    <span class="cm">/*</span>
+<span class="cm">      Movie dimensions.</span>
+<span class="cm">    */</span>
+    <span class="nx">movieWidth</span><span class="o">:</span><span class="mi">400</span><span class="p">,</span>
+    <span class="nx">movieHeight</span><span class="o">:</span><span class="mi">300</span>
+  <span class="p">}</span>  
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="avoid-heavy-nesting">Avoid Heavy Nesting</h3>
 
 <p>Use functions to avoid it</p>
@@ -356,27 +343,22 @@ config = {
 <h3 id="optimize-loops">Optimize Loops</h3>
 
 <h4 id="for-loop-read-length-everytime">For loop read length everytime</h4>
-
-<p><code>
-var names = ['George','Ringo','Paul','John'];
-for(var i=0;i &lt; names.length;i++){
-  doSomeThingWith(names[i]);
-}
-</code></p>
-
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;George&#39;</span><span class="p">,</span><span class="s1">&#39;Ringo&#39;</span><span class="p">,</span><span class="s1">&#39;Paul&#39;</span><span class="p">,</span><span class="s1">&#39;John&#39;</span><span class="p">];</span>
+<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">names</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+  <span class="nx">doSomeThingWith</span><span class="p">(</span><span class="nx">names</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>To Fix</p>
-
-<p><code>
-var names = ['George','Ringo','Paul','John'];
-for(var i=0,j=names.length;i &lt; j;i++){
-  doSomeThingWith(names[i]);
-}
-</code></p>
-
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;George&#39;</span><span class="p">,</span><span class="s1">&#39;Ringo&#39;</span><span class="p">,</span><span class="s1">&#39;Paul&#39;</span><span class="p">,</span><span class="s1">&#39;John&#39;</span><span class="p">];</span>
+<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="nx">j</span><span class="o">=</span><span class="nx">names</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">j</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+  <span class="nx">doSomeThingWith</span><span class="p">(</span><span class="nx">names</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+<span class="p">}</span>
+</code></pre></div>
 <h4 id="keep-computation-heavy-code-outside">Keep computation-heavy code outside</h4>
+
 <ul>
-  <li>regular expression</li>
-  <li>DOM manipulation</li>
+<li>regular expression</li>
+<li>DOM manipulation</li>
 </ul>
 
 <h3 id="keep-dom-access-to-a-minimum">Keep DOM Access to a minimum</h3>
@@ -384,27 +366,24 @@ for(var i=0,j=names.length;i &lt; j;i++){
 <h3 id="do-not-trust-any-data">Do not Trust Any Data</h3>
 
 <ol>
-  <li>It is very important to tes the type of parameters send to your functions(using the <code>typeof</code> keyword)</li>
+<li>It is very important to tes the type of parameters send to your functions(using the <code>typeof</code> keyword)</li>
 </ol>
-
-<p><code>
-function buildMemberList(members){
-  if(typeof members === 'object' &amp;&amp; 
-     typeof members.slice === 'function'){
-    var all = members.length;
-    var ul = document.createElement('ul');
-    for(var i=0;i &lt; all;i++){
-      var li = document.createElement('li');
-      li.appendChild(document.createTextNode(members[i].name));
-      ul.appendChild(li);
-    }
-    return ul;
-  }
-}
-</code></p>
-
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">buildMemberList</span><span class="p">(</span><span class="nx">members</span><span class="p">){</span>
+  <span class="k">if</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">members</span> <span class="o">===</span> <span class="s1">&#39;object&#39;</span> <span class="o">&amp;&amp;</span> 
+     <span class="k">typeof</span> <span class="nx">members</span><span class="p">.</span><span class="nx">slice</span> <span class="o">===</span> <span class="s1">&#39;function&#39;</span><span class="p">){</span>
+    <span class="kd">var</span> <span class="nx">all</span> <span class="o">=</span> <span class="nx">members</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">ul</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;ul&#39;</span><span class="p">);</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">all</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+      <span class="kd">var</span> <span class="nx">li</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;li&#39;</span><span class="p">);</span>
+      <span class="nx">li</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">createTextNode</span><span class="p">(</span><span class="nx">members</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">name</span><span class="p">));</span>
+      <span class="nx">ul</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">li</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">ul</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <ol>
-  <li>Compare and check info read from the DOM</li>
+<li>Compare and check info read from the DOM</li>
 </ol>
 
 <h3 id="do-not-create-too-much-with-javascript">Do not create too much with Javascript</h3>
@@ -414,13 +393,13 @@ function buildMemberList(members){
 <h3 id="do-not-use-new-object">Do not Use New Object</h3>
 
 <ul>
-  <li>Use {} instead of new Object()</li>
-  <li>Use “” instead of new String()</li>
-  <li>Use 0 instead of new Number()</li>
-  <li>Use false instead of new Boolean()</li>
-  <li>Use [] instead of new Array()</li>
-  <li>Use /()/ instead of new RegExp()</li>
-  <li>Use function (){} instead of new function()</li>
+<li>Use {} instead of new Object()</li>
+<li>Use &quot;&quot; instead of new String()</li>
+<li>Use 0 instead of new Number()</li>
+<li>Use false instead of new Boolean()</li>
+<li>Use [] instead of new Array()</li>
+<li>Use /()/ instead of new RegExp()</li>
+<li>Use function (){} instead of new function()</li>
 </ul>
 
   </div>

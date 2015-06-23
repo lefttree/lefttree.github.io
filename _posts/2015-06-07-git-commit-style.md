@@ -7,7 +7,7 @@ tags: [git, programming style]
 ---
 
 ## Structure
-i
+
 ```
 type: subject
 

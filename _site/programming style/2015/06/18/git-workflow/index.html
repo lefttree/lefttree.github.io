@@ -173,19 +173,20 @@
 
   <div class="post">
     <h1 id="context">Context</h1>
+
 <ol>
-  <li><a href="#current-work-flow">Current Work Flow</a></li>
-  <li><a href="#centralized-workflow">Centralized Workflow</a></li>
-  <li><a href="#feature-branch-workflow">Feature Branch Workflow</a></li>
-  <li><a href="#gitflow-workflow">Gitflow Workflow</a></li>
-  <li><a href="#forking-workflow">Forking Workflow</a></li>
+<li><a href="#current-work-flow">Current Work Flow</a></li>
+<li><a href="#centralized-workflow">Centralized Workflow</a></li>
+<li><a href="#feature-branch-workflow">Feature Branch Workflow</a></li>
+<li><a href="#gitflow-workflow">Gitflow Workflow</a></li>
+<li><a href="#forking-workflow">Forking Workflow</a></li>
 </ol>
 
 <h1 id="current-work-flow">Current Work Flow</h1>
 
 <p>Usually in my work, I use git commands like
 <code>add</code>, <code>commit</code>, <code>checkout --</code>, <code>reset</code>, <code>rebase</code>, <code>pull</code>/<code>push</code>,
-……</p>
+......</p>
 
 <p>Work routine is 
     * pull from remote origin
@@ -202,9 +203,12 @@
 
 <h1 id="content">Content</h1>
 
-<p>Thanks to <a href="https://github.com/lefttree/my-git/blob/master/git-workflow-tutorial.md">xirong’s post</a>, learnt some standard git workflows.
-&gt;This won’t state all the steps here, I wrote this post  for remembering these stuff, so I assume the reader already know git. 
-&gt;If you need to learn the details, please go to the original post</p>
+<p>Thanks to <a href="https://github.com/lefttree/my-git/blob/master/git-workflow-tutorial.md">xirong&#39;s post</a>, learnt some standard git workflows.</p>
+
+<blockquote>
+<p>This won&#39;t state all the steps here, I wrote this post  for remembering these stuff, so I assume the reader already know git. 
+If you need to learn the details, please go to the original post</p>
+</blockquote>
 
 <h2 id="centralized-workflow">Centralized Workflow</h2>
 
@@ -213,7 +217,7 @@
 <p><code>git init --bare /path/to/repo.git</code></p>
 
 <blockquote>
-  <p>–bare 
+<p>--bare 
 repo.git</p>
 </blockquote>
 
@@ -222,12 +226,9 @@ repo.git</p>
 <p><code>git pull --rebase origin master</code></p>
 
 <p><strong>Fix conflicts</strong></p>
-
-<p><code>
-git add &lt;some-file&gt; 
+<div class="highlight"><pre><code class="language-text" data-lang="text">git add &lt;some-file&gt; 
 git rebase --continue
-</code></p>
-
+</code></pre></div>
 <p><strong>If encountered problem</strong></p>
 
 <p><code>git rebase --abort</code></p>
@@ -252,8 +253,11 @@ git rebase --continue
 
 <p><strong>Push to central repo</strong></p>
 
-<p><code>git push -u origin marys-feature</code>
-&gt;-u adds it as a remote tracking branch, you can just do <code>git push</code> later</p>
+<p><code>git push -u origin marys-feature</code></p>
+
+<blockquote>
+<p>-u adds it as a remote tracking branch, you can just do <code>git push</code> later</p>
+</blockquote>
 
 <p><strong>Pull request</strong></p>
 
@@ -264,19 +268,16 @@ git rebase --continue
 <p>all on the new branch</p>
 
 <p><strong>publish</strong></p>
-
-<p><code>
-git checkout master
+<div class="highlight"><pre><code class="language-text" data-lang="text">git checkout master
 git pull
 git pull origin feature-branch
 git push
-</code></p>
-
+</code></pre></div>
 <h2 id="gitflow-workflow">Gitflow Workflow</h2>
 
 <h4 id="historical-branches">Historical Branches</h4>
 
-<p>Instead of a single master branch, this workflow uses two branches to record the history of the project. The master branch stores the official release history, and the develop branch serves as an integration branch for features. It’s also convenient to <strong>tag</strong> all commits in the master branch with a version number.</p>
+<p>Instead of a single master branch, this workflow uses two branches to record the history of the project. The master branch stores the official release history, and the develop branch serves as an integration branch for features. It&#39;s also convenient to <strong>tag</strong> all commits in the master branch with a version number.</p>
 
 <h4 id="feature-branches">Feature Branches</h4>
 
@@ -286,64 +287,55 @@ git push
 
 <p>Once develop has acquired enough features for a release (or a predetermined release date is approaching), you fork a release branch off of <code>develop</code>. Creating this branch starts the next release cycle, so no new features can be added after this point—only bug fixes, documentation generation, and other release-oriented tasks should go in this branch.</p>
 
-<p>Once it’s ready to ship, the release gets <code>merged into master</code> and <code>tagged with a version number</code>. In addition, it should be <code>merged back into develop</code>, which may have progressed since the release was initiated.</p>
+<p>Once it&#39;s ready to ship, the release gets <code>merged into master</code> and <code>tagged with a version number</code>. In addition, it should be <code>merged back into develop</code>, which may have progressed since the release was initiated.</p>
 
 <h4 id="hotfix-branch">Hotfix Branch</h4>
 
 <p>bug fix, branch off <code>master</code>, merged back to <code>master</code> and <code>develop</code></p>
 
-<h4 id="example-1">Example</h4>
+<h4 id="example">Example</h4>
 
 <p><code>git checkout -b new-feature develop</code></p>
 
 <p><strong>after done</strong></p>
-
-<p><code>
-git pull origin develop
+<div class="highlight"><pre><code class="language-text" data-lang="text">git pull origin develop
 git checkout develop
 git merge some-feature
 git push
 git branch -d some-feature
-</code></p>
-
+</code></pre></div>
 <p><strong>prepare release</strong></p>
 
 <p><code>git checkout -b release-0.1 develop</code>
 This branch is a place to clean up the release, test everything, update the documentation, and do any other kind of preparation for the upcoming release.</p>
 
 <p><strong>after release is ready</strong></p>
-
-<p><code>
-git checkout master
+<div class="highlight"><pre><code class="language-text" data-lang="text">git checkout master
 git merge release-0.1
 git push
 git checkout develop
 git merge release-0.1
 git push
 git branch -d release-0.1
-</code></p>
-
+</code></pre></div>
 <p>whenever you merge something into master, should tag it
-<code>git tag -a 0.1 -m "Initial public release" master
+<code>git tag -a 0.1 -m &quot;Initial public release&quot; master
 git push --tags</code></p>
 
 <p><strong>Bug fix</strong></p>
-
-<p><code>
-git checkout -b issue-#001 master
+<div class="highlight"><pre><code class="language-text" data-lang="text">git checkout -b issue-#001 master
 # Fix the bug
 git checkout master
 git merge issue-#001
 git push
-</code></p>
-
+</code></pre></div>
 <h2 id="forking-workflow">Forking Workflow</h2>
 
 <p>The main advantage of the Forking Workflow is that contributions can be integrated without the need for everybody to push to a single central repository.</p>
 
-<p>When they’re ready to publish a local commit, they push the commit to their own public repository—not the official one. Then, they file a pull request with the main repository, which lets the project maintainer know that an update is ready to be integrated. The pull request also serves as a convenient discussion thread if there are issues with the contributed code.</p>
+<p>When they&#39;re ready to publish a local commit, they push the commit to their own public repository—not the official one. Then, they file a pull request with the main repository, which lets the project maintainer know that an update is ready to be integrated. The pull request also serves as a convenient discussion thread if there are issues with the contributed code.</p>
 
-<h4 id="example-2">Example</h4>
+<h4 id="example">Example</h4>
 
 <p><strong>Fork, clone to local</strong></p>
 
@@ -361,19 +353,15 @@ git push
 <p><strong>Maintainer integrates their features</strong></p>
 
 <ol>
-  <li>Inspect the code directly in the pull request</li>
-  <li>Pull the code into their local repository and manually merge it</li>
+<li>Inspect the code directly in the pull request</li>
+<li>Pull the code into their local repository and manually merge it</li>
 </ol>
-
-<p><code>
-git fetch https://bitbucket.org/user/repo feature-branch
+<div class="highlight"><pre><code class="language-text" data-lang="text">git fetch https://bitbucket.org/user/repo feature-branch
 # Inspect the changes
 git checkout master
 git merge FETCH_HEAD
-</code></p>
-
+</code></pre></div>
 <p><strong>Maintainer push to public origin</strong></p>
-
 
   </div>
   

@@ -21,7 +21,7 @@ install plugins
 
 example gulpfile.js
 
-```
+```javascript
 //require gulp   
 var gulp = require('gulp');  
 

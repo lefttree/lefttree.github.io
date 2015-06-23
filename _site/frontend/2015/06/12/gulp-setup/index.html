@@ -172,10 +172,10 @@
   </div>
 
   <div class="post">
-    <p><code>sudo npm install -g gulp   </code></p>
+    <p><code>sudo npm install -g gulp</code></p>
 
 <p>under the development dir
-<code>npm install --save-dev gulp   </code></p>
+<code>npm install --save-dev gulp</code></p>
 
 <p><code>--save-dev</code> tells npm to add this module into package.json</p>
 
@@ -184,56 +184,54 @@
 <p><code>npm install gulp-jshint gulp-sass gulp-concat gulp-uglify gulp-renam --save-dev</code></p>
 
 <p>example gulpfile.js</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//require gulp   </span>
+<span class="kd">var</span> <span class="nx">gulp</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp&#39;</span><span class="p">);</span>  
 
-<p>```
-//require gulp <br />
-var gulp = require(‘gulp’);  </p>
+<span class="c1">//require plugins  </span>
+<span class="kd">var</span> <span class="nx">jshint</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-jshint&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">sass</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-sass&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">concat</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-concat&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">uglify</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-uglify&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">rename</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-rename&#39;</span><span class="p">);</span>
 
-<p>//require plugins<br />
-var jshint = require(‘gulp-jshint’);
-var sass = require(‘gulp-sass’);
-var concat = require(‘gulp-concat’);
-var uglify = require(‘gulp-uglify’);
-var rename = require(‘gulp-rename’);</p>
+<span class="c1">//lint task  </span>
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;jshint&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="s1">&#39;./js/*.js&#39;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">jshint</span><span class="p">())</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">jshint</span><span class="p">.</span><span class="nx">reporter</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">));</span>
+<span class="p">});</span>
 
-<p>//lint task<br />
-gulp.task(‘jshint’,function(){
-    gulp.src(‘./js/*.js’)
-    .pipe(jshint())
-    .pipe(jshint.reporter(‘default’));
-});</p>
+<span class="c1">//conpile sass  </span>
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;sass&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="s1">&#39;./scss/*.scss&#39;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">sass</span><span class="p">())</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">&#39;./css&#39;</span><span class="p">));</span>
+<span class="p">});</span>  
 
-<p>//conpile sass<br />
-gulp.task(‘sass’,function(){
-    gulp.src(‘./scss/*.scss’)
-    .pipe(sass())
-    .pipe(gulp.dest(‘./css’));
-});  </p>
+<span class="c1">//concat, minify   </span>
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;scripts&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="s1">&#39;./js/*/js&#39;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">concat</span><span class="p">(</span><span class="s1">&#39;all.js&#39;</span><span class="p">))</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">&#39;./dist&#39;</span><span class="p">))</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">rename</span><span class="p">(</span><span class="s1">&#39;all.min.js&#39;</span><span class="p">))</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">uglify</span><span class="p">())</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">&#39;./dist&#39;</span><span class="p">));</span>
+<span class="p">});</span>  
 
-<p>//concat, minify <br />
-gulp.task(‘scripts’,function(){
-    gulp.src(‘./js/*/js’)
-    .pipe(concat(‘all.js’))
-    .pipe(gulp.dest(‘./dist’))
-    .pipe(rename(‘all.min.js’))
-    .pipe(uglify())
-    .pipe(gulp.dest(‘./dist’));
-});  </p>
+<span class="c1">//default   </span>
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">gulp</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="s1">&#39;lint&#39;</span><span class="p">,</span><span class="s1">&#39;sass&#39;</span><span class="p">,</span><span class="s1">&#39;scripts&#39;</span><span class="p">);</span>
 
-<p>//default <br />
-gulp.task(‘default’,function(){
-    gulp.run(‘lint’,’sass’,’scripts’);</p>
+    <span class="nx">gulp</span><span class="p">.</span><span class="nx">watch</span><span class="p">(</span><span class="s1">&#39;./js/*.js&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+        <span class="nx">gulp</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="s1">&#39;lint&#39;</span><span class="p">,</span><span class="s1">&#39;scripts&#39;</span><span class="p">);</span><span class="mi">0</span>
+    <span class="p">});</span>
 
-<pre><code>gulp.watch('./js/*.js',function(){
-    gulp.run('lint','scripts');0
-});
-   
-gulp.watch('./scss/*.scss',function(){
-    gulp.run('sass');
-}); }); ```
-</code></pre>
-
-<p>Gulp’s syntax is just like node, and it use streamming</p>
+    <span class="nx">gulp</span><span class="p">.</span><span class="nx">watch</span><span class="p">(</span><span class="s1">&#39;./scss/*.scss&#39;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+        <span class="nx">gulp</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="s1">&#39;sass&#39;</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>Gulp&#39;s syntax is just like node, and it use streamming</p>
 
   </div>
   

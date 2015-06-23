@@ -5,27 +5,28 @@
         <description>LeftTree&#39;s Blog - Xiang Li</description>
         <link>http://lefttree.github.io</link>
         <atom:link href="http://lefttree.github.io/rss.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Sat, 20 Jun 2015 23:05:32 -0700</lastBuildDate>
-        <pubDate>Sat, 20 Jun 2015 23:05:32 -0700</pubDate>
+        <lastBuildDate>Tue, 23 Jun 2015 15:06:35 -0700</lastBuildDate>
+        <pubDate>Tue, 23 Jun 2015 15:06:35 -0700</pubDate>
         <ttl>60</ttl>
 
 
         <item>
                 <title>Git Workflow</title>
                 <description>&lt;h1 id=&quot;context&quot;&gt;Context&lt;/h1&gt;
+
 &lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;#current-work-flow&quot;&gt;Current Work Flow&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#centralized-workflow&quot;&gt;Centralized Workflow&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#feature-branch-workflow&quot;&gt;Feature Branch Workflow&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#gitflow-workflow&quot;&gt;Gitflow Workflow&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#forking-workflow&quot;&gt;Forking Workflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#current-work-flow&quot;&gt;Current Work Flow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#centralized-workflow&quot;&gt;Centralized Workflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#feature-branch-workflow&quot;&gt;Feature Branch Workflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#gitflow-workflow&quot;&gt;Gitflow Workflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#forking-workflow&quot;&gt;Forking Workflow&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h1 id=&quot;current-work-flow&quot;&gt;Current Work Flow&lt;/h1&gt;
 
 &lt;p&gt;Usually in my work, I use git commands like
 &lt;code&gt;add&lt;/code&gt;, &lt;code&gt;commit&lt;/code&gt;, &lt;code&gt;checkout --&lt;/code&gt;, &lt;code&gt;reset&lt;/code&gt;, &lt;code&gt;rebase&lt;/code&gt;, &lt;code&gt;pull&lt;/code&gt;/&lt;code&gt;push&lt;/code&gt;,
-……&lt;/p&gt;
+......&lt;/p&gt;
 
 &lt;p&gt;Work routine is 
     * pull from remote origin
@@ -42,9 +43,12 @@
 
 &lt;h1 id=&quot;content&quot;&gt;Content&lt;/h1&gt;
 
-&lt;p&gt;Thanks to &lt;a href=&quot;https://github.com/lefttree/my-git/blob/master/git-workflow-tutorial.md&quot;&gt;xirong’s post&lt;/a&gt;, learnt some standard git workflows.
-&amp;gt;This won’t state all the steps here, I wrote this post  for remembering these stuff, so I assume the reader already know git. 
-&amp;gt;If you need to learn the details, please go to the original post&lt;/p&gt;
+&lt;p&gt;Thanks to &lt;a href=&quot;https://github.com/lefttree/my-git/blob/master/git-workflow-tutorial.md&quot;&gt;xirong&amp;#39;s post&lt;/a&gt;, learnt some standard git workflows.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;This won&amp;#39;t state all the steps here, I wrote this post  for remembering these stuff, so I assume the reader already know git. 
+If you need to learn the details, please go to the original post&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;h2 id=&quot;centralized-workflow&quot;&gt;Centralized Workflow&lt;/h2&gt;
 
@@ -53,7 +57,7 @@
 &lt;p&gt;&lt;code&gt;git init --bare /path/to/repo.git&lt;/code&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;–bare 
+&lt;p&gt;--bare 
 repo.git&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -62,12 +66,9 @@ repo.git&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;git pull --rebase origin master&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Fix conflicts&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;
-git add &amp;lt;some-file&amp;gt; 
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;git add &amp;lt;some-file&amp;gt; 
 git rebase --continue
-&lt;/code&gt;&lt;/p&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;If encountered problem&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;git rebase --abort&lt;/code&gt;&lt;/p&gt;
@@ -92,8 +93,11 @@ git rebase --continue
 
 &lt;p&gt;&lt;strong&gt;Push to central repo&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;git push -u origin marys-feature&lt;/code&gt;
-&amp;gt;-u adds it as a remote tracking branch, you can just do &lt;code&gt;git push&lt;/code&gt; later&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;git push -u origin marys-feature&lt;/code&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;-u adds it as a remote tracking branch, you can just do &lt;code&gt;git push&lt;/code&gt; later&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;&lt;strong&gt;Pull request&lt;/strong&gt;&lt;/p&gt;
 
@@ -104,19 +108,16 @@ git rebase --continue
 &lt;p&gt;all on the new branch&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;publish&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;
-git checkout master
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;git checkout master
 git pull
 git pull origin feature-branch
 git push
-&lt;/code&gt;&lt;/p&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&quot;gitflow-workflow&quot;&gt;Gitflow Workflow&lt;/h2&gt;
 
 &lt;h4 id=&quot;historical-branches&quot;&gt;Historical Branches&lt;/h4&gt;
 
-&lt;p&gt;Instead of a single master branch, this workflow uses two branches to record the history of the project. The master branch stores the official release history, and the develop branch serves as an integration branch for features. It’s also convenient to &lt;strong&gt;tag&lt;/strong&gt; all commits in the master branch with a version number.&lt;/p&gt;
+&lt;p&gt;Instead of a single master branch, this workflow uses two branches to record the history of the project. The master branch stores the official release history, and the develop branch serves as an integration branch for features. It&amp;#39;s also convenient to &lt;strong&gt;tag&lt;/strong&gt; all commits in the master branch with a version number.&lt;/p&gt;
 
 &lt;h4 id=&quot;feature-branches&quot;&gt;Feature Branches&lt;/h4&gt;
 
@@ -126,64 +127,55 @@ git push
 
 &lt;p&gt;Once develop has acquired enough features for a release (or a predetermined release date is approaching), you fork a release branch off of &lt;code&gt;develop&lt;/code&gt;. Creating this branch starts the next release cycle, so no new features can be added after this point—only bug fixes, documentation generation, and other release-oriented tasks should go in this branch.&lt;/p&gt;
 
-&lt;p&gt;Once it’s ready to ship, the release gets &lt;code&gt;merged into master&lt;/code&gt; and &lt;code&gt;tagged with a version number&lt;/code&gt;. In addition, it should be &lt;code&gt;merged back into develop&lt;/code&gt;, which may have progressed since the release was initiated.&lt;/p&gt;
+&lt;p&gt;Once it&amp;#39;s ready to ship, the release gets &lt;code&gt;merged into master&lt;/code&gt; and &lt;code&gt;tagged with a version number&lt;/code&gt;. In addition, it should be &lt;code&gt;merged back into develop&lt;/code&gt;, which may have progressed since the release was initiated.&lt;/p&gt;
 
 &lt;h4 id=&quot;hotfix-branch&quot;&gt;Hotfix Branch&lt;/h4&gt;
 
 &lt;p&gt;bug fix, branch off &lt;code&gt;master&lt;/code&gt;, merged back to &lt;code&gt;master&lt;/code&gt; and &lt;code&gt;develop&lt;/code&gt;&lt;/p&gt;
 
-&lt;h4 id=&quot;example-1&quot;&gt;Example&lt;/h4&gt;
+&lt;h4 id=&quot;example&quot;&gt;Example&lt;/h4&gt;
 
 &lt;p&gt;&lt;code&gt;git checkout -b new-feature develop&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;after done&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;
-git pull origin develop
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;git pull origin develop
 git checkout develop
 git merge some-feature
 git push
 git branch -d some-feature
-&lt;/code&gt;&lt;/p&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;prepare release&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;git checkout -b release-0.1 develop&lt;/code&gt;
 This branch is a place to clean up the release, test everything, update the documentation, and do any other kind of preparation for the upcoming release.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;after release is ready&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;
-git checkout master
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;git checkout master
 git merge release-0.1
 git push
 git checkout develop
 git merge release-0.1
 git push
 git branch -d release-0.1
-&lt;/code&gt;&lt;/p&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;whenever you merge something into master, should tag it
-&lt;code&gt;git tag -a 0.1 -m &quot;Initial public release&quot; master
+&lt;code&gt;git tag -a 0.1 -m &amp;quot;Initial public release&amp;quot; master
 git push --tags&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Bug fix&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;
-git checkout -b issue-#001 master
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;git checkout -b issue-#001 master
 # Fix the bug
 git checkout master
 git merge issue-#001
 git push
-&lt;/code&gt;&lt;/p&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&quot;forking-workflow&quot;&gt;Forking Workflow&lt;/h2&gt;
 
 &lt;p&gt;The main advantage of the Forking Workflow is that contributions can be integrated without the need for everybody to push to a single central repository.&lt;/p&gt;
 
-&lt;p&gt;When they’re ready to publish a local commit, they push the commit to their own public repository—not the official one. Then, they file a pull request with the main repository, which lets the project maintainer know that an update is ready to be integrated. The pull request also serves as a convenient discussion thread if there are issues with the contributed code.&lt;/p&gt;
+&lt;p&gt;When they&amp;#39;re ready to publish a local commit, they push the commit to their own public repository—not the official one. Then, they file a pull request with the main repository, which lets the project maintainer know that an update is ready to be integrated. The pull request also serves as a convenient discussion thread if there are issues with the contributed code.&lt;/p&gt;
 
-&lt;h4 id=&quot;example-2&quot;&gt;Example&lt;/h4&gt;
+&lt;h4 id=&quot;example&quot;&gt;Example&lt;/h4&gt;
 
 &lt;p&gt;&lt;strong&gt;Fork, clone to local&lt;/strong&gt;&lt;/p&gt;
 
@@ -201,19 +193,15 @@ git push
 &lt;p&gt;&lt;strong&gt;Maintainer integrates their features&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;Inspect the code directly in the pull request&lt;/li&gt;
-  &lt;li&gt;Pull the code into their local repository and manually merge it&lt;/li&gt;
+&lt;li&gt;Inspect the code directly in the pull request&lt;/li&gt;
+&lt;li&gt;Pull the code into their local repository and manually merge it&lt;/li&gt;
 &lt;/ol&gt;
-
-&lt;p&gt;&lt;code&gt;
-git fetch https://bitbucket.org/user/repo feature-branch
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;git fetch https://bitbucket.org/user/repo feature-branch
 # Inspect the changes
 git checkout master
 git merge FETCH_HEAD
-&lt;/code&gt;&lt;/p&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;Maintainer push to public origin&lt;/strong&gt;&lt;/p&gt;
-
 </description>
                 <link>http://lefttree.github.io/programming%20style/2015/06/18/git-workflow</link>
                 <guid>http://lefttree.github.io/programming%20style/2015/06/18/git-workflow</guid>
@@ -225,47 +213,40 @@ git merge FETCH_HEAD
                 <description>&lt;h4 id=&quot;input&quot;&gt;input&lt;/h4&gt;
 
 &lt;p&gt;valueLink&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;
-var WithLink = React.createClass({
-  mixins: [React.addons.LinkedStateMixin],
-  getInitialState: function() {
-    return {message: &#39;Hello!&#39;};
-  },
-  render: function() {
-    return &amp;lt;input type=&quot;text&quot; valueLink={this.linkState(&#39;message&#39;)} /&amp;gt;;
-  }
-});
-&lt;/code&gt;
-&amp;gt; need to include react-with-addons.js&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;WithLink&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createClass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;mixins&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addons&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;LinkedStateMixin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;getInitialState&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Hello!&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;text&amp;quot;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;valueLink&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;linkState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;message&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;need to include react-with-addons.js&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;without valueLink&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;
-var WithoutLink = React.createClass({
-  mixins: [React.addons.LinkedStateMixin],
-  getInitialState: function() {
-    return {message: &#39;Hello!&#39;};
-  },
-  render: function() {
-    var valueLink = this.linkState(&#39;message&#39;);
-    var handleChange = function(e) {
-      valueLink.requestChange(e.target.value);
-    };
-    return &amp;lt;input type=&quot;text&quot; value={valueLink.value} onChange={handleChange} /&amp;gt;;
-  }
-});
-&lt;/code&gt;&lt;/p&gt;
-
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;WithoutLink&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createClass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;mixins&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addons&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;LinkedStateMixin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;getInitialState&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Hello!&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;valueLink&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;linkState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;message&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;handleChange&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;valueLink&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;requestChange&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;text&amp;quot;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;valueLink&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;onChange&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;handleChange&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h4 id=&quot;select&quot;&gt;select&lt;/h4&gt;
 
 &lt;p&gt;no valueLink, use value and onchange event&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;
-&amp;lt;select text=&quot;Bandwidth&quot; value={this.state.bw} changeE={this.bwChange}/&amp;gt;
-&lt;/code&gt;&lt;/p&gt;
-
-</description>
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;&amp;lt;select text=&amp;quot;Bandwidth&amp;quot; value={this.state.bw} changeE={this.bwChange}/&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
                 <link>http://lefttree.github.io/frontend/2015/06/12/react-twoway-binding</link>
                 <guid>http://lefttree.github.io/frontend/2015/06/12/react-twoway-binding</guid>
                 <pubDate>Fri, 12 Jun 2015 00:00:00 -0700</pubDate>
@@ -273,10 +254,10 @@ var WithoutLink = React.createClass({
 
         <item>
                 <title>Gulp Setup</title>
-                <description>&lt;p&gt;&lt;code&gt;sudo npm install -g gulp   &lt;/code&gt;&lt;/p&gt;
+                <description>&lt;p&gt;&lt;code&gt;sudo npm install -g gulp&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;under the development dir
-&lt;code&gt;npm install --save-dev gulp   &lt;/code&gt;&lt;/p&gt;
+&lt;code&gt;npm install --save-dev gulp&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;--save-dev&lt;/code&gt; tells npm to add this module into package.json&lt;/p&gt;
 
@@ -285,56 +266,54 @@ var WithoutLink = React.createClass({
 &lt;p&gt;&lt;code&gt;npm install gulp-jshint gulp-sass gulp-concat gulp-uglify gulp-renam --save-dev&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;example gulpfile.js&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;//require gulp   &lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;gulp&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;  
 
-&lt;p&gt;```
-//require gulp &lt;br /&gt;
-var gulp = require(‘gulp’);  &lt;/p&gt;
+&lt;span class=&quot;c1&quot;&gt;//require plugins  &lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;jshint&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;gulp-jshint&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sass&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;gulp-sass&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;concat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;gulp-concat&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;uglify&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;gulp-uglify&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;rename&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;gulp-rename&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 
-&lt;p&gt;//require plugins&lt;br /&gt;
-var jshint = require(‘gulp-jshint’);
-var sass = require(‘gulp-sass’);
-var concat = require(‘gulp-concat’);
-var uglify = require(‘gulp-uglify’);
-var rename = require(‘gulp-rename’);&lt;/p&gt;
+&lt;span class=&quot;c1&quot;&gt;//lint task  &lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;jshint&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;./js/*.js&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;jshint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;jshint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;reporter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;default&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
 
-&lt;p&gt;//lint task&lt;br /&gt;
-gulp.task(‘jshint’,function(){
-    gulp.src(‘./js/*.js’)
-    .pipe(jshint())
-    .pipe(jshint.reporter(‘default’));
-});&lt;/p&gt;
+&lt;span class=&quot;c1&quot;&gt;//conpile sass  &lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;sass&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;./scss/*.scss&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;./css&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;  
 
-&lt;p&gt;//conpile sass&lt;br /&gt;
-gulp.task(‘sass’,function(){
-    gulp.src(‘./scss/*.scss’)
-    .pipe(sass())
-    .pipe(gulp.dest(‘./css’));
-});  &lt;/p&gt;
+&lt;span class=&quot;c1&quot;&gt;//concat, minify   &lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;scripts&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;./js/*/js&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;concat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;all.js&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;./dist&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;rename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;all.min.js&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;uglify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;./dist&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;  
 
-&lt;p&gt;//concat, minify &lt;br /&gt;
-gulp.task(‘scripts’,function(){
-    gulp.src(‘./js/*/js’)
-    .pipe(concat(‘all.js’))
-    .pipe(gulp.dest(‘./dist’))
-    .pipe(rename(‘all.min.js’))
-    .pipe(uglify())
-    .pipe(gulp.dest(‘./dist’));
-});  &lt;/p&gt;
+&lt;span class=&quot;c1&quot;&gt;//default   &lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;default&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;lint&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;sass&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;scripts&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 
-&lt;p&gt;//default &lt;br /&gt;
-gulp.task(‘default’,function(){
-    gulp.run(‘lint’,’sass’,’scripts’);&lt;/p&gt;
+    &lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;watch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;./js/*.js&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;lint&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;scripts&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
 
-&lt;pre&gt;&lt;code&gt;gulp.watch(&#39;./js/*.js&#39;,function(){
-    gulp.run(&#39;lint&#39;,&#39;scripts&#39;);0
-});
-   
-gulp.watch(&#39;./scss/*.scss&#39;,function(){
-    gulp.run(&#39;sass&#39;);
-}); }); ```
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Gulp’s syntax is just like node, and it use streamming&lt;/p&gt;
+    &lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;watch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;./scss/*.scss&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;gulp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;sass&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Gulp&amp;#39;s syntax is just like node, and it use streamming&lt;/p&gt;
 </description>
                 <link>http://lefttree.github.io/frontend/2015/06/12/gulp-setup</link>
                 <guid>http://lefttree.github.io/frontend/2015/06/12/gulp-setup</guid>
@@ -344,64 +323,53 @@ gulp.watch(&#39;./scss/*.scss&#39;,function(){
         <item>
                 <title>Git commit style</title>
                 <description>&lt;h2 id=&quot;structure&quot;&gt;Structure&lt;/h2&gt;
-&lt;p&gt;i
-```
-type: subject&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;type: subject
 
-&lt;p&gt;body&lt;/p&gt;
+body
 
-&lt;p&gt;footer
-```&lt;/p&gt;
-
+footer
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;type&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;feat&lt;/strong&gt;(new feature)&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;fix&lt;/strong&gt;(bug fix)&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;docs&lt;/strong&gt;(changes to doc)&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;style&lt;/strong&gt;(formatting, missing semi colons, etc; no code change)&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;refactor&lt;/strong&gt;(refactoring production code)&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;test&lt;/strong&gt;(adding missing tests, refactoring tests, no production code change)&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;chore&lt;/strong&gt;(updating grunt tasks etc; no production code change)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;feat&lt;/strong&gt;(new feature)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;fix&lt;/strong&gt;(bug fix)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;docs&lt;/strong&gt;(changes to doc)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;style&lt;/strong&gt;(formatting, missing semi colons, etc; no code change)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;refactor&lt;/strong&gt;(refactoring production code)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;test&lt;/strong&gt;(adding missing tests, refactoring tests, no production code change)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;chore&lt;/strong&gt;(updating grunt tasks etc; no production code change)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+&lt;p&gt;##Example&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;feat: Summarize changes in around 50 characters or less
 
-&lt;p&gt;```
-feat: Summarize changes in around 50 characters or less&lt;/p&gt;
-
-&lt;p&gt;More detailed explanatory text, if necessary. Wrap it to about 72
+More detailed explanatory text, if necessary. Wrap it to about 72
 characters or so. In some contexts, the first line is treated as the
 subject of the commit and the rest of the text as the body. The
 blank line separating the summary from the body is critical (unless
-you omit the body entirely); various tools like &lt;code&gt;log&lt;/code&gt;, &lt;code&gt;shortlog&lt;/code&gt;
-and &lt;code&gt;rebase&lt;/code&gt; can get confused if you run the two together.&lt;/p&gt;
+you omit the body entirely); various tools like `log`, `shortlog`
+and `rebase` can get confused if you run the two together.
 
-&lt;p&gt;Explain the problem that this commit is solving. Focus on why you
+Explain the problem that this commit is solving. Focus on why you
 are making this change as opposed to how (the code explains that).
 Are there side effects or other unintuitive consequenses of this
-change? Here’s the place to explain them.&lt;/p&gt;
+change? Here&amp;#39;s the place to explain them.
 
-&lt;p&gt;Further paragraphs come after blank lines.&lt;/p&gt;
+Further paragraphs come after blank lines.
 
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Bullet points are okay, too&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Typically a hyphen or asterisk is used for the bullet, preceded
-by a single space, with blank lines in between, but conventions
-vary here&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+ - Bullet points are okay, too
 
-&lt;p&gt;If you use an issue tracker, put references to them at the bottom,
-like this:&lt;/p&gt;
+ - Typically a hyphen or asterisk is used for the bullet, preceded
+   by a single space, with blank lines in between, but conventions
+   vary here
 
-&lt;p&gt;Resolves: #123
+If you use an issue tracker, put references to them at the bottom,
+like this:
+
+Resolves: #123
 See also: #456, #789
-```&lt;/p&gt;
-</description>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
                 <link>http://lefttree.github.io/programming%20style/2015/06/07/git-commit-style</link>
                 <guid>http://lefttree.github.io/programming%20style/2015/06/07/git-commit-style</guid>
                 <pubDate>Sun, 07 Jun 2015 00:00:00 -0700</pubDate>
@@ -412,59 +380,52 @@ See also: #456, #789
                 <description>&lt;p&gt;&lt;a href=&quot;http://slides.html5rocks.com/&quot;&gt;HTML5 Rocks Slide&lt;/a&gt;
 &lt;a href=&quot;diveintohtml5.info&quot;&gt;Dive into HTML5&lt;/a&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;offlinestorage&quot;&gt;Offline/Storage&lt;/h3&gt;
-
-&lt;p&gt;&lt;code&gt;
-// use localStorage for persistent storage
-// use sessionStorage for per tab storage
-saveButton.addEventListener(&#39;click&#39;, function () {
-  window.localStorage.setItem(&#39;value&#39;, area.value);
-  window.localStorage.setItem(&#39;timestamp&#39;, (new Date()).getTime());
-}, false);
-textarea.value = window.localStorage.getItem(&#39;value&#39;);
-&lt;/code&gt;&lt;/p&gt;
-
+&lt;h3 id=&quot;offline/storage&quot;&gt;Offline/Storage&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// use localStorage for persistent storage&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// use sessionStorage for per tab storage&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;saveButton&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;click&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;localStorage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;value&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;area&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;localStorage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;timestamp&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;textarea&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;localStorage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;value&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;you can use Modernizr to detect support for HTML5 Storage.&lt;/p&gt;
-
-&lt;p&gt;```
-if (Modernizr.localstorage) {
-  // window.localStorage is available!
-} else {
-  // no native support for HTML5 storage :(
-  // maybe try dojox.storage or a third-party solution
-}&lt;/p&gt;
-
-&lt;p&gt;```
-&amp;gt;The data is actually stored as a string.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Modernizr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;localstorage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// window.localStorage is available!&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// no native support for HTML5 storage :(&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// maybe try dojox.storage or a third-party solution&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The data is actually stored as a string.&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;&lt;code&gt;setItem()&lt;/code&gt; and &lt;code&gt;getItem()&lt;/code&gt;
 &lt;code&gt;removeItem()&lt;/code&gt; and &lt;code&gt;clear()&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;Track when storage changes&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;
-if (window.addEventListener) {
-  window.addEventListener(&quot;storage&quot;, handle_storage, false);
-} else {
-  window.attachEvent(&quot;onstorage&quot;, handle_storage);
-};
-&lt;/code&gt;&lt;/p&gt;
-
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;storage&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;handle_storage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;attachEvent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;onstorage&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;handle_storage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;“5 megabytes” is how much storage space each origin gets by default.&lt;/p&gt;
 
 &lt;h3 id=&quot;web-sql-database&quot;&gt;Web SQL Database&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;db&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;openDatabase&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;DBName&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;1.0&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;description&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1024&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1024&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//5MB&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;transaction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;tx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;tx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;executeSql&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;SELECT * FROM test&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[],&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;successCallback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;errorCallback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;###IndexedDB&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;
-var db = window.openDatabase(&quot;DBName&quot;, &quot;1.0&quot;, &quot;description&quot;, 5*1024*1024); //5MB
-db.transaction(function(tx) {
-  tx.executeSql(&quot;SELECT * FROM test&quot;, [], successCallback, errorCallback);
-});
-&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Act like a dictionary to me&lt;/p&gt;
 
-&lt;h3 id=&quot;indexeddb&quot;&gt;IndexedDB&lt;/h3&gt;
-
-&lt;p&gt;Act like a dictionary to me
-&amp;gt;the example is not complete&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;the example is not complete&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;h3 id=&quot;application-cache&quot;&gt;Application Cache&lt;/h3&gt;
 
@@ -474,74 +435,62 @@ A web browser that implements HTML5 offline applications will read the list of U
 &lt;p&gt;An offline web application revolves around a cache manifest file. &lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;
-&amp;lt;html manifest=&quot;cache.manifest&quot;&amp;gt;
+&amp;lt;html manifest=&amp;quot;cache.manifest&amp;quot;&amp;gt;
 &lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;applicationCache&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;updateready&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;applicationCache&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;applicationCache&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;UPDATEREADY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;applicationCache&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;swapCache&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;confirm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;A new version of this site is available. Load it?&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;reload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;CACHE MANIFEST
+# version 1.0.0
 
-&lt;p&gt;&lt;code&gt;
-window.applicationCache.addEventListener(&#39;updateready&#39;, function(e) {
-  if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
-    window.applicationCache.swapCache();
-    if (confirm(&#39;A new version of this site is available. Load it?&#39;)) {
-      window.location.reload();
-    }
-  }
-}, false);
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;```
-CACHE MANIFEST
-# version 1.0.0&lt;/p&gt;
-
-&lt;p&gt;CACHE:
+CACHE:
 /html5/src/logic.js
 /html5/src/style.css
-/html5/src/background.png&lt;/p&gt;
+/html5/src/background.png
 
-&lt;p&gt;NETWORK:
+NETWORK:
 *
-```&lt;/p&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Your cache manifest file can be located anywhere on your web server, but it must be served with the content type &lt;strong&gt;text/cache-manifest&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;Every page of your web application needs a manifest attribute that points to the cache manifest for the entire application.&lt;/p&gt;
+&lt;p&gt;Every page of your web application needs a manifest attribute that points to the cache manifest for the entire application.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h4 id=&quot;manifest-file&quot;&gt;manifest file&lt;/h4&gt;
 
-&lt;p&gt;Divided into three parts: the “explicit” section, the “fallback” section, and the “online whitelist” section. If no section headers, default in the “explicit” section&lt;/p&gt;
+&lt;p&gt;Divided into three parts: the “explicit” section, the “fallback” section, and the “online whitelist” section. If no section headers, default in the &amp;quot;explicit&amp;quot; section&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;If multipage, should list all HTML pages in the manifest file&lt;/p&gt;
+&lt;p&gt;If multipage, should list all HTML pages in the manifest file&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h5 id=&quot;network-sections&quot;&gt;Network Sections&lt;/h5&gt;
-
-&lt;p&gt;&lt;code&gt;
-CACHE MANIFEST
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;CACHE MANIFEST
 NETWORK:
 /tracking.cgi
 CACHE:
 /clock.css
 /clock.js
 /clock-face.jpg
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;NETWORK: the beginning of the “online whitelist” section, resources in this section are never cached and are not avaiable offline
-CACHE: the beginning of the “explicit” section&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;NETWORK: the beginning of the &amp;quot;online whitelist&amp;quot; section, resources in this section are never cached and are not avaiable offline
+CACHE: the beginning of the &amp;quot;explicit&amp;quot; section&lt;/p&gt;
 
 &lt;h5 id=&quot;fallback-sections&quot;&gt;Fallback Sections&lt;/h5&gt;
-
-&lt;p&gt;&lt;code&gt;
-CACHE MANIFEST
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;CACHE MANIFEST
 FALLBACK:
 / /offline.html
 NETWORK:
 *
-&lt;/code&gt;&lt;/p&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;blockquote&gt;
-  &lt;p&gt;This is important. It means that you can have an offline web application that “lazily” adds pages as you visit them. You don’t need to list every single one of your HTML pages in your cache manifest.&lt;/p&gt;
+&lt;p&gt;This is important. It means that you can have an offline web application that “lazily” adds pages as you visit them. You don’t need to list every single one of your HTML pages in your cache manifest.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;The single character (/) will match any page on your site, not just the home page. &lt;/p&gt;
@@ -549,10 +498,10 @@ NETWORK:
 &lt;p&gt;If your browser doesn’t find the page in the appcache, instead of displaying an error message, it will display the page /offline.html&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;Is this example complete? No. Wikipedia is more than HTML files. It uses common CSS, JavaScript, and images on each page. Each of these resources would need to be listed explicitly in the CACHE: section of the manifest file, in order for pages to display and behave properly offline.&lt;/p&gt;
+&lt;p&gt;Is this example complete? No. Wikipedia is more than HTML files. It uses common CSS, JavaScript, and images on each page. Each of these resources would need to be listed explicitly in the CACHE: section of the manifest file, in order for pages to display and behave properly offline.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h5 id=&quot;windowapplicationcache&quot;&gt;window.applicationCache&lt;/h5&gt;
+&lt;h5 id=&quot;window.applicationcache&quot;&gt;window.applicationCache&lt;/h5&gt;
 
 &lt;p&gt;Events:
 * downloading
@@ -562,32 +511,36 @@ NETWORK:
 * updateready
 * error&lt;/p&gt;
 
-&lt;h5 id=&quot;developing--debugging&quot;&gt;Developing &amp;amp; Debugging&lt;/h5&gt;
+&lt;h5 id=&quot;developing-&amp;amp;-debugging&quot;&gt;Developing &amp;amp; Debugging&lt;/h5&gt;
 
 &lt;p&gt;how your browser checks whether a cache manifest file has changed. 
 &lt;strong&gt;3-phase process&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;Via normal HTTP semantics, your browser will check whether the cache manifest has expired. 
+&lt;li&gt;Via normal HTTP semantics, your browser will check whether the cache manifest has expired. 
 Just like any other file being served over HTTP, your &lt;strong&gt;web server&lt;/strong&gt; will typically include &lt;strong&gt;meta-information&lt;/strong&gt; about the file in the HTTP response headers. Some of these HTTP headers (Expires and Cache-Control) tell your browser how it is allowed to cache the file without ever asking the server whether it has changed. &lt;/li&gt;
-  &lt;li&gt;If the cache manifest has expired (according to its HTTP headers), then your browser will ask the server &lt;strong&gt;whether there is a new version, and if so, the browser will download it&lt;/strong&gt;. To do this, your browser issues an HTTP request that includes that &lt;strong&gt;last-modified date&lt;/strong&gt; of the cache manifest, which your web server included in the HTTP response headers the last time your browser downloaded the manifest file. If the web server determines that the manifest file hasn’t changed since that date, it will simply return a 304 (Not Modified) status. &lt;/li&gt;
-  &lt;li&gt;If the web server thinks the manifest file has changed since that date, it will return an HTTP 200 (OK) status code, followed by the contents of the new file, along with new Cache-Control headers and a new last-modified date, so that steps 1 and 2 will work properly the next time. (HTTP is cool; web servers are always planning for the future. If your web server absolutely must send you a file, it does everything it can to ensure that it doesn’t need to send it twice for no reason.) &lt;strong&gt;Once it’s downloaded the new cache manifest file, your browser will check the contents against the copy it downloaded last time.&lt;/strong&gt; If the contents of the cache manifest file are the same as they were last time, your browser won’t re-download any of the resources listed in the manifest.&lt;/li&gt;
+&lt;li&gt;If the cache manifest has expired (according to its HTTP headers), then your browser will ask the server &lt;strong&gt;whether there is a new version, and if so, the browser will download it&lt;/strong&gt;. To do this, your browser issues an HTTP request that includes that &lt;strong&gt;last-modified date&lt;/strong&gt; of the cache manifest, which your web server included in the HTTP response headers the last time your browser downloaded the manifest file. If the web server determines that the manifest file hasn’t changed since that date, it will simply return a 304 (Not Modified) status. &lt;/li&gt;
+&lt;li&gt;If the web server thinks the manifest file has changed since that date, it will return an HTTP 200 (OK) status code, followed by the contents of the new file, along with new Cache-Control headers and a new last-modified date, so that steps 1 and 2 will work properly the next time. (HTTP is cool; web servers are always planning for the future. If your web server absolutely must send you a file, it does everything it can to ensure that it doesn’t need to send it twice for no reason.) &lt;strong&gt;Once it’s downloaded the new cache manifest file, your browser will check the contents against the copy it downloaded last time.&lt;/strong&gt; If the contents of the cache manifest file are the same as they were last time, your browser won’t re-download any of the resources listed in the manifest.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;&lt;strong&gt;Debug&lt;/strong&gt;
 Step 1:
-So here’s one thing you should absolutely do: reconfigure your web server so that your cache manifest file is not cacheable by HTTP semantics.
-&amp;gt;you should either qualify this with a &lt;files&gt; directive so it only affects your cache manifest file, or create a subdirectory that contains nothing but this .htaccess file and your cache manifest file.&lt;/files&gt;&lt;/p&gt;
+So here’s one thing you should absolutely do: reconfigure your web server so that your cache manifest file is not cacheable by HTTP semantics.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;you should either qualify this with a &lt;Files&gt; directive so it only affects your cache manifest file, or create a subdirectory that contains nothing but this .htaccess file and your cache manifest file.&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;Step 2:
 The easiest way I’ve found to accomplish this is to include a comment line with a revision number.
-&lt;code&gt;
-CACHE MANIFEST
-# rev 43
-clock.js
-clock.css
-&lt;/code&gt;&lt;/p&gt;
+```
+CACHE MANIFEST&lt;/p&gt;
 
+&lt;h1 id=&quot;rev-43&quot;&gt;rev 43&lt;/h1&gt;
+
+&lt;p&gt;clock.js
+clock.css
+```&lt;/p&gt;
 </description>
                 <link>http://lefttree.github.io/web/2015/06/04/HTML5-Storage-Cache</link>
                 <guid>http://lefttree.github.io/web/2015/06/04/HTML5-Storage-Cache</guid>
@@ -596,14 +549,14 @@ clock.css
 
         <item>
                 <title>Javascript Best Practices</title>
-                <description>&lt;h3 id=&quot;easy-short--readable-names&quot;&gt;Easy, Short &amp;amp; Readable Names&lt;/h3&gt;
+                <description>&lt;h3 id=&quot;easy,-short-&amp;amp;-readable-names&quot;&gt;Easy, Short &amp;amp; Readable Names&lt;/h3&gt;
 
 &lt;h4 id=&quot;variables-name&quot;&gt;Variables Name&lt;/h4&gt;
 
 &lt;p&gt;&lt;strong&gt;Hungarian notation&lt;/strong&gt; is a good variable name scheme to adopt.&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;typeName&lt;/p&gt;
+&lt;p&gt;typeName&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;Examples:
@@ -612,10 +565,11 @@ clock.css
 - cApples : count of items&lt;/p&gt;
 
 &lt;h4 id=&quot;function-name&quot;&gt;Function Name&lt;/h4&gt;
+
 &lt;p&gt;Function name should start with a lowercase verb following &lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;verbSomething&lt;/p&gt;
+&lt;p&gt;verbSomething&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;Examples:
@@ -623,6 +577,7 @@ clock.css
 - getResult()&lt;/p&gt;
 
 &lt;h4 id=&quot;class-name&quot;&gt;Class Name&lt;/h4&gt;
+
 &lt;p&gt;the first char should be capital
 Examples:
 - Apple()
@@ -631,29 +586,23 @@ Examples:
 &lt;h3 id=&quot;avoid-global&quot;&gt;Avoid Global&lt;/h3&gt;
 
 &lt;h4 id=&quot;revealing-module-pattern&quot;&gt;revealing module pattern&lt;/h4&gt;
-
-&lt;p&gt;&lt;code&gt;
-myNameSpace = function(){
-    var current = null;
-    function init(){};
-    function change(){};
-    function verify(){};
-    return{
-        init: init,
-        change: change
-    }
-}();
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;If you don’t need any of your vars or functions to be avaiable to the outside, simply wrap the whole construct in another set of parentheses to execute it without assigning any name.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;
-(function(){
-    var current = null;
-    function init(){}
-})();
-&lt;/code&gt;&lt;/p&gt;
-
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;myNameSpace&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;current&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){};&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;change&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){};&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;verify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){};&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;change&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;change&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If you don&amp;#39;t need any of your vars or functions to be avaiable to the outside, simply wrap the whole construct in another set of parentheses to execute it without assigning any name.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;current&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;})();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3 id=&quot;use-strict&quot;&gt;Use strict&lt;/h3&gt;
 
 &lt;p&gt;Check code quality with JSLint&lt;/p&gt;
@@ -669,17 +618,11 @@ myNameSpace = function(){
 &lt;h3 id=&quot;use-shortcut-notation&quot;&gt;Use Shortcut Notation&lt;/h3&gt;
 
 &lt;p&gt;Examples:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;
-var direction = ( x &amp;gt; 100 ) ? 1 : -1
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;
-var x = v || 10;
-&lt;/code&gt;&lt;/p&gt;
-
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;direction&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;blockquote&gt;
-  &lt;p&gt;this would automatically give x a value of 10 if v is not defined&lt;/p&gt;
+&lt;p&gt;this would automatically give x a value of 10 if v is not defined&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&quot;modularize---one-function-per-task&quot;&gt;Modularize - One Function per Task&lt;/h3&gt;
@@ -691,88 +634,85 @@ var x = v || 10;
 &lt;p&gt;These include &lt;em&gt;any text used in elements you create&lt;/em&gt;, &lt;em&gt;CSS class&lt;/em&gt;, &lt;em&gt;ID names&lt;/em&gt; and &lt;em&gt;general parameters of the interface you build&lt;/em&gt;.&lt;/p&gt;
 
 &lt;p&gt;Examples: easy youtube player project config object&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;
-/*
-  This is the configuration of the player.meng Most likely you will
-  never have to change anything here, but it is good to be able 
-  to, isn&#39;t it? 
-*/
-config = {
-  CSS:{
-    /* 
-      IDs used in the document. The script will get access to 
-      the different elements of the player with these IDs, so 
-      if you change them in the HTML below, make sure to also 
-      change the name here!
-    */
-    IDs:{
-      container:&#39;eytp-maincontainer&#39;,
-      canvas:&#39;eytp-playercanvas&#39;,
-      player:&#39;eytp-player&#39;,
-      controls:&#39;eytp-controls&#39;,
-      volumeField:&#39;eytp-volume&#39;,
-      volumeBar:&#39;eytp-volumebar&#39;,
-      playerForm:&#39;eytp-playerform&#39;,
-      urlField:&#39;eytp-url&#39;,
-      sizeControl:&#39;eytp-sizecontrol&#39;,
-      searchField:&#39;eytp-searchfield&#39;,
-      searchForm:&#39;eytp-search&#39;,
-      searchOutput:&#39;eytp-searchoutput&#39;
-    },
-    /*
-      These are the names of the CSS classes, the player adds
-      dynamically to the volume bar in certain 
-      situations.
-    */
-    classes:{
-      maxvolume:&#39;maxed&#39;,
-      disabled:&#39;disabled&#39;
-    }
-  },
-  /* 
-    That is the end of the CSS definitions, from here on 
-    you can change settings of the player itself. 
-  */
-  application:{
-    /*
-      The YouTube API base URL. This changed during development of this,
-      so I thought it useful to make it a parameter.
-    */
-    youtubeAPI:&#39;http://gdata.youtube.com/apiplayer/cl.swf&#39;,
-    /* 
-      The YouTube Developer key,
-      please replace this with your own when you host the player!!!!!
-    */
-    devkey:&#39;AI39si7d...Y9fu_cQ&#39;,
-    /*
-      The volume increase/decrease in percent and the volume message 
-      shown in a hidden form field (for screen readers). The $x in the 
-      message will be replaced with the real value.
-    */
-    volumeChange:10,
-    volumeMessage:&#39;volume $x percent&#39;,
-    /*
-      Amount of search results and the error message should there 
-      be no results.
-    */
-    searchResults:6,
-    loadingMessage:&#39;Searching, please wait&#39;,
-    noVideosFoundMessage:&#39;No videos found : (&#39;,
-    /*
-      Amount of seconds to repeat when the user hits the rewind 
-      button.
-    */
-    secondsToRepeat:10,
-    /*
-      Movie dimensions.
-    */
-    movieWidth:400,
-    movieHeight:300
-  }  
-}
-&lt;/code&gt;&lt;/p&gt;
-
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;cm&quot;&gt;/*&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;  This is the configuration of the player.meng Most likely you will&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;  never have to change anything here, but it is good to be able &lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;  to, isn&amp;#39;t it? &lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;*/&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;config&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;CSS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;cm&quot;&gt;/* &lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;      IDs used in the document. The script will get access to &lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;      the different elements of the player with these IDs, so &lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;      if you change them in the HTML below, make sure to also &lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;      change the name here!&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;    */&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;IDs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;container&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;eytp-maincontainer&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;canvas&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;eytp-playercanvas&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;player&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;eytp-player&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;controls&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;eytp-controls&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;volumeField&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;eytp-volume&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;volumeBar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;eytp-volumebar&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;playerForm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;eytp-playerform&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;urlField&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;eytp-url&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;sizeControl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;eytp-sizecontrol&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;searchField&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;eytp-searchfield&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;searchForm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;eytp-search&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;searchOutput&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;eytp-searchoutput&amp;#39;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;cm&quot;&gt;/*&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;      These are the names of the CSS classes, the player adds&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;      dynamically to the volume bar in certain &lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;      situations.&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;    */&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;classes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;maxvolume&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;maxed&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;disabled&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;disabled&amp;#39;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+  &lt;span class=&quot;cm&quot;&gt;/* &lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;    That is the end of the CSS definitions, from here on &lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;    you can change settings of the player itself. &lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;  */&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;cm&quot;&gt;/*&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;      The YouTube API base URL. This changed during development of this,&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;      so I thought it useful to make it a parameter.&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;    */&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;youtubeAPI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;http://gdata.youtube.com/apiplayer/cl.swf&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;cm&quot;&gt;/* &lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;      The YouTube Developer key,&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;      please replace this with your own when you host the player!!!!!&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;    */&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;devkey&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;AI39si7d...Y9fu_cQ&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;cm&quot;&gt;/*&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;      The volume increase/decrease in percent and the volume message &lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;      shown in a hidden form field (for screen readers). The $x in the &lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;      message will be replaced with the real value.&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;    */&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;volumeChange&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;volumeMessage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;volume $x percent&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;cm&quot;&gt;/*&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;      Amount of search results and the error message should there &lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;      be no results.&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;    */&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;searchResults&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;loadingMessage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Searching, please wait&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;noVideosFoundMessage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;No videos found : (&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;cm&quot;&gt;/*&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;      Amount of seconds to repeat when the user hits the rewind &lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;      button.&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;    */&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;secondsToRepeat&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;cm&quot;&gt;/*&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;      Movie dimensions.&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;    */&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;movieWidth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;400&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;movieHeight&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;300&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;  
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3 id=&quot;avoid-heavy-nesting&quot;&gt;Avoid Heavy Nesting&lt;/h3&gt;
 
 &lt;p&gt;Use functions to avoid it&lt;/p&gt;
@@ -780,27 +720,22 @@ config = {
 &lt;h3 id=&quot;optimize-loops&quot;&gt;Optimize Loops&lt;/h3&gt;
 
 &lt;h4 id=&quot;for-loop-read-length-everytime&quot;&gt;For loop read length everytime&lt;/h4&gt;
-
-&lt;p&gt;&lt;code&gt;
-var names = [&#39;George&#39;,&#39;Ringo&#39;,&#39;Paul&#39;,&#39;John&#39;];
-for(var i=0;i &amp;lt; names.length;i++){
-  doSomeThingWith(names[i]);
-}
-&lt;/code&gt;&lt;/p&gt;
-
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;names&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;George&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Ringo&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Paul&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;John&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;names&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;doSomeThingWith&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;names&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;To Fix&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;
-var names = [&#39;George&#39;,&#39;Ringo&#39;,&#39;Paul&#39;,&#39;John&#39;];
-for(var i=0,j=names.length;i &amp;lt; j;i++){
-  doSomeThingWith(names[i]);
-}
-&lt;/code&gt;&lt;/p&gt;
-
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;names&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;George&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Ringo&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Paul&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;John&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;names&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;doSomeThingWith&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;names&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h4 id=&quot;keep-computation-heavy-code-outside&quot;&gt;Keep computation-heavy code outside&lt;/h4&gt;
+
 &lt;ul&gt;
-  &lt;li&gt;regular expression&lt;/li&gt;
-  &lt;li&gt;DOM manipulation&lt;/li&gt;
+&lt;li&gt;regular expression&lt;/li&gt;
+&lt;li&gt;DOM manipulation&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;keep-dom-access-to-a-minimum&quot;&gt;Keep DOM Access to a minimum&lt;/h3&gt;
@@ -808,27 +743,24 @@ for(var i=0,j=names.length;i &amp;lt; j;i++){
 &lt;h3 id=&quot;do-not-trust-any-data&quot;&gt;Do not Trust Any Data&lt;/h3&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;It is very important to tes the type of parameters send to your functions(using the &lt;code&gt;typeof&lt;/code&gt; keyword)&lt;/li&gt;
+&lt;li&gt;It is very important to tes the type of parameters send to your functions(using the &lt;code&gt;typeof&lt;/code&gt; keyword)&lt;/li&gt;
 &lt;/ol&gt;
-
-&lt;p&gt;&lt;code&gt;
-function buildMemberList(members){
-  if(typeof members === &#39;object&#39; &amp;amp;&amp;amp; 
-     typeof members.slice === &#39;function&#39;){
-    var all = members.length;
-    var ul = document.createElement(&#39;ul&#39;);
-    for(var i=0;i &amp;lt; all;i++){
-      var li = document.createElement(&#39;li&#39;);
-      li.appendChild(document.createTextNode(members[i].name));
-      ul.appendChild(li);
-    }
-    return ul;
-  }
-}
-&lt;/code&gt;&lt;/p&gt;
-
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;buildMemberList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;members&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;members&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;object&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; 
+     &lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;members&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;slice&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;function&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;all&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;members&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ul&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;ul&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+      &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;li&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;li&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;li&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;appendChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createTextNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;members&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;ul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;appendChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;li&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;ol&gt;
-  &lt;li&gt;Compare and check info read from the DOM&lt;/li&gt;
+&lt;li&gt;Compare and check info read from the DOM&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h3 id=&quot;do-not-create-too-much-with-javascript&quot;&gt;Do not create too much with Javascript&lt;/h3&gt;
@@ -838,13 +770,13 @@ function buildMemberList(members){
 &lt;h3 id=&quot;do-not-use-new-object&quot;&gt;Do not Use New Object&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Use {} instead of new Object()&lt;/li&gt;
-  &lt;li&gt;Use “” instead of new String()&lt;/li&gt;
-  &lt;li&gt;Use 0 instead of new Number()&lt;/li&gt;
-  &lt;li&gt;Use false instead of new Boolean()&lt;/li&gt;
-  &lt;li&gt;Use [] instead of new Array()&lt;/li&gt;
-  &lt;li&gt;Use /()/ instead of new RegExp()&lt;/li&gt;
-  &lt;li&gt;Use function (){} instead of new function()&lt;/li&gt;
+&lt;li&gt;Use {} instead of new Object()&lt;/li&gt;
+&lt;li&gt;Use &amp;quot;&amp;quot; instead of new String()&lt;/li&gt;
+&lt;li&gt;Use 0 instead of new Number()&lt;/li&gt;
+&lt;li&gt;Use false instead of new Boolean()&lt;/li&gt;
+&lt;li&gt;Use [] instead of new Array()&lt;/li&gt;
+&lt;li&gt;Use /()/ instead of new RegExp()&lt;/li&gt;
+&lt;li&gt;Use function (){} instead of new function()&lt;/li&gt;
 &lt;/ul&gt;
 </description>
                 <link>http://lefttree.github.io/programming%20style/2015/06/03/JS-Best-Practices</link>
@@ -855,128 +787,107 @@ function buildMemberList(members){
         <item>
                 <title>Javascript Good Parts</title>
                 <description>&lt;h2 id=&quot;part-1-good-parts&quot;&gt;Part 1 Good Parts&lt;/h2&gt;
+
 &lt;p&gt;Javascript is getting more and more popular now&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;Good Parts:
-	- function
-	- loose typing
-	- dynamic objects
-	- object literal notation
+&lt;p&gt;Good Parts:
+  - function
+  - loose typing
+  - dynamic objects
+  - object literal notation
 Bad Parts:
-	- Global variables(&lt;strong&gt;They are evil!&lt;/strong&gt;)&lt;/p&gt;
+  - Global variables(&lt;strong&gt;They are evil!&lt;/strong&gt;)&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h2 id=&quot;part-2-grammar&quot;&gt;Part 2 Grammar&lt;/h2&gt;
+
 &lt;p&gt;###Comment&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;- //  (recommended)
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;- //  (recommended)
 - /* */  (Not safe because it can occur in regex)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;number&quot;&gt;Number&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;###Number&lt;/p&gt;
 
 &lt;p&gt;JS only has a single number type. Internally, it is a 64-bit floating point. So 1 and 1.0 are the same value.
 isNaN() function to detect NaN.&lt;/p&gt;
 
-&lt;h3 id=&quot;strings&quot;&gt;Strings&lt;/h3&gt;
+&lt;p&gt;###Strings&lt;/p&gt;
 
 &lt;p&gt;All characters are 16 bits wide. Immutable.&lt;/p&gt;
 
 &lt;h2 id=&quot;part-3-objects&quot;&gt;Part 3 Objects&lt;/h2&gt;
+
 &lt;p&gt;###JS types&lt;/p&gt;
 
 &lt;p&gt;Immutable
-	- Number
-	- String
-	- boolean
+    - Number
+    - String
+    - boolean
 null
 undefined&lt;/p&gt;
 
 &lt;p&gt;objects
-	- property, can be any string, including &lt;strong&gt;empty string&lt;/strong&gt;
-	- value, can be any JS value except &lt;strong&gt;undefined&lt;/strong&gt;&lt;/p&gt;
+    - property, can be any string, including &lt;strong&gt;empty string&lt;/strong&gt;
+    - value, can be any JS value except &lt;strong&gt;undefined&lt;/strong&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;retrieval&quot;&gt;Retrieval&lt;/h3&gt;
+&lt;p&gt;###Retrieval&lt;/p&gt;
 
 &lt;p&gt;retrieve a nonexistent member&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;javascript
-flight.status // undefined
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;The&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td&gt;operator can be used to fill in default values:&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;&lt;code&gt;javascript
-var middle = stooge[&quot;middle-name&quot;] || &quot;(none)&quot;;
-&lt;/code&gt;&lt;/p&gt;
-
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;flight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;status&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// undefined&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The || operator can be used to fill in default values:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;middle&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;stooge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;middle-name&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;(none)&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Attempting to retrieve valus from &lt;strong&gt;undefined&lt;/strong&gt; will throw a &lt;strong&gt;TypeError&lt;/strong&gt; exception. Can be guarded against with &amp;amp;&amp;amp; operator:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;javascript
-flight.equipment &amp;amp;&amp;amp; flight.equipment.model
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;reference&quot;&gt;Reference&lt;/h3&gt;
-&lt;p&gt;Objects are passed around by reference. They are &lt;strong&gt;never copied&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;javascript
-    var x = another_x;
-    x.nickname = &quot;nick&quot;;
-    var name = another_x.nickname;
-    // name is &quot;nick&quot; because x and another_x are references to the same obj
-&lt;/code&gt;&lt;br /&gt;
-Initialization&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;javascript
-    var a = {}, b = {}, c = {}; //a, b and c are differenct obj
-	var a = b = c = {}; //a, b and c refer to the same empty obj
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;prototype&quot;&gt;Prototype&lt;/h3&gt;
-&lt;p&gt;The prototype link is used only in retrieval, has no effect on updating.
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;flight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;equipment&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;flight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;equipment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;model&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;###Reference
+Objects are passed around by reference. They are &lt;strong&gt;never copied&lt;/strong&gt;.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;another_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;nickname&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;nick&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;another_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;nickname&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// name is &amp;quot;nick&amp;quot; because x and another_x are references to the same obj&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Initialization&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{};&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//a, b and c are differenct obj&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{};&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//a, b and c refer to the same empty obj&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;###Prototype
+The prototype link is used only in retrieval, has no effect on updating.
 When retrieve a property, it would search the prototype link.&lt;/p&gt;
 
-&lt;h3 id=&quot;reflection&quot;&gt;Reflection&lt;/h3&gt;
-&lt;p&gt;typeof 
-&amp;gt; &lt;strong&gt;Note:&lt;/strong&gt;
-&amp;gt; any property on the protorype chain can produce a value&lt;/p&gt;
-
-&lt;p&gt;hasOwnProperty
-	- it does not look at the prototype chain&lt;/p&gt;
-
-&lt;h3 id=&quot;enumeration&quot;&gt;Enumeration&lt;/h3&gt;
-&lt;p&gt;the &lt;strong&gt;for in&lt;/strong&gt; statement can loop over all the property names in an obj. It will include all properties – including functions and prototypes properties. So it is necessary to &lt;strong&gt;filter&lt;/strong&gt; out the values.
-	- hasOwnProperty
-	- typeof &lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;javascript
-	var name;
-	for(name in another_stooge){
-		if(typeof(another_stooge[name]) !== &#39;function&#39;){
-			document.writeln(name + &#39;: &#39; + another_stooge[name]);
-		}
-	}
-&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;###Reflection
+typeof &lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;
+any property on the protorype chain can produce a value&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;hasOwnProperty
+    - it does not look at the prototype chain&lt;/p&gt;
+
+&lt;p&gt;###Enumeration
+the &lt;strong&gt;for in&lt;/strong&gt; statement can loop over all the property names in an obj. It will include all properties -- including functions and prototypes properties. So it is necessary to &lt;strong&gt;filter&lt;/strong&gt; out the values.
+    - hasOwnProperty
+    - typeof &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;another_stooge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;another_stooge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!==&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;function&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;writeln&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;: &amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;another_stooge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;
 There is no guarantee on the order of properties.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&quot;delete&quot;&gt;Delete&lt;/h3&gt;
-&lt;p&gt;It will remove a property from the object &lt;strong&gt;if it has one&lt;/strong&gt;. It will &lt;strong&gt;not&lt;/strong&gt; touch any  of the objects in the prototype linkage.&lt;/p&gt;
+&lt;p&gt;###Delete
+It will remove a property from the object &lt;strong&gt;if it has one&lt;/strong&gt;. It will &lt;strong&gt;not&lt;/strong&gt; touch any  of the objects in the prototype linkage.&lt;/p&gt;
 
-&lt;h3 id=&quot;global-abatement&quot;&gt;Global Abatement&lt;/h3&gt;
-&lt;p&gt;Avoid global variable. Skip this part, use module pattern.&lt;/p&gt;
+&lt;p&gt;###Global Abatement
+Avoid global variable. Skip this part, use module pattern.&lt;/p&gt;
 </description>
                 <link>http://lefttree.github.io/web/2015/06/01/Javascript-theGoodParts</link>
                 <guid>http://lefttree.github.io/web/2015/06/01/Javascript-theGoodParts</guid>

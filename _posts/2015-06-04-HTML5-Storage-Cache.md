@@ -12,7 +12,7 @@ tag: [web, html5]
 
 ### Offline/Storage
 
-```
+```javascript
 // use localStorage for persistent storage
 // use sessionStorage for per tab storage
 saveButton.addEventListener('click', function () {
@@ -24,7 +24,7 @@ textarea.value = window.localStorage.getItem('value');
 
 you can use Modernizr to detect support for HTML5 Storage.
 
-```
+```javascript
 if (Modernizr.localstorage) {
   // window.localStorage is available!
 } else {
@@ -40,7 +40,7 @@ if (Modernizr.localstorage) {
 
 Track when storage changes
 
-```
+```javascript
 if (window.addEventListener) {
   window.addEventListener("storage", handle_storage, false);
 } else {
@@ -53,7 +53,7 @@ if (window.addEventListener) {
 
 ### Web SQL Database
 
-```
+```javascript
 var db = window.openDatabase("DBName", "1.0", "description", 5*1024*1024); //5MB
 db.transaction(function(tx) {
   tx.executeSql("SELECT * FROM test", [], successCallback, errorCallback);
@@ -76,7 +76,7 @@ An offline web application revolves around a cache manifest file.
 <html manifest="cache.manifest">
 `
 
-```
+```javascript
 window.applicationCache.addEventListener('updateready', function(e) {
   if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
     window.applicationCache.swapCache();

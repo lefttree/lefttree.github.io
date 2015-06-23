@@ -10,7 +10,7 @@ tags: [javascript, frontend]
 
 valueLink
 
-```
+```javascript
 var WithLink = React.createClass({
   mixins: [React.addons.LinkedStateMixin],
   getInitialState: function() {
@@ -25,7 +25,7 @@ var WithLink = React.createClass({
 
 without valueLink
 
-```
+```javascript
 var WithoutLink = React.createClass({
   mixins: [React.addons.LinkedStateMixin],
   getInitialState: function() {

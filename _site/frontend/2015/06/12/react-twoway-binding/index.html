@@ -175,47 +175,40 @@
     <h4 id="input">input</h4>
 
 <p>valueLink</p>
-
-<p><code>
-var WithLink = React.createClass({
-  mixins: [React.addons.LinkedStateMixin],
-  getInitialState: function() {
-    return {message: 'Hello!'};
-  },
-  render: function() {
-    return &lt;input type="text" valueLink={this.linkState('message')} /&gt;;
-  }
-});
-</code>
-&gt; need to include react-with-addons.js</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">WithLink</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+  <span class="nx">mixins</span><span class="o">:</span> <span class="p">[</span><span class="nx">React</span><span class="p">.</span><span class="nx">addons</span><span class="p">.</span><span class="nx">LinkedStateMixin</span><span class="p">],</span>
+  <span class="nx">getInitialState</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span><span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;Hello!&#39;</span><span class="p">};</span>
+  <span class="p">},</span>
+  <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span> <span class="nx">valueLink</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">linkState</span><span class="p">(</span><span class="s1">&#39;message&#39;</span><span class="p">)}</span> <span class="o">/&gt;</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+<blockquote>
+<p>need to include react-with-addons.js</p>
+</blockquote>
 
 <p>without valueLink</p>
-
-<p><code>
-var WithoutLink = React.createClass({
-  mixins: [React.addons.LinkedStateMixin],
-  getInitialState: function() {
-    return {message: 'Hello!'};
-  },
-  render: function() {
-    var valueLink = this.linkState('message');
-    var handleChange = function(e) {
-      valueLink.requestChange(e.target.value);
-    };
-    return &lt;input type="text" value={valueLink.value} onChange={handleChange} /&gt;;
-  }
-});
-</code></p>
-
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">WithoutLink</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+  <span class="nx">mixins</span><span class="o">:</span> <span class="p">[</span><span class="nx">React</span><span class="p">.</span><span class="nx">addons</span><span class="p">.</span><span class="nx">LinkedStateMixin</span><span class="p">],</span>
+  <span class="nx">getInitialState</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span><span class="nx">message</span><span class="o">:</span> <span class="s1">&#39;Hello!&#39;</span><span class="p">};</span>
+  <span class="p">},</span>
+  <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">valueLink</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">linkState</span><span class="p">(</span><span class="s1">&#39;message&#39;</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">handleChange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">valueLink</span><span class="p">.</span><span class="nx">requestChange</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+    <span class="p">};</span>
+    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span> <span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="nx">valueLink</span><span class="p">.</span><span class="nx">value</span><span class="p">}</span> <span class="nx">onChange</span><span class="o">=</span><span class="p">{</span><span class="nx">handleChange</span><span class="p">}</span> <span class="o">/&gt;</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
 <h4 id="select">select</h4>
 
 <p>no valueLink, use value and onchange event</p>
-
-<p><code>
-&lt;select text="Bandwidth" value={this.state.bw} changeE={this.bwChange}/&gt;
-</code></p>
-
-
+<div class="highlight"><pre><code class="language-text" data-lang="text">&lt;select text=&quot;Bandwidth&quot; value={this.state.bw} changeE={this.bwChange}/&gt;
+</code></pre></div>
   </div>
   
     <ul class="tag_box inline">
