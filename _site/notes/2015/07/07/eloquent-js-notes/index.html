@@ -1,0 +1,525 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>LeftTree - Eloquent Javascript Notes</title>
+      <meta name="viewport" content="width=device-width">
+
+      <!-- bootstrap -->
+      <link href="/assets/themes/xiang/css/bootstrap.2.2.2.min.css" rel="stylesheet">
+      <!-- syntax highlighting CSS -->
+      <link rel="stylesheet" href="/assets/themes/xiang/css/syntax.css">
+
+      <!-- Custom CSS -->
+      <link rel="stylesheet" href="/assets/themes/xiang/css/main.css">
+
+      <!-- Responsive CSS -->
+      <link rel="stylesheet" href="/assets/themes/xiang/css/responsive.css">
+
+      <!-- Google Fonts -->
+      <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700' rel='stylesheet' type='text/css'>
+      <link href='http://fonts.googleapis.com/css?family=Raleway:300,400,700' rel='stylesheet' type='text/css'>
+      <!-- atom & rss feed -->
+      <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+      <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+  </head>
+  <body>
+    <div class="site">
+      <div class="sidebar" id="sidebar">
+        <div class="header">
+          <h1 class="title"><a href="http://lefttree.github.io"><img id="logo" src="/assets/themes/xiang/images/logo.jpg"></a></h1>
+          <span class="tagline">Xiang Li</span>
+        </div>
+        <hr>
+        <!--<div class="posts">-->
+          <!--<ul class="posts-list">-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/notes/2015/07/07/eloquent-js-notes">-->
+                  <!--<span class="post-date">07 Jul 2015</span>-->
+                  <!--Eloquent Javascript Notes-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/programming%20style/2015/06/18/git-workflow">-->
+                  <!--<span class="post-date">18 Jun 2015</span>-->
+                  <!--Git Workflow-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/frontend/2015/06/12/react-twoway-binding">-->
+                  <!--<span class="post-date">12 Jun 2015</span>-->
+                  <!--React Two-way Binding-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/frontend/2015/06/12/gulp-setup">-->
+                  <!--<span class="post-date">12 Jun 2015</span>-->
+                  <!--Gulp Setup-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/programming%20style/2015/06/07/git-commit-style">-->
+                  <!--<span class="post-date">07 Jun 2015</span>-->
+                  <!--Git commit style-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/web/2015/06/04/HTML5-Storage-Cache">-->
+                  <!--<span class="post-date">04 Jun 2015</span>-->
+                  <!--HTML5 Storage & Cache-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/programming%20style/2015/06/03/JS-Best-Practices">-->
+                  <!--<span class="post-date">03 Jun 2015</span>-->
+                  <!--Javascript Best Practices-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/web/2015/06/01/Javascript-theGoodParts">-->
+                  <!--<span class="post-date">01 Jun 2015</span>-->
+                  <!--Javascript Good Parts-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+          <!--</ul>-->
+        <!--</div>-->
+        <ul class="nav">
+            
+            
+            
+
+
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+
+
+
+        </ul>
+        <div class="footer">
+          <span id="footer-links">
+            <a href="http://www.xiangli.me" class="footer-link">About</a> <span class="separator">&bull;</span>
+            <!--<a href="" class="footer-link">Twitter</a> <span class="separator">&bull;</span>-->
+            <a href="https://github.com/lefttree" class="footer-link">GitHub</a>
+          </span>
+        </div>
+      </div>
+
+        
+
+<div class="content" id="home">
+  <div id="sidebar-button">
+    <img src="/assets/themes/xiang/images/sidebar-button.png">
+  </div>
+  <div id="post-info">
+    <div id="cover-photo-container">
+      <img id="cover-photo" src="/assets/themes/xiang/images/cover.jpg">
+    </div>
+    <div id="info-container">
+      <h1 id="title">Eloquent Javascript Notes</h1>
+      <span id="date">07 Jul 2015</span>
+    </div>
+  </div>
+
+  <div class="post">
+    <h2 id="table-of-contents">Table of Contents</h2>
+
+<ul>
+<li><a href="#chapter-3">Chapter 3 - Function</a>
+
+<ul>
+<li>  <a href="#parameters-and-scope">Parameters and Scope</a></li>
+<li>  <a href="#functions-as-values">Functions as Values</a></li>
+<li>  <a href="#decalration">Declaration</a></li>
+<li>  <a href="#closure">Closure</a></li>
+<li>  <a href="#functions-and-side-effects">Functions and Side Effects</a></li>
+</ul></li>
+<li><a href="#chapter-4">Chapter 4 - Data Structures</a>
+
+<ul>
+<li>  <a href="#properties">Properties</a></li>
+<li>  <a href="#mutability">Mutability</a></li>
+<li>  <a href="#the-arguments-object">The arguments object</a></li>
+</ul></li>
+<li><a href="#Chapter-5">Chapter 5 - Higher-Order Functions</a>
+
+<ul>
+<li>  <a href="#array-higher-order-functions">Array Higher-Order Functions</a></li>
+<li>  <a href="#call-bind-and-apply">call(), bind() and apply()</a></li>
+<li>  <a href="#borrowing-functions-with-apply-and-call-a-must-know">Borrowing Functions with Apply and Call (A Must Know)</a></li>
+</ul></li>
+</ul>
+
+<h3 id="chapter-3">Chapter 3</h3>
+
+<h3 id="functions">Functions</h3>
+
+<h4 id="parameters-and-scopes">Parameters and Scopes</h4>
+
+<p>An important property of functions is that the variables created inside of them, <em>including their parameter</em>, are <strong>local</strong> to the function.</p>
+
+<blockquote>
+<p>applies only to parameters and to variables declared with the <code>var</code> keyword</p>
+</blockquote>
+
+<p>All variables from blocks <em>around</em> a function&#39;s definition are visible - lexical scoping</p>
+
+<p><strong>functions are the only thing that create a new scope</strong></p>
+
+<h4 id="functions-as-values">Functions as Values</h4>
+
+<p>Discussed in chapter 7</p>
+
+<h4 id="declaration">Declaration</h4>
+
+<p>functions are conceptually move to the top of their scope and can be used by <strong>all</strong> the code in that scope</p>
+
+<h4 id="closure">Closure</h4>
+
+<p>Local variables really are re-created for every call
+This feature - being able to reference a specific instance of local variables in an enclosing function is called <strong>closure</strong>.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">multiplier</span><span class="p">(</span><span class="nx">factor</span><span class="p">){</span>
+    <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">number</span><span class="p">){</span>
+        <span class="k">return</span> <span class="nx">number</span> <span class="o">*</span> <span class="nx">factor</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">twice</span> <span class="o">=</span> <span class="nx">multiplier</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">twice</span><span class="p">(</span><span class="mi">5</span><span class="p">));</span>
+<span class="c1">//parameter is itself a local variable</span>
+</code></pre></div>
+<h4 id="functions-and-side-effects">Functions and Side Effects</h4>
+
+<p>Functions
+- side effects
+- return value</p>
+
+<p>pure function : a value-production function that not only has no side effects but also doesn&#39;t rely on side effects from other code</p>
+
+<h3 id="chapter-4">Chapter 4</h3>
+
+<h3 id="data-structures:-objects-and-arrays">Data Structures: Objects and Arrays</h3>
+
+<h4 id="properties">Properties</h4>
+
+<p>value.x and value[x]</p>
+
+<blockquote>
+<p>The part after the dot must be a <strong>valid variable name</strong></p>
+</blockquote>
+
+<h4 id="mutability">Mutability</h4>
+
+<p>numbers, strings and booleans are all <em>immutable</em>
+Object values can be modified</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">object1</span> <span class="o">=</span> <span class="p">{</span><span class="nx">value</span><span class="o">:</span><span class="mi">10</span><span class="p">};</span>
+<span class="kd">var</span> <span class="nx">object2</span> <span class="o">=</span> <span class="nx">object1</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">object3</span> <span class="o">=</span> <span class="p">{</span><span class="nx">value</span><span class="o">:</span><span class="mi">10</span><span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">object1</span> <span class="o">==</span> <span class="nx">object2</span><span class="p">)</span>
+<span class="c1">//true</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">object1</span> <span class="o">==</span> <span class="nx">object3</span><span class="p">)</span>
+<span class="c1">//false</span>
+
+<span class="nx">object1</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">object2</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+<span class="c1">//true</span>
+</code></pre></div>
+<p><code>object1</code> and <code>object2</code> are references to the same object</p>
+
+<h4 id="the-arguments-object">The arguments object</h4>
+
+<p>whenever a function is called, a special variable named arguments is added. It refers to an object that holds all of the arguments passed to the function.</p>
+
+<h3 id="chapter-5">Chapter 5</h3>
+
+<h3 id="higher-order-functions">Higher-Order Functions</h3>
+
+<h4 id="abstraction">Abstraction</h4>
+
+<h4 id="array-higher-order-functions">Array Higher-Order Functions</h4>
+
+<p><code>forEach()</code></p>
+
+<p><code>filter()</code></p>
+
+<p>builds up a new array with only the elements that pass the test, this function is <em>pure</em>, does not modify the array it is given</p>
+
+<p><code>map()</code></p>
+
+<p>The map method transforms an array by applying a function to all of its elments and building a new array from the returned values</p>
+
+<p><code>reduce()</code></p>
+
+<p>Combine into one value</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">[0, 1, 2, 3, 4].reduce(function(previousValue, currentValue, index, array) {
+  return previousValue + currentValue;
+});
+</code></pre></div>
+<p><code>every()</code>
+<code>some()</code></p>
+
+<h4 id="call(),-bind()-and-apply()">call(), bind() and apply()</h4>
+
+<h5 id="bind()">Bind()</h5>
+
+<p>We use the Bind () method primarily to call a function with the <em>this</em> value set explicitly. </p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">data</span>        <span class="o">:</span><span class="p">[</span>
+        <span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="s2">&quot;T. Woods&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="o">:</span><span class="mi">37</span><span class="p">},</span>
+        <span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="s2">&quot;P. Mickelson&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="o">:</span><span class="mi">43</span><span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nx">clickHandler</span><span class="o">:</span><span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">randomNum</span> <span class="o">=</span> <span class="p">((</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span> <span class="p">()</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">|</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// random number between 0 and 1​</span>
+<span class="err">​</span>
+        <span class="c1">// This line is adding a random person from the data array to the text field​</span>
+        <span class="nx">$</span> <span class="p">(</span><span class="s2">&quot;input&quot;</span><span class="p">).</span><span class="nx">val</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="nx">randomNum</span><span class="p">].</span><span class="nx">name</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="nx">randomNum</span><span class="p">].</span><span class="nx">age</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="err">​</span>
+<span class="p">}</span>
+<span class="err">​</span>
+<span class="err">​</span><span class="c1">// Assign an eventHandler to the button&#39;s click event​</span>
+<span class="nx">$</span> <span class="p">(</span><span class="s2">&quot;button&quot;</span><span class="p">).</span><span class="nx">click</span> <span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">clickHandler</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="nx">user</span><span class="p">));</span>
+</code></pre></div>
+<p>We can use Bind() to borrow method or curry method.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">greet</span> <span class="p">(</span><span class="nx">gender</span><span class="p">,</span> <span class="nx">age</span><span class="p">,</span> <span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// if a male, use Mr., else use Ms.​</span>
+    <span class="kd">var</span> <span class="nx">salutation</span> <span class="o">=</span> <span class="nx">gender</span> <span class="o">===</span> <span class="s2">&quot;male&quot;</span> <span class="o">?</span> <span class="s2">&quot;Mr. &quot;</span> <span class="o">:</span> <span class="s2">&quot;Ms. &quot;</span><span class="p">;</span>
+<span class="err">​</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">age</span> <span class="o">&gt;</span> <span class="mi">25</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">&quot;Hello, &quot;</span> <span class="o">+</span> <span class="nx">salutation</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">&quot;Hey, &quot;</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// So we are passing null because we are not using the &quot;this&quot; keyword in our greet function.​</span>
+<span class="kd">var</span> <span class="nx">greetAnAdultMale</span> <span class="o">=</span> <span class="nx">greet</span><span class="p">.</span><span class="nx">bind</span> <span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="s2">&quot;male&quot;</span><span class="p">,</span> <span class="mi">45</span><span class="p">);</span>
+<span class="err">​</span>
+<span class="nx">greetAnAdultMale</span> <span class="p">(</span><span class="s2">&quot;John Hartlove&quot;</span><span class="p">);</span> <span class="c1">// &quot;Hello, Mr. John Hartlove.&quot;​</span>
+<span class="err">​</span>
+<span class="kd">var</span> <span class="nx">greetAYoungster</span> <span class="o">=</span> <span class="nx">greet</span><span class="p">.</span><span class="nx">bind</span> <span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="mi">16</span><span class="p">);</span>
+<span class="nx">greetAYoungster</span> <span class="p">(</span><span class="s2">&quot;Alex&quot;</span><span class="p">);</span> <span class="c1">// &quot;Hey, Alex.&quot;​</span>
+<span class="nx">greetAYoungster</span> <span class="p">(</span><span class="s2">&quot;Emma Waterloo&quot;</span><span class="p">);</span> <span class="c1">// &quot;Hey, Emma Waterloo.&quot;​</span>
+</code></pre></div>
+<h5 id="apply()-and-call()">Apply() and call()</h5>
+
+<p>they allow us to borrow functions and set the this value in <strong>function invocation</strong>. In addition, the <code>apply()</code> function in particular allows us to execute a function with an array of parameters, such that each parameter is passed to the function individually when the function executes.</p>
+
+<p>The apply and call methods are almost identical when setting the this value except that 
+- you pass the function parameters to <strong>apply () as an array</strong>
+- while you have to <strong>list the parameters individually to pass them</strong> to the call () method.</p>
+
+<h4 id="borrowing-functions-with-apply-and-call-(a-must-know)">Borrowing Functions with Apply and Call (A Must Know)</h4>
+
+<h5 id="borrowing-array-methods">Borrowing Array Methods</h5>
+
+<p>An <strong>array-like object</strong> is an object that has its keys defined as non-negative integers. It is best to specifically add a length property on the object that has the length of the object, since the a length property does not exist on objects it does on Arrays.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// An array-like object: note the non-negative integers used as keys​</span>
+<span class="kd">var</span> <span class="nx">anArrayLikeObj</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="o">:</span><span class="s2">&quot;Martin&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="o">:</span><span class="mi">78</span><span class="p">,</span> <span class="mi">2</span><span class="o">:</span><span class="mi">67</span><span class="p">,</span> <span class="mi">3</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;Letta&quot;</span><span class="p">,</span> <span class="s2">&quot;Marieta&quot;</span><span class="p">,</span> <span class="s2">&quot;Pauline&quot;</span><span class="p">],</span> <span class="nx">length</span><span class="o">:</span><span class="mi">4</span> <span class="p">};</span>
+
+<span class="c1">// First parameter sets the &quot;this&quot; value​</span>
+<span class="kd">var</span> <span class="nx">newArray</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span> <span class="p">(</span><span class="nx">anArrayLikeObj</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="err">​</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="p">(</span><span class="nx">newArray</span><span class="p">);</span> <span class="c1">// [&quot;Martin&quot;, 78, 67, Array[3]]​</span>
+<span class="err">​</span>
+<span class="c1">// Search for &quot;Martin&quot; in the array-like object​</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="p">(</span><span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">.</span><span class="nx">call</span> <span class="p">(</span><span class="nx">anArrayLikeObj</span><span class="p">,</span> <span class="s2">&quot;Martin&quot;</span><span class="p">)</span> <span class="o">===</span> <span class="o">-</span><span class="mi">1</span> <span class="o">?</span> <span class="kc">false</span> <span class="o">:</span> <span class="kc">true</span><span class="p">);</span> <span class="c1">// true​</span>
+<span class="err">​</span>
+<span class="c1">// Try using an Array method without the call () or apply ()​</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="p">(</span><span class="nx">anArrayLikeObj</span><span class="p">.</span><span class="nx">indexOf</span> <span class="p">(</span><span class="s2">&quot;Martin&quot;</span><span class="p">)</span> <span class="o">===</span> <span class="o">-</span><span class="mi">1</span> <span class="o">?</span> <span class="kc">false</span> <span class="o">:</span> <span class="kc">true</span><span class="p">);</span> <span class="c1">// Error: Object has no method &#39;indexOf&#39;​</span>
+<span class="err">​</span>
+<span class="c1">// Reverse the object:​</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="p">(</span><span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">reverse</span><span class="p">.</span><span class="nx">call</span> <span class="p">(</span><span class="nx">anArrayLikeObj</span><span class="p">));</span>
+<span class="c1">// {0: Array[3], 1: 67, 2: 78, 3: &quot;Martin&quot;, length: 4}​</span>
+</code></pre></div>
+<h5 id="borrowing-string-methods-with-apply-and-call">Borrowing String Methods with Apply and Call</h5>
+
+<h5 id="borrowing-other-methods">Borrowing other methods</h5>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">gameController</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">scores</span>  <span class="o">:</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">46</span><span class="p">,</span> <span class="mi">77</span><span class="p">],</span>
+    <span class="nx">avgScore</span><span class="o">:</span><span class="kc">null</span><span class="p">,</span>
+    <span class="nx">players</span> <span class="o">:</span><span class="p">[</span>
+        <span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="s2">&quot;Tommy&quot;</span><span class="p">,</span> <span class="nx">playerID</span><span class="o">:</span><span class="mi">987</span><span class="p">,</span> <span class="nx">age</span><span class="o">:</span><span class="mi">23</span><span class="p">},</span>
+        <span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="s2">&quot;Pau&quot;</span><span class="p">,</span> <span class="nx">playerID</span><span class="o">:</span><span class="mi">87</span><span class="p">,</span> <span class="nx">age</span><span class="o">:</span><span class="mi">33</span><span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+<span class="err">​</span>
+<span class="kd">var</span> <span class="nx">appController</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">scores</span>  <span class="o">:</span><span class="p">[</span><span class="mi">900</span><span class="p">,</span> <span class="mi">845</span><span class="p">,</span> <span class="mi">809</span><span class="p">,</span> <span class="mi">950</span><span class="p">],</span>
+    <span class="nx">avgScore</span><span class="o">:</span><span class="kc">null</span><span class="p">,</span>
+    <span class="nx">avg</span>     <span class="o">:</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<span class="err">​</span>
+        <span class="kd">var</span> <span class="nx">sumOfScores</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">scores</span><span class="p">.</span><span class="nx">reduce</span> <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">prev</span><span class="p">,</span> <span class="nx">cur</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span> <span class="nx">array</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">prev</span> <span class="o">+</span> <span class="nx">cur</span><span class="p">;</span>
+        <span class="p">});</span>
+<span class="err">​</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">avgScore</span> <span class="o">=</span> <span class="nx">sumOfScores</span> <span class="o">/</span> <span class="k">this</span><span class="p">.</span><span class="nx">scores</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="err">​</span>
+<span class="c1">// Note that we are using the apply () method, so the 2nd argument has to be an array​</span>
+<span class="nx">appController</span><span class="p">.</span><span class="nx">avg</span><span class="p">.</span><span class="nx">apply</span> <span class="p">(</span><span class="nx">gameController</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="p">(</span><span class="nx">gameController</span><span class="p">.</span><span class="nx">avgScore</span><span class="p">);</span> <span class="c1">// 46.4​</span>
+<span class="err">​</span>
+<span class="c1">// appController.avgScore is still null; it was not updated, only gameController.avgScore was updated​</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="p">(</span><span class="nx">appController</span><span class="p">.</span><span class="nx">avgScore</span><span class="p">);</span> <span class="c1">// null​</span>
+</code></pre></div>
+<h5 id="use-apply-()-to-execute-variable-arity-functions">Use Apply () to Execute Variable-Arity Functions</h5>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// We can pass any number of arguments to the Math.max () method​</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">max</span> <span class="p">(</span><span class="mi">23</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">56</span><span class="p">));</span> <span class="c1">// 56</span>
+<span class="kd">var</span> <span class="nx">allNumbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">23</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">56</span><span class="p">];</span>
+
+<span class="c1">// We cannot pass an array of numbers to the the Math.max method like this​</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">max</span> <span class="p">(</span><span class="nx">allNumbers</span><span class="p">));</span> <span class="c1">// NaN</span>
+<span class="kd">var</span> <span class="nx">allNumbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">23</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">56</span><span class="p">];</span>
+
+<span class="c1">// Using the apply () method, we can pass the array of numbers:​</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">.</span><span class="nx">apply</span> <span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">allNumbers</span><span class="p">));</span> <span class="c1">// 56</span>
+</code></pre></div>
+  </div>
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-folder-open"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/categories.html#notes-ref">
+    		notes <span>1</span>
+    	</a></li>
+    
+  
+
+
+    </ul>
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags.html#javascript-ref">javascript <span>5</span></a></li>
+     
+    	<li><a href="/tags.html#notes-ref">notes <span>1</span></a></li>
+    
+  
+
+
+
+    </ul>
+  
+  <hr>  
+  <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/programming%20style/2015/06/18/git-workflow" title="Git Workflow">&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next disabled"><a>Next &rarr;</a>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    
+    var disqus_developer = 1;
+    var disqus_shortname = 'lefttreegithubio'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+  </div>
+</div>
+
+
+
+    </div>
+    <script src="/assets/themes/xiang/scripts/responsive.js" type="text/javascript"></script>
+    
+
+
+
+  </body>
+</html>
+

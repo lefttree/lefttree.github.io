@@ -7,7 +7,7 @@ tags: [git, programming style]
 ---
 
 
-# Context
+# Table of Contents
 1. [Current Work Flow](#current-work-flow)
 2. [Centralized Workflow](#centralized-workflow)
 2. [Feature Branch Workflow](#feature-branch-workflow)
