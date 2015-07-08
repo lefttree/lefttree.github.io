@@ -5,8 +5,8 @@
         <description>LeftTree&#39;s Blog - Xiang Li</description>
         <link>http://lefttree.github.io</link>
         <atom:link href="http://lefttree.github.io/rss.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Tue, 07 Jul 2015 17:19:44 -0700</lastBuildDate>
-        <pubDate>Tue, 07 Jul 2015 17:19:44 -0700</pubDate>
+        <lastBuildDate>Tue, 07 Jul 2015 17:22:10 -0700</lastBuildDate>
+        <pubDate>Tue, 07 Jul 2015 17:22:10 -0700</pubDate>
         <ttl>60</ttl>
 
 
@@ -17,7 +17,7 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;#factory-pattern&quot;&gt;Factory Pattern&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;#prototype-pattern&quot;&gt;Prototype Pattern&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#combination-of-constructorprototype-pattern&quot;&gt;Combination of Factory/Prototype&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#combination-of-constructor-prototype-pattern&quot;&gt;Combination of Factory/Prototype&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;factory-pattern&quot;&gt;Factory Pattern&lt;/h3&gt;

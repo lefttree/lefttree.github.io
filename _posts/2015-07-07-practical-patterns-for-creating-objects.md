@@ -9,7 +9,7 @@ tags: [javascript, oop]
 ### Table of contents
 - [Factory Pattern](#factory-pattern)
 - [Prototype Pattern](#prototype-pattern)
-- [Combination of Factory/Prototype](#combination-of-constructorprototype-pattern)
+- [Combination of Factory/Prototype](#combination-of-constructor-prototype-pattern)
 
 
 ### Factory Pattern

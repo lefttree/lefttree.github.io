@@ -4,7 +4,7 @@
  <title>LeftTree&#39;s Blog</title>
  <link href="http://lefttree.github.io/atom.xml" rel="self"/>
  <link href="http://lefttree.github.io"/>
- <updated>2015-07-07T17:19:44-07:00</updated>
+ <updated>2015-07-07T17:22:10-07:00</updated>
  <id>http://lefttree.github.io</id>
  <author>
    <name>Xiang Li</name>
@@ -22,7 +22,7 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;#factory-pattern&quot;&gt;Factory Pattern&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;#prototype-pattern&quot;&gt;Prototype Pattern&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#combination-of-constructorprototype-pattern&quot;&gt;Combination of Factory/Prototype&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#combination-of-constructor-prototype-pattern&quot;&gt;Combination of Factory/Prototype&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;factory-pattern&quot;&gt;Factory Pattern&lt;/h3&gt;
