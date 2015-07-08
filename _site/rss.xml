@@ -5,10 +5,120 @@
         <description>LeftTree&#39;s Blog - Xiang Li</description>
         <link>http://lefttree.github.io</link>
         <atom:link href="http://lefttree.github.io/rss.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Tue, 07 Jul 2015 16:53:43 -0700</lastBuildDate>
-        <pubDate>Tue, 07 Jul 2015 16:53:43 -0700</pubDate>
+        <lastBuildDate>Tue, 07 Jul 2015 17:19:44 -0700</lastBuildDate>
+        <pubDate>Tue, 07 Jul 2015 17:19:44 -0700</pubDate>
         <ttl>60</ttl>
 
+
+        <item>
+                <title>Practical patterns for createing objects</title>
+                <description>&lt;h3 id=&quot;table-of-contents&quot;&gt;Table of contents&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#factory-pattern&quot;&gt;Factory Pattern&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#prototype-pattern&quot;&gt;Prototype Pattern&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#combination-of-constructorprototype-pattern&quot;&gt;Combination of Factory/Prototype&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;factory-pattern&quot;&gt;Factory Pattern&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;function createCar(make, model, year) {
+    var o = new Object();
+
+    o.make   = make;
+    o.model  = model;
+    o.year   = year;
+    o.sayCar = function() {
+        alert(&amp;#39;I have a &amp;#39; + this.year + &amp;#39; &amp;#39; + this.make + &amp;#39; &amp;#39; + this.model + &amp;#39;.&amp;#39;);
+    };
+
+    return o;
+}
+
+// create 2 car objects for John and Jane
+var johnCar = createCar(&amp;#39;Ford&amp;#39;, &amp;#39;F150&amp;#39;, &amp;#39;2011&amp;#39;),
+    janeCar = createCar(&amp;#39;Audi&amp;#39;, &amp;#39;A4&amp;#39;, &amp;#39;2007&amp;#39;);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Cons
+1. Efficiency, functions are copied to all new object instances
+2. Type determination. new object instances are typed as object&lt;/p&gt;
+
+&lt;h3 id=&quot;constructor-pattern&quot;&gt;Constructor Pattern&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;function Fruit (theColor, theSweetness, theFruitName, theNativeToLand) {
+​
+    this.color = theColor;
+    this.sweetness = theSweetness;
+    this.fruitName = theFruitName;
+    this.nativeToLand = theNativeToLand;
+​
+    this.showName = function () {
+        console.log(&amp;quot;This is a &amp;quot; + this.fruitName);
+    }
+​
+    this.nativeTo = function () {
+    this.nativeToLand.forEach(function (eachCountry)  {
+       console.log(&amp;quot;Grown in:&amp;quot; + eachCountry);
+        });
+    }
+​
+​
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;To create&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;var mangoFruit = new Fruit (&amp;quot;Yellow&amp;quot;, 8, &amp;quot;Mango&amp;quot;, [&amp;quot;South America&amp;quot;, &amp;quot;Central America&amp;quot;, &amp;quot;West Africa&amp;quot;]);
+mangoFruit.showName(); // This is a Mango.​
+mangoFruit.nativeTo();
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Solves type determination
+But still &lt;strong&gt;ineffiecient&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;prototype-pattern&quot;&gt;Prototype Pattern&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;function Fruit () {
+​
+}
+​
+Fruit.prototype.color = &amp;quot;Yellow&amp;quot;;
+Fruit.prototype.sweetness = 7;
+Fruit.prototype.fruitName = &amp;quot;Generic Fruit&amp;quot;;
+Fruit.prototype.nativeToLand = &amp;quot;USA&amp;quot;;
+​
+Fruit.prototype.showName = function () {
+console.log(&amp;quot;This is a &amp;quot; + this.fruitName);
+}
+​
+Fruit.prototype.nativeTo = function () {
+            console.log(&amp;quot;Grown in:&amp;quot; + this.nativeToLand);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;var mangoFruit = new Fruit ();
+mangoFruit.showName(); //​
+mangoFruit.nativeTo();
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;combination-of-constructor/prototype-pattern&quot;&gt;Combination of Constructor/Prototype Pattern&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;The most popular one&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;// constructor function to create car objects
+function Car(make, model, year) {
+    this.make   = make;
+    this.model  = model;
+    this.year   = year;
+}
+
+// constructor prototype to share properties and methods
+Car.prototype.sayCar = function() {
+    alert(&amp;#39;I have a &amp;#39; + this.year + &amp;#39; &amp;#39; + this.make + &amp;#39; &amp;#39; + this.model + &amp;#39;.&amp;#39;);    
+};
+
+// create 2 car objects for John and Jane
+var johnCar = new Car(&amp;#39;Ford&amp;#39;, &amp;#39;F150&amp;#39;, &amp;#39;2011&amp;#39;),
+    janeCar = new Car(&amp;#39;Audi&amp;#39;, &amp;#39;A4&amp;#39;, &amp;#39;2007&amp;#39;);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;Solves the efficiency issue by utilizing prototypal inheritance, share properties and methods on the constructor function&amp;#39;s prototype&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+                <link>http://lefttree.github.io/javascript/2015/07/07/practical-patterns-for-creating-objects</link>
+                <guid>http://lefttree.github.io/javascript/2015/07/07/practical-patterns-for-creating-objects</guid>
+                <pubDate>Tue, 07 Jul 2015 00:00:00 -0700</pubDate>
+        </item>
 
         <item>
                 <title>Eloquent Javascript Notes</title>
