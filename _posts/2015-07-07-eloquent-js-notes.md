@@ -21,7 +21,11 @@ tags: [javascript, notes]
     +   [Array Higher-Order Functions](#array-higher-order-functions)
     +   [call(), bind() and apply()](#call-bind-and-apply)
     +   [Borrowing Functions with Apply and Call (A Must Know)](#borrowing-functions-with-apply-and-call-a-must-know)
- 
+- [Chapter 9 - Regular Expressions](#regular-expressions)
+    +   [Create a Regular Expression](#create-a-regular-expression)
+
+-------------------------------------------------------------------
+
 ### Chapter 3 
 ### Functions
 
@@ -67,6 +71,7 @@ Functions
 
 pure function : a value-production function that not only has no side effects but also doesn't rely on side effects from other code
 
+------------------------------------------------------
 
 ### Chapter 4
 ### Data Structures: Objects and Arrays
@@ -101,6 +106,8 @@ console.log(object2.value);
 #### The arguments object
 
 whenever a function is called, a special variable named arguments is added. It refers to an object that holds all of the arguments passed to the function.
+
+----------------------------------------------
 
 ### Chapter 5
 ### Higher-Order Functions
@@ -266,5 +273,202 @@ var allNumbers = [23, 11, 34, 56];
 
 // Using the apply () method, we can pass the array of numbers:​
 console.log (Math.max.apply (null, allNumbers)); // 56
+```
+
+------------------------------------------------------
+
+### Chapter 9
+### Regular Expressions
+
+#### Create a regular expression
+    
+1. with RegExp constructor
+
+    `var re1 = new RegExp("abd");`
+
+2. written as a literal value
+
+    `var re2 = /abc/;`
+
+some chars like `+`, have special meanings in RegExp. 
+>when in doubt, just put a backslash before any character that is not a letter, number, or whitespace.
+
+#### Testing for Matches
+
+`.test()` return a Boolean telling you whether the string contains a match of the pattern in the expression.
+
+#### Matching a Set of Characters
+
+`[0-9]`, a `-` between two cahracters can be used to indiate a range of chars
+
+built-in shorcuts:
+- \d    any digit character
+- \w    any alphanumeric character
+- \s    any whitespace character(space, tab, newline and similar)
+- \D    a character that is not a digit
+- \W    a nonalphanumeric character
+- \S    a nonwhitespace character
+- .     any character except for newline
+
+These backslash codes can be used inside [], like [\d.], means any digit or a period character. But the . itself, lost the special meaning.
+
+To *invert* a set of characters add a ^, to express that you want to match any character **except** the ones in the sets.
+
+#### Repeating Parts of a Pattern
+
+- +     >= 1
+- *     >= 0
+- ?     0 or 1
+- {4}   4 times
+- {2, 4}    2 - 4 times
+- {, 5}     0 - 5 times
+- {5, }     >= 5 times
+ 
+#### Grouping Subexpressions
+
+```
+var cartoonCrying = /boo+(hoo+)+/i
+cartoonCrying.test("Boohoooohoohooo") -- true
+```
+
+- The 1st and 2nd `+` apply only to the second `o` in `boo` and `hoo`
+- The 3rd `+` applies to the whole group `(hoo+)`
+- The `i` makes this regexp case insensitive
+
+#### Matches and Groups
+
+`exec()` will return `null` if no match was found and return an object with information about the match otherwise
+
+```
+var match = /\d+/.exec("one two 100");
+console.log(match);
+// -> ["100"]
+console.log(match.index);
+// -> 8
+```
+
+String has a `match()` method behaves similarly
+
+When the regexp contains *subexpressions* grouped with parenthese, the text that matched those groups will also show up in the array.
+
+```
+var quotedText = /'([^']*)'/;
+quotedText.exec("She said 'hello'");
+// -> ["'hello'", "hello"]
+```
+
+If a group does not end up matched at all, its position in the array would hold `undefined`. If it's matched multiple times, only the last match ends up in the array.
+
+#### Word and String Boundaries
+
+If we want to enforce that the match must span the whole string, we can add the markers ^ and $.
+
+**word boundary** - \b
+a word char on one side and a nonword char on the other
+
+####Choice Patterns
+
+The Pipe Character `|` denotes a choice between the pattern to its left and the pattern to its right.
+
+```
+var animalCount = /\b\d+ (pig|cow|chicken)s?\b/;
+animalCount.test("15 pigs");
+// -> true
+animalCount.test("15 pigchickens");
+// -> false
+``` 
+
+#### Replace Method
+
+String `replace` method, the first argument can be a regexp
+
+```
+"Borobudur".replace(/[ou]/, "a")
+"Borobudur".replace(/[ou]/g, "a")
+```
+
+The real power of using regexp with `replace` comes from the fact that we can refer back to matched groups in the replace strings.
+
+```
+"Hopper, Grace\n McCarthy, John".replace(/([\w ]+), ([\w ]+)/g, "$2 $1")
+// Grace Hopper
+// John McCarthy
+```
+
+$1 - $9, the whold match can be refered to as $&
+
+It's also possible to pass a function to the 2nd argument to `replace`. The function will be called with the matched groups as arguments, and its return value will be inserted into the new string.
+
+```
+var s = "the cia and fbi";
+s.replace(/\b(fbi|cia)\b/g, function(str){
+   return str.toUpperCase(); 
+});
+// -> the CIA and FBI
+```
+
+#### Greed
+
+```
+function stripComments(code){
+    return code.replace(/\/\/.*|\/\*[^]*\*\//g, "");
+}
+stripComments("1 /* a */+/* b */ 1");
+// -> 1 1 (wrong)
+```
+
+The repetition operator(+, *, ?, and {}) are greedy, meaning they match as much as they can and backtrack from there. If you put a question mark after them, they become nongreedy and start by matching as little as possible.
+
+#### Dynamically creating regexp objects
+
+Use the `RegExp` constructor
+
+```
+var name = "harry";
+var text = "harry is a suspicious character";
+var regexp = new RegExp("\\b(" + name + ")\\b", "gi");
+text.replace(regexp, "_$1_");
+```
+
+>use 2 backslashes because we are writing them in a normal string
+>the second argument is the options
+
+#### Search 
+
+`search` method can take a regexp as argument and returns the first index on which the expression was found, or -1 when it's not found
+
+#### lastIndex
+
+Regular expression objects have properties.
+- source: the string that expression was created from
+- lastIndex: where the next match will start
+
+>must have global(g) option enabled
+
+```
+var pattern = /y/g;
+pattern.lastIndex = 3;
+var match = pattern.exec("xyzzy");
+match.index
+// 4
+pattern.lastIndex
+// 5
+```
+
+the call to `exec` would automatically updates the `lastIndex` property to point after the match, if no match was found, `lastIndex` is set back to 0
+
+#### Looping Over Matches
+
+looping through all occurances in a string, using `lastIndex` and `exec`
+
+```
+var input = "A string with 3 numbers in it... 42 and 88.";
+var number = /\b(\d+)\b/g;
+var match;
+while (match = number.exec(input))
+  console.log("Found", match[1], "at", match.index);
+// → Found 3 at 14
+//   Found 42 at 33
+//   Found 88 at 40
 ```
 

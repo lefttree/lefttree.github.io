@@ -5,8 +5,8 @@
         <description>LeftTree&#39;s Blog - Xiang Li</description>
         <link>http://lefttree.github.io</link>
         <atom:link href="http://lefttree.github.io/rss.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Tue, 07 Jul 2015 17:22:10 -0700</lastBuildDate>
-        <pubDate>Tue, 07 Jul 2015 17:22:10 -0700</pubDate>
+        <lastBuildDate>Wed, 15 Jul 2015 18:52:42 -0700</lastBuildDate>
+        <pubDate>Wed, 15 Jul 2015 18:52:42 -0700</pubDate>
         <ttl>60</ttl>
 
 
@@ -148,7 +148,14 @@ var johnCar = new Car(&amp;#39;Ford&amp;#39;, &amp;#39;F150&amp;#39;, &amp;#39;2
 &lt;li&gt;  &lt;a href=&quot;#call-bind-and-apply&quot;&gt;call(), bind() and apply()&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;  &lt;a href=&quot;#borrowing-functions-with-apply-and-call-a-must-know&quot;&gt;Borrowing Functions with Apply and Call (A Must Know)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#regular-expressions&quot;&gt;Chapter 9 - Regular Expressions&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;  &lt;a href=&quot;#create-a-regular-expression&quot;&gt;Create a Regular Expression&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;hr&gt;
 
 &lt;h3 id=&quot;chapter-3&quot;&gt;Chapter 3&lt;/h3&gt;
 
@@ -196,6 +203,8 @@ This feature - being able to reference a specific instance of local variables in
 
 &lt;p&gt;pure function : a value-production function that not only has no side effects but also doesn&amp;#39;t rely on side effects from other code&lt;/p&gt;
 
+&lt;hr&gt;
+
 &lt;h3 id=&quot;chapter-4&quot;&gt;Chapter 4&lt;/h3&gt;
 
 &lt;h3 id=&quot;data-structures:-objects-and-arrays&quot;&gt;Data Structures: Objects and Arrays&lt;/h3&gt;
@@ -230,6 +239,8 @@ Object values can be modified&lt;/p&gt;
 &lt;h4 id=&quot;the-arguments-object&quot;&gt;The arguments object&lt;/h4&gt;
 
 &lt;p&gt;whenever a function is called, a special variable named arguments is added. It refers to an object that holds all of the arguments passed to the function.&lt;/p&gt;
+
+&lt;hr&gt;
 
 &lt;h3 id=&quot;chapter-5&quot;&gt;Chapter 5&lt;/h3&gt;
 
@@ -377,6 +388,183 @@ Object values can be modified&lt;/p&gt;
 
 &lt;span class=&quot;c1&quot;&gt;// Using the apply () method, we can pass the array of numbers:​&lt;/span&gt;
 &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;apply&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;allNumbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 56&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;hr&gt;
+
+&lt;h3 id=&quot;chapter-9&quot;&gt;Chapter 9&lt;/h3&gt;
+
+&lt;h3 id=&quot;regular-expressions&quot;&gt;Regular Expressions&lt;/h3&gt;
+
+&lt;h4 id=&quot;create-a-regular-expression&quot;&gt;Create a regular expression&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;with RegExp constructor&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;var re1 = new RegExp(&amp;quot;abd&amp;quot;);&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;written as a literal value&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;var re2 = /abc/;&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;some chars like &lt;code&gt;+&lt;/code&gt;, have special meanings in RegExp. &lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;when in doubt, just put a backslash before any character that is not a letter, number, or whitespace.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;testing-for-matches&quot;&gt;Testing for Matches&lt;/h4&gt;
+
+&lt;p&gt;&lt;code&gt;.test()&lt;/code&gt; return a Boolean telling you whether the string contains a match of the pattern in the expression.&lt;/p&gt;
+
+&lt;h4 id=&quot;matching-a-set-of-characters&quot;&gt;Matching a Set of Characters&lt;/h4&gt;
+
+&lt;p&gt;&lt;code&gt;[0-9]&lt;/code&gt;, a &lt;code&gt;-&lt;/code&gt; between two cahracters can be used to indiate a range of chars&lt;/p&gt;
+
+&lt;p&gt;built-in shorcuts:
+- \d    any digit character
+- \w    any alphanumeric character
+- \s    any whitespace character(space, tab, newline and similar)
+- \D    a character that is not a digit
+- \W    a nonalphanumeric character
+- \S    a nonwhitespace character
+- .     any character except for newline&lt;/p&gt;
+
+&lt;p&gt;These backslash codes can be used inside [], like [\d.], means any digit or a period character. But the . itself, lost the special meaning.&lt;/p&gt;
+
+&lt;p&gt;To &lt;em&gt;invert&lt;/em&gt; a set of characters add a ^, to express that you want to match any character &lt;strong&gt;except&lt;/strong&gt; the ones in the sets.&lt;/p&gt;
+
+&lt;h4 id=&quot;repeating-parts-of-a-pattern&quot;&gt;Repeating Parts of a Pattern&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;+     &amp;gt;= 1&lt;/li&gt;
+&lt;li&gt;*     &amp;gt;= 0&lt;/li&gt;
+&lt;li&gt;?     0 or 1&lt;/li&gt;
+&lt;li&gt;{4}   4 times&lt;/li&gt;
+&lt;li&gt;{2, 4}    2 - 4 times&lt;/li&gt;
+&lt;li&gt;{, 5}     0 - 5 times&lt;/li&gt;
+&lt;li&gt;{5, }     &amp;gt;= 5 times&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;grouping-subexpressions&quot;&gt;Grouping Subexpressions&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;var cartoonCrying = /boo+(hoo+)+/i
+cartoonCrying.test(&amp;quot;Boohoooohoohooo&amp;quot;) -- true
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;The 1st and 2nd &lt;code&gt;+&lt;/code&gt; apply only to the second &lt;code&gt;o&lt;/code&gt; in &lt;code&gt;boo&lt;/code&gt; and &lt;code&gt;hoo&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;The 3rd &lt;code&gt;+&lt;/code&gt; applies to the whole group &lt;code&gt;(hoo+)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;i&lt;/code&gt; makes this regexp case insensitive&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;matches-and-groups&quot;&gt;Matches and Groups&lt;/h4&gt;
+
+&lt;p&gt;&lt;code&gt;exec()&lt;/code&gt; will return &lt;code&gt;null&lt;/code&gt; if no match was found and return an object with information about the match otherwise&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;var match = /\d+/.exec(&amp;quot;one two 100&amp;quot;);
+console.log(match);
+// -&amp;gt; [&amp;quot;100&amp;quot;]
+console.log(match.index);
+// -&amp;gt; 8
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;String has a &lt;code&gt;match()&lt;/code&gt; method behaves similarly&lt;/p&gt;
+
+&lt;p&gt;When the regexp contains &lt;em&gt;subexpressions&lt;/em&gt; grouped with parenthese, the text that matched those groups will also show up in the array.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;var quotedText = /&amp;#39;([^&amp;#39;]*)&amp;#39;/;
+quotedText.exec(&amp;quot;She said &amp;#39;hello&amp;#39;&amp;quot;);
+// -&amp;gt; [&amp;quot;&amp;#39;hello&amp;#39;&amp;quot;, &amp;quot;hello&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If a group does not end up matched at all, its position in the array would hold &lt;code&gt;undefined&lt;/code&gt;. If it&amp;#39;s matched multiple times, only the last match ends up in the array.&lt;/p&gt;
+
+&lt;h4 id=&quot;word-and-string-boundaries&quot;&gt;Word and String Boundaries&lt;/h4&gt;
+
+&lt;p&gt;If we want to enforce that the match must span the whole string, we can add the markers ^ and $.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;word boundary&lt;/strong&gt; - \b
+a word char on one side and a nonword char on the other&lt;/p&gt;
+
+&lt;p&gt;####Choice Patterns&lt;/p&gt;
+
+&lt;p&gt;The Pipe Character &lt;code&gt;|&lt;/code&gt; denotes a choice between the pattern to its left and the pattern to its right.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;var animalCount = /\b\d+ (pig|cow|chicken)s?\b/;
+animalCount.test(&amp;quot;15 pigs&amp;quot;);
+// -&amp;gt; true
+animalCount.test(&amp;quot;15 pigchickens&amp;quot;);
+// -&amp;gt; false
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&quot;replace-method&quot;&gt;Replace Method&lt;/h4&gt;
+
+&lt;p&gt;String &lt;code&gt;replace&lt;/code&gt; method, the first argument can be a regexp&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;&amp;quot;Borobudur&amp;quot;.replace(/[ou]/, &amp;quot;a&amp;quot;)
+&amp;quot;Borobudur&amp;quot;.replace(/[ou]/g, &amp;quot;a&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The real power of using regexp with &lt;code&gt;replace&lt;/code&gt; comes from the fact that we can refer back to matched groups in the replace strings.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;&amp;quot;Hopper, Grace\n McCarthy, John&amp;quot;.replace(/([\w ]+), ([\w ]+)/g, &amp;quot;$2 $1&amp;quot;)
+// Grace Hopper
+// John McCarthy
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;$1 - $9, the whold match can be refered to as $&amp;amp;&lt;/p&gt;
+
+&lt;p&gt;It&amp;#39;s also possible to pass a function to the 2nd argument to &lt;code&gt;replace&lt;/code&gt;. The function will be called with the matched groups as arguments, and its return value will be inserted into the new string.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;var s = &amp;quot;the cia and fbi&amp;quot;;
+s.replace(/\b(fbi|cia)\b/g, function(str){
+   return str.toUpperCase(); 
+});
+// -&amp;gt; the CIA and FBI
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&quot;greed&quot;&gt;Greed&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;function stripComments(code){
+    return code.replace(/\/\/.*|\/\*[^]*\*\//g, &amp;quot;&amp;quot;);
+}
+stripComments(&amp;quot;1 /* a */+/* b */ 1&amp;quot;);
+// -&amp;gt; 1 1 (wrong)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The repetition operator(+, *, ?, and {}) are greedy, meaning they match as much as they can and backtrack from there. If you put a question mark after them, they become nongreedy and start by matching as little as possible.&lt;/p&gt;
+
+&lt;h4 id=&quot;dynamically-creating-regexp-objects&quot;&gt;Dynamically creating regexp objects&lt;/h4&gt;
+
+&lt;p&gt;Use the &lt;code&gt;RegExp&lt;/code&gt; constructor&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;var name = &amp;quot;harry&amp;quot;;
+var text = &amp;quot;harry is a suspicious character&amp;quot;;
+var regexp = new RegExp(&amp;quot;\\b(&amp;quot; + name + &amp;quot;)\\b&amp;quot;, &amp;quot;gi&amp;quot;);
+text.replace(regexp, &amp;quot;_$1_&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;use 2 backslashes because we are writing them in a normal string
+the second argument is the options&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;search&quot;&gt;Search&lt;/h4&gt;
+
+&lt;p&gt;&lt;code&gt;search&lt;/code&gt; method can take a regexp as argument and returns the first index on which the expression was found, or -1 when it&amp;#39;s not found&lt;/p&gt;
+
+&lt;h4 id=&quot;lastindex&quot;&gt;lastIndex&lt;/h4&gt;
+
+&lt;p&gt;Regular expression objects have properties.
+- source: the string that expression was created from
+- lastIndex: where the next match will start&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;must have global(g) option enabled&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;var pattern = /y/g;
+pattern.lastIndex = 3;
+var match = pattern.exec(&amp;quot;xyzzy&amp;quot;);
+match.index
+// 4
+pattern.lastIndex
+// 5
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;the call to &lt;code&gt;exec&lt;/code&gt; would automatically updates the &lt;code&gt;lastIndex&lt;/code&gt; property to point after the match, if no match was found, &lt;code&gt;lastIndex&lt;/code&gt; is set back to 0&lt;/p&gt;
+
+&lt;h4 id=&quot;looping-over-matches&quot;&gt;Looping Over Matches&lt;/h4&gt;
+
+&lt;p&gt;looping through all occurances in a string, using &lt;code&gt;lastIndex&lt;/code&gt; and &lt;code&gt;exec&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;var input = &amp;quot;A string with 3 numbers in it... 42 and 88.&amp;quot;;
+var number = /\b(\d+)\b/g;
+var match;
+while (match = number.exec(input))
+  console.log(&amp;quot;Found&amp;quot;, match[1], &amp;quot;at&amp;quot;, match.index);
+// → Found 3 at 14
+//   Found 42 at 33
+//   Found 88 at 40
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
                 <link>http://lefttree.github.io/notes/2015/07/07/eloquent-js-notes</link>
                 <guid>http://lefttree.github.io/notes/2015/07/07/eloquent-js-notes</guid>

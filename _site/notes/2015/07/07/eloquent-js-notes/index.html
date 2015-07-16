@@ -212,7 +212,14 @@
 <li>  <a href="#call-bind-and-apply">call(), bind() and apply()</a></li>
 <li>  <a href="#borrowing-functions-with-apply-and-call-a-must-know">Borrowing Functions with Apply and Call (A Must Know)</a></li>
 </ul></li>
+<li><a href="#regular-expressions">Chapter 9 - Regular Expressions</a>
+
+<ul>
+<li>  <a href="#create-a-regular-expression">Create a Regular Expression</a></li>
+</ul></li>
 </ul>
+
+<hr>
 
 <h3 id="chapter-3">Chapter 3</h3>
 
@@ -260,6 +267,8 @@ This feature - being able to reference a specific instance of local variables in
 
 <p>pure function : a value-production function that not only has no side effects but also doesn&#39;t rely on side effects from other code</p>
 
+<hr>
+
 <h3 id="chapter-4">Chapter 4</h3>
 
 <h3 id="data-structures:-objects-and-arrays">Data Structures: Objects and Arrays</h3>
@@ -294,6 +303,8 @@ Object values can be modified</p>
 <h4 id="the-arguments-object">The arguments object</h4>
 
 <p>whenever a function is called, a special variable named arguments is added. It refers to an object that holds all of the arguments passed to the function.</p>
+
+<hr>
 
 <h3 id="chapter-5">Chapter 5</h3>
 
@@ -441,6 +452,183 @@ Object values can be modified</p>
 
 <span class="c1">// Using the apply () method, we can pass the array of numbers:​</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">.</span><span class="nx">apply</span> <span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">allNumbers</span><span class="p">));</span> <span class="c1">// 56</span>
+</code></pre></div>
+<hr>
+
+<h3 id="chapter-9">Chapter 9</h3>
+
+<h3 id="regular-expressions">Regular Expressions</h3>
+
+<h4 id="create-a-regular-expression">Create a regular expression</h4>
+
+<ol>
+<li><p>with RegExp constructor</p>
+
+<p><code>var re1 = new RegExp(&quot;abd&quot;);</code></p></li>
+<li><p>written as a literal value</p>
+
+<p><code>var re2 = /abc/;</code></p></li>
+</ol>
+
+<p>some chars like <code>+</code>, have special meanings in RegExp. </p>
+
+<blockquote>
+<p>when in doubt, just put a backslash before any character that is not a letter, number, or whitespace.</p>
+</blockquote>
+
+<h4 id="testing-for-matches">Testing for Matches</h4>
+
+<p><code>.test()</code> return a Boolean telling you whether the string contains a match of the pattern in the expression.</p>
+
+<h4 id="matching-a-set-of-characters">Matching a Set of Characters</h4>
+
+<p><code>[0-9]</code>, a <code>-</code> between two cahracters can be used to indiate a range of chars</p>
+
+<p>built-in shorcuts:
+- \d    any digit character
+- \w    any alphanumeric character
+- \s    any whitespace character(space, tab, newline and similar)
+- \D    a character that is not a digit
+- \W    a nonalphanumeric character
+- \S    a nonwhitespace character
+- .     any character except for newline</p>
+
+<p>These backslash codes can be used inside [], like [\d.], means any digit or a period character. But the . itself, lost the special meaning.</p>
+
+<p>To <em>invert</em> a set of characters add a ^, to express that you want to match any character <strong>except</strong> the ones in the sets.</p>
+
+<h4 id="repeating-parts-of-a-pattern">Repeating Parts of a Pattern</h4>
+
+<ul>
+<li>+     &gt;= 1</li>
+<li>*     &gt;= 0</li>
+<li>?     0 or 1</li>
+<li>{4}   4 times</li>
+<li>{2, 4}    2 - 4 times</li>
+<li>{, 5}     0 - 5 times</li>
+<li>{5, }     &gt;= 5 times</li>
+</ul>
+
+<h4 id="grouping-subexpressions">Grouping Subexpressions</h4>
+<div class="highlight"><pre><code class="language-text" data-lang="text">var cartoonCrying = /boo+(hoo+)+/i
+cartoonCrying.test(&quot;Boohoooohoohooo&quot;) -- true
+</code></pre></div>
+<ul>
+<li>The 1st and 2nd <code>+</code> apply only to the second <code>o</code> in <code>boo</code> and <code>hoo</code></li>
+<li>The 3rd <code>+</code> applies to the whole group <code>(hoo+)</code></li>
+<li>The <code>i</code> makes this regexp case insensitive</li>
+</ul>
+
+<h4 id="matches-and-groups">Matches and Groups</h4>
+
+<p><code>exec()</code> will return <code>null</code> if no match was found and return an object with information about the match otherwise</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">var match = /\d+/.exec(&quot;one two 100&quot;);
+console.log(match);
+// -&gt; [&quot;100&quot;]
+console.log(match.index);
+// -&gt; 8
+</code></pre></div>
+<p>String has a <code>match()</code> method behaves similarly</p>
+
+<p>When the regexp contains <em>subexpressions</em> grouped with parenthese, the text that matched those groups will also show up in the array.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">var quotedText = /&#39;([^&#39;]*)&#39;/;
+quotedText.exec(&quot;She said &#39;hello&#39;&quot;);
+// -&gt; [&quot;&#39;hello&#39;&quot;, &quot;hello&quot;]
+</code></pre></div>
+<p>If a group does not end up matched at all, its position in the array would hold <code>undefined</code>. If it&#39;s matched multiple times, only the last match ends up in the array.</p>
+
+<h4 id="word-and-string-boundaries">Word and String Boundaries</h4>
+
+<p>If we want to enforce that the match must span the whole string, we can add the markers ^ and $.</p>
+
+<p><strong>word boundary</strong> - \b
+a word char on one side and a nonword char on the other</p>
+
+<p>####Choice Patterns</p>
+
+<p>The Pipe Character <code>|</code> denotes a choice between the pattern to its left and the pattern to its right.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">var animalCount = /\b\d+ (pig|cow|chicken)s?\b/;
+animalCount.test(&quot;15 pigs&quot;);
+// -&gt; true
+animalCount.test(&quot;15 pigchickens&quot;);
+// -&gt; false
+</code></pre></div>
+<h4 id="replace-method">Replace Method</h4>
+
+<p>String <code>replace</code> method, the first argument can be a regexp</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">&quot;Borobudur&quot;.replace(/[ou]/, &quot;a&quot;)
+&quot;Borobudur&quot;.replace(/[ou]/g, &quot;a&quot;)
+</code></pre></div>
+<p>The real power of using regexp with <code>replace</code> comes from the fact that we can refer back to matched groups in the replace strings.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">&quot;Hopper, Grace\n McCarthy, John&quot;.replace(/([\w ]+), ([\w ]+)/g, &quot;$2 $1&quot;)
+// Grace Hopper
+// John McCarthy
+</code></pre></div>
+<p>$1 - $9, the whold match can be refered to as $&amp;</p>
+
+<p>It&#39;s also possible to pass a function to the 2nd argument to <code>replace</code>. The function will be called with the matched groups as arguments, and its return value will be inserted into the new string.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">var s = &quot;the cia and fbi&quot;;
+s.replace(/\b(fbi|cia)\b/g, function(str){
+   return str.toUpperCase(); 
+});
+// -&gt; the CIA and FBI
+</code></pre></div>
+<h4 id="greed">Greed</h4>
+<div class="highlight"><pre><code class="language-text" data-lang="text">function stripComments(code){
+    return code.replace(/\/\/.*|\/\*[^]*\*\//g, &quot;&quot;);
+}
+stripComments(&quot;1 /* a */+/* b */ 1&quot;);
+// -&gt; 1 1 (wrong)
+</code></pre></div>
+<p>The repetition operator(+, *, ?, and {}) are greedy, meaning they match as much as they can and backtrack from there. If you put a question mark after them, they become nongreedy and start by matching as little as possible.</p>
+
+<h4 id="dynamically-creating-regexp-objects">Dynamically creating regexp objects</h4>
+
+<p>Use the <code>RegExp</code> constructor</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">var name = &quot;harry&quot;;
+var text = &quot;harry is a suspicious character&quot;;
+var regexp = new RegExp(&quot;\\b(&quot; + name + &quot;)\\b&quot;, &quot;gi&quot;);
+text.replace(regexp, &quot;_$1_&quot;);
+</code></pre></div>
+<blockquote>
+<p>use 2 backslashes because we are writing them in a normal string
+the second argument is the options</p>
+</blockquote>
+
+<h4 id="search">Search</h4>
+
+<p><code>search</code> method can take a regexp as argument and returns the first index on which the expression was found, or -1 when it&#39;s not found</p>
+
+<h4 id="lastindex">lastIndex</h4>
+
+<p>Regular expression objects have properties.
+- source: the string that expression was created from
+- lastIndex: where the next match will start</p>
+
+<blockquote>
+<p>must have global(g) option enabled</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-text" data-lang="text">var pattern = /y/g;
+pattern.lastIndex = 3;
+var match = pattern.exec(&quot;xyzzy&quot;);
+match.index
+// 4
+pattern.lastIndex
+// 5
+</code></pre></div>
+<p>the call to <code>exec</code> would automatically updates the <code>lastIndex</code> property to point after the match, if no match was found, <code>lastIndex</code> is set back to 0</p>
+
+<h4 id="looping-over-matches">Looping Over Matches</h4>
+
+<p>looping through all occurances in a string, using <code>lastIndex</code> and <code>exec</code></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">var input = &quot;A string with 3 numbers in it... 42 and 88.&quot;;
+var number = /\b(\d+)\b/g;
+var match;
+while (match = number.exec(input))
+  console.log(&quot;Found&quot;, match[1], &quot;at&quot;, match.index);
+// → Found 3 at 14
+//   Found 42 at 33
+//   Found 88 at 40
 </code></pre></div>
   </div>
   
