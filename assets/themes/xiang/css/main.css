@@ -9,6 +9,10 @@
   padding: 0;
 }
 
+ul li{
+  padding: 4px;
+}
+
 html, body {
   height: 100%;
   width: 100%;
@@ -159,10 +163,10 @@ a:hover {
   margin-bottom: 1.25em;
 }
 
-.post a,
-#about a {
-  border-bottom: 1px solid #8085C1;
-}
+/*.post a,*/
+/*#about a {*/
+  /*border-bottom: 1px solid #8085C1;*/
+/*}*/
 
 .post a:hover {
   border: none;
@@ -349,3 +353,4 @@ a:hover {
   background: #57A957;
   border: 1px solid #4c964d;
   color: #FFF; }
+
