@@ -195,47 +195,47 @@
 </ul>
 
 <h3 id="factory-pattern">Factory Pattern</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">function createCar(make, model, year) {
-    var o = new Object();
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">createCar</span><span class="p">(</span><span class="nx">make</span><span class="p">,</span> <span class="nx">model</span><span class="p">,</span> <span class="nx">year</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">();</span>
 
-    o.make   = make;
-    o.model  = model;
-    o.year   = year;
-    o.sayCar = function() {
-        alert(&#39;I have a &#39; + this.year + &#39; &#39; + this.make + &#39; &#39; + this.model + &#39;.&#39;);
-    };
+    <span class="nx">o</span><span class="p">.</span><span class="nx">make</span>   <span class="o">=</span> <span class="nx">make</span><span class="p">;</span>
+    <span class="nx">o</span><span class="p">.</span><span class="nx">model</span>  <span class="o">=</span> <span class="nx">model</span><span class="p">;</span>
+    <span class="nx">o</span><span class="p">.</span><span class="nx">year</span>   <span class="o">=</span> <span class="nx">year</span><span class="p">;</span>
+    <span class="nx">o</span><span class="p">.</span><span class="nx">sayCar</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;I have a &#39;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">year</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">make</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">model</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span><span class="p">);</span>
+    <span class="p">};</span>
 
-    return o;
-}
+    <span class="k">return</span> <span class="nx">o</span><span class="p">;</span>
+<span class="p">}</span>
 
-// create 2 car objects for John and Jane
-var johnCar = createCar(&#39;Ford&#39;, &#39;F150&#39;, &#39;2011&#39;),
-    janeCar = createCar(&#39;Audi&#39;, &#39;A4&#39;, &#39;2007&#39;);
+<span class="c1">// create 2 car objects for John and Jane</span>
+<span class="kd">var</span> <span class="nx">johnCar</span> <span class="o">=</span> <span class="nx">createCar</span><span class="p">(</span><span class="s1">&#39;Ford&#39;</span><span class="p">,</span> <span class="s1">&#39;F150&#39;</span><span class="p">,</span> <span class="s1">&#39;2011&#39;</span><span class="p">),</span>
+    <span class="nx">janeCar</span> <span class="o">=</span> <span class="nx">createCar</span><span class="p">(</span><span class="s1">&#39;Audi&#39;</span><span class="p">,</span> <span class="s1">&#39;A4&#39;</span><span class="p">,</span> <span class="s1">&#39;2007&#39;</span><span class="p">);</span>
 </code></pre></div>
 <p>Cons
 1. Efficiency, functions are copied to all new object instances
 2. Type determination. new object instances are typed as object</p>
 
 <h3 id="constructor-pattern">Constructor Pattern</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">function Fruit (theColor, theSweetness, theFruitName, theNativeToLand) {
-​
-    this.color = theColor;
-    this.sweetness = theSweetness;
-    this.fruitName = theFruitName;
-    this.nativeToLand = theNativeToLand;
-​
-    this.showName = function () {
-        console.log(&quot;This is a &quot; + this.fruitName);
-    }
-​
-    this.nativeTo = function () {
-    this.nativeToLand.forEach(function (eachCountry)  {
-       console.log(&quot;Grown in:&quot; + eachCountry);
-        });
-    }
-​
-​
-}
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">Fruit</span> <span class="p">(</span><span class="nx">theColor</span><span class="p">,</span> <span class="nx">theSweetness</span><span class="p">,</span> <span class="nx">theFruitName</span><span class="p">,</span> <span class="nx">theNativeToLand</span><span class="p">)</span> <span class="p">{</span>
+<span class="err">​</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="nx">theColor</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">sweetness</span> <span class="o">=</span> <span class="nx">theSweetness</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">fruitName</span> <span class="o">=</span> <span class="nx">theFruitName</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">nativeToLand</span> <span class="o">=</span> <span class="nx">theNativeToLand</span><span class="p">;</span>
+<span class="err">​</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">showName</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;This is a &quot;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">fruitName</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="err">​</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">nativeTo</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">nativeToLand</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">eachCountry</span><span class="p">)</span>  <span class="p">{</span>
+       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Grown in:&quot;</span> <span class="o">+</span> <span class="nx">eachCountry</span><span class="p">);</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="err">​</span>
+<span class="err">​</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>To create</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">var mangoFruit = new Fruit (&quot;Yellow&quot;, 8, &quot;Mango&quot;, [&quot;South America&quot;, &quot;Central America&quot;, &quot;West Africa&quot;]);
@@ -246,22 +246,22 @@ mangoFruit.nativeTo();
 But still <strong>ineffiecient</strong></p>
 
 <h3 id="prototype-pattern">Prototype Pattern</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">function Fruit () {
-​
-}
-​
-Fruit.prototype.color = &quot;Yellow&quot;;
-Fruit.prototype.sweetness = 7;
-Fruit.prototype.fruitName = &quot;Generic Fruit&quot;;
-Fruit.prototype.nativeToLand = &quot;USA&quot;;
-​
-Fruit.prototype.showName = function () {
-console.log(&quot;This is a &quot; + this.fruitName);
-}
-​
-Fruit.prototype.nativeTo = function () {
-            console.log(&quot;Grown in:&quot; + this.nativeToLand);
-}
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">Fruit</span> <span class="p">()</span> <span class="p">{</span>
+<span class="err">​</span>
+<span class="p">}</span>
+<span class="err">​</span>
+<span class="nx">Fruit</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="s2">&quot;Yellow&quot;</span><span class="p">;</span>
+<span class="nx">Fruit</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">sweetness</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+<span class="nx">Fruit</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">fruitName</span> <span class="o">=</span> <span class="s2">&quot;Generic Fruit&quot;</span><span class="p">;</span>
+<span class="nx">Fruit</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">nativeToLand</span> <span class="o">=</span> <span class="s2">&quot;USA&quot;</span><span class="p">;</span>
+<span class="err">​</span>
+<span class="nx">Fruit</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">showName</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;This is a &quot;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">fruitName</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="err">​</span>
+<span class="nx">Fruit</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">nativeTo</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Grown in:&quot;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">nativeToLand</span><span class="p">);</span>
+<span class="p">}</span>
 </code></pre></div><div class="highlight"><pre><code class="language-text" data-lang="text">var mangoFruit = new Fruit ();
 mangoFruit.showName(); //​
 mangoFruit.nativeTo();

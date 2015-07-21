@@ -14,7 +14,7 @@ tags: [javascript, oop]
 
 ### Factory Pattern
 
-```
+```javascript
 function createCar(make, model, year) {
     var o = new Object();
 
@@ -39,7 +39,7 @@ Cons
 
 ### Constructor Pattern
 
-```
+```javascript
 function Fruit (theColor, theSweetness, theFruitName, theNativeToLand) {
 ​
     this.color = theColor;
@@ -74,7 +74,7 @@ But still **ineffiecient**
 
 ### Prototype Pattern
 
-```
+```javascript
 function Fruit () {
 ​
 }
