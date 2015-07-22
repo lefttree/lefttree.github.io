@@ -8,6 +8,7 @@ http://lefttree.github.io/rss.xml
 http://lefttree.github.io/sitemap.txt
 http://lefttree.github.io/tags.html
 
+http://lefttree.github.io/web/2015/07/22/strict-mode
 http://lefttree.github.io/javascript/2015/07/07/practical-patterns-for-creating-objects
 http://lefttree.github.io/notes/2015/07/07/eloquent-js-notes
 http://lefttree.github.io/programming%20style/2015/06/18/git-workflow

@@ -5,10 +5,32 @@
         <description>LeftTree&#39;s Blog - Xiang Li</description>
         <link>http://lefttree.github.io</link>
         <atom:link href="http://lefttree.github.io/rss.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Wed, 22 Jul 2015 00:58:52 -0700</lastBuildDate>
-        <pubDate>Wed, 22 Jul 2015 00:58:52 -0700</pubDate>
+        <lastBuildDate>Wed, 22 Jul 2015 16:01:04 -0700</lastBuildDate>
+        <pubDate>Wed, 22 Jul 2015 16:01:04 -0700</pubDate>
         <ttl>60</ttl>
 
+
+        <item>
+                <title>About strict mode</title>
+                <description>&lt;p&gt;###Why Strict mode(From MDN)&lt;/p&gt;
+
+&lt;p&gt;Strict mode makes several changes to normal JavaScript semantics.
+    - strict mode eliminates some JavaScript silent errors by changing them to throw errors. 
+    - strict mode fixes mistakes that make it difficult for JavaScript engines to perform optimizations: strict mode code can sometimes be made to run faster than identical code that&amp;#39;s not strict mode. 
+    - strict mode prohibits some syntax likely to be defined in future versions of ECMAScript.&lt;/p&gt;
+
+&lt;p&gt;###Avoid global strict mode&lt;/p&gt;
+
+&lt;p&gt;When you concatenate javascript, global strict mode may cause some problems, it may apply to all the javascript files.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;It is thus recommended that you enable strict mode on a function-by-function basis (at least during the transition period).&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+                <link>http://lefttree.github.io/web/2015/07/22/strict-mode</link>
+                <guid>http://lefttree.github.io/web/2015/07/22/strict-mode</guid>
+                <pubDate>Wed, 22 Jul 2015 00:00:00 -0700</pubDate>
+        </item>
 
         <item>
                 <title>Practical patterns for createing objects</title>
