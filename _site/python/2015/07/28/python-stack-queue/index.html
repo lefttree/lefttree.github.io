@@ -4,7 +4,7 @@
   <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      <title>LeftTree - Archive</title>
+      <title>LeftTree - Python stack and queue</title>
       <meta name="viewport" content="width=device-width">
 
       <!-- atom & rss feed -->
@@ -111,7 +111,7 @@
     
       
       	
-      	<li class="active"><a href="/archive.html" class="active">Archive</a></li>
+      	<li><a href="/archive.html">Archive</a></li>
       	
       
     
@@ -184,198 +184,139 @@
     <img src="/assets/themes/xiang/images/sidebar-button.png">
   </div>
   <div id="post-info">
-    <!--<div id="cover-photo-container">-->
-      <!--<img id="cover-photo" src="/assets/themes/xiang/images/" style="width: 50%; align: middle">-->
-    <!--</div>-->
+    <div id="cover-photo-container">
+      <img id="cover-photo" src="/assets/themes/xiang/images/cover.jpg">
+    </div>
     <div id="info-container">
-      <h1 id="title">Archive</h1>
+      <h1 id="title">Python stack and queue</h1>
+      <span id="date">28 Jul 2015</span>
     </div>
   </div>
 
   <div class="post">
-    
+    <blockquote>
+<p>from python official doc</p>
+</blockquote>
 
+<h3 id="stack">Stack</h3>
 
+<p>The list methods make it very easy to use a list as a stack, where the last element added is the first element retrieved (“last-in, first-out”). </p>
 
+<ul>
+<li>To add an item to the top of the stack, use <code>append()</code>. </li>
+<li>To retrieve an item from the top of the stack, use <code>pop()</code> without an explicit index. </li>
+</ul>
 
+<p>For example:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">&gt;&gt;&gt;stack = [3, 4, 5]
+&gt;&gt;&gt;stack.append(6)
+&gt;&gt;&gt;stack.append(7)
+stack
+[3, 4, 5, 6, 7]
+stack.pop()
+7
+&gt;&gt;&gt; stack
+[3, 4, 5, 6]
+&gt;&gt;&gt; stack.pop()
+6
+&gt;&gt;&gt; stack.pop()
+5
+&gt;&gt;&gt; stack
+[3, 4]
+</code></pre></div>
+<h3 id="queue">Queue</h3>
 
-  
-    
-    
-    
-    
-  
-    
-      <h2>2015</h2>
-      <h3>July</h3>
-      <ul>
-    
-  
-    <li><span>July 28, 2015</span> &raquo; <a href="/python/2015/07/28/python-stack-queue">Python stack and queue</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>July 22, 2015</span> &raquo; <a href="/web/2015/07/22/strict-mode">About strict mode</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>July  7, 2015</span> &raquo; <a href="/javascript/2015/07/07/practical-patterns-for-creating-objects">Practical patterns for createing objects</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>July  7, 2015</span> &raquo; <a href="/notes/2015/07/07/eloquent-js-notes">Eloquent Javascript Notes</a></li>
-  
-    
-          
-        
-          </ul>
-          <h3>June</h3>
-          <ul>
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>June 18, 2015</span> &raquo; <a href="/programming%20style/2015/06/18/git-workflow">Git Workflow</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>June 12, 2015</span> &raquo; <a href="/frontend/2015/06/12/react-twoway-binding">React Two-way Binding</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>June 12, 2015</span> &raquo; <a href="/frontend/2015/06/12/gulp-setup">Gulp Setup</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>June  7, 2015</span> &raquo; <a href="/programming%20style/2015/06/07/git-commit-style">Git commit style</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>June  4, 2015</span> &raquo; <a href="/web/2015/06/04/HTML5-Storage-Cache">HTML5 Storage & Cache</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>June  3, 2015</span> &raquo; <a href="/programming%20style/2015/06/03/JS-Best-Practices">Javascript Best Practices</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>June  1, 2015</span> &raquo; <a href="/web/2015/06/01/Javascript-theGoodParts">Javascript Good Parts</a></li>
-  
-    
-      </ul>
-    
-  
+<p>To implement a queue, use <code>collections.deque</code> which was designed to have fast appends and pops from both ends.</p>
 
-
-
+<ul>
+<li><code>append()</code></li>
+<li><code>popleft()</code></li>
+</ul>
+<div class="highlight"><pre><code class="language-text" data-lang="text">&gt;&gt;&gt; from collections import deque
+&gt;&gt;&gt; queue = deque([&quot;Eric&quot;, &quot;John&quot;, &quot;Michael&quot;])
+&gt;&gt;&gt; queue.append(&quot;Terry&quot;)           # Terry arrives
+&gt;&gt;&gt; queue.append(&quot;Graham&quot;)          # Graham arrives
+&gt;&gt;&gt; queue.popleft()                 # The first to arrive now leaves
+&#39;Eric&#39;
+&gt;&gt;&gt; queue.popleft()                 # The second to arrive now leaves
+&#39;John&#39;
+&gt;&gt;&gt; queue                           # Remaining queue in order of arrival
+deque([&#39;Michael&#39;, &#39;Terry&#39;, &#39;Graham&#39;])
+</code></pre></div>
   </div>
-  <div class="colophon">
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-folder-open"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/categories.html#python-ref">
+    		python <span>1</span>
+    	</a></li>
+    
+  
+
+
+    </ul>
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags.html#python-ref">python <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#data structure-ref">data structure <span>1</span></a></li>
+    
+  
+
+
+
+    </ul>
+  
+  <hr>  
+  <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/web/2015/07/22/strict-mode" title="About strict mode">&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next disabled"><a>Next &rarr;</a>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    
+    var disqus_developer = 1;
+    var disqus_shortname = 'lefttreegithubio'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
   </div>
 </div>
 

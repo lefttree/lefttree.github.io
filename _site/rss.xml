@@ -5,10 +5,66 @@
         <description>LeftTree&#39;s Blog - Xiang Li</description>
         <link>http://lefttree.github.io</link>
         <atom:link href="http://lefttree.github.io/rss.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Thu, 23 Jul 2015 14:20:27 -0700</lastBuildDate>
-        <pubDate>Thu, 23 Jul 2015 14:20:27 -0700</pubDate>
+        <lastBuildDate>Tue, 28 Jul 2015 18:35:45 -0700</lastBuildDate>
+        <pubDate>Tue, 28 Jul 2015 18:35:45 -0700</pubDate>
         <ttl>60</ttl>
 
+
+        <item>
+                <title>Python stack and queue</title>
+                <description>&lt;blockquote&gt;
+&lt;p&gt;from python official doc&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;stack&quot;&gt;Stack&lt;/h3&gt;
+
+&lt;p&gt;The list methods make it very easy to use a list as a stack, where the last element added is the first element retrieved (“last-in, first-out”). &lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;To add an item to the top of the stack, use &lt;code&gt;append()&lt;/code&gt;. &lt;/li&gt;
+&lt;li&gt;To retrieve an item from the top of the stack, use &lt;code&gt;pop()&lt;/code&gt; without an explicit index. &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For example:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;&amp;gt;&amp;gt;&amp;gt;stack = [3, 4, 5]
+&amp;gt;&amp;gt;&amp;gt;stack.append(6)
+&amp;gt;&amp;gt;&amp;gt;stack.append(7)
+stack
+[3, 4, 5, 6, 7]
+stack.pop()
+7
+&amp;gt;&amp;gt;&amp;gt; stack
+[3, 4, 5, 6]
+&amp;gt;&amp;gt;&amp;gt; stack.pop()
+6
+&amp;gt;&amp;gt;&amp;gt; stack.pop()
+5
+&amp;gt;&amp;gt;&amp;gt; stack
+[3, 4]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;queue&quot;&gt;Queue&lt;/h3&gt;
+
+&lt;p&gt;To implement a queue, use &lt;code&gt;collections.deque&lt;/code&gt; which was designed to have fast appends and pops from both ends.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;append()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;popleft()&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;&amp;gt;&amp;gt;&amp;gt; from collections import deque
+&amp;gt;&amp;gt;&amp;gt; queue = deque([&amp;quot;Eric&amp;quot;, &amp;quot;John&amp;quot;, &amp;quot;Michael&amp;quot;])
+&amp;gt;&amp;gt;&amp;gt; queue.append(&amp;quot;Terry&amp;quot;)           # Terry arrives
+&amp;gt;&amp;gt;&amp;gt; queue.append(&amp;quot;Graham&amp;quot;)          # Graham arrives
+&amp;gt;&amp;gt;&amp;gt; queue.popleft()                 # The first to arrive now leaves
+&amp;#39;Eric&amp;#39;
+&amp;gt;&amp;gt;&amp;gt; queue.popleft()                 # The second to arrive now leaves
+&amp;#39;John&amp;#39;
+&amp;gt;&amp;gt;&amp;gt; queue                           # Remaining queue in order of arrival
+deque([&amp;#39;Michael&amp;#39;, &amp;#39;Terry&amp;#39;, &amp;#39;Graham&amp;#39;])
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+                <link>http://lefttree.github.io/python/2015/07/28/python-stack-queue</link>
+                <guid>http://lefttree.github.io/python/2015/07/28/python-stack-queue</guid>
+                <pubDate>Tue, 28 Jul 2015 00:00:00 -0700</pubDate>
+        </item>
 
         <item>
                 <title>About strict mode</title>
