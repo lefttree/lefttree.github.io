@@ -54,3 +54,8 @@ To implement a queue, use `collections.deque` which was designed to have fast ap
 >>> queue                           # Remaining queue in order of arrival
 deque(['Michael', 'Terry', 'Graham'])
 ```
+
+deque to list
+`
+list(collections.deque(1,2,3))
+`
