@@ -5,8 +5,8 @@
         <description>LeftTree&#39;s Blog - Xiang Li</description>
         <link>http://lefttree.github.io</link>
         <atom:link href="http://lefttree.github.io/rss.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Wed, 29 Jul 2015 18:24:26 -0700</lastBuildDate>
-        <pubDate>Wed, 29 Jul 2015 18:24:26 -0700</pubDate>
+        <lastBuildDate>Wed, 29 Jul 2015 18:25:18 -0700</lastBuildDate>
+        <pubDate>Wed, 29 Jul 2015 18:25:18 -0700</pubDate>
         <ttl>60</ttl>
 
 
@@ -60,7 +60,12 @@ stack.pop()
 &amp;#39;John&amp;#39;
 &amp;gt;&amp;gt;&amp;gt; queue                           # Remaining queue in order of arrival
 deque([&amp;#39;Michael&amp;#39;, &amp;#39;Terry&amp;#39;, &amp;#39;Graham&amp;#39;])
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;deque to list
+&lt;code&gt;
+list(collections.deque(1,2,3))
+&lt;/code&gt;&lt;/p&gt;
+</description>
                 <link>http://lefttree.github.io/python/2015/07/28/python-stack-queue</link>
                 <guid>http://lefttree.github.io/python/2015/07/28/python-stack-queue</guid>
                 <pubDate>Tue, 28 Jul 2015 00:00:00 -0700</pubDate>

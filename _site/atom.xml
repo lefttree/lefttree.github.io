@@ -4,7 +4,7 @@
  <title>LeftTree&#39;s Blog</title>
  <link href="http://lefttree.github.io/atom.xml" rel="self"/>
  <link href="http://lefttree.github.io"/>
- <updated>2015-07-29T18:24:26-07:00</updated>
+ <updated>2015-07-29T18:25:18-07:00</updated>
  <id>http://lefttree.github.io</id>
  <author>
    <name>Xiang Li</name>
@@ -65,7 +65,12 @@ stack.pop()
 &amp;#39;John&amp;#39;
 &amp;gt;&amp;gt;&amp;gt; queue                           # Remaining queue in order of arrival
 deque([&amp;#39;Michael&amp;#39;, &amp;#39;Terry&amp;#39;, &amp;#39;Graham&amp;#39;])
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;deque to list
+&lt;code&gt;
+list(collections.deque(1,2,3))
+&lt;/code&gt;&lt;/p&gt;
+</content>
  </entry>
  
  <entry>
