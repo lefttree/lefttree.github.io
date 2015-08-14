@@ -5,10 +5,35 @@
         <description>LeftTree&#39;s Blog - Xiang Li</description>
         <link>http://lefttree.github.io</link>
         <atom:link href="http://lefttree.github.io/rss.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Wed, 29 Jul 2015 18:25:18 -0700</lastBuildDate>
-        <pubDate>Wed, 29 Jul 2015 18:25:18 -0700</pubDate>
+        <lastBuildDate>Thu, 13 Aug 2015 17:42:11 -0700</lastBuildDate>
+        <pubDate>Thu, 13 Aug 2015 17:42:11 -0700</pubDate>
         <ttl>60</ttl>
 
+
+        <item>
+                <title>Python Dictionary Key</title>
+                <description>&lt;p&gt;##dict&lt;/p&gt;
+
+&lt;p&gt;A mapping object maps &lt;code&gt;hashable values&lt;/code&gt; to &lt;code&gt;arbitrary objects&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;So keys must be &lt;code&gt;hashable&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;A dictionary’s keys are almost arbitrary values. Values that are not hashable, that is, values containing lists, dictionaries or other mutable types (that are compared by value rather than by object identity) may not be used as keys.&lt;/p&gt;
+
+&lt;p&gt;##Hashable&lt;/p&gt;
+
+&lt;p&gt;An object is hashable if it has a hash value which never changes during its lifetime (it needs a &lt;strong&gt;hash&lt;/strong&gt;() method), and can be compared to other objects (it needs an &lt;strong&gt;eq&lt;/strong&gt;() method). Hashable objects which compare equal must have the same hash value.&lt;/p&gt;
+
+&lt;p&gt;Hashability makes an object usable as a dictionary key and a set member, because these data structures use the hash value internally.&lt;/p&gt;
+
+&lt;p&gt;All of Python’s immutable built-in objects are hashable, while no mutable containers (such as lists or dictionaries) are. &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Objects which are instances of user-defined classes are hashable by default; they all compare unequal (except with themselves), and their hash value is derived from their id().&lt;/strong&gt;&lt;/p&gt;
+</description>
+                <link>http://lefttree.github.io/python/2015/08/13/python-dictionary-key</link>
+                <guid>http://lefttree.github.io/python/2015/08/13/python-dictionary-key</guid>
+                <pubDate>Thu, 13 Aug 2015 00:00:00 -0700</pubDate>
+        </item>
 
         <item>
                 <title>Python stack and queue</title>

@@ -4,7 +4,7 @@
   <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      <title>LeftTree - Tags</title>
+      <title>LeftTree - Python Dictionary Key</title>
       <meta name="viewport" content="width=device-width">
 
       <!-- atom & rss feed -->
@@ -158,7 +158,7 @@
     
       
       	
-      	<li class="active"><a href="/tags.html" class="active">Tags</a></li>
+      	<li><a href="/tags.html">Tags</a></li>
       	
       
     
@@ -191,45 +191,62 @@
     <img src="/assets/themes/xiang/images/sidebar-button.png">
   </div>
   <div id="post-info">
-    <!--<div id="cover-photo-container">-->
-      <!--<img id="cover-photo" src="/assets/themes/xiang/images/" style="width: 50%; align: middle">-->
-    <!--</div>-->
+    <div id="cover-photo-container">
+      <img id="cover-photo" src="/assets/themes/xiang/images/cover.jpg">
+    </div>
     <div id="info-container">
-      <h1 id="title">Tags</h1>
+      <h1 id="title">Python Dictionary Key</h1>
+      <span id="date">13 Aug 2015</span>
     </div>
   </div>
 
   <div class="post">
-    
+    <p>##dict</p>
 
-<ul class="tag_box inline">
+<p>A mapping object maps <code>hashable values</code> to <code>arbitrary objects</code>.</p>
+
+<p>So keys must be <code>hashable</code></p>
+
+<p>A dictionary’s keys are almost arbitrary values. Values that are not hashable, that is, values containing lists, dictionaries or other mutable types (that are compared by value rather than by object identity) may not be used as keys.</p>
+
+<p>##Hashable</p>
+
+<p>An object is hashable if it has a hash value which never changes during its lifetime (it needs a <strong>hash</strong>() method), and can be compared to other objects (it needs an <strong>eq</strong>() method). Hashable objects which compare equal must have the same hash value.</p>
+
+<p>Hashability makes an object usable as a dictionary key and a set member, because these data structures use the hash value internally.</p>
+
+<p>All of Python’s immutable built-in objects are hashable, while no mutable containers (such as lists or dictionaries) are. </p>
+
+<p><strong>Objects which are instances of user-defined classes are hashable by default; they all compare unequal (except with themselves), and their hash value is derived from their id().</strong></p>
+
+  </div>
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-folder-open"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/categories.html#python-ref">
+    		python <span>2</span>
+    	</a></li>
     
   
 
 
+    </ul>
+    
+
   
-     
-    	<li><a href="/tags.html#web-ref">web <span>3</span></a></li>
-     
-    	<li><a href="/tags.html#javascript-ref">javascript <span>7</span></a></li>
-     
-    	<li><a href="/tags.html#programming style-ref">programming style <span>3</span></a></li>
-     
-    	<li><a href="/tags.html#html5-ref">html5 <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#git-ref">git <span>2</span></a></li>
-     
-    	<li><a href="/tags.html#frontend-ref">frontend <span>2</span></a></li>
-     
-    	<li><a href="/tags.html#node-ref">node <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#notes-ref">notes <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#oop-ref">oop <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#python-ref">python <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#data structure-ref">data structure <span>1</span></a></li>
+    <ul class="tag_box inline">
+      <li><i class="icon-tags"></i></li>
+      
+      
+
+
+  
      
     	<li><a href="/tags.html#Python-ref">Python <span>1</span></a></li>
     
@@ -237,349 +254,43 @@
 
 
 
-</ul>
-
-
- 
-  <h2 id="web-ref">web</h2>
-  <ul>
-      
-    
-
-
+    </ul>
   
-    
+  <hr>  
+  <div class="pagination">
+      <ul>
       
-      	
-      	<li><a href="/web/2015/07/22/strict-mode">About strict mode</a></li>
-      	
+        <li class="prev"><a href="/python/2015/07/28/python-stack-queue" title="Python stack and queue">&larr; Previous</a></li>
       
-    
-  
-    
+        <li><a href="/archive.html">Archive</a></li>
       
-      	
-      	<li><a href="/web/2015/06/04/HTML5-Storage-Cache">HTML5 Storage & Cache</a></li>
-      	
+        <li class="next disabled"><a>Next &rarr;</a>
       
-    
-  
-    
-      
-      	
-      	<li><a href="/web/2015/06/01/Javascript-theGoodParts">Javascript Good Parts</a></li>
-      	
-      
-    
-  
-
-
-
-  </ul>
- 
-  <h2 id="javascript-ref">javascript</h2>
-  <ul>
-      
+      </ul>
+    </div>
+    <hr>
     
 
 
-  
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
     
-      
-      	
-      	<li><a href="/web/2015/07/22/strict-mode">About strict mode</a></li>
-      	
-      
+    var disqus_developer = 1;
+    var disqus_shortname = 'lefttreegithubio'; // required: replace example with your forum shortname
     
-  
-    
-      
-      	
-      	<li><a href="/javascript/2015/07/07/practical-patterns-for-creating-objects">Practical patterns for createing objects</a></li>
-      	
-      
-    
-  
-    
-      
-      	
-      	<li><a href="/notes/2015/07/07/eloquent-js-notes">Eloquent Javascript Notes</a></li>
-      	
-      
-    
-  
-    
-      
-      	
-      	<li><a href="/frontend/2015/06/12/react-twoway-binding">React Two-way Binding</a></li>
-      	
-      
-    
-  
-    
-      
-      	
-      	<li><a href="/frontend/2015/06/12/gulp-setup">Gulp Setup</a></li>
-      	
-      
-    
-  
-    
-      
-      	
-      	<li><a href="/programming%20style/2015/06/03/JS-Best-Practices">Javascript Best Practices</a></li>
-      	
-      
-    
-  
-    
-      
-      	
-      	<li><a href="/web/2015/06/01/Javascript-theGoodParts">Javascript Good Parts</a></li>
-      	
-      
-    
-  
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
 
-  </ul>
- 
-  <h2 id="programming style-ref">programming style</h2>
-  <ul>
-      
-    
 
-
-  
-    
-      
-      	
-      	<li><a href="/programming%20style/2015/06/18/git-workflow">Git Workflow</a></li>
-      	
-      
-    
-  
-    
-      
-      	
-      	<li><a href="/programming%20style/2015/06/07/git-commit-style">Git commit style</a></li>
-      	
-      
-    
-  
-    
-      
-      	
-      	<li><a href="/programming%20style/2015/06/03/JS-Best-Practices">Javascript Best Practices</a></li>
-      	
-      
-    
-  
-
-
-
-  </ul>
- 
-  <h2 id="html5-ref">html5</h2>
-  <ul>
-      
-    
-
-
-  
-    
-      
-      	
-      	<li><a href="/web/2015/06/04/HTML5-Storage-Cache">HTML5 Storage & Cache</a></li>
-      	
-      
-    
-  
-
-
-
-  </ul>
- 
-  <h2 id="git-ref">git</h2>
-  <ul>
-      
-    
-
-
-  
-    
-      
-      	
-      	<li><a href="/programming%20style/2015/06/18/git-workflow">Git Workflow</a></li>
-      	
-      
-    
-  
-    
-      
-      	
-      	<li><a href="/programming%20style/2015/06/07/git-commit-style">Git commit style</a></li>
-      	
-      
-    
-  
-
-
-
-  </ul>
- 
-  <h2 id="frontend-ref">frontend</h2>
-  <ul>
-      
-    
-
-
-  
-    
-      
-      	
-      	<li><a href="/frontend/2015/06/12/react-twoway-binding">React Two-way Binding</a></li>
-      	
-      
-    
-  
-    
-      
-      	
-      	<li><a href="/frontend/2015/06/12/gulp-setup">Gulp Setup</a></li>
-      	
-      
-    
-  
-
-
-
-  </ul>
- 
-  <h2 id="node-ref">node</h2>
-  <ul>
-      
-    
-
-
-  
-    
-      
-      	
-      	<li><a href="/frontend/2015/06/12/gulp-setup">Gulp Setup</a></li>
-      	
-      
-    
-  
-
-
-
-  </ul>
- 
-  <h2 id="notes-ref">notes</h2>
-  <ul>
-      
-    
-
-
-  
-    
-      
-      	
-      	<li><a href="/notes/2015/07/07/eloquent-js-notes">Eloquent Javascript Notes</a></li>
-      	
-      
-    
-  
-
-
-
-  </ul>
- 
-  <h2 id="oop-ref">oop</h2>
-  <ul>
-      
-    
-
-
-  
-    
-      
-      	
-      	<li><a href="/javascript/2015/07/07/practical-patterns-for-creating-objects">Practical patterns for createing objects</a></li>
-      	
-      
-    
-  
-
-
-
-  </ul>
- 
-  <h2 id="python-ref">python</h2>
-  <ul>
-      
-    
-
-
-  
-    
-      
-      	
-      	<li><a href="/python/2015/07/28/python-stack-queue">Python stack and queue</a></li>
-      	
-      
-    
-  
-
-
-
-  </ul>
- 
-  <h2 id="data structure-ref">data structure</h2>
-  <ul>
-      
-    
-
-
-  
-    
-      
-      	
-      	<li><a href="/python/2015/07/28/python-stack-queue">Python stack and queue</a></li>
-      	
-      
-    
-  
-
-
-
-  </ul>
- 
-  <h2 id="Python-ref">Python</h2>
-  <ul>
-      
-    
-
-
-  
-    
-      
-      	
-      	<li><a href="/python/2015/08/13/python-dictionary-key">Python Dictionary Key</a></li>
-      	
-      
-    
-  
-
-
-
-  </ul>
-
-
-  </div>
-  <div class="colophon">
   </div>
 </div>
 
