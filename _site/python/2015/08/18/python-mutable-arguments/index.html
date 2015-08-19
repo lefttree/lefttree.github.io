@@ -4,7 +4,7 @@
   <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      <title>LeftTree - About strict mode</title>
+      <title>LeftTree - Python Mutable Default Arguments</title>
       <meta name="viewport" content="width=device-width">
 
       <!-- atom & rss feed -->
@@ -209,26 +209,61 @@
       <img id="cover-photo" src="/assets/themes/xiang/images/cover.jpg">
     </div>
     <div id="info-container">
-      <h1 id="title">About strict mode</h1>
-      <span id="date">22 Jul 2015</span>
+      <h1 id="title">Python Mutable Default Arguments</h1>
+      <span id="date">18 Aug 2015</span>
     </div>
   </div>
 
   <div class="post">
-    <p>###Why Strict mode(From MDN)</p>
+    <p>Reference <a href="http://docs.python-guide.org/en/latest/writing/gotchas/">Python Guide</a></p>
 
-<p>Strict mode makes several changes to normal JavaScript semantics.
-    - strict mode eliminates some JavaScript silent errors by changing them to throw errors. 
-    - strict mode fixes mistakes that make it difficult for JavaScript engines to perform optimizations: strict mode code can sometimes be made to run faster than identical code that&#39;s not strict mode. 
-    - strict mode prohibits some syntax likely to be defined in future versions of ECMAScript.</p>
+<p>The treament of mutable default arguments in function definitions are tricky when you first encounter them.</p>
 
-<p>###Avoid global strict mode</p>
+<p>I have encountered a problem when I write recursive calls</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">helper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">curSet</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>                                                                                              
+        <span class="k">if</span> <span class="n">target</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c">#need to create a copy here everytime find a result</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">curSet</span><span class="p">[:]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">resultList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">candidates</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">candidates</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">target</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">curSet</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">candidates</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">helper</span><span class="p">(</span><span class="n">curSet</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">target</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">candidates</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                <span class="n">curSet</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+</code></pre></div>
+<p>In the above code, everytime target == 0, I need to create a local copy of
+curSet, cause the curSet is used for all calls. It would be [] at the end.</p>
 
-<p>When you concatenate javascript, global strict mode may cause some problems, it may apply to all the javascript files.</p>
+<p>Explain:
+Python’s default arguments are evaluated <strong>once</strong> when the function is  <code>defined</code>, <strong>not</strong> each time the function is <code>called</code> (like it is in say, Ruby). 
+This means that if you use a <code>mutable default argument</code> and mutate it, you <code>will</code> and have mutated that object for all future calls to the function as well.</p>
 
-<blockquote>
-<p>It is thus recommended that you enable strict mode on a function-by-function basis (at least during the transition period).</p>
-</blockquote>
+<p>####Similar Example</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">append_to</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="n">to</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">to</span>
+</code></pre></div><div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">my_list</span> <span class="o">=</span> <span class="n">append_to</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">my_list</span>
+
+<span class="n">my_other_list</span> <span class="o">=</span> <span class="n">append_to</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">my_other_list</span>
+</code></pre></div>
+<p>result would be </p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">[12]
+[12, 42]
+</code></pre></div>
+<p>####What You Should Do Instead</p>
+
+<p>Create a new object each time the function is called, by using a default arg to signal that no argument was provided (None is often a good choice).</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">append_to</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">to</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">to</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">to</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">to</span>
+</code></pre></div>
+<p>Also see<a href="http://docs.python-guide.org/en/latest/writing/gotchas/#late-binding-closures">Late Binding Closures</a></p>
 
   </div>
   
@@ -240,8 +275,8 @@
 
   
      
-    	<li><a href="/categories.html#web-ref">
-    		web <span>3</span>
+    	<li><a href="/categories.html#python-ref">
+    		python <span>3</span>
     	</a></li>
     
   
@@ -259,9 +294,7 @@
 
   
      
-    	<li><a href="/tags.html#web-ref">web <span>3</span></a></li>
-     
-    	<li><a href="/tags.html#javascript-ref">javascript <span>7</span></a></li>
+    	<li><a href="/tags.html#python-ref">python <span>2</span></a></li>
     
   
 
@@ -273,11 +306,11 @@
   <div class="pagination">
       <ul>
       
-        <li class="prev"><a href="/javascript/2015/07/07/practical-patterns-for-creating-objects" title="Practical patterns for createing objects">&larr; Previous</a></li>
+        <li class="prev"><a href="/2015/08/18/python-mutable-arguments" title="Python Mutable Arguments">&larr; Previous</a></li>
       
         <li><a href="/archive.html">Archive</a></li>
       
-        <li class="next"><a href="/python/2015/07/28/python-stack-queue" title="Python stack and queue">Next &rarr;</a></li>
+        <li class="next disabled"><a>Next &rarr;</a>
       
       </ul>
     </div>

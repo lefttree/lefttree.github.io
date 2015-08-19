@@ -8,6 +8,8 @@ http://lefttree.github.io/rss.xml
 http://lefttree.github.io/sitemap.txt
 http://lefttree.github.io/tags.html
 
+http://lefttree.github.io/python/2015/08/18/python-mutable-arguments
+http://lefttree.github.io/2015/08/18/python-mutable-arguments
 http://lefttree.github.io/python/2015/08/13/python-dictionary-key
 http://lefttree.github.io/python/2015/07/28/python-stack-queue
 http://lefttree.github.io/web/2015/07/22/strict-mode
