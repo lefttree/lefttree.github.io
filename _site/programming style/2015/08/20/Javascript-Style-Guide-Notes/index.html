@@ -1,0 +1,585 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>LeftTree - Javascript Style Guide Notes</title>
+      <meta name="viewport" content="width=device-width">
+
+      <!-- atom & rss feed -->
+      <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+      <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+  </head>
+  <body>
+    <div class="site">
+      <div class="sidebar" id="sidebar">
+        <div class="header">
+          <h1 class="title"><a href="http://lefttree.github.io"><img id="logo" src="/assets/themes/xiang/images/newLogo.jpg"></a></h1>
+          <span class="tagline">Xiang Li</span>
+        </div>
+        <hr>
+        <!--<div class="posts">-->
+          <!--<ul class="posts-list">-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/programming%20style/2015/08/20/Javascript-Style-Guide-Notes">-->
+                  <!--<span class="post-date">20 Aug 2015</span>-->
+                  <!--Javascript Style Guide Notes-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/python/2015/08/18/python-mutable-arguments">-->
+                  <!--<span class="post-date">18 Aug 2015</span>-->
+                  <!--Python Mutable Default Arguments-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/2015/08/18/python-mutable-arguments">-->
+                  <!--<span class="post-date">18 Aug 2015</span>-->
+                  <!--Python Mutable Arguments-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/python/2015/08/13/python-dictionary-key">-->
+                  <!--<span class="post-date">13 Aug 2015</span>-->
+                  <!--Python Dictionary Key-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/python/2015/07/28/python-stack-queue">-->
+                  <!--<span class="post-date">28 Jul 2015</span>-->
+                  <!--Python stack and queue-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/web/2015/07/22/strict-mode">-->
+                  <!--<span class="post-date">22 Jul 2015</span>-->
+                  <!--About strict mode-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/javascript/2015/07/07/practical-patterns-for-creating-objects">-->
+                  <!--<span class="post-date">07 Jul 2015</span>-->
+                  <!--Practical patterns for createing objects-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/notes/2015/07/07/eloquent-js-notes">-->
+                  <!--<span class="post-date">07 Jul 2015</span>-->
+                  <!--Eloquent Javascript Notes-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/programming%20style/2015/06/18/git-workflow">-->
+                  <!--<span class="post-date">18 Jun 2015</span>-->
+                  <!--Git Workflow-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/frontend/2015/06/12/react-twoway-binding">-->
+                  <!--<span class="post-date">12 Jun 2015</span>-->
+                  <!--React Two-way Binding-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/frontend/2015/06/12/gulp-setup">-->
+                  <!--<span class="post-date">12 Jun 2015</span>-->
+                  <!--Gulp Setup-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/programming%20style/2015/06/07/git-commit-style">-->
+                  <!--<span class="post-date">07 Jun 2015</span>-->
+                  <!--Git commit style-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/web/2015/06/04/HTML5-Storage-Cache">-->
+                  <!--<span class="post-date">04 Jun 2015</span>-->
+                  <!--HTML5 Storage & Cache-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/programming%20style/2015/06/03/JS-Best-Practices">-->
+                  <!--<span class="post-date">03 Jun 2015</span>-->
+                  <!--Javascript Best Practices-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/web/2015/06/01/Javascript-theGoodParts">-->
+                  <!--<span class="post-date">01 Jun 2015</span>-->
+                  <!--Javascript Good Parts-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+          <!--</ul>-->
+        <!--</div>-->
+        <ul class="nav">
+            
+            
+            
+
+
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+
+
+
+        </ul>
+        <div class="footer">
+          <span id="footer-links">
+            <!--<a href="http://www.xiangli.me" class="footer-link">About</a> -->
+            <!--<span class="separator">&bull;</span>-->
+            <!--[><a href="" class="footer-link">Twitter</a> <span class="separator">&bull;</span><]-->
+            <!--<a href="https://github.com/lefttree" class="footer-link">GitHub</a>-->
+            <ul class="soc">
+                <li><a class="soc-github" href="https://github.com/lefttree"></a></li>
+                <li><a class="soc-facebook" href="https://www.facebook.com/xiang.li.3726"></a></li>
+                <li><a class="soc-linkedin" href="https://www.linkedin.com/pub/xiang-li/47/639/77a"></a></li>
+                <li><a class="soc-email1" href="mailto:bylixiang@gmail.com"></a></li>
+                <li><a class="soc-rss soc-icon-last" href="http://lefttree.github.io/rss.xml"></a></li>
+            </ul>
+          </span>
+        </div>
+      </div>
+
+        
+
+<div class="content" id="home">
+  <div id="sidebar-button">
+    <img src="/assets/themes/xiang/images/sidebar-button.png">
+  </div>
+  <div id="post-info">
+    <div id="cover-photo-container">
+      <img id="cover-photo" src="/assets/themes/xiang/images/cover.jpg">
+    </div>
+    <div id="info-container">
+      <h1 id="title">Javascript Style Guide Notes</h1>
+      <span id="date">20 Aug 2015</span>
+    </div>
+  </div>
+
+  <div class="post">
+    <blockquote>
+<p>This is not a completed style guide, just write down things I think worth mentioning</p>
+</blockquote>
+
+<h3 id="indentation">Indentation</h3>
+
+<p>Each indentation is made up of fours spaces. <strong>Do not use tabs</strong></p>
+
+<h3 id="line-lenght">Line lenght</h3>
+
+<p>Each line should be on longer than 80 characters. If a line goes longer than 80 characters, it should be wrapped after an operator.
+The following line should be indented <em>two levels</em>(8 chars).</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Good</span>
+<span class="nx">doSomething</span><span class="p">(</span><span class="nx">arg1</span><span class="p">,</span> <span class="nx">arg2</span><span class="p">,</span> <span class="nx">arg3</span><span class="p">,</span> <span class="nx">arg4</span><span class="p">,</span>
+        <span class="nx">arg5</span><span class="p">)</span>
+
+<span class="c1">// Bad: Following line only indented four spaces</span>
+<span class="nx">doSomething</span><span class="p">(</span><span class="nx">arg1</span><span class="p">,</span> <span class="nx">arg2</span><span class="p">,</span> <span class="nx">arg3</span><span class="p">,</span> <span class="nx">arg4</span><span class="p">,</span>
+    <span class="nx">arg5</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="primitive-literals">Primitive Literals</h3>
+
+<p><code>String</code> should always use double quotes and should always appear on a single line</p>
+
+<p><code>Number</code> should be written as <code>decimal integers</code>, <code>e-notation integers</code>, <code>hexadecimal</code> and <code>floating-point decimals</code></p>
+
+<p><code>null</code> should be used only in the following situations:</p>
+
+<ul>
+<li>to initialize a variable that may later be assigned an object value</li>
+<li>to compate against an initialized variable that may or may nor have an obejct value</li>
+<li>to pass into a function where an object is expected</li>
+<li>to return from a function where an object is expected</li>
+</ul>
+
+<p><code>undefined</code> should never be used. only check if a variable has been defined.</p>
+
+<h3 id="operator-spacing">Operator Spacing</h3>
+
+<p>Operators with 2 operands must be preceded and followed by a single space.
+include <code>assignments</code> and <code>logical operators</code>.</p>
+
+<h3 id="parentheses-spacing">Parentheses Spacing</h3>
+
+<p>no space after opening paren or before the closing paren</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Good</span>
+<span class="kd">var</span> <span class="nx">found</span> <span class="o">=</span> <span class="p">(</span><span class="nx">values</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">===</span> <span class="nx">item</span><span class="p">);</span>
+
+<span class="c1">//Bad: extra space</span>
+<span class="kd">var</span> <span class="nx">found</span> <span class="o">=</span> <span class="p">(</span> <span class="nx">values</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">===</span> <span class="nx">item</span> <span class="p">);</span>
+</code></pre></div>
+<h3 id="object-literals">Object Literals</h3>
+
+<ul>
+<li>the opening brace should be on the same line as the containing statement</li>
+<li>each property-value pair should be indented one level</li>
+<li>property name should be <em>unquoted</em></li>
+<li>if the value is a function, should wrap under the property name, and have a blank line both before and after the function</li>
+<li>The closing brace should be on a separate line</li>
+</ul>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Good</span>
+<span class="kd">var</span> <span class="nx">object</span> <span class="o">=</span> <span class="p">{</span>
+
+    <span class="nx">key1</span><span class="o">:</span> <span class="nx">value1</span><span class="p">,</span>
+    <span class="nx">key2</span><span class="o">:</span> <span class="nx">value2</span><span class="p">,</span>
+
+    <span class="nx">func</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+        <span class="c1">//do something</span>
+    <span class="p">},</span>
+
+    <span class="nx">key3</span><span class="o">:</span> <span class="nx">value3</span>
+<span class="p">};</span>
+</code></pre></div>
+<h3 id="comments">Comments</h3>
+
+<p>Use comments when:</p>
+
+<ul>
+<li>Code difficult ot understand</li>
+<li>The code might be mistaken for an error</li>
+<li>Browser-specific code is necessary but not obvious</li>
+<li>Documentation generation is necessary for an <code>object</code>, <code>method</code>, or <code>property</code></li>
+</ul>
+
+<h4 id="single-line-comments">Single-Line Comments</h4>
+
+<ul>
+<li>Separate line</li>
+</ul>
+
+<p>blank line before single-line comment</p>
+
+<ul>
+<li>comments at the end of a line</li>
+</ul>
+
+<p>ensure that there is at least one indentation level between code and comment</p>
+
+<h4 id="multiline-comments">Multiline Comments</h4>
+
+<ul>
+<li>line break</li>
+<li>* indention</li>
+<li>blank line before comments</li>
+</ul>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Good</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">condition</span><span class="p">){</span>
+
+    <span class="cm">/*</span>
+<span class="cm">     * if you made it here</span>
+<span class="cm">     * then all security checks passed</span>
+<span class="cm">     */</span>
+    <span class="nx">allowed</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="variable-declarations">Variable Declarations</h4>
+
+<p>All variables should be declared before they are used.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Good</span>
+<span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="nx">name</span>  <span class="o">=</span> <span class="s2">&quot;Nicholas&quot;</span><span class="p">,</span>
+    <span class="nx">found</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nx">empty</span><span class="p">;</span>
+</code></pre></div>
+<p>local variables should be declaried at the first line of function</p>
+
+<h3 id="function-declarations">Function Declarations</h3>
+
+<p>Functions should be declared before they are used.</p>
+
+<ul>
+<li>no space between function name and the opening parenthesis.</li>
+<li>one space between the closing parenthesis and the right brace</li>
+</ul>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Good </span>
+<span class="kd">function</span> <span class="nx">doSomething</span><span class="p">(</span><span class="nx">arg1</span><span class="p">,</span> <span class="nx">arg2</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<p>Inner function declared immediately after the <code>var</code> statement.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Good</span>
+<span class="kd">function</span> <span class="nx">outer</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="nx">name</span>  <span class="o">=</span> <span class="s2">&quot;Nicholas&quot;</span><span class="p">,</span>
+        <span class="nx">found</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nx">empty</span><span class="p">;</span>
+
+    <span class="kd">function</span> <span class="nx">inner</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// code</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Anonymous functions</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Good</span>
+<span class="nx">object</span><span class="p">.</span><span class="nx">method</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// code</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Immediately invokled function should surround the entire function call with parenthese</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Good</span>
+<span class="kd">var</span> <span class="nx">value</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// function body</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="nx">message</span><span class="o">:</span> <span class="s2">&quot;Hi&quot;</span>
+    <span class="p">}</span>
+<span class="p">}());</span>
+</code></pre></div>
+<h3 id="naming">Naming</h3>
+
+<blockquote>
+<p>Do not use underscores</p>
+</blockquote>
+
+<h5 id="variable-name">Variable Name</h5>
+
+<ul>
+<li>should be formatted in Camel Case</li>
+<li>the first word should be a noun</li>
+</ul>
+
+<h4 id="function-name">Function Name</h4>
+
+<ul>
+<li>should be formatted in Camel Case</li>
+<li>the first word should be a verb</li>
+</ul>
+
+<h4 id="constructor-function">Constructor Function</h4>
+
+<ul>
+<li>Camel Case, first letter uppercase</li>
+<li>should begin with a nonverb</li>
+</ul>
+
+<h4 id="constant">Constant</h4>
+
+<p>All Uppercase letters</p>
+
+<h4 id="object-properties">Object Properties</h4>
+
+<p>private property or method should be prefixed with an _ character</p>
+
+<h3 id="strict-mode">Strict Mode</h3>
+
+<p>Strict mode should be used only inside of functions</p>
+
+<p>If wanna apply to multiple functions, use immediate function invocation</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
+
+    <span class="kd">function</span> <span class="nx">doS</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nx">doSE</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="p">}</span>
+<span class="p">}())</span>
+</code></pre></div>
+<h3 id="ternary-operator">Ternary Operator</h3>
+
+<p>The ternary operator should be used only for assigning values conditionally and never as a shortcut for an <code>if</code> statement.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Good</span>
+<span class="kd">var</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">condition</span> <span class="o">?</span> <span class="nx">value1</span> <span class="o">:</span> <span class="nx">value2</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="for-statement">For Statement</h3>
+
+<p>Variables should not be declared in the initialization section of a <code>for</code> statement.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Good</span>
+<span class="kd">var</span> <span class="nx">i</span><span class="p">,</span>
+    <span class="nx">len</span><span class="p">;</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nx">len</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">len</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// code</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="switch-statement">Switch Statement</h3>
+
+<p>Each <code>case</code> is indented one level and should be preceded by a single empty line</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//Good</span>
+
+<span class="k">switch</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
+        <span class="cm">/* falls through */</span>
+
+    <span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
+        <span class="nx">doSomething</span><span class="p">();</span>
+        <span class="k">break</span><span class="p">;</span>
+
+    <span class="k">case</span> <span class="mi">3</span><span class="o">:</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+
+    <span class="k">default</span><span class="o">:</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">&quot;This shouldn&#39;t happen.&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+  </div>
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-folder-open"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/categories.html#programming style-ref">
+    		programming style <span>4</span>
+    	</a></li>
+    
+  
+
+
+    </ul>
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags.html#javascript-ref">javascript <span>8</span></a></li>
+     
+    	<li><a href="/tags.html#programming style-ref">programming style <span>4</span></a></li>
+    
+  
+
+
+
+    </ul>
+  
+  <hr>  
+  <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/python/2015/08/18/python-mutable-arguments" title="Python Mutable Default Arguments">&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next disabled"><a>Next &rarr;</a>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    
+    var disqus_developer = 1;
+    var disqus_shortname = 'lefttreegithubio'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+  </div>
+</div>
+
+
+
+    </div>
+      <!-- bootstrap -->
+      <link href="/assets/themes/xiang/css/bootstrap.2.2.2.min.css" rel="stylesheet">
+      <!-- syntax highlighting CSS -->
+      <link rel="stylesheet" href="/assets/themes/xiang/css/syntax.css">
+
+      <!-- Custom CSS -->
+      <link rel="stylesheet" href="/assets/themes/xiang/css/main.css">
+
+      <!-- Responsive CSS -->
+      <link rel="stylesheet" href="/assets/themes/xiang/css/responsive.css">
+
+      <!-- Google Fonts -->
+      <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700' rel='stylesheet' type='text/css'>
+      <link href='//fonts.googleapis.com/css?family=Raleway:300,400,700' rel='stylesheet' type='text/css'>
+    <script src="/assets/themes/xiang/scripts/responsive.js" type="text/javascript"></script>
+    
+
+
+
+  </body>
+</html>
+

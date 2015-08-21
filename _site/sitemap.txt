@@ -8,6 +8,7 @@ http://lefttree.github.io/rss.xml
 http://lefttree.github.io/sitemap.txt
 http://lefttree.github.io/tags.html
 
+http://lefttree.github.io/programming%20style/2015/08/20/Javascript-Style-Guide-Notes
 http://lefttree.github.io/python/2015/08/18/python-mutable-arguments
 http://lefttree.github.io/2015/08/18/python-mutable-arguments
 http://lefttree.github.io/python/2015/08/13/python-dictionary-key
