@@ -1,0 +1,608 @@
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+  <li><a href="#chapter-3">Chapter 3 - Function</a>
+    <ul>
+      <li><a href="#parameters-and-scope">Parameters and Scope</a></li>
+      <li><a href="#functions-as-values">Functions as Values</a></li>
+      <li><a href="#decalration">Declaration</a></li>
+      <li><a href="#closure">Closure</a></li>
+      <li><a href="#functions-and-side-effects">Functions and Side Effects</a></li>
+    </ul>
+  </li>
+  <li><a href="#chapter-4">Chapter 4 - Data Structures</a>
+    <ul>
+      <li><a href="#properties">Properties</a></li>
+      <li><a href="#mutability">Mutability</a></li>
+      <li><a href="#the-arguments-object">The arguments object</a></li>
+    </ul>
+  </li>
+  <li><a href="#Chapter-5">Chapter 5 - Higher-Order Functions</a>
+    <ul>
+      <li><a href="#array-higher-order-functions">Array Higher-Order Functions</a></li>
+      <li><a href="#call-bind-and-apply">call(), bind() and apply()</a></li>
+      <li><a href="#borrowing-functions-with-apply-and-call-a-must-know">Borrowing Functions with Apply and Call (A Must Know)</a></li>
+    </ul>
+  </li>
+  <li><a href="#regular-expressions">Chapter 9 - Regular Expressions</a>
+    <ul>
+      <li><a href="#create-a-regular-expression">Create a Regular Expression</a></li>
+    </ul>
+  </li>
+  <li><a href="#handling-events">Chapter 14 - Handling Events</a>
+    <ul>
+      <li><a href="#event-objects">Event Object</a></li>
+      <li><a href="#propagation">Propagation</a></li>
+      <li>
+        <h2 id="debouncingdebouncing"><a href="#debouncing">Debouncing</a></h2>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="chapter-3">Chapter 3</h2>
+<p>### Functions</p>
+
+<h4 id="parameters-and-scopes">Parameters and Scopes</h4>
+
+<p>An important property of functions is that the variables created inside of them, <em>including their parameter</em>, are <strong>local</strong> to the function.
+&gt;applies only to parameters and to variables declared with the <code>var</code> keyword</p>
+
+<p>All variables from blocks <em>around</em> a function’s definition are visible - lexical scoping</p>
+
+<p><strong>functions are the only thing that create a new scope</strong></p>
+
+<h4 id="functions-as-values">Functions as Values</h4>
+
+<p>Discussed in chapter 7</p>
+
+<h4 id="declaration">Declaration</h4>
+
+<p>functions are conceptually move to the top of their scope and can be used by <strong>all</strong> the code in that scope</p>
+
+<h4 id="closure">Closure</h4>
+
+<p>Local variables really are re-created for every call
+This feature - being able to reference a specific instance of local variables in an enclosing function is called <strong>closure</strong>.</p>
+
+<p>```javascript
+function multiplier(factor){
+    return function(number){
+        return number * factor;
+    }
+}</p>
+
+<p>var twice = multiplier(2);
+console.log(twice(5));
+//parameter is itself a local variable
+```</p>
+
+<h4 id="functions-and-side-effects">Functions and Side Effects</h4>
+
+<p>Functions
+- side effects
+- return value</p>
+
+<p>pure function : a value-production function that not only has no side effects but also doesn’t rely on side effects from other code</p>
+
+<hr />
+
+<h2 id="chapter-4">Chapter 4</h2>
+<p>### Data Structures: Objects and Arrays</p>
+
+<h4 id="properties">Properties</h4>
+
+<p>value.x and value[x]
+&gt;The part after the dot must be a <strong>valid variable name</strong></p>
+
+<h4 id="mutability">Mutability</h4>
+
+<p>numbers, strings and booleans are all <em>immutable</em>
+Object values can be modified</p>
+
+<p>```javascript
+var object1 = {value:10};
+var object2 = object1;
+var object3 = {value:10};</p>
+
+<p>console.log(object1 == object2)
+//true
+console.log(object1 == object3)
+//false</p>
+
+<p>object1.value = 15
+console.log(object2.value);
+//true
+```</p>
+
+<p><code>object1</code> and <code>object2</code> are references to the same object</p>
+
+<h4 id="the-arguments-object">The arguments object</h4>
+
+<p>whenever a function is called, a special variable named arguments is added. It refers to an object that holds all of the arguments passed to the function.</p>
+
+<hr />
+
+<h2 id="chapter-5">Chapter 5</h2>
+<p>### Higher-Order Functions</p>
+
+<h4 id="abstraction">Abstraction</h4>
+
+<h4 id="array-higher-order-functions">Array Higher-Order Functions</h4>
+
+<p><code>forEach()</code></p>
+
+<p><code>filter()</code></p>
+
+<p>builds up a new array with only the elements that pass the test, this function is <em>pure</em>, does not modify the array it is given</p>
+
+<p><code>map()</code></p>
+
+<p>The map method transforms an array by applying a function to all of its elments and building a new array from the returned values</p>
+
+<p><code>reduce()</code></p>
+
+<p>Combine into one value</p>
+
+<p><code>
+[0, 1, 2, 3, 4].reduce(function(previousValue, currentValue, index, array) {
+  return previousValue + currentValue;
+});
+</code></p>
+
+<p><code>every()</code>
+<code>some()</code></p>
+
+<h4 id="call-bind-and-apply">call(), bind() and apply()</h4>
+
+<h5 id="bind">Bind()</h5>
+<p>We use the Bind () method primarily to call a function with the <em>this</em> value set explicitly. </p>
+
+<p><code>javascript
+var user = {
+    data        :[
+        {name:"T. Woods", age:37},
+        {name:"P. Mickelson", age:43}
+    ],
+    clickHandler:function (event) {
+        var randomNum = ((Math.random () * 2 | 0) + 1) - 1; // random number between 0 and 1​
+​
+        // This line is adding a random person from the data array to the text field​
+        $ ("input").val (this.data[randomNum].name + " " + this.data[randomNum].age);
+    }
+​
+}
+​
+​// Assign an eventHandler to the button's click event​
+$ ("button").click (user.clickHandler.bind(user));
+</code></p>
+
+<p>We can use Bind() to borrow method or curry method.</p>
+
+<p>```javascript
+function greet (gender, age, name) {
+    // if a male, use Mr., else use Ms.​
+    var salutation = gender === “male” ? “Mr. “ : “Ms. “;
+​
+    if (age &gt; 25) {
+        return “Hello, “ + salutation + name + “.”;
+    }
+    else {
+        return “Hey, “ + name + “.”;
+    }
+}</p>
+
+<p>// So we are passing null because we are not using the “this” keyword in our greet function.​
+var greetAnAdultMale = greet.bind (null, “male”, 45);
+​
+greetAnAdultMale (“John Hartlove”); // “Hello, Mr. John Hartlove.”​
+​
+var greetAYoungster = greet.bind (null, “”, 16);
+greetAYoungster (“Alex”); // “Hey, Alex.”​
+greetAYoungster (“Emma Waterloo”); // “Hey, Emma Waterloo.”​</p>
+
+<p>```</p>
+
+<h5 id="apply-and-call">Apply() and call()</h5>
+
+<p>they allow us to borrow functions and set the this value in <strong>function invocation</strong>. In addition, the <code>apply()</code> function in particular allows us to execute a function with an array of parameters, such that each parameter is passed to the function individually when the function executes.</p>
+
+<p>The apply and call methods are almost identical when setting the this value except that 
+- you pass the function parameters to <strong>apply () as an array</strong>
+- while you have to <strong>list the parameters individually to pass them</strong> to the call () method.</p>
+
+<h4 id="borrowing-functions-with-apply-and-call-a-must-know">Borrowing Functions with Apply and Call (A Must Know)</h4>
+
+<h5 id="borrowing-array-methods">Borrowing Array Methods</h5>
+
+<p>An <strong>array-like object</strong> is an object that has its keys defined as non-negative integers. It is best to specifically add a length property on the object that has the length of the object, since the a length property does not exist on objects it does on Arrays.</p>
+
+<p>```javascript
+// An array-like object: note the non-negative integers used as keys​
+var anArrayLikeObj = {0:”Martin”, 1:78, 2:67, 3:[“Letta”, “Marieta”, “Pauline”], length:4 };</p>
+
+<p>// First parameter sets the “this” value​
+var newArray = Array.prototype.slice.call (anArrayLikeObj, 0);
+​
+console.log (newArray); // [“Martin”, 78, 67, Array[3]]​
+​
+// Search for “Martin” in the array-like object​
+console.log (Array.prototype.indexOf.call (anArrayLikeObj, “Martin”) === -1 ? false : true); // true​
+​
+// Try using an Array method without the call () or apply ()​
+console.log (anArrayLikeObj.indexOf (“Martin”) === -1 ? false : true); // Error: Object has no method ‘indexOf’​
+​
+// Reverse the object:​
+console.log (Array.prototype.reverse.call (anArrayLikeObj));
+// {0: Array[3], 1: 67, 2: 78, 3: “Martin”, length: 4}​</p>
+
+<p>```</p>
+
+<h5 id="borrowing-string-methods-with-apply-and-call">Borrowing String Methods with Apply and Call</h5>
+
+<h5 id="borrowing-other-methods">Borrowing other methods</h5>
+
+<p><code>javascript
+var gameController = {
+    scores  :[20, 34, 55, 46, 77],
+    avgScore:null,
+    players :[
+        {name:"Tommy", playerID:987, age:23},
+        {name:"Pau", playerID:87, age:33}
+    ]
+}
+​
+var appController = {
+    scores  :[900, 845, 809, 950],
+    avgScore:null,
+    avg     :function () {
+​
+        var sumOfScores = this.scores.reduce (function (prev, cur, index, array) {
+            return prev + cur;
+        });
+​
+        this.avgScore = sumOfScores / this.scores.length;
+    }
+}
+​
+// Note that we are using the apply () method, so the 2nd argument has to be an array​
+appController.avg.apply (gameController);
+console.log (gameController.avgScore); // 46.4​
+​
+// appController.avgScore is still null; it was not updated, only gameController.avgScore was updated​
+console.log (appController.avgScore); // null​
+</code></p>
+
+<h5 id="use-apply--to-execute-variable-arity-functions">Use Apply () to Execute Variable-Arity Functions</h5>
+
+<p>```javascript
+// We can pass any number of arguments to the Math.max () method​
+console.log (Math.max (23, 11, 34, 56)); // 56
+var allNumbers = [23, 11, 34, 56];</p>
+
+<p>// We cannot pass an array of numbers to the the Math.max method like this​
+console.log (Math.max (allNumbers)); // NaN
+var allNumbers = [23, 11, 34, 56];</p>
+
+<p>// Using the apply () method, we can pass the array of numbers:​
+console.log (Math.max.apply (null, allNumbers)); // 56
+```</p>
+
+<hr />
+
+<h2 id="chapter-9">Chapter 9</h2>
+<p>### Regular Expressions</p>
+
+<h4 id="create-a-regular-expression">Create a regular expression</h4>
+
+<ol>
+  <li>
+    <p>with RegExp constructor</p>
+
+    <p><code>var re1 = new RegExp("abd");</code></p>
+  </li>
+  <li>
+    <p>written as a literal value</p>
+
+    <p><code>var re2 = /abc/;</code></p>
+  </li>
+</ol>
+
+<p>some chars like <code>+</code>, have special meanings in RegExp. 
+&gt;when in doubt, just put a backslash before any character that is not a letter, number, or whitespace.</p>
+
+<h4 id="testing-for-matches">Testing for Matches</h4>
+
+<p><code>.test()</code> return a Boolean telling you whether the string contains a match of the pattern in the expression.</p>
+
+<h4 id="matching-a-set-of-characters">Matching a Set of Characters</h4>
+
+<p><code>[0-9]</code>, a <code>-</code> between two cahracters can be used to indiate a range of chars</p>
+
+<p>built-in shorcuts:
+- \d    any digit character
+- \w    any alphanumeric character
+- \s    any whitespace character(space, tab, newline and similar)
+- \D    a character that is not a digit
+- \W    a nonalphanumeric character
+- \S    a nonwhitespace character
+- .     any character except for newline</p>
+
+<p>These backslash codes can be used inside [], like [\d.], means any digit or a period character. But the . itself, lost the special meaning.</p>
+
+<p>To <em>invert</em> a set of characters add a ^, to express that you want to match any character <strong>except</strong> the ones in the sets.</p>
+
+<h4 id="repeating-parts-of-a-pattern">Repeating Parts of a Pattern</h4>
+
+<ul>
+  <li>
+    <ul>
+      <li>
+        <blockquote>
+          <p>= 1</p>
+        </blockquote>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <ul>
+      <li>
+        <blockquote>
+          <p>= 0</p>
+        </blockquote>
+      </li>
+    </ul>
+  </li>
+  <li>?     0 or 1</li>
+  <li>{4}   4 times</li>
+  <li>{2, 4}    2 - 4 times</li>
+  <li>{, 5}     0 - 5 times</li>
+  <li>{5, }     &gt;= 5 times</li>
+</ul>
+
+<h4 id="grouping-subexpressions">Grouping Subexpressions</h4>
+
+<p><code>
+var cartoonCrying = /boo+(hoo+)+/i
+cartoonCrying.test("Boohoooohoohooo") -- true
+</code></p>
+
+<ul>
+  <li>The 1st and 2nd <code>+</code> apply only to the second <code>o</code> in <code>boo</code> and <code>hoo</code></li>
+  <li>The 3rd <code>+</code> applies to the whole group <code>(hoo+)</code></li>
+  <li>The <code>i</code> makes this regexp case insensitive</li>
+</ul>
+
+<h4 id="matches-and-groups">Matches and Groups</h4>
+
+<p><code>exec()</code> will return <code>null</code> if no match was found and return an object with information about the match otherwise</p>
+
+<p><code>
+var match = /\d+/.exec("one two 100");
+console.log(match);
+// -&gt; ["100"]
+console.log(match.index);
+// -&gt; 8
+</code></p>
+
+<p>String has a <code>match()</code> method behaves similarly</p>
+
+<p>When the regexp contains <em>subexpressions</em> grouped with parenthese, the text that matched those groups will also show up in the array.</p>
+
+<p><code>
+var quotedText = /'([^']*)'/;
+quotedText.exec("She said 'hello'");
+// -&gt; ["'hello'", "hello"]
+</code></p>
+
+<p>If a group does not end up matched at all, its position in the array would hold <code>undefined</code>. If it’s matched multiple times, only the last match ends up in the array.</p>
+
+<h4 id="word-and-string-boundaries">Word and String Boundaries</h4>
+
+<p>If we want to enforce that the match must span the whole string, we can add the markers ^ and $.</p>
+
+<p><strong>word boundary</strong> - \b
+a word char on one side and a nonword char on the other</p>
+
+<h4 id="choice-patterns">Choice Patterns</h4>
+
+<p>The Pipe Character <code>|</code> denotes a choice between the pattern to its left and the pattern to its right.</p>
+
+<p><code>
+var animalCount = /\b\d+ (pig|cow|chicken)s?\b/;
+animalCount.test("15 pigs");
+// -&gt; true
+animalCount.test("15 pigchickens");
+// -&gt; false
+</code> </p>
+
+<h4 id="replace-method">Replace Method</h4>
+
+<p>String <code>replace</code> method, the first argument can be a regexp</p>
+
+<p><code>
+"Borobudur".replace(/[ou]/, "a")
+"Borobudur".replace(/[ou]/g, "a")
+</code></p>
+
+<p>The real power of using regexp with <code>replace</code> comes from the fact that we can refer back to matched groups in the replace strings.</p>
+
+<p><code>
+"Hopper, Grace\n McCarthy, John".replace(/([\w ]+), ([\w ]+)/g, "$2 $1")
+// Grace Hopper
+// John McCarthy
+</code></p>
+
+<p>$1 - $9, the whold match can be refered to as $&amp;</p>
+
+<p>It’s also possible to pass a function to the 2nd argument to <code>replace</code>. The function will be called with the matched groups as arguments, and its return value will be inserted into the new string.</p>
+
+<p><code>
+var s = "the cia and fbi";
+s.replace(/\b(fbi|cia)\b/g, function(str){
+   return str.toUpperCase(); 
+});
+// -&gt; the CIA and FBI
+</code></p>
+
+<h4 id="greed">Greed</h4>
+
+<p><code>
+function stripComments(code){
+    return code.replace(/\/\/.*|\/\*[^]*\*\//g, "");
+}
+stripComments("1 /* a */+/* b */ 1");
+// -&gt; 1 1 (wrong)
+</code></p>
+
+<p>The repetition operator(+, *, ?, and {}) are greedy, meaning they match as much as they can and backtrack from there. If you put a question mark after them, they become nongreedy and start by matching as little as possible.</p>
+
+<h4 id="dynamically-creating-regexp-objects">Dynamically creating regexp objects</h4>
+
+<p>Use the <code>RegExp</code> constructor</p>
+
+<p><code>
+var name = "harry";
+var text = "harry is a suspicious character";
+var regexp = new RegExp("\\b(" + name + ")\\b", "gi");
+text.replace(regexp, "_$1_");
+</code></p>
+
+<blockquote>
+  <p>use 2 backslashes because we are writing them in a normal string
+the second argument is the options</p>
+</blockquote>
+
+<h4 id="search">Search</h4>
+
+<p><code>search</code> method can take a regexp as argument and returns the first index on which the expression was found, or -1 when it’s not found</p>
+
+<h4 id="lastindex">lastIndex</h4>
+
+<p>Regular expression objects have properties.
+- source: the string that expression was created from
+- lastIndex: where the next match will start</p>
+
+<blockquote>
+  <p>must have global(g) option enabled</p>
+</blockquote>
+
+<p><code>
+var pattern = /y/g;
+pattern.lastIndex = 3;
+var match = pattern.exec("xyzzy");
+match.index
+// 4
+pattern.lastIndex
+// 5
+</code></p>
+
+<p>the call to <code>exec</code> would automatically updates the <code>lastIndex</code> property to point after the match, if no match was found, <code>lastIndex</code> is set back to 0</p>
+
+<h4 id="looping-over-matches">Looping Over Matches</h4>
+
+<p>looping through all occurances in a string, using <code>lastIndex</code> and <code>exec</code></p>
+
+<p><code>
+var input = "A string with 3 numbers in it... 42 and 88.";
+var number = /\b(\d+)\b/g;
+var match;
+while (match = number.exec(input))
+  console.log("Found", match[1], "at", match.index);
+// → Found 3 at 14
+//   Found 42 at 33
+//   Found 88 at 40
+</code></p>
+
+<hr />
+<p>## Chapter 14 
+### Handling Events</p>
+
+<h4 id="events-and-dom-nodes">Events And DOM Nodes</h4>
+
+<p><code>addEventListener</code> and <code>removeEventListener</code></p>
+
+<h4 id="event-objects">Event Objects</h4>
+
+<p>Event handler functions are passed an argument: <code>the event object</code>, the object gives us additional information about the event.</p>
+
+<p>properties:</p>
+
+<ul>
+  <li>which</li>
+  <li>target</li>
+  <li>….</li>
+</ul>
+
+<h4 id="propagation">Propagation</h4>
+
+<p>Event handlers registered on nodes with children will also receive some events that happen in the children, but the more <em>specific</em> handler executes first.</p>
+
+<p><code>stopPropagation</code></p>
+
+<h4 id="default-actions">Default Actions</h4>
+
+<p>Event handlers called <em>before</em> default actions. default actiosn can be prevented with <code>preventDefault</code>.</p>
+
+<h4 id="event-types">Event Types</h4>
+
+<ul>
+  <li>Key Events
+<code>keydown</code> fires not only when the key is physically pushed down. When a key is pressed and held, the event fires again every time the key <code>repeats</code>.</li>
+  <li>Mouse Click</li>
+  <li>Mouse Motion</li>
+  <li>Scroll Events</li>
+  <li>Focus Events</li>
+  <li>Load Event</li>
+</ul>
+
+<h4 id="script-execution-timeline">Script Execution Timeline</h4>
+
+<p><strong>No</strong> two scripts in a single document ever run at te same moment. If a script is already running, event handlers and pieces of code scheduled in other ways have to wait for their turn.</p>
+
+<p><code>Web Workers</code> an isolated JS env browser provides to run alongside the main program.</p>
+
+<h4 id="timers">Timers</h4>
+
+<p><code>setTimeInterval</code> and <code>setTimeout</code></p>
+
+<h4 id="debouncing">Debouncing</h4>
+
+<p>If you do need to do something nontrivial in a repeatedly handler, you can use <code>setTimeout</code> to make sure you are not doing it too often.</p>
+
+<p>```javascript</p>
+<textarea>Type something here...</textarea>
+<script>
+  var textarea = document.querySelector("textarea");
+  var timeout;
+  textarea.addEventListener("keydown", function() {
+    clearTimeout(timeout);
+    timeout = setTimeout(function() {
+      console.log("You stopped typing.");
+    }, 500);
+  });
+</script>
+
+<p>```</p>
+
+<p>fire during a series of events</p>
+
+<p>```javascript
+<script>
+  function displayCoords(event) {
+    document.body.textContent =
+      "Mouse at " + event.pageX + ", " + event.pageY;
+  }</script></p>
+
+<p>var scheduled = false, lastEvent;
+  addEventListener(“mousemove”, function(event) {
+    lastEvent = event;
+    if (!scheduled) {
+      scheduled = true;
+      setTimeout(function() {
+        scheduled = false;
+        displayCoords(lastEvent);
+      }, 250);
+    }
+  });
+&lt;/script&gt;
+```</p>

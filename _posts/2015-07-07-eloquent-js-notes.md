@@ -23,10 +23,13 @@ tags: [javascript, notes]
     +   [Borrowing Functions with Apply and Call (A Must Know)](#borrowing-functions-with-apply-and-call-a-must-know)
 - [Chapter 9 - Regular Expressions](#regular-expressions)
     +   [Create a Regular Expression](#create-a-regular-expression)
-
+- [Chapter 14 - Handling Events](#handling-events)
+    +   [Event Object](#event-objects)
+    +   [Propagation](#propagation)
+    +   [Debouncing](#debouncing)
 -------------------------------------------------------------------
 
-### Chapter 3 
+## Chapter 3 
 ### Functions
 
 #### Parameters and Scopes
@@ -73,7 +76,7 @@ pure function : a value-production function that not only has no side effects bu
 
 ------------------------------------------------------
 
-### Chapter 4
+## Chapter 4
 ### Data Structures: Objects and Arrays
 
 #### Properties
@@ -109,7 +112,7 @@ whenever a function is called, a special variable named arguments is added. It r
 
 ----------------------------------------------
 
-### Chapter 5
+## Chapter 5
 ### Higher-Order Functions
 
 #### Abstraction
@@ -277,7 +280,7 @@ console.log (Math.max.apply (null, allNumbers)); // 56
 
 ------------------------------------------------------
 
-### Chapter 9
+## Chapter 9
 ### Regular Expressions
 
 #### Create a regular expression
@@ -472,3 +475,91 @@ while (match = number.exec(input))
 //   Found 88 at 40
 ```
 
+-------------------------------------------------------------------------------
+## Chapter 14 
+### Handling Events
+
+####Events And DOM Nodes
+
+`addEventListener` and `removeEventListener`
+
+####Event Objects
+
+Event handler functions are passed an argument: `the event object`, the object gives us additional information about the event.
+
+properties:
+
+- which
+- target
+- ....
+
+####Propagation
+
+Event handlers registered on nodes with children will also receive some events that happen in the children, but the more *specific* handler executes first.
+
+`stopPropagation`
+
+####Default Actions
+
+Event handlers called *before* default actions. default actiosn can be prevented with `preventDefault`.
+
+####Event Types
+
+- Key Events
+`keydown` fires not only when the key is physically pushed down. When a key is pressed and held, the event fires again every time the key `repeats`.
+- Mouse Click
+- Mouse Motion
+- Scroll Events
+- Focus Events
+- Load Event
+
+####Script Execution Timeline
+
+**No** two scripts in a single document ever run at te same moment. If a script is already running, event handlers and pieces of code scheduled in other ways have to wait for their turn.
+
+`Web Workers` an isolated JS env browser provides to run alongside the main program.
+
+####Timers
+
+`setTimeInterval` and `setTimeout`
+
+####Debouncing
+
+If you do need to do something nontrivial in a repeatedly handler, you can use `setTimeout` to make sure you are not doing it too often.
+
+```javascript
+<textarea>Type something here...</textarea>
+<script>
+  var textarea = document.querySelector("textarea");
+  var timeout;
+  textarea.addEventListener("keydown", function() {
+    clearTimeout(timeout);
+    timeout = setTimeout(function() {
+      console.log("You stopped typing.");
+    }, 500);
+  });
+</script>
+```
+
+fire during a series of events
+
+```javascript
+<script>
+  function displayCoords(event) {
+    document.body.textContent =
+      "Mouse at " + event.pageX + ", " + event.pageY;
+  }
+
+  var scheduled = false, lastEvent;
+  addEventListener("mousemove", function(event) {
+    lastEvent = event;
+    if (!scheduled) {
+      scheduled = true;
+      setTimeout(function() {
+        scheduled = false;
+        displayCoords(lastEvent);
+      }, 250);
+    }
+  });
+</script>
+```

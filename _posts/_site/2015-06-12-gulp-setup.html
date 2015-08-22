@@ -1,0 +1,62 @@
+<p><code>sudo npm install -g gulp   </code></p>
+
+<p>under the development dir
+<code>npm install --save-dev gulp   </code></p>
+
+<p><code>--save-dev</code> tells npm to add this module into package.json</p>
+
+<p>install plugins</p>
+
+<p><code>npm install gulp-jshint gulp-sass gulp-concat gulp-uglify gulp-renam --save-dev</code></p>
+
+<p>example gulpfile.js</p>
+
+<p>```javascript
+//require gulp <br />
+var gulp = require(‘gulp’);  </p>
+
+<p>//require plugins<br />
+var jshint = require(‘gulp-jshint’);
+var sass = require(‘gulp-sass’);
+var concat = require(‘gulp-concat’);
+var uglify = require(‘gulp-uglify’);
+var rename = require(‘gulp-rename’);</p>
+
+<p>//lint task<br />
+gulp.task(‘jshint’,function(){
+    gulp.src(‘./js/*.js’)
+    .pipe(jshint())
+    .pipe(jshint.reporter(‘default’));
+});</p>
+
+<p>//conpile sass<br />
+gulp.task(‘sass’,function(){
+    gulp.src(‘./scss/*.scss’)
+    .pipe(sass())
+    .pipe(gulp.dest(‘./css’));
+});  </p>
+
+<p>//concat, minify <br />
+gulp.task(‘scripts’,function(){
+    gulp.src(‘./js/*/js’)
+    .pipe(concat(‘all.js’))
+    .pipe(gulp.dest(‘./dist’))
+    .pipe(rename(‘all.min.js’))
+    .pipe(uglify())
+    .pipe(gulp.dest(‘./dist’));
+});  </p>
+
+<p>//default <br />
+gulp.task(‘default’,function(){
+    gulp.run(‘lint’,’sass’,’scripts’);</p>
+
+<pre><code>gulp.watch('./js/*.js',function(){
+    gulp.run('lint','scripts');0
+});
+   
+gulp.watch('./scss/*.scss',function(){
+    gulp.run('sass');
+}); }); ```
+</code></pre>
+
+<p>Gulp’s syntax is just like node, and it use streamming</p>

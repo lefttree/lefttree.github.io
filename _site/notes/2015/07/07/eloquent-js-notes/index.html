@@ -246,11 +246,17 @@
 <ul>
 <li>  <a href="#create-a-regular-expression">Create a Regular Expression</a></li>
 </ul></li>
+<li><a href="#handling-events">Chapter 14 - Handling Events</a>
+
+<ul>
+<li>  <a href="#event-objects">Event Object</a></li>
+<li>  <a href="#propagation">Propagation</a></li>
 </ul>
 
-<hr>
+<h2 id="+-debouncing">+   <a href="#debouncing">Debouncing</a></h2></li>
+</ul>
 
-<h3 id="chapter-3">Chapter 3</h3>
+<h2 id="chapter-3">Chapter 3</h2>
 
 <h3 id="functions">Functions</h3>
 
@@ -298,7 +304,7 @@ This feature - being able to reference a specific instance of local variables in
 
 <hr>
 
-<h3 id="chapter-4">Chapter 4</h3>
+<h2 id="chapter-4">Chapter 4</h2>
 
 <h3 id="data-structures:-objects-and-arrays">Data Structures: Objects and Arrays</h3>
 
@@ -335,7 +341,7 @@ Object values can be modified</p>
 
 <hr>
 
-<h3 id="chapter-5">Chapter 5</h3>
+<h2 id="chapter-5">Chapter 5</h2>
 
 <h3 id="higher-order-functions">Higher-Order Functions</h3>
 
@@ -484,7 +490,7 @@ Object values can be modified</p>
 </code></pre></div>
 <hr>
 
-<h3 id="chapter-9">Chapter 9</h3>
+<h2 id="chapter-9">Chapter 9</h2>
 
 <h3 id="regular-expressions">Regular Expressions</h3>
 
@@ -658,6 +664,95 @@ while (match = number.exec(input))
 // → Found 3 at 14
 //   Found 42 at 33
 //   Found 88 at 40
+</code></pre></div>
+<hr>
+
+<h2 id="chapter-14">Chapter 14</h2>
+
+<h3 id="handling-events">Handling Events</h3>
+
+<p>####Events And DOM Nodes</p>
+
+<p><code>addEventListener</code> and <code>removeEventListener</code></p>
+
+<p>####Event Objects</p>
+
+<p>Event handler functions are passed an argument: <code>the event object</code>, the object gives us additional information about the event.</p>
+
+<p>properties:</p>
+
+<ul>
+<li>which</li>
+<li>target</li>
+<li>....</li>
+</ul>
+
+<p>####Propagation</p>
+
+<p>Event handlers registered on nodes with children will also receive some events that happen in the children, but the more <em>specific</em> handler executes first.</p>
+
+<p><code>stopPropagation</code></p>
+
+<p>####Default Actions</p>
+
+<p>Event handlers called <em>before</em> default actions. default actiosn can be prevented with <code>preventDefault</code>.</p>
+
+<p>####Event Types</p>
+
+<ul>
+<li>Key Events
+<code>keydown</code> fires not only when the key is physically pushed down. When a key is pressed and held, the event fires again every time the key <code>repeats</code>.</li>
+<li>Mouse Click</li>
+<li>Mouse Motion</li>
+<li>Scroll Events</li>
+<li>Focus Events</li>
+<li>Load Event</li>
+</ul>
+
+<p>####Script Execution Timeline</p>
+
+<p><strong>No</strong> two scripts in a single document ever run at te same moment. If a script is already running, event handlers and pieces of code scheduled in other ways have to wait for their turn.</p>
+
+<p><code>Web Workers</code> an isolated JS env browser provides to run alongside the main program.</p>
+
+<p>####Timers</p>
+
+<p><code>setTimeInterval</code> and <code>setTimeout</code></p>
+
+<p>####Debouncing</p>
+
+<p>If you do need to do something nontrivial in a repeatedly handler, you can use <code>setTimeout</code> to make sure you are not doing it too often.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="o">&lt;</span><span class="nx">textarea</span><span class="o">&gt;</span><span class="nx">Type</span> <span class="nx">something</span> <span class="nx">here</span><span class="p">...</span><span class="o">&lt;</span><span class="err">/textarea&gt;</span>
+<span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+  <span class="kd">var</span> <span class="nx">textarea</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;textarea&quot;</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">timeout</span><span class="p">;</span>
+  <span class="nx">textarea</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;keydown&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">clearTimeout</span><span class="p">(</span><span class="nx">timeout</span><span class="p">);</span>
+    <span class="nx">timeout</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;You stopped typing.&quot;</span><span class="p">);</span>
+    <span class="p">},</span> <span class="mi">500</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="o">&lt;</span><span class="err">/script&gt;</span>
+</code></pre></div>
+<p>fire during a series of events</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+  <span class="kd">function</span> <span class="nx">displayCoords</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span>
+      <span class="s2">&quot;Mouse at &quot;</span> <span class="o">+</span> <span class="nx">event</span><span class="p">.</span><span class="nx">pageX</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span> <span class="o">+</span> <span class="nx">event</span><span class="p">.</span><span class="nx">pageY</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kd">var</span> <span class="nx">scheduled</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="nx">lastEvent</span><span class="p">;</span>
+  <span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;mousemove&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">lastEvent</span> <span class="o">=</span> <span class="nx">event</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">scheduled</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">scheduled</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+      <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">scheduled</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="nx">displayCoords</span><span class="p">(</span><span class="nx">lastEvent</span><span class="p">);</span>
+      <span class="p">},</span> <span class="mi">250</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="o">&lt;</span><span class="err">/script&gt;</span>
 </code></pre></div>
   </div>
   

@@ -1,0 +1,64 @@
+<p>Reference <a href="http://docs.python-guide.org/en/latest/writing/gotchas/">Python Guide</a></p>
+
+<p>The treament of mutable default arguments in function definitions are tricky when you first encounter them.</p>
+
+<p>I have encountered a problem when I write recursive calls</p>
+
+<p><code>python
+def helper(self, curSet, index, target):                                                                                              
+        if target == 0:
+            #need to create a copy here everytime find a result
+            result = curSet[:]
+            self.resultList.append(result)
+        for i in range(index, len(self.candidates)):
+            if self.candidates[i] &gt; target:
+                break
+            else:
+                curSet.append(self.candidates[i])
+                self.helper(curSet, i, target - self.candidates[i])
+                curSet.pop()
+</code></p>
+
+<p>In the above code, everytime target == 0, I need to create a local copy of
+curSet, cause the curSet is used for all calls. It would be [] at the end.</p>
+
+<p>Explain:
+Python’s default arguments are evaluated <strong>once</strong> when the function is  <code>defined</code>, <strong>not</strong> each time the function is <code>called</code> (like it is in say, Ruby). 
+This means that if you use a <code>mutable default argument</code> and mutate it, you <code>will</code> and have mutated that object for all future calls to the function as well.</p>
+
+<h4 id="similar-example">Similar Example</h4>
+
+<p><code>python
+def append_to(element, to=[]):
+    to.append(element)
+    return to
+</code></p>
+
+<p>```python
+my_list = append_to(12)
+print my_list</p>
+
+<p>my_other_list = append_to(42)
+print my_other_list
+```</p>
+
+<p>result would be </p>
+
+<p><code>
+[12]
+[12, 42]
+</code></p>
+
+<h4 id="what-you-should-do-instead">What You Should Do Instead</h4>
+
+<p>Create a new object each time the function is called, by using a default arg to signal that no argument was provided (None is often a good choice).</p>
+
+<p><code>python
+def append_to(element, to=None):
+    if to is None:
+        to = []
+    to.append(element)
+    return to
+</code></p>
+
+<p>Also see<a href="http://docs.python-guide.org/en/latest/writing/gotchas/#late-binding-closures">Late Binding Closures</a></p>

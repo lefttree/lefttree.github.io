@@ -1,0 +1,59 @@
+<blockquote>
+  <p>from python official doc</p>
+</blockquote>
+
+<h3 id="stack">Stack</h3>
+
+<p>The list methods make it very easy to use a list as a stack, where the last element added is the first element retrieved (“last-in, first-out”). </p>
+
+<ul>
+  <li>To add an item to the top of the stack, use <code>append()</code>. </li>
+  <li>To retrieve an item from the top of the stack, use <code>pop()</code> without an explicit index. </li>
+</ul>
+
+<p>For example:</p>
+
+<p><code>
+&gt;&gt;&gt;stack = [3, 4, 5]
+&gt;&gt;&gt;stack.append(6)
+&gt;&gt;&gt;stack.append(7)
+stack
+[3, 4, 5, 6, 7]
+stack.pop()
+7
+&gt;&gt;&gt; stack
+[3, 4, 5, 6]
+&gt;&gt;&gt; stack.pop()
+6
+&gt;&gt;&gt; stack.pop()
+5
+&gt;&gt;&gt; stack
+[3, 4]
+</code></p>
+
+<h3 id="queue">Queue</h3>
+
+<p>To implement a queue, use <code>collections.deque</code> which was designed to have fast appends and pops from both ends.</p>
+
+<ul>
+  <li><code>append()</code></li>
+  <li><code>popleft()</code></li>
+</ul>
+
+<p><code>
+&gt;&gt;&gt; from collections import deque
+&gt;&gt;&gt; queue = deque(["Eric", "John", "Michael"])
+&gt;&gt;&gt; queue.append("Terry")           # Terry arrives
+&gt;&gt;&gt; queue.append("Graham")          # Graham arrives
+&gt;&gt;&gt; queue.popleft()                 # The first to arrive now leaves
+'Eric'
+&gt;&gt;&gt; queue.popleft()                 # The second to arrive now leaves
+'John'
+&gt;&gt;&gt; queue                           # Remaining queue in order of arrival
+deque(['Michael', 'Terry', 'Graham'])
+</code></p>
+
+<p>deque to list
+`
+list(collections.deque(1,2,3))
+`</p>

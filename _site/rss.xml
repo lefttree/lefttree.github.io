@@ -5,8 +5,8 @@
         <description>LeftTree&#39;s Blog - Xiang Li</description>
         <link>http://lefttree.github.io</link>
         <atom:link href="http://lefttree.github.io/rss.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Fri, 21 Aug 2015 15:38:44 -0700</lastBuildDate>
-        <pubDate>Fri, 21 Aug 2015 15:38:44 -0700</pubDate>
+        <lastBuildDate>Fri, 21 Aug 2015 17:07:45 -0700</lastBuildDate>
+        <pubDate>Fri, 21 Aug 2015 17:07:45 -0700</pubDate>
         <ttl>60</ttl>
 
 
@@ -587,11 +587,17 @@ var johnCar = new Car(&amp;#39;Ford&amp;#39;, &amp;#39;F150&amp;#39;, &amp;#39;2
 &lt;ul&gt;
 &lt;li&gt;  &lt;a href=&quot;#create-a-regular-expression&quot;&gt;Create a Regular Expression&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#handling-events&quot;&gt;Chapter 14 - Handling Events&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;  &lt;a href=&quot;#event-objects&quot;&gt;Event Object&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;  &lt;a href=&quot;#propagation&quot;&gt;Propagation&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;hr&gt;
+&lt;h2 id=&quot;+-debouncing&quot;&gt;+   &lt;a href=&quot;#debouncing&quot;&gt;Debouncing&lt;/a&gt;&lt;/h2&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;h3 id=&quot;chapter-3&quot;&gt;Chapter 3&lt;/h3&gt;
+&lt;h2 id=&quot;chapter-3&quot;&gt;Chapter 3&lt;/h2&gt;
 
 &lt;h3 id=&quot;functions&quot;&gt;Functions&lt;/h3&gt;
 
@@ -639,7 +645,7 @@ This feature - being able to reference a specific instance of local variables in
 
 &lt;hr&gt;
 
-&lt;h3 id=&quot;chapter-4&quot;&gt;Chapter 4&lt;/h3&gt;
+&lt;h2 id=&quot;chapter-4&quot;&gt;Chapter 4&lt;/h2&gt;
 
 &lt;h3 id=&quot;data-structures:-objects-and-arrays&quot;&gt;Data Structures: Objects and Arrays&lt;/h3&gt;
 
@@ -676,7 +682,7 @@ Object values can be modified&lt;/p&gt;
 
 &lt;hr&gt;
 
-&lt;h3 id=&quot;chapter-5&quot;&gt;Chapter 5&lt;/h3&gt;
+&lt;h2 id=&quot;chapter-5&quot;&gt;Chapter 5&lt;/h2&gt;
 
 &lt;h3 id=&quot;higher-order-functions&quot;&gt;Higher-Order Functions&lt;/h3&gt;
 
@@ -825,7 +831,7 @@ Object values can be modified&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;hr&gt;
 
-&lt;h3 id=&quot;chapter-9&quot;&gt;Chapter 9&lt;/h3&gt;
+&lt;h2 id=&quot;chapter-9&quot;&gt;Chapter 9&lt;/h2&gt;
 
 &lt;h3 id=&quot;regular-expressions&quot;&gt;Regular Expressions&lt;/h3&gt;
 
@@ -999,6 +1005,95 @@ while (match = number.exec(input))
 // → Found 3 at 14
 //   Found 42 at 33
 //   Found 88 at 40
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;hr&gt;
+
+&lt;h2 id=&quot;chapter-14&quot;&gt;Chapter 14&lt;/h2&gt;
+
+&lt;h3 id=&quot;handling-events&quot;&gt;Handling Events&lt;/h3&gt;
+
+&lt;p&gt;####Events And DOM Nodes&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;addEventListener&lt;/code&gt; and &lt;code&gt;removeEventListener&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;####Event Objects&lt;/p&gt;
+
+&lt;p&gt;Event handler functions are passed an argument: &lt;code&gt;the event object&lt;/code&gt;, the object gives us additional information about the event.&lt;/p&gt;
+
+&lt;p&gt;properties:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;which&lt;/li&gt;
+&lt;li&gt;target&lt;/li&gt;
+&lt;li&gt;....&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;####Propagation&lt;/p&gt;
+
+&lt;p&gt;Event handlers registered on nodes with children will also receive some events that happen in the children, but the more &lt;em&gt;specific&lt;/em&gt; handler executes first.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;stopPropagation&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;####Default Actions&lt;/p&gt;
+
+&lt;p&gt;Event handlers called &lt;em&gt;before&lt;/em&gt; default actions. default actiosn can be prevented with &lt;code&gt;preventDefault&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;####Event Types&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Key Events
+&lt;code&gt;keydown&lt;/code&gt; fires not only when the key is physically pushed down. When a key is pressed and held, the event fires again every time the key &lt;code&gt;repeats&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Mouse Click&lt;/li&gt;
+&lt;li&gt;Mouse Motion&lt;/li&gt;
+&lt;li&gt;Scroll Events&lt;/li&gt;
+&lt;li&gt;Focus Events&lt;/li&gt;
+&lt;li&gt;Load Event&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;####Script Execution Timeline&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;No&lt;/strong&gt; two scripts in a single document ever run at te same moment. If a script is already running, event handlers and pieces of code scheduled in other ways have to wait for their turn.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Web Workers&lt;/code&gt; an isolated JS env browser provides to run alongside the main program.&lt;/p&gt;
+
+&lt;p&gt;####Timers&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;setTimeInterval&lt;/code&gt; and &lt;code&gt;setTimeout&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;####Debouncing&lt;/p&gt;
+
+&lt;p&gt;If you do need to do something nontrivial in a repeatedly handler, you can use &lt;code&gt;setTimeout&lt;/code&gt; to make sure you are not doing it too often.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;textarea&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Type&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;something&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;here&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;/textarea&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;textarea&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;textarea&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;timeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;textarea&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;keydown&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;clearTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;timeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;timeout&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;You stopped typing.&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;500&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;/script&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;fire during a series of events&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;displayCoords&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;textContent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+      &lt;span class=&quot;s2&quot;&gt;&amp;quot;Mouse at &amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pageX&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;, &amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pageY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;scheduled&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;lastEvent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;mousemove&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;lastEvent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;scheduled&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;scheduled&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;scheduled&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;displayCoords&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;lastEvent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;250&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;/script&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
                 <link>http://lefttree.github.io/notes/2015/07/07/eloquent-js-notes</link>
                 <guid>http://lefttree.github.io/notes/2015/07/07/eloquent-js-notes</guid>

@@ -1,0 +1,43 @@
+<h4 id="input">input</h4>
+
+<p>valueLink</p>
+
+<p><code>javascript
+var WithLink = React.createClass({
+  mixins: [React.addons.LinkedStateMixin],
+  getInitialState: function() {
+    return {message: 'Hello!'};
+  },
+  render: function() {
+    return &lt;input type="text" valueLink={this.linkState('message')} /&gt;;
+  }
+});
+</code>
+&gt; need to include react-with-addons.js</p>
+
+<p>without valueLink</p>
+
+<p><code>javascript
+var WithoutLink = React.createClass({
+  mixins: [React.addons.LinkedStateMixin],
+  getInitialState: function() {
+    return {message: 'Hello!'};
+  },
+  render: function() {
+    var valueLink = this.linkState('message');
+    var handleChange = function(e) {
+      valueLink.requestChange(e.target.value);
+    };
+    return &lt;input type="text" value={valueLink.value} onChange={handleChange} /&gt;;
+  }
+});
+</code></p>
+
+<h4 id="select">select</h4>
+
+<p>no valueLink, use value and onchange event</p>
+
+<p><code>
+&lt;select text="Bandwidth" value={this.state.bw} changeE={this.bwChange}/&gt;
+</code></p>
+

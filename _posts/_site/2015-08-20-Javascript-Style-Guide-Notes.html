@@ -1,0 +1,297 @@
+<blockquote>
+  <p>This is not a completed style guide, just write down things I think worth mentioning</p>
+</blockquote>
+
+<h3 id="indentation">Indentation</h3>
+
+<p>Each indentation is made up of fours spaces. <strong>Do not use tabs</strong></p>
+
+<h3 id="line-lenght">Line lenght</h3>
+
+<p>Each line should be on longer than 80 characters. If a line goes longer than 80 characters, it should be wrapped after an operator.
+The following line should be indented <em>two levels</em>(8 chars).</p>
+
+<p>```javascript
+// Good
+doSomething(arg1, arg2, arg3, arg4,
+        arg5)</p>
+
+<p>// Bad: Following line only indented four spaces
+doSomething(arg1, arg2, arg3, arg4,
+    arg5)</p>
+
+<p>```</p>
+
+<h3 id="primitive-literals">Primitive Literals</h3>
+
+<p><code>String</code> should always use double quotes and should always appear on a single line</p>
+
+<p><code>Number</code> should be written as <code>decimal integers</code>, <code>e-notation integers</code>, <code>hexadecimal</code> and <code>floating-point decimals</code></p>
+
+<p><code>null</code> should be used only in the following situations:</p>
+
+<ul>
+  <li>to initialize a variable that may later be assigned an object value</li>
+  <li>to compate against an initialized variable that may or may nor have an obejct value</li>
+  <li>to pass into a function where an object is expected</li>
+  <li>to return from a function where an object is expected</li>
+</ul>
+
+<p><code>undefined</code> should never be used. only check if a variable has been defined.</p>
+
+<h3 id="operator-spacing">Operator Spacing</h3>
+
+<p>Operators with 2 operands must be preceded and followed by a single space.
+include <code>assignments</code> and <code>logical operators</code>.</p>
+
+<h3 id="parentheses-spacing">Parentheses Spacing</h3>
+
+<p>no space after opening paren or before the closing paren</p>
+
+<p>```javascript
+// Good
+var found = (values[i] === item);</p>
+
+<p>//Bad: extra space
+var found = ( values[i] === item );
+```</p>
+
+<h3 id="object-literals">Object Literals</h3>
+
+<ul>
+  <li>the opening brace should be on the same line as the containing statement</li>
+  <li>each property-value pair should be indented one level</li>
+  <li>property name should be <em>unquoted</em></li>
+  <li>if the value is a function, should wrap under the property name, and have a blank line both before and after the function</li>
+  <li>The closing brace should be on a separate line</li>
+</ul>
+
+<p>```javascript
+// Good
+var object = {</p>
+
+<pre><code>key1: value1,
+key2: value2,
+
+func: function(){
+    //do something
+},
+
+key3: value3 }; ```
+</code></pre>
+
+<h3 id="comments">Comments</h3>
+
+<p>Use comments when:</p>
+
+<ul>
+  <li>Code difficult ot understand</li>
+  <li>The code might be mistaken for an error</li>
+  <li>Browser-specific code is necessary but not obvious</li>
+  <li>Documentation generation is necessary for an <code>object</code>, <code>method</code>, or <code>property</code></li>
+</ul>
+
+<h4 id="single-line-comments">Single-Line Comments</h4>
+
+<ul>
+  <li>Separate line</li>
+</ul>
+
+<p>blank line before single-line comment</p>
+
+<ul>
+  <li>comments at the end of a line</li>
+</ul>
+
+<p>ensure that there is at least one indentation level between code and comment</p>
+
+<h4 id="multiline-comments">Multiline Comments</h4>
+
+<ul>
+  <li>line break</li>
+  <li>
+    <ul>
+      <li>indention</li>
+    </ul>
+  </li>
+  <li>blank line before comments</li>
+</ul>
+
+<p>```javascript
+// Good
+if (condition){</p>
+
+<pre><code>/*
+ * if you made it here
+ * then all security checks passed
+ */
+allowed(); } ``` 
+</code></pre>
+
+<h4 id="variable-declarations">Variable Declarations</h4>
+
+<p>All variables should be declared before they are used.</p>
+
+<p><code>javascript
+// Good
+var count = 10,
+    name  = "Nicholas",
+    found = false,
+    empty;
+</code></p>
+
+<p>local variables should be declaried at the first line of function</p>
+
+<h3 id="function-declarations">Function Declarations</h3>
+
+<p>Functions should be declared before they are used.</p>
+
+<ul>
+  <li>no space between function name and the opening parenthesis.</li>
+  <li>one space between the closing parenthesis and the right brace</li>
+</ul>
+
+<p>```javascript
+// Good 
+function doSomething(arg1, arg2) {</p>
+
+<p>}
+```</p>
+
+<p>Inner function declared immediately after the <code>var</code> statement.</p>
+
+<p>```javascript
+// Good
+function outer() {</p>
+
+<pre><code>var count = 10,
+    name  = "Nicholas",
+    found = false,
+    empty;
+
+function inner() {
+    // code
+} } ```
+</code></pre>
+
+<p>Anonymous functions</p>
+
+<p><code>javascript
+// Good
+object.method = function() {
+    // code
+}
+</code></p>
+
+<p>Immediately invokled function should surround the entire function call with parenthese</p>
+
+<p>```javascript
+// Good
+var value = (function() {</p>
+
+<pre><code>// function body
+
+return {
+    message: "Hi"
+} }()); ```
+</code></pre>
+
+<h3 id="naming">Naming</h3>
+
+<blockquote>
+  <p>Do not use underscores</p>
+</blockquote>
+
+<h5 id="variable-name">Variable Name</h5>
+
+<ul>
+  <li>should be formatted in Camel Case</li>
+  <li>the first word should be a noun</li>
+</ul>
+
+<h4 id="function-name">Function Name</h4>
+
+<ul>
+  <li>should be formatted in Camel Case</li>
+  <li>the first word should be a verb</li>
+</ul>
+
+<h4 id="constructor-function">Constructor Function</h4>
+
+<ul>
+  <li>Camel Case, first letter uppercase</li>
+  <li>should begin with a nonverb</li>
+</ul>
+
+<h4 id="constant">Constant</h4>
+
+<p>All Uppercase letters</p>
+
+<h4 id="object-properties">Object Properties</h4>
+
+<p>private property or method should be prefixed with an _ character</p>
+
+<h3 id="strict-mode">Strict Mode</h3>
+
+<p>Strict mode should be used only inside of functions</p>
+
+<p>If wanna apply to multiple functions, use immediate function invocation</p>
+
+<p>```javascript
+(function() {
+    “use strict”;</p>
+
+<pre><code>function doS() {
+
+}
+
+function doSE() {
+
+} }()) ```
+</code></pre>
+
+<h3 id="ternary-operator">Ternary Operator</h3>
+
+<p>The ternary operator should be used only for assigning values conditionally and never as a shortcut for an <code>if</code> statement.</p>
+
+<p><code>javascript
+// Good
+var value = condition ? value1 : value2;
+</code></p>
+
+<h3 id="for-statement">For Statement</h3>
+
+<p>Variables should not be declared in the initialization section of a <code>for</code> statement.</p>
+
+<p>```javascript
+// Good
+var i,
+    len;</p>
+
+<p>for (i=0, len=10; i &lt; len; i++) {
+    // code
+}
+```</p>
+
+<h3 id="switch-statement">Switch Statement</h3>
+
+<p>Each <code>case</code> is indented one level and should be preceded by a single empty line</p>
+
+<p>```javascript
+//Good</p>
+
+<p>switch (value) {
+    case 1:
+        /* falls through */</p>
+
+<pre><code>case 2:
+    doSomething();
+    break;
+
+case 3:
+    return true;
+
+default:
+    throw new Error("This shouldn't happen."); } ```
+</code></pre>
+

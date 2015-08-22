@@ -34,7 +34,7 @@ Examples:
 
 <h4 id="revealing-module-pattern">revealing module pattern</h4>
 
-<p><code>
+<p><code>javascript
 myNameSpace = function(){
     var current = null;
     function init(){};
@@ -49,7 +49,7 @@ myNameSpace = function(){
 
 <p>If you don’t need any of your vars or functions to be avaiable to the outside, simply wrap the whole construct in another set of parentheses to execute it without assigning any name.</p>
 
-<p><code>
+<p><code>javascript
 (function(){
     var current = null;
     function init(){}
@@ -72,11 +72,11 @@ myNameSpace = function(){
 
 <p>Examples:</p>
 
-<p><code>
+<p><code>javascript
 var direction = ( x &gt; 100 ) ? 1 : -1
 </code></p>
 
-<p><code>
+<p><code>javascript
 var x = v || 10;
 </code></p>
 
@@ -94,7 +94,7 @@ var x = v || 10;
 
 <p>Examples: easy youtube player project config object</p>
 
-<p><code>
+<p><code>javascript
 /*
   This is the configuration of the player.meng Most likely you will
   never have to change anything here, but it is good to be able 
@@ -183,7 +183,7 @@ config = {
 
 <h4 id="for-loop-read-length-everytime">For loop read length everytime</h4>
 
-<p><code>
+<p><code>javascript
 var names = ['George','Ringo','Paul','John'];
 for(var i=0;i &lt; names.length;i++){
   doSomeThingWith(names[i]);
@@ -192,7 +192,7 @@ for(var i=0;i &lt; names.length;i++){
 
 <p>To Fix</p>
 
-<p><code>
+<p><code>javascript
 var names = ['George','Ringo','Paul','John'];
 for(var i=0,j=names.length;i &lt; j;i++){
   doSomeThingWith(names[i]);
@@ -213,7 +213,7 @@ for(var i=0,j=names.length;i &lt; j;i++){
   <li>It is very important to tes the type of parameters send to your functions(using the <code>typeof</code> keyword)</li>
 </ol>
 
-<p><code>
+<p><code>javascript
 function buildMemberList(members){
   if(typeof members === 'object' &amp;&amp; 
      typeof members.slice === 'function'){

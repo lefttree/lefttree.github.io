@@ -3,7 +3,7 @@
 
 <h3 id="offlinestorage">Offline/Storage</h3>
 
-<p><code>
+<p><code>javascript
 // use localStorage for persistent storage
 // use sessionStorage for per tab storage
 saveButton.addEventListener('click', function () {
@@ -13,22 +13,25 @@ saveButton.addEventListener('click', function () {
 textarea.value = window.localStorage.getItem('value');
 </code></p>
 
-<p>you can use Modernizr to detect support for HTML5 Storage.
-<code>
+<p>you can use Modernizr to detect support for HTML5 Storage.</p>
+
+<p>```javascript
 if (Modernizr.localstorage) {
   // window.localStorage is available!
 } else {
   // no native support for HTML5 storage :(
   // maybe try dojox.storage or a third-party solution
-}
-</code>
+}</p>
+
+<p>```
 &gt;The data is actually stored as a string.</p>
 
 <p><code>setItem()</code> and <code>getItem()</code>
 <code>removeItem()</code> and <code>clear()</code></p>
 
-<p>Track when storage changes
-<code>
+<p>Track when storage changes</p>
+
+<p><code>javascript
 if (window.addEventListener) {
   window.addEventListener("storage", handle_storage, false);
 } else {
@@ -40,7 +43,7 @@ if (window.addEventListener) {
 
 <h3 id="web-sql-database">Web SQL Database</h3>
 
-<p><code>
+<p><code>javascript
 var db = window.openDatabase("DBName", "1.0", "description", 5*1024*1024); //5MB
 db.transaction(function(tx) {
   tx.executeSql("SELECT * FROM test", [], successCallback, errorCallback);
@@ -63,7 +66,7 @@ A web browser that implements HTML5 offline applications will read the list of U
 &lt;html manifest="cache.manifest"&gt;
 </code></p>
 
-<p><code>
+<p><code>javascript
 window.applicationCache.addEventListener('updateready', function(e) {
   if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
     window.applicationCache.swapCache();
