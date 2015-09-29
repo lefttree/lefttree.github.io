@@ -10,7 +10,7 @@ tags: [web]
 ##Procedure
 
 1. install `tampermonkey` plugin on Chrome browser
-2. click this [link](https://git.oschina.net/bobshi/NetEaseMusicHelper/raw/master/netease_music_helper.user.js?dir=0&filepath=netease_music_helper.user.js&oid=c3f66520e749b7872153c33f36c22bab5a4e41e4&sha=574f47d4c63f4ace81eb48596e534baf5564f905)
+2. click this [link](https://git.oschina.net/bobshi/NetEaseMusicHelper/raw/master/netease_music_helper.user.js?dir=0&filepath=netease_music_helper.user.js&oid=c3f66520e749b7872153c33f36c22bab5a4e41e4&sha=574f47d4c63f4ace81eb48596e534baf5564f905) to install the UserScripts
 3. reload any play list
 
 ##Reference

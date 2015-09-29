@@ -5,8 +5,8 @@
         <description>LeftTree&#39;s Blog - Xiang Li</description>
         <link>http://lefttree.github.io</link>
         <atom:link href="http://lefttree.github.io/rss.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Fri, 25 Sep 2015 17:46:51 -0700</lastBuildDate>
-        <pubDate>Fri, 25 Sep 2015 17:46:51 -0700</pubDate>
+        <lastBuildDate>Tue, 29 Sep 2015 15:45:08 -0700</lastBuildDate>
+        <pubDate>Tue, 29 Sep 2015 15:45:08 -0700</pubDate>
         <ttl>60</ttl>
 
 
@@ -16,7 +16,7 @@
 
 &lt;ol&gt;
 &lt;li&gt;install &lt;code&gt;tampermonkey&lt;/code&gt; plugin on Chrome browser&lt;/li&gt;
-&lt;li&gt;click this &lt;a href=&quot;https://git.oschina.net/bobshi/NetEaseMusicHelper/raw/master/netease_music_helper.user.js?dir=0&amp;amp;filepath=netease_music_helper.user.js&amp;amp;oid=c3f66520e749b7872153c33f36c22bab5a4e41e4&amp;amp;sha=574f47d4c63f4ace81eb48596e534baf5564f905&quot;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;click this &lt;a href=&quot;https://git.oschina.net/bobshi/NetEaseMusicHelper/raw/master/netease_music_helper.user.js?dir=0&amp;amp;filepath=netease_music_helper.user.js&amp;amp;oid=c3f66520e749b7872153c33f36c22bab5a4e41e4&amp;amp;sha=574f47d4c63f4ace81eb48596e534baf5564f905&quot;&gt;link&lt;/a&gt; to install the UserScripts&lt;/li&gt;
 &lt;li&gt;reload any play list&lt;/li&gt;
 &lt;/ol&gt;
 
