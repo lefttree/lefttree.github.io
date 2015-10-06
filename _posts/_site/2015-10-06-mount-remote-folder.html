@@ -1,0 +1,57 @@
+<p>To mount a remote folder, popular options are</p>
+
+<ul>
+  <li>NFS</li>
+  <li>Samba/CIFS</li>
+  <li>SSHFS</li>
+</ul>
+
+<p><code>SSHFS</code> mount remote filesystems via <code>ssh</code>.</p>
+
+<p><code>Samba</code> will alow Windows and Unix machines to access the remote folder.</p>
+
+<p><code>NFS</code> authenticate just via IP(no usernames….faster). <strong>It should only be used inside your non-hostile LAN</strong></p>
+
+<h2 id="nfs">NFS</h2>
+
+<p>server </p>
+
+<p><code>apt-get install nfs-server portmap nfs-common</code></p>
+
+<p>client</p>
+
+<p><code>apt-get install nfs-client nfs-common</code></p>
+
+<p>server</p>
+
+<p>put the folders in <code>/etc/exports</code></p>
+
+<p><code>/path_to_tmp_folder/tmp 192.168.0.2(rw,sync,no_subtree_check,no_root_squash)</code></p>
+
+<blockquote>
+  <p>192.168.0.2 should be the IP of the machine you wanna share with</p>
+</blockquote>
+
+<p>Then:</p>
+
+<p><code>
+exportfs -ra
+/etc/init.d/nfs-kernel-server restart
+/etc/init.d/portmap restart
+</code></p>
+
+<p>client</p>
+
+<p><code>sudo mount -o soft,intr,rsize=8192,wsize=8192 server_ip:/path_to_tmp_folder/tmp /local_path_to_empty_tmp_folder/tmp</code></p>
+
+<p>auto mount, put in <code>/etc/fstab</code></p>
+
+<p><code>server_ip:/path_to_tmp/tmp /local_empty_folder/tmp nfs rsize=16384,wsize=16384,rw,auto,nolock</code></p>
+
+<h2 id="reference">Reference</h2>
+
+<ul>
+  <li><a href="http://unix.stackexchange.com/questions/62677/best-way-to-mount-remote-folder">nfs, samba/cifs, sshfs</a></li>
+  <li><a href="http://superuser.com/questions/300662/how-to-mount-a-folder-from-a-linux-machine-on-another-linux-machine">how to mount using nfs</a></li>
+</ul>
+

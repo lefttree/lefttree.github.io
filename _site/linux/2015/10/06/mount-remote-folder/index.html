@@ -4,7 +4,7 @@
   <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      <title>LeftTree - Python Dictionary Key</title>
+      <title>LeftTree - NFS Mount Remote Folder</title>
       <meta name="viewport" content="width=device-width">
 
       <!-- atom & rss feed -->
@@ -230,29 +230,65 @@
       <img id="cover-photo" src="/assets/themes/xiang/images/cover.jpg">
     </div>
     <div id="info-container">
-      <h1 id="title">Python Dictionary Key</h1>
-      <span id="date">13 Aug 2015</span>
+      <h1 id="title">NFS Mount Remote Folder</h1>
+      <span id="date">06 Oct 2015</span>
     </div>
   </div>
 
   <div class="post">
-    <p>##dict</p>
+    <p>To mount a remote folder, popular options are</p>
 
-<p>A mapping object maps <code>hashable values</code> to <code>arbitrary objects</code>.</p>
+<ul>
+<li>NFS</li>
+<li>Samba/CIFS</li>
+<li>SSHFS</li>
+</ul>
 
-<p>So keys must be <code>hashable</code></p>
+<p><code>SSHFS</code> mount remote filesystems via <code>ssh</code>.</p>
 
-<p>A dictionary’s keys are almost arbitrary values. Values that are not hashable, that is, values containing lists, dictionaries or other mutable types (that are compared by value rather than by object identity) may not be used as keys.</p>
+<p><code>Samba</code> will alow Windows and Unix machines to access the remote folder.</p>
 
-<p>##Hashable</p>
+<p><code>NFS</code> authenticate just via IP(no usernames....faster). <strong>It should only be used inside your non-hostile LAN</strong></p>
 
-<p>An object is hashable if it has a hash value which never changes during its lifetime (it needs a <strong>hash</strong>() method), and can be compared to other objects (it needs an <strong>eq</strong>() method). Hashable objects which compare equal must have the same hash value.</p>
+<p>##NFS </p>
 
-<p>Hashability makes an object usable as a dictionary key and a set member, because these data structures use the hash value internally.</p>
+<p>server </p>
 
-<p>All of Python’s immutable built-in objects are hashable, while no mutable containers (such as lists or dictionaries) are. </p>
+<p><code>apt-get install nfs-server portmap nfs-common</code></p>
 
-<p><strong>Objects which are instances of user-defined classes are hashable by default; they all compare unequal (except with themselves), and their hash value is derived from their id().</strong></p>
+<p>client</p>
+
+<p><code>apt-get install nfs-client nfs-common</code></p>
+
+<p>server</p>
+
+<p>put the folders in <code>/etc/exports</code></p>
+
+<p><code>/path_to_tmp_folder/tmp 192.168.0.2(rw,sync,no_subtree_check,no_root_squash)</code></p>
+
+<blockquote>
+<p>192.168.0.2 should be the IP of the machine you wanna share with</p>
+</blockquote>
+
+<p>Then:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">exportfs -ra
+/etc/init.d/nfs-kernel-server restart
+/etc/init.d/portmap restart
+</code></pre></div>
+<p>client</p>
+
+<p><code>sudo mount -o soft,intr,rsize=8192,wsize=8192 server_ip:/path_to_tmp_folder/tmp /local_path_to_empty_tmp_folder/tmp</code></p>
+
+<p>auto mount, put in <code>/etc/fstab</code></p>
+
+<p><code>server_ip:/path_to_tmp/tmp /local_empty_folder/tmp nfs rsize=16384,wsize=16384,rw,auto,nolock</code></p>
+
+<p>##Reference</p>
+
+<ul>
+<li><a href="http://unix.stackexchange.com/questions/62677/best-way-to-mount-remote-folder">nfs, samba/cifs, sshfs</a></li>
+<li><a href="http://superuser.com/questions/300662/how-to-mount-a-folder-from-a-linux-machine-on-another-linux-machine">how to mount using nfs</a></li>
+</ul>
 
   </div>
   
@@ -264,8 +300,8 @@
 
   
      
-    	<li><a href="/categories.html#python-ref">
-    		python <span>3</span>
+    	<li><a href="/categories.html#linux-ref">
+    		linux <span>1</span>
     	</a></li>
     
   
@@ -283,7 +319,7 @@
 
   
      
-    	<li><a href="/tags.html#Python-ref">Python <span>1</span></a></li>
+    	<li><a href="/tags.html#Linux-ref">Linux <span>1</span></a></li>
     
   
 
@@ -295,11 +331,11 @@
   <div class="pagination">
       <ul>
       
-        <li class="prev"><a href="/python/2015/07/28/python-stack-queue" title="Python stack and queue">&larr; Previous</a></li>
+        <li class="prev"><a href="/web/2015/09/25/netease-music" title="海外的用户正常听网易云音乐">&larr; Previous</a></li>
       
         <li><a href="/archive.html">Archive</a></li>
       
-        <li class="next"><a href="/python/2015/08/18/python-mutable-arguments" title="Python Mutable Default Arguments">Next &rarr;</a></li>
+        <li class="next disabled"><a>Next &rarr;</a>
       
       </ul>
     </div>

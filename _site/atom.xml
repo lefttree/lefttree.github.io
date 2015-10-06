@@ -4,13 +4,74 @@
  <title>LeftTree&#39;s Blog</title>
  <link href="http://lefttree.github.io/atom.xml" rel="self"/>
  <link href="http://lefttree.github.io"/>
- <updated>2015-09-29T15:45:08-07:00</updated>
+ <updated>2015-10-06T11:39:48-07:00</updated>
  <id>http://lefttree.github.io</id>
  <author>
    <name>Xiang Li</name>
    <email>bylixiang@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>NFS Mount Remote Folder</title>
+   <link href="http://lefttree.github.io/linux/2015/10/06/mount-remote-folder"/>
+   <updated>2015-10-06T00:00:00-07:00</updated>
+   <id>http://lefttree.github.io/linux/2015/10/06/mount-remote-folder</id>
+   <content type="html">&lt;p&gt;To mount a remote folder, popular options are&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;NFS&lt;/li&gt;
+&lt;li&gt;Samba/CIFS&lt;/li&gt;
+&lt;li&gt;SSHFS&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;SSHFS&lt;/code&gt; mount remote filesystems via &lt;code&gt;ssh&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Samba&lt;/code&gt; will alow Windows and Unix machines to access the remote folder.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;NFS&lt;/code&gt; authenticate just via IP(no usernames....faster). &lt;strong&gt;It should only be used inside your non-hostile LAN&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;##NFS &lt;/p&gt;
+
+&lt;p&gt;server &lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;apt-get install nfs-server portmap nfs-common&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;client&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;apt-get install nfs-client nfs-common&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;server&lt;/p&gt;
+
+&lt;p&gt;put the folders in &lt;code&gt;/etc/exports&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;/path_to_tmp_folder/tmp 192.168.0.2(rw,sync,no_subtree_check,no_root_squash)&lt;/code&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;192.168.0.2 should be the IP of the machine you wanna share with&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Then:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;exportfs -ra
+/etc/init.d/nfs-kernel-server restart
+/etc/init.d/portmap restart
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;client&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;sudo mount -o soft,intr,rsize=8192,wsize=8192 server_ip:/path_to_tmp_folder/tmp /local_path_to_empty_tmp_folder/tmp&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;auto mount, put in &lt;code&gt;/etc/fstab&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;server_ip:/path_to_tmp/tmp /local_empty_folder/tmp nfs rsize=16384,wsize=16384,rw,auto,nolock&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;##Reference&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://unix.stackexchange.com/questions/62677/best-way-to-mount-remote-folder&quot;&gt;nfs, samba/cifs, sshfs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://superuser.com/questions/300662/how-to-mount-a-folder-from-a-linux-machine-on-another-linux-machine&quot;&gt;how to mount using nfs&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
  
  <entry>
    <title>海外的用户正常听网易云音乐</title>
