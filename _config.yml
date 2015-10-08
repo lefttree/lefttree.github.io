@@ -6,14 +6,14 @@ exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
 markdown: redcarpet
 highlighter: pygments
 
-kramdown:
-    input: GFM
-    auto_ids: true
-    toc_levels: 1..6
-    smart_quotes: lsquo,rsquo,ldquo,rdquo
-    use_coderay: false
+#kramdown:
+    #input: GFM
+    #auto_ids: true
+    #toc_levels: 1..6
+    #smart_quotes: lsquo,rsquo,ldquo,rdquo
+    #use_coderay: false
 
-markdown_ext:  markdown,mkdown,mkdn,mkd,md
+#markdown_ext:  markdown,mkdown,mkdn,mkd,md
 redcarpet:
   extensions: ["tables", "autolink", "strikethrough", "space_after_headers", "with_toc_data", "fenced_code_blocks"]
 

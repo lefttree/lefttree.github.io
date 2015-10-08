@@ -6,7 +6,7 @@ category: Python
 tags: [Python]
 ---
 
-##dict
+## dict
 
 A mapping object maps `hashable values` to `arbitrary objects`.
 
@@ -14,7 +14,7 @@ So keys must be `hashable`
 
 A dictionary’s keys are almost arbitrary values. Values that are not hashable, that is, values containing lists, dictionaries or other mutable types (that are compared by value rather than by object identity) may not be used as keys.
 
-##Hashable
+## Hashable
 
 An object is hashable if it has a hash value which never changes during its lifetime (it needs a __hash__() method), and can be compared to other objects (it needs an __eq__() method). Hashable objects which compare equal must have the same hash value.
 

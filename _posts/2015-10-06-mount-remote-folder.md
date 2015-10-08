@@ -18,7 +18,7 @@ To mount a remote folder, popular options are
 
 `NFS` authenticate just via IP(no usernames....faster). **It should only be used inside your non-hostile LAN**
 
-##NFS 
+## NFS 
 
 server 
 
@@ -52,7 +52,7 @@ auto mount, put in `/etc/fstab`
 
 `server_ip:/path_to_tmp/tmp /local_empty_folder/tmp nfs rsize=16384,wsize=16384,rw,auto,nolock`
 
-##Reference
+## Reference
 
 - [nfs, samba/cifs, sshfs](http://unix.stackexchange.com/questions/62677/best-way-to-mount-remote-folder)
 - [how to mount using nfs](http://superuser.com/questions/300662/how-to-mount-a-folder-from-a-linux-machine-on-another-linux-machine)

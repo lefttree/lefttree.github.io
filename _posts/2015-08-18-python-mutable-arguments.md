@@ -34,7 +34,7 @@ Explain:
 Python’s default arguments are evaluated **once** when the function is  `defined`, **not** each time the function is `called` (like it is in say, Ruby). 
 This means that if you use a `mutable default argument` and mutate it, you `will` and have mutated that object for all future calls to the function as well.
 
-####Similar Example
+#### Similar Example
 
 ```python
 def append_to(element, to=[]):
@@ -57,7 +57,7 @@ result would be
 [12, 42]
 ```
 
-####What You Should Do Instead
+#### What You Should Do Instead
 
 Create a new object each time the function is called, by using a default arg to signal that no argument was provided (None is often a good choice).
 

@@ -5,8 +5,8 @@
         <description>LeftTree&#39;s Blog - Xiang Li</description>
         <link>http://lefttree.github.io</link>
         <atom:link href="http://lefttree.github.io/rss.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Tue, 06 Oct 2015 11:39:48 -0700</lastBuildDate>
-        <pubDate>Tue, 06 Oct 2015 11:39:48 -0700</pubDate>
+        <lastBuildDate>Thu, 08 Oct 2015 14:29:12 -0700</lastBuildDate>
+        <pubDate>Thu, 08 Oct 2015 14:29:12 -0700</pubDate>
         <ttl>60</ttl>
 
 
@@ -26,7 +26,7 @@
 
 &lt;p&gt;&lt;code&gt;NFS&lt;/code&gt; authenticate just via IP(no usernames....faster). &lt;strong&gt;It should only be used inside your non-hostile LAN&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;##NFS &lt;/p&gt;
+&lt;h2 id=&quot;nfs&quot;&gt;NFS&lt;/h2&gt;
 
 &lt;p&gt;server &lt;/p&gt;
 
@@ -59,7 +59,7 @@
 
 &lt;p&gt;&lt;code&gt;server_ip:/path_to_tmp/tmp /local_empty_folder/tmp nfs rsize=16384,wsize=16384,rw,auto,nolock&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;##Reference&lt;/p&gt;
+&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;http://unix.stackexchange.com/questions/62677/best-way-to-mount-remote-folder&quot;&gt;nfs, samba/cifs, sshfs&lt;/a&gt;&lt;/li&gt;
@@ -73,7 +73,7 @@
 
         <item>
                 <title>海外的用户正常听网易云音乐</title>
-                <description>&lt;p&gt;##Procedure&lt;/p&gt;
+                <description>&lt;h2 id=&quot;procedure&quot;&gt;Procedure&lt;/h2&gt;
 
 &lt;ol&gt;
 &lt;li&gt;install &lt;code&gt;tampermonkey&lt;/code&gt; plugin on Chrome browser&lt;/li&gt;
@@ -81,7 +81,7 @@
 &lt;li&gt;reload any play list&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;##Reference&lt;/p&gt;
+&lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;http://www.sudodev.cn/music-163-access-abroad/&quot;&gt;在海外使用网易云音乐&lt;/a&gt;&lt;/li&gt;
@@ -439,7 +439,7 @@ curSet, cause the curSet is used for all calls. It would be [] at the end.&lt;/p
 Python’s default arguments are evaluated &lt;strong&gt;once&lt;/strong&gt; when the function is  &lt;code&gt;defined&lt;/code&gt;, &lt;strong&gt;not&lt;/strong&gt; each time the function is &lt;code&gt;called&lt;/code&gt; (like it is in say, Ruby). 
 This means that if you use a &lt;code&gt;mutable default argument&lt;/code&gt; and mutate it, you &lt;code&gt;will&lt;/code&gt; and have mutated that object for all future calls to the function as well.&lt;/p&gt;
 
-&lt;p&gt;####Similar Example&lt;/p&gt;
+&lt;h4 id=&quot;similar-example&quot;&gt;Similar Example&lt;/h4&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;append_to&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]):&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt;
@@ -453,7 +453,7 @@ This means that if you use a &lt;code&gt;mutable default argument&lt;/code&gt; a
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;[12]
 [12, 42]
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;####What You Should Do Instead&lt;/p&gt;
+&lt;h4 id=&quot;what-you-should-do-instead&quot;&gt;What You Should Do Instead&lt;/h4&gt;
 
 &lt;p&gt;Create a new object each time the function is called, by using a default arg to signal that no argument was provided (None is often a good choice).&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;append_to&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
@@ -471,7 +471,7 @@ This means that if you use a &lt;code&gt;mutable default argument&lt;/code&gt; a
 
         <item>
                 <title>Python Dictionary Key</title>
-                <description>&lt;p&gt;##dict&lt;/p&gt;
+                <description>&lt;h2 id=&quot;dict&quot;&gt;dict&lt;/h2&gt;
 
 &lt;p&gt;A mapping object maps &lt;code&gt;hashable values&lt;/code&gt; to &lt;code&gt;arbitrary objects&lt;/code&gt;.&lt;/p&gt;
 
@@ -479,7 +479,7 @@ This means that if you use a &lt;code&gt;mutable default argument&lt;/code&gt; a
 
 &lt;p&gt;A dictionary’s keys are almost arbitrary values. Values that are not hashable, that is, values containing lists, dictionaries or other mutable types (that are compared by value rather than by object identity) may not be used as keys.&lt;/p&gt;
 
-&lt;p&gt;##Hashable&lt;/p&gt;
+&lt;h2 id=&quot;hashable&quot;&gt;Hashable&lt;/h2&gt;
 
 &lt;p&gt;An object is hashable if it has a hash value which never changes during its lifetime (it needs a &lt;strong&gt;hash&lt;/strong&gt;() method), and can be compared to other objects (it needs an &lt;strong&gt;eq&lt;/strong&gt;() method). Hashable objects which compare equal must have the same hash value.&lt;/p&gt;
 
@@ -557,7 +557,7 @@ list(collections.deque(1,2,3))
 
         <item>
                 <title>About strict mode</title>
-                <description>&lt;p&gt;###Why Strict mode(From MDN)&lt;/p&gt;
+                <description>&lt;h3 id=&quot;why-strict-mode(from-mdn)&quot;&gt;Why Strict mode(From MDN)&lt;/h3&gt;
 
 &lt;p&gt;Strict mode makes several changes to normal JavaScript semantics.&lt;/p&gt;
 
@@ -567,7 +567,7 @@ list(collections.deque(1,2,3))
 &lt;li&gt;strict mode prohibits some syntax likely to be defined in future versions of ECMAScript.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;###Avoid global strict mode&lt;/p&gt;
+&lt;h3 id=&quot;avoid-global-strict-mode&quot;&gt;Avoid global strict mode&lt;/h3&gt;
 
 &lt;p&gt;When you concatenate javascript, global strict mode may cause some problems, it may apply to all the javascript files.&lt;/p&gt;
 

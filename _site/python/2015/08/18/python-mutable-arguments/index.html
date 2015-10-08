@@ -261,7 +261,7 @@ curSet, cause the curSet is used for all calls. It would be [] at the end.</p>
 Python’s default arguments are evaluated <strong>once</strong> when the function is  <code>defined</code>, <strong>not</strong> each time the function is <code>called</code> (like it is in say, Ruby). 
 This means that if you use a <code>mutable default argument</code> and mutate it, you <code>will</code> and have mutated that object for all future calls to the function as well.</p>
 
-<p>####Similar Example</p>
+<h4 id="similar-example">Similar Example</h4>
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">append_to</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="p">[]):</span>
     <span class="n">to</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">to</span>
@@ -275,7 +275,7 @@ This means that if you use a <code>mutable default argument</code> and mutate it
 <div class="highlight"><pre><code class="language-text" data-lang="text">[12]
 [12, 42]
 </code></pre></div>
-<p>####What You Should Do Instead</p>
+<h4 id="what-you-should-do-instead">What You Should Do Instead</h4>
 
 <p>Create a new object each time the function is called, by using a default arg to signal that no argument was provided (None is often a good choice).</p>
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">append_to</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
