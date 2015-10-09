@@ -4,13 +4,75 @@
  <title>LeftTree&#39;s Blog</title>
  <link href="http://lefttree.github.io/atom.xml" rel="self"/>
  <link href="http://lefttree.github.io"/>
- <updated>2015-10-08T14:29:12-07:00</updated>
+ <updated>2015-10-09T15:35:30-07:00</updated>
  <id>http://lefttree.github.io</id>
  <author>
    <name>Xiang Li</name>
    <email>bylixiang@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Chrome Extension 推荐</title>
+   <link href="http://lefttree.github.io/tool/2015/10/09/chrome-extensions"/>
+   <updated>2015-10-09T00:00:00-07:00</updated>
+   <id>http://lefttree.github.io/tool/2015/10/09/chrome-extensions</id>
+   <content type="html">&lt;p&gt;汇总了我用过的，别人推荐的chrome插件，如果有新的我会不断的更新。&lt;/p&gt;
+
+&lt;h2 id=&quot;general&quot;&gt;General&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;adblock&lt;/p&gt;
+
+&lt;p&gt;这个不用说了，必备&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ghostery&lt;/p&gt;
+
+&lt;p&gt;keep an eye on the trackers&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;lastpass&lt;/p&gt;
+
+&lt;p&gt;password manager&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;vimium&lt;/p&gt;
+
+&lt;p&gt;use chrome like vim&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;hacker vision&lt;/p&gt;
+
+&lt;p&gt;protect your eye&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;one tab&lt;/p&gt;
+
+&lt;p&gt;close all tabs and save them into one tab&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;one click&lt;/p&gt;
+
+&lt;p&gt;extensions manager&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;momentum&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;pomotodo&lt;/p&gt;
+
+&lt;p&gt;GTD&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;reading,-writng&quot;&gt;Reading, writng&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;feedly&lt;/p&gt;
+
+&lt;p&gt;rss reading&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;RSS Subscription&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Pocket&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;clip to evernote&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;clearly(evernote)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;markdown here&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;developer&quot;&gt;Developer&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Octotree&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;TamperMonkey&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;React Developer Tool&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;pageseed Insights&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;pageloading time&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
  
  <entry>
    <title>NFS Mount Remote Folder</title>

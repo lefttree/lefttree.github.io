@@ -8,6 +8,7 @@ http://lefttree.github.io/rss.xml
 http://lefttree.github.io/sitemap.txt
 http://lefttree.github.io/tags.html
 
+http://lefttree.github.io/tool/2015/10/09/chrome-extensions
 http://lefttree.github.io/linux/2015/10/06/mount-remote-folder
 http://lefttree.github.io/web/2015/09/25/netease-music
 http://lefttree.github.io/reading/2015/08/24/%E4%B8%8D%E8%A6%81%E5%81%9A%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E5%99%A8
