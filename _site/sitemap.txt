@@ -8,6 +8,7 @@ http://lefttree.github.io/rss.xml
 http://lefttree.github.io/sitemap.txt
 http://lefttree.github.io/tags.html
 
+http://lefttree.github.io/javascript/2015/10/20/javascript-scope-closure
 http://lefttree.github.io/tool/2015/10/09/chrome-extensions
 http://lefttree.github.io/linux/2015/10/06/mount-remote-folder
 http://lefttree.github.io/web/2015/09/25/netease-music
