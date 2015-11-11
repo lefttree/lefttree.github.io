@@ -8,6 +8,7 @@ http://lefttree.github.io/rss.xml
 http://lefttree.github.io/sitemap.txt
 http://lefttree.github.io/tags.html
 
+http://lefttree.github.io/web/2015/11/10/contextMenu
 http://lefttree.github.io/web/2015/11/01/microblog
 http://lefttree.github.io/life/2015/10/22/the-7-habits
 http://lefttree.github.io/javascript/2015/10/20/javascript-scope-closure

@@ -166,7 +166,8 @@ a:hover {
 }
 
 .post {
-  line-height: 24px;
+  padding-top: 1em;
+  line-height: 1.3em;
   max-width: 725px;
   clear: both;
 }
@@ -195,7 +196,7 @@ a:hover {
 
 .post p {
   font-family: 'Source Sans Pro', Arial, sans-serif;
-  font-size: 20px;
+  font-size: 1.1em;
   margin-bottom: 1.45em;
   text-align: justify;
 }

@@ -4,13 +4,54 @@
  <title>LeftTree&#39;s Blog</title>
  <link href="http://lefttree.github.io/atom.xml" rel="self"/>
  <link href="http://lefttree.github.io"/>
- <updated>2015-11-02T17:36:28-08:00</updated>
+ <updated>2015-11-10T18:15:23-08:00</updated>
  <id>http://lefttree.github.io</id>
  <author>
    <name>Xiang Li</name>
    <email>bylixiang@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Javascript Context Menu - 自定义右键菜单</title>
+   <link href="http://lefttree.github.io/web/2015/11/10/contextMenu"/>
+   <updated>2015-11-10T00:00:00-08:00</updated>
+   <id>http://lefttree.github.io/web/2015/11/10/contextMenu</id>
+   <content type="html">&lt;p&gt;最近要给web topology的node加一个自定义的右键菜单(context menu)，但是难点在于并不是给一些固定的html element
+加右键菜单这么简单，如果只是给一些element加context menu,那么有很多library比如jquery context menu
+就可以做到。这个topology是用&lt;code&gt;jit.js&lt;/code&gt;实现的。&lt;/p&gt;
+
+&lt;h3 id=&quot;问题分析：&quot;&gt;问题分析：&lt;/h3&gt;
+
+&lt;p&gt;需要和现有的&lt;code&gt;jit.js&lt;/code&gt;整合，而&lt;code&gt;jit.js&lt;/code&gt;产生的Node element并不是有固定id的，而且是动态生成的，所以不能在
+&lt;code&gt;onload&lt;/code&gt;或者其他function中直接&lt;code&gt;bind&lt;/code&gt;events.而&lt;code&gt;jit.js&lt;/code&gt;自己其实已经有了&lt;code&gt;onRightClick&lt;/code&gt;的event listener,
+而且&lt;code&gt;jit.js&lt;/code&gt;library内部有其他部分来check是否是点击在node上，在动态新加入node这个event listener也可以work.
+所以我更希望利用这个原有的api来实现context menu。&lt;/p&gt;
+
+&lt;h3 id=&quot;解决思路：&quot;&gt;解决思路：&lt;/h3&gt;
+
+&lt;p&gt;在&lt;code&gt;onRightClick&lt;/code&gt;这个event被trigger时&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;check是否点击在node上&lt;/li&gt;
+&lt;li&gt;display context menu on the node&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;解决方案：&quot;&gt;解决方案：&lt;/h3&gt;
+
+&lt;p&gt;我不想要自己写html和css来实现，那样有点麻烦，更希望看别人的源码来修改。&lt;/p&gt;
+
+&lt;p&gt;所以找到了一个非常&lt;code&gt;light-weighted&lt;/code&gt;的library &lt;a href=&quot;http://lab.jakiestfu.com/contextjs/#&quot;&gt;contextjs&lt;/a&gt;, 简单且符合要求.&lt;/p&gt;
+
+&lt;p&gt;这个library本来也只有一个加&lt;code&gt;attach&lt;/code&gt;的method来将context menu bind到一个element的right click
+event上，我利用里面的display部分的code, 将原有的&lt;code&gt;jit.js&lt;/code&gt;的event当作parameter传入，就达到了在
+其他event trigger时显示context menu的目的。&lt;/p&gt;
+
+&lt;h3 id=&quot;修改地址:&quot;&gt;修改地址:&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/lefttree/Context.js&quot;&gt;github&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>我的microblog上线了！</title>
@@ -2170,243 +2211,6 @@ CACHE MANIFEST&lt;/p&gt;
 &lt;p&gt;clock.js
 clock.css
 ```&lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>Javascript Best Practices</title>
-   <link href="http://lefttree.github.io/programming%20style/2015/06/03/JS-Best-Practices"/>
-   <updated>2015-06-03T00:00:00-07:00</updated>
-   <id>http://lefttree.github.io/programming%20style/2015/06/03/JS-Best-Practices</id>
-   <content type="html">&lt;h3 id=&quot;easy,-short-&amp;amp;-readable-names&quot;&gt;Easy, Short &amp;amp; Readable Names&lt;/h3&gt;
-
-&lt;h4 id=&quot;variables-name&quot;&gt;Variables Name&lt;/h4&gt;
-
-&lt;p&gt;&lt;strong&gt;Hungarian notation&lt;/strong&gt; is a good variable name scheme to adopt.&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;typeName&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Examples:
-- bBusy : boolean
-- chInitial : char
-- cApples : count of items&lt;/p&gt;
-
-&lt;h4 id=&quot;function-name&quot;&gt;Function Name&lt;/h4&gt;
-
-&lt;p&gt;Function name should start with a lowercase verb following &lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;verbSomething&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Examples:
-- isOldEnough()
-- getResult()&lt;/p&gt;
-
-&lt;h4 id=&quot;class-name&quot;&gt;Class Name&lt;/h4&gt;
-
-&lt;p&gt;the first char should be capital
-Examples:
-- Apple()
-- Node()&lt;/p&gt;
-
-&lt;h3 id=&quot;avoid-global&quot;&gt;Avoid Global&lt;/h3&gt;
-
-&lt;h4 id=&quot;revealing-module-pattern&quot;&gt;revealing module pattern&lt;/h4&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;myNameSpace&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;current&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){};&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;change&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){};&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;verify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){};&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;change&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;change&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}();&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;If you don&amp;#39;t need any of your vars or functions to be avaiable to the outside, simply wrap the whole construct in another set of parentheses to execute it without assigning any name.&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;current&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;})();&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&quot;use-strict&quot;&gt;Use strict&lt;/h3&gt;
-
-&lt;p&gt;Check code quality with JSLint&lt;/p&gt;
-
-&lt;h3 id=&quot;comment&quot;&gt;Comment&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;Comment as much as needed but no more&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Use /* */&lt;/p&gt;
-
-&lt;h3 id=&quot;avoid-mixing-with-css&quot;&gt;Avoid mixing with css&lt;/h3&gt;
-
-&lt;h3 id=&quot;use-shortcut-notation&quot;&gt;Use Shortcut Notation&lt;/h3&gt;
-
-&lt;p&gt;Examples:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;direction&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;blockquote&gt;
-&lt;p&gt;this would automatically give x a value of 10 if v is not defined&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;modularize---one-function-per-task&quot;&gt;Modularize - One Function per Task&lt;/h3&gt;
-
-&lt;h3 id=&quot;configuration-and-translation&quot;&gt;Configuration and Translation&lt;/h3&gt;
-
-&lt;p&gt;One of the most successful tips to keep your code maintainable and clean is to create a configuration object that contains all the things that are likely to change over time.&lt;/p&gt;
-
-&lt;p&gt;These include &lt;em&gt;any text used in elements you create&lt;/em&gt;, &lt;em&gt;CSS class&lt;/em&gt;, &lt;em&gt;ID names&lt;/em&gt; and &lt;em&gt;general parameters of the interface you build&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;Examples: easy youtube player project config object&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;cm&quot;&gt;/*&lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;  This is the configuration of the player.meng Most likely you will&lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;  never have to change anything here, but it is good to be able &lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;  to, isn&amp;#39;t it? &lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;*/&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;config&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;CSS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;cm&quot;&gt;/* &lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;      IDs used in the document. The script will get access to &lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;      the different elements of the player with these IDs, so &lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;      if you change them in the HTML below, make sure to also &lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;      change the name here!&lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;    */&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;IDs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;container&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;eytp-maincontainer&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;canvas&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;eytp-playercanvas&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;player&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;eytp-player&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;controls&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;eytp-controls&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;volumeField&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;eytp-volume&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;volumeBar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;eytp-volumebar&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;playerForm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;eytp-playerform&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;urlField&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;eytp-url&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;sizeControl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;eytp-sizecontrol&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;searchField&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;eytp-searchfield&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;searchForm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;eytp-search&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;searchOutput&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;eytp-searchoutput&amp;#39;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-    &lt;span class=&quot;cm&quot;&gt;/*&lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;      These are the names of the CSS classes, the player adds&lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;      dynamically to the volume bar in certain &lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;      situations.&lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;    */&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;classes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;maxvolume&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;maxed&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;disabled&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;disabled&amp;#39;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;cm&quot;&gt;/* &lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;    That is the end of the CSS definitions, from here on &lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;    you can change settings of the player itself. &lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;  */&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;cm&quot;&gt;/*&lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;      The YouTube API base URL. This changed during development of this,&lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;      so I thought it useful to make it a parameter.&lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;    */&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;youtubeAPI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;http://gdata.youtube.com/apiplayer/cl.swf&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;cm&quot;&gt;/* &lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;      The YouTube Developer key,&lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;      please replace this with your own when you host the player!!!!!&lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;    */&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;devkey&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;AI39si7d...Y9fu_cQ&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;cm&quot;&gt;/*&lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;      The volume increase/decrease in percent and the volume message &lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;      shown in a hidden form field (for screen readers). The $x in the &lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;      message will be replaced with the real value.&lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;    */&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;volumeChange&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;volumeMessage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;volume $x percent&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;cm&quot;&gt;/*&lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;      Amount of search results and the error message should there &lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;      be no results.&lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;    */&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;searchResults&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;loadingMessage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Searching, please wait&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;noVideosFoundMessage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;No videos found : (&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;cm&quot;&gt;/*&lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;      Amount of seconds to repeat when the user hits the rewind &lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;      button.&lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;    */&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;secondsToRepeat&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;cm&quot;&gt;/*&lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;      Movie dimensions.&lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;    */&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;movieWidth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;400&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;movieHeight&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;300&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;  
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&quot;avoid-heavy-nesting&quot;&gt;Avoid Heavy Nesting&lt;/h3&gt;
-
-&lt;p&gt;Use functions to avoid it&lt;/p&gt;
-
-&lt;h3 id=&quot;optimize-loops&quot;&gt;Optimize Loops&lt;/h3&gt;
-
-&lt;h4 id=&quot;for-loop-read-length-everytime&quot;&gt;For loop read length everytime&lt;/h4&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;names&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;George&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Ringo&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Paul&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;John&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;names&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;doSomeThingWith&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;names&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;To Fix&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;names&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;George&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Ringo&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Paul&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;John&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;names&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;doSomeThingWith&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;names&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h4 id=&quot;keep-computation-heavy-code-outside&quot;&gt;Keep computation-heavy code outside&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;regular expression&lt;/li&gt;
-&lt;li&gt;DOM manipulation&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;keep-dom-access-to-a-minimum&quot;&gt;Keep DOM Access to a minimum&lt;/h3&gt;
-
-&lt;h3 id=&quot;do-not-trust-any-data&quot;&gt;Do not Trust Any Data&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;It is very important to tes the type of parameters send to your functions(using the &lt;code&gt;typeof&lt;/code&gt; keyword)&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;buildMemberList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;members&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;members&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;object&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; 
-     &lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;members&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;slice&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;function&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;all&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;members&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ul&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;ul&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-      &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;li&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;li&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;li&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;appendChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createTextNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;members&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;ul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;appendChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;li&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;ol&gt;
-&lt;li&gt;Compare and check info read from the DOM&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;do-not-create-too-much-with-javascript&quot;&gt;Do not create too much with Javascript&lt;/h3&gt;
-
-&lt;p&gt;Using an HTML template and load it via AJAX&lt;/p&gt;
-
-&lt;h3 id=&quot;do-not-use-new-object&quot;&gt;Do not Use New Object&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Use {} instead of new Object()&lt;/li&gt;
-&lt;li&gt;Use &amp;quot;&amp;quot; instead of new String()&lt;/li&gt;
-&lt;li&gt;Use 0 instead of new Number()&lt;/li&gt;
-&lt;li&gt;Use false instead of new Boolean()&lt;/li&gt;
-&lt;li&gt;Use [] instead of new Array()&lt;/li&gt;
-&lt;li&gt;Use /()/ instead of new RegExp()&lt;/li&gt;
-&lt;li&gt;Use function (){} instead of new function()&lt;/li&gt;
-&lt;/ul&gt;
 </content>
  </entry>
  

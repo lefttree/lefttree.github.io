@@ -4,7 +4,7 @@
   <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      <title>LeftTree - Lefttree</title>
+      <title>LeftTree - Javascript Context Menu - 自定义右键菜单</title>
       <meta name="viewport" content="width=device-width">
 
       <!-- atom & rss feed -->
@@ -261,152 +261,124 @@
     <img src="/assets/themes/xiang/images/sidebar-button.png">
   </div>
   <div id="post-info">
-    <!--<div id="cover-photo-container">-->
-      <!--<img id="cover-photo" src="/assets/themes/xiang/images/" style="width: 50%; align: middle">-->
-    <!--</div>-->
+    <div id="cover-photo-container">
+      <img id="cover-photo" src="/assets/themes/xiang/images/cover.jpg">
+    </div>
     <div id="info-container">
-      <h1 id="title">Lefttree</h1>
+      <h1 id="title">Javascript Context Menu - 自定义右键菜单</h1>
+      <span id="date">10 Nov 2015</span>
     </div>
   </div>
 
   <div class="post">
-    
+    <p>最近要给web topology的node加一个自定义的右键菜单(context menu)，但是难点在于并不是给一些固定的html element
+加右键菜单这么简单，如果只是给一些element加context menu,那么有很多library比如jquery context menu
+就可以做到。这个topology是用<code>jit.js</code>实现的。</p>
 
-<div>
-  <p>不积跬步，无以至千里   不积小流，无以成江海。</p>
-  <a href="http://www.xiangli.me">Personal Website</a> 
-</div>
+<h3 id="问题分析：">问题分析：</h3>
 
-<div class="posts">
-    <ul class="posts">  
-          
-        <li class="post-link">  
-            <span>10 Nov 2015</span> &raquo;  
-            <a class="index-post-title" href="/web/2015/11/10/contextMenu">  
-                Javascript Context Menu - 自定义右键菜单</a>  
-        </li>  
-          
-        <li class="post-link">  
-            <span>01 Nov 2015</span> &raquo;  
-            <a class="index-post-title" href="/web/2015/11/01/microblog">  
-                我的microblog上线了！</a>  
-        </li>  
-          
-        <li class="post-link">  
-            <span>22 Oct 2015</span> &raquo;  
-            <a class="index-post-title" href="/life/2015/10/22/the-7-habits">  
-                高效能人士的7个习惯</a>  
-        </li>  
-          
-        <li class="post-link">  
-            <span>20 Oct 2015</span> &raquo;  
-            <a class="index-post-title" href="/javascript/2015/10/20/javascript-scope-closure">  
-                Javascript Scope and Closures</a>  
-        </li>  
-          
-        <li class="post-link">  
-            <span>09 Oct 2015</span> &raquo;  
-            <a class="index-post-title" href="/tool/2015/10/09/chrome-extensions">  
-                Chrome Extension 推荐</a>  
-        </li>  
-          
-        <li class="post-link">  
-            <span>06 Oct 2015</span> &raquo;  
-            <a class="index-post-title" href="/linux/2015/10/06/mount-remote-folder">  
-                NFS Mount Remote Folder</a>  
-        </li>  
-          
-        <li class="post-link">  
-            <span>25 Sep 2015</span> &raquo;  
-            <a class="index-post-title" href="/web/2015/09/25/netease-music">  
-                海外的用户正常听网易云音乐</a>  
-        </li>  
-          
-        <li class="post-link">  
-            <span>24 Aug 2015</span> &raquo;  
-            <a class="index-post-title" href="/reading/2015/08/24/%E4%B8%8D%E8%A6%81%E5%81%9A%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E5%99%A8">  
-                不要做程序生成器</a>  
-        </li>  
-          
-        <li class="post-link">  
-            <span>20 Aug 2015</span> &raquo;  
-            <a class="index-post-title" href="/programming%20style/2015/08/20/Javascript-Style-Guide-Notes">  
-                Javascript Style Guide Notes</a>  
-        </li>  
-          
-        <li class="post-link">  
-            <span>18 Aug 2015</span> &raquo;  
-            <a class="index-post-title" href="/python/2015/08/18/python-mutable-arguments">  
-                Python Mutable Default Arguments</a>  
-        </li>  
-          
-        <li class="post-link">  
-            <span>13 Aug 2015</span> &raquo;  
-            <a class="index-post-title" href="/python/2015/08/13/python-dictionary-key">  
-                Python Dictionary Key</a>  
-        </li>  
-          
-        <li class="post-link">  
-            <span>28 Jul 2015</span> &raquo;  
-            <a class="index-post-title" href="/python/2015/07/28/python-stack-queue">  
-                Python stack and queue</a>  
-        </li>  
-          
-        <li class="post-link">  
-            <span>22 Jul 2015</span> &raquo;  
-            <a class="index-post-title" href="/web/2015/07/22/strict-mode">  
-                About strict mode</a>  
-        </li>  
-          
-        <li class="post-link">  
-            <span>07 Jul 2015</span> &raquo;  
-            <a class="index-post-title" href="/javascript/2015/07/07/practical-patterns-for-creating-objects">  
-                Practical patterns for createing objects</a>  
-        </li>  
-          
-        <li class="post-link">  
-            <span>07 Jul 2015</span> &raquo;  
-            <a class="index-post-title" href="/notes/2015/07/07/eloquent-js-notes">  
-                Eloquent Javascript Notes</a>  
-        </li>  
-          
-        <li class="post-link">  
-            <span>18 Jun 2015</span> &raquo;  
-            <a class="index-post-title" href="/programming%20style/2015/06/18/git-workflow">  
-                Git Workflow</a>  
-        </li>  
-          
-        <li class="post-link">  
-            <span>12 Jun 2015</span> &raquo;  
-            <a class="index-post-title" href="/frontend/2015/06/12/react-twoway-binding">  
-                React Two-way Binding</a>  
-        </li>  
-          
-        <li class="post-link">  
-            <span>12 Jun 2015</span> &raquo;  
-            <a class="index-post-title" href="/frontend/2015/06/12/gulp-setup">  
-                Gulp Setup</a>  
-        </li>  
-          
-        <li class="post-link">  
-            <span>07 Jun 2015</span> &raquo;  
-            <a class="index-post-title" href="/programming%20style/2015/06/07/git-commit-style">  
-                Git commit style</a>  
-        </li>  
-          
-        <li class="post-link">  
-            <span>04 Jun 2015</span> &raquo;  
-            <a class="index-post-title" href="/web/2015/06/04/HTML5-Storage-Cache">  
-                HTML5 Storage & Cache</a>  
-        </li>  
-          
-    </ul>
-</div>
-<div class="colophon">
-</div>
+<p>需要和现有的<code>jit.js</code>整合，而<code>jit.js</code>产生的Node element并不是有固定id的，而且是动态生成的，所以不能在
+<code>onload</code>或者其他function中直接<code>bind</code>events.而<code>jit.js</code>自己其实已经有了<code>onRightClick</code>的event listener,
+而且<code>jit.js</code>library内部有其他部分来check是否是点击在node上，在动态新加入node这个event listener也可以work.
+所以我更希望利用这个原有的api来实现context menu。</p>
+
+<h3 id="解决思路：">解决思路：</h3>
+
+<p>在<code>onRightClick</code>这个event被trigger时</p>
+
+<ul>
+<li>check是否点击在node上</li>
+<li>display context menu on the node</li>
+</ul>
+
+<h3 id="解决方案：">解决方案：</h3>
+
+<p>我不想要自己写html和css来实现，那样有点麻烦，更希望看别人的源码来修改。</p>
+
+<p>所以找到了一个非常<code>light-weighted</code>的library <a href="http://lab.jakiestfu.com/contextjs/#">contextjs</a>, 简单且符合要求.</p>
+
+<p>这个library本来也只有一个加<code>attach</code>的method来将context menu bind到一个element的right click
+event上，我利用里面的display部分的code, 将原有的<code>jit.js</code>的event当作parameter传入，就达到了在
+其他event trigger时显示context menu的目的。</p>
+
+<h3 id="修改地址:">修改地址:</h3>
+
+<p><a href="https://github.com/lefttree/Context.js">github</a></p>
 
   </div>
-  <div class="colophon">
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-folder-open"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/categories.html#web-ref">
+    		web <span>6</span>
+    	</a></li>
+    
+  
+
+
+    </ul>
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags.html#web-ref">web <span>7</span></a></li>
+     
+    	<li><a href="/tags.html#javascript-ref">javascript <span>10</span></a></li>
+    
+  
+
+
+
+    </ul>
+  
+  <hr>  
+  <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/web/2015/11/01/microblog" title="我的microblog上线了！">&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next disabled"><a>Next &rarr;</a>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    
+    var disqus_developer = 1;
+    var disqus_shortname = 'lefttreegithubio'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
   </div>
 </div>
 
