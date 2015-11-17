@@ -4,7 +4,7 @@
   <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      <title>LeftTree - Git Workflow</title>
+      <title>LeftTree - urllib, urllib2, requests</title>
       <meta name="viewport" content="width=device-width">
 
       <!-- atom & rss feed -->
@@ -276,208 +276,59 @@
       <img id="cover-photo" src="/assets/themes/xiang/images/cover.jpg">
     </div>
     <div id="info-container">
-      <h1 id="title">Git Workflow</h1>
-      <span id="date">18 Jun 2015</span>
+      <h1 id="title">urllib, urllib2, requests</h1>
+      <span id="date">17 Nov 2015</span>
     </div>
   </div>
 
   <div class="post">
-    <h1 id="table-of-contents">Table of Contents</h1>
+    <h2 id="python3-变化">python3 变化</h2>
 
-<ol>
-<li><a href="#current-work-flow">Current Work Flow</a></li>
-<li><a href="#centralized-workflow">Centralized Workflow</a></li>
-<li><a href="#feature-branch-workflow">Feature Branch Workflow</a></li>
-<li><a href="#gitflow-workflow">Gitflow Workflow</a></li>
-<li><a href="#forking-workflow">Forking Workflow</a></li>
-</ol>
-
-<h1 id="current-work-flow">Current Work Flow</h1>
-
-<p>Usually in my work, I use git commands like
-<code>add</code>, <code>commit</code>, <code>checkout --</code>, <code>reset</code>, <code>rebase</code>, <code>pull</code>/<code>push</code>,
-......</p>
-
-<p>Work routine is </p>
+<p>在python3中，urllib和urllib2 module已经被重新分配到了新的modules里</p>
 
 <ul>
-<li>pull from remote origin</li>
-<li>create new branch, develop new stuff</li>
-<li>push branch to remote origin </li>
-<li>code review, and merge branch to master branch on origin</li>
+<li>urllib.request</li>
+<li>urllib.error</li>
+<li>urllib.parse</li>
 </ul>
 
-<p>Local</p>
+<p>可以用<a href="https://docs.python.org/2/glossary.html#term-to3">2to3</a>tool来转换</p>
 
 <ul>
-<li>create new branch</li>
-<li>develop weird things lol</li>
-<li>test, stash, commit</li>
-<li>rebase, combine commits into one</li>
-<li>merge to master</li>
+<li><code>urllib.request.urlopen</code> 等同于 <code>urllib2.urlopen()</code></li>
+<li><code>urllib.urlopen()</code> 已经被remove了</li>
 </ul>
 
-<h1 id="content">Content</h1>
+<h3 id="requests-package">requests package</h3>
 
-<p>Thanks to <a href="https://github.com/lefttree/my-git/blob/master/git-workflow-tutorial.md">xirong&#39;s post</a>, learnt some standard git workflows.</p>
+<p>python doc里推荐使用<code>requests</code>建立higher-level http client interface</p>
 
-<blockquote>
-<p>This won&#39;t state all the steps here, I wrote this post  for remembering these stuff, so I assume the reader already know git. 
-If you need to learn the details, please go to the original post</p>
-</blockquote>
-
-<h2 id="centralized-workflow">Centralized Workflow</h2>
-
-<h4 id="init">Init</h4>
-
-<p><code>git init --bare /path/to/repo.git</code></p>
-
-<blockquote>
-<p>--bare 
-repo.git</p>
-</blockquote>
-
-<h4 id="local">Local</h4>
-
-<p><code>git pull --rebase origin master</code></p>
-
-<p><strong>Fix conflicts</strong></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">git add &lt;some-file&gt; 
-git rebase --continue
+<p>例子</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;https://api.github.com/user&#39;</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="p">(</span><span class="s">&#39;user&#39;</span><span class="p">,</span> <span class="s">&#39;pass&#39;</span><span class="p">))</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span>
+<span class="mi">200</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s">&#39;content-type&#39;</span><span class="p">]</span>
+<span class="s">&#39;application/json; charset=utf8&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">encoding</span>
+<span class="s">&#39;utf-8&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span>
+<span class="s">u&#39;{&quot;type&quot;:&quot;User&quot;...&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="p">{</span><span class="s">u&#39;private_gists&#39;</span><span class="p">:</span> <span class="mi">419</span><span class="p">,</span> <span class="s">u&#39;total_private_repos&#39;</span><span class="p">:</span> <span class="mi">77</span><span class="p">,</span> <span class="o">...</span><span class="p">}</span>
 </code></pre></div>
-<p><strong>If encountered problem</strong></p>
+<h2 id="urllib和urllib2主要差别">urllib和urllib2主要差别</h2>
 
-<p><code>git rebase --abort</code></p>
+<ul>
+<li>urllib2 可以接受一个request object来设定url request的header, 而urllib只能接受url</li>
+<li>urllib 提供urlencode方法来构建<code>GET</code> query strings, 这是为什么他们俩总是混用的原因之一</li>
+</ul>
 
-<p><strong>after all done</strong></p>
+<h2 id="reference">Reference</h2>
 
-<p><code>git push origin master</code></p>
-
-<h2 id="feature-branch-workflow">Feature Branch Workflow</h2>
-
-<p><strong>Pull request</strong></p>
-
-<p>Once someone completes a feature, they don’t immediately merge it into master. Instead, they push the feature branch to the central server and file a pull request asking to merge their additions into master. This gives other developers an opportunity to review the changes before they become a part of the main codebase.</p>
-
-<p><strong>Code review</strong> is a major benefit of pull requests, but they’re actually designed to be a generic way to talk about code. You can think of pull requests as a discussion dedicated to a particular branch.</p>
-
-<h4 id="example">Example</h4>
-
-<p><strong>Start a new branch</strong></p>
-
-<p><code>git checkout -b</code></p>
-
-<p><strong>Push to central repo</strong></p>
-
-<p><code>git push -u origin marys-feature</code></p>
-
-<blockquote>
-<p>-u adds it as a remote tracking branch, you can just do <code>git push</code> later</p>
-</blockquote>
-
-<p><strong>Pull request</strong></p>
-
-<p>Send a pull request in Git GUI</p>
-
-<p><strong>Comment, Change</strong></p>
-
-<p>all on the new branch</p>
-
-<p><strong>publish</strong></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">git checkout master
-git pull
-git pull origin feature-branch
-git push
-</code></pre></div>
-<h2 id="gitflow-workflow">Gitflow Workflow</h2>
-
-<h4 id="historical-branches">Historical Branches</h4>
-
-<p>Instead of a single master branch, this workflow uses two branches to record the history of the project. The master branch stores the official release history, and the develop branch serves as an integration branch for features. It&#39;s also convenient to <strong>tag</strong> all commits in the master branch with a version number.</p>
-
-<h4 id="feature-branches">Feature Branches</h4>
-
-<p>feature branches use <em>develop</em> as their parent branch. When a feature is complete, it gets merged back into develop. <strong>Features should never interact directly with master.</strong></p>
-
-<h4 id="release-branches">Release Branches</h4>
-
-<p>Once develop has acquired enough features for a release (or a predetermined release date is approaching), you fork a release branch off of <code>develop</code>. Creating this branch starts the next release cycle, so no new features can be added after this point—only bug fixes, documentation generation, and other release-oriented tasks should go in this branch.</p>
-
-<p>Once it&#39;s ready to ship, the release gets <code>merged into master</code> and <code>tagged with a version number</code>. In addition, it should be <code>merged back into develop</code>, which may have progressed since the release was initiated.</p>
-
-<h4 id="hotfix-branch">Hotfix Branch</h4>
-
-<p>bug fix, branch off <code>master</code>, merged back to <code>master</code> and <code>develop</code></p>
-
-<h4 id="example">Example</h4>
-
-<p><code>git checkout -b new-feature develop</code></p>
-
-<p><strong>after done</strong></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">git pull origin develop
-git checkout develop
-git merge some-feature
-git push
-git branch -d some-feature
-</code></pre></div>
-<p><strong>prepare release</strong></p>
-
-<p><code>git checkout -b release-0.1 develop</code>
-This branch is a place to clean up the release, test everything, update the documentation, and do any other kind of preparation for the upcoming release.</p>
-
-<p><strong>after release is ready</strong></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">git checkout master
-git merge release-0.1
-git push
-git checkout develop
-git merge release-0.1
-git push
-git branch -d release-0.1
-</code></pre></div>
-<p>whenever you merge something into master, should tag it
-<code>git tag -a 0.1 -m &quot;Initial public release&quot; master
-git push --tags</code></p>
-
-<p><strong>Bug fix</strong></p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">git checkout -b issue-#001 master
-# Fix the bug
-git checkout master
-git merge issue-#001
-git push
-</code></pre></div>
-<h2 id="forking-workflow">Forking Workflow</h2>
-
-<p>The main advantage of the Forking Workflow is that contributions can be integrated without the need for everybody to push to a single central repository.</p>
-
-<p>When they&#39;re ready to publish a local commit, they push the commit to their own public repository—not the official one. Then, they file a pull request with the main repository, which lets the project maintainer know that an update is ready to be integrated. The pull request also serves as a convenient discussion thread if there are issues with the contributed code.</p>
-
-<h4 id="example">Example</h4>
-
-<p><strong>Fork, clone to local</strong></p>
-
-<p><code>git clone https://user@bitbucket.org/user/repo.git</code></p>
-
-<p>Whereas the other workflows in this tutorial use a single origin remote that points to the central repository, the Forking Workflow requires two remotes—one for the official repository, and one for the developer’s personal server-side repository.</p>
-
-<p><code>git remote add upstream https://bitbucket.org/maintainer/repo
-</code></p>
-
-<p><strong>Work on personal features, push to personal remote</strong></p>
-
-<p><strong>Pull Request</strong></p>
-
-<p><strong>Maintainer integrates their features</strong></p>
-
-<ol>
-<li>Inspect the code directly in the pull request</li>
-<li>Pull the code into their local repository and manually merge it</li>
-</ol>
-<div class="highlight"><pre><code class="language-text" data-lang="text">git fetch https://bitbucket.org/user/repo feature-branch
-# Inspect the changes
-git checkout master
-git merge FETCH_HEAD
-</code></pre></div>
-<p><strong>Maintainer push to public origin</strong></p>
+<ul>
+<li><a href="http://www.hacksparrow.com/python-difference-between-urllib-and-urllib2.html">difference between urllib and urllib2</a></li>
+<li><a href="http://requests.readthedocs.org/en/latest/">requests</a></li>
+</ul>
 
   </div>
   
@@ -489,8 +340,8 @@ git merge FETCH_HEAD
 
   
      
-    	<li><a href="/categories.html#programming style-ref">
-    		programming style <span>4</span>
+    	<li><a href="/categories.html#python-ref">
+    		python <span>4</span>
     	</a></li>
     
   
@@ -508,9 +359,9 @@ git merge FETCH_HEAD
 
   
      
-    	<li><a href="/tags.html#git-ref">git <span>2</span></a></li>
+    	<li><a href="/tags.html#python-ref">python <span>4</span></a></li>
      
-    	<li><a href="/tags.html#programming style-ref">programming style <span>4</span></a></li>
+    	<li><a href="/tags.html#crawler-ref">crawler <span>1</span></a></li>
     
   
 
@@ -522,11 +373,11 @@ git merge FETCH_HEAD
   <div class="pagination">
       <ul>
       
-        <li class="prev"><a href="/frontend/2015/06/12/react-twoway-binding" title="React Two-way Binding">&larr; Previous</a></li>
+        <li class="prev"><a href="/web/2015/11/10/contextMenu" title="Javascript Context Menu - 自定义右键菜单">&larr; Previous</a></li>
       
         <li><a href="/archive.html">Archive</a></li>
       
-        <li class="next"><a href="/notes/2015/07/07/eloquent-js-notes" title="Eloquent Javascript Notes">Next &rarr;</a></li>
+        <li class="next disabled"><a>Next &rarr;</a>
       
       </ul>
     </div>
