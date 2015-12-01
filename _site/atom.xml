@@ -4,13 +4,76 @@
  <title>LeftTree&#39;s Blog</title>
  <link href="http://lefttree.github.io/atom.xml" rel="self"/>
  <link href="http://lefttree.github.io"/>
- <updated>2015-11-17T12:07:38-08:00</updated>
+ <updated>2015-12-01T12:35:16-08:00</updated>
  <id>http://lefttree.github.io</id>
  <author>
    <name>Xiang Li</name>
    <email>bylixiang@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Bootstrap modal plugin</title>
+   <link href="http://lefttree.github.io/web/2015/12/01/modal-plugin"/>
+   <updated>2015-12-01T00:00:00-08:00</updated>
+   <id>http://lefttree.github.io/web/2015/12/01/modal-plugin</id>
+   <content type="html">&lt;p&gt;翻译自&lt;a href=&quot;http://www.w3schools.com/bootstrap/bootstrap_modal.asp&quot;&gt;w3schools&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Trigger the modal with a button --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;button&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;button&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;btn btn-info btn-lg&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-toggle=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;modal&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-target=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;#myModal&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Open Modal&lt;span class=&quot;nt&quot;&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Modal --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;myModal&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;modal fade&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;dialog&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;modal-dialog&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Modal content--&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;modal-content&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;modal-header&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;button&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;button&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;close&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-dismiss=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;modal&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;ni&quot;&gt;&amp;amp;times;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;h4&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;modal-title&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Modal Header&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h4&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;modal-body&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Some text in the modal.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;modal-footer&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;button&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;button&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;btn btn-default&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-dismiss=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;modal&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Close&lt;span class=&quot;nt&quot;&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;&amp;quot;触发&amp;quot;部分&quot;&gt;&amp;quot;触发&amp;quot;部分&lt;/h3&gt;
+
+&lt;p&gt;触发模态框，需要一个按钮或者链接。&lt;/p&gt;
+
+&lt;p&gt;然后要有两个&lt;code&gt;data-*&lt;/code&gt;属性:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;data-toggle=&amp;quot;modal&amp;quot;&lt;/code&gt; 打开模态框&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;data-target=&amp;quot;#myModal&amp;quot;&lt;/code&gt; 指向模态框的id&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;模态框部分&quot;&gt;模态框部分&lt;/h3&gt;
+
+&lt;p&gt;模态框上一层的&lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt;必须要有一个和&lt;code&gt;data-target&lt;/code&gt;中一样的id，这样才能匹配。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;.modal&lt;/code&gt;类指定了这个&lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt;里的内容是模态框，把屏幕焦点带到这个模态框上。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.fade&lt;/code&gt;类给这个模态框进入和切出时加了一个转换效果。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;role=&amp;quot;dialog&amp;quot;&lt;/code&gt;让视力不好使用screen reader的人更好用&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.modal-dialog&lt;/code&gt;类为这个&lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt;设置合适的大小和周围边界&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;模态框内容&quot;&gt;模态框内容&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;类为&lt;code&gt;class=&amp;quot;modal-content&amp;quot;&lt;/code&gt;的&lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt;为模态框设置样式，它的里面包括头部，内容和脚注&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.modal-header&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.modal-body&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.modal-footer&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
  
  <entry>
    <title>urllib, urllib2, requests</title>
@@ -2040,61 +2103,6 @@ git merge FETCH_HEAD
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Gulp&amp;#39;s syntax is just like node, and it use streamming&lt;/p&gt;
 </content>
- </entry>
- 
- <entry>
-   <title>Git commit style</title>
-   <link href="http://lefttree.github.io/programming%20style/2015/06/07/git-commit-style"/>
-   <updated>2015-06-07T00:00:00-07:00</updated>
-   <id>http://lefttree.github.io/programming%20style/2015/06/07/git-commit-style</id>
-   <content type="html">&lt;h2 id=&quot;structure&quot;&gt;Structure&lt;/h2&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;type: subject
-
-body
-
-footer
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;type&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;feat&lt;/strong&gt;(new feature)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;fix&lt;/strong&gt;(bug fix)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;docs&lt;/strong&gt;(changes to doc)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;style&lt;/strong&gt;(formatting, missing semi colons, etc; no code change)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;refactor&lt;/strong&gt;(refactoring production code)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;test&lt;/strong&gt;(adding missing tests, refactoring tests, no production code change)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;chore&lt;/strong&gt;(updating grunt tasks etc; no production code change)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;##Example&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;feat: Summarize changes in around 50 characters or less
-
-More detailed explanatory text, if necessary. Wrap it to about 72
-characters or so. In some contexts, the first line is treated as the
-subject of the commit and the rest of the text as the body. The
-blank line separating the summary from the body is critical (unless
-you omit the body entirely); various tools like `log`, `shortlog`
-and `rebase` can get confused if you run the two together.
-
-Explain the problem that this commit is solving. Focus on why you
-are making this change as opposed to how (the code explains that).
-Are there side effects or other unintuitive consequenses of this
-change? Here&amp;#39;s the place to explain them.
-
-Further paragraphs come after blank lines.
-
- - Bullet points are okay, too
-
- - Typically a hyphen or asterisk is used for the bullet, preceded
-   by a single space, with blank lines in between, but conventions
-   vary here
-
-If you use an issue tracker, put references to them at the bottom,
-like this:
-
-Resolves: #123
-See also: #456, #789
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
  </entry>
  
  

@@ -9,6 +9,7 @@ http://lefttree.github.io/rss.xml
 http://lefttree.github.io/sitemap.txt
 http://lefttree.github.io/tags.html
 
+http://lefttree.github.io/web/2015/12/01/modal-plugin
 http://lefttree.github.io/python/2015/11/17/urllib-urllib2-request
 http://lefttree.github.io/web/2015/11/10/contextMenu
 http://lefttree.github.io/web/2015/11/01/microblog

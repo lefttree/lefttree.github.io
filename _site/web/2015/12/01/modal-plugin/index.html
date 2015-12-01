@@ -4,7 +4,7 @@
   <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      <title>LeftTree - Git commit style</title>
+      <title>LeftTree - Bootstrap modal plugin</title>
       <meta name="viewport" content="width=device-width">
 
       <!-- atom & rss feed -->
@@ -283,60 +283,68 @@
       <img id="cover-photo" src="/assets/themes/xiang/images/cover.jpg">
     </div>
     <div id="info-container">
-      <h1 id="title">Git commit style</h1>
-      <span id="date">07 Jun 2015</span>
+      <h1 id="title">Bootstrap modal plugin</h1>
+      <span id="date">01 Dec 2015</span>
     </div>
   </div>
 
   <div class="post">
-    <h2 id="structure">Structure</h2>
-<div class="highlight"><pre><code class="language-text" data-lang="text">type: subject
+    <p>翻译自<a href="http://www.w3schools.com/bootstrap/bootstrap_modal.asp">w3schools</a></p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Trigger the modal with a button --&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-info btn-lg&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;modal&quot;</span> <span class="na">data-target=</span><span class="s">&quot;#myModal&quot;</span><span class="nt">&gt;</span>Open Modal<span class="nt">&lt;/button&gt;</span>
 
-body
+<span class="c">&lt;!-- Modal --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;myModal&quot;</span> <span class="na">class=</span><span class="s">&quot;modal fade&quot;</span> <span class="na">role=</span><span class="s">&quot;dialog&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;modal-dialog&quot;</span><span class="nt">&gt;</span>
 
-footer
+    <span class="c">&lt;!-- Modal content--&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;modal-content&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;modal-header&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;close&quot;</span> <span class="na">data-dismiss=</span><span class="s">&quot;modal&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;times;</span><span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;h4</span> <span class="na">class=</span><span class="s">&quot;modal-title&quot;</span><span class="nt">&gt;</span>Modal Header<span class="nt">&lt;/h4&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;modal-body&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;p&gt;</span>Some text in the modal.<span class="nt">&lt;/p&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;modal-footer&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-default&quot;</span> <span class="na">data-dismiss=</span><span class="s">&quot;modal&quot;</span><span class="nt">&gt;</span>Close<span class="nt">&lt;/button&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
 </code></pre></div>
-<p>type</p>
+<h3 id="&quot;触发&quot;部分">&quot;触发&quot;部分</h3>
+
+<p>触发模态框，需要一个按钮或者链接。</p>
+
+<p>然后要有两个<code>data-*</code>属性:</p>
 
 <ul>
-<li><strong>feat</strong>(new feature)</li>
-<li><strong>fix</strong>(bug fix)</li>
-<li><strong>docs</strong>(changes to doc)</li>
-<li><strong>style</strong>(formatting, missing semi colons, etc; no code change)</li>
-<li><strong>refactor</strong>(refactoring production code)</li>
-<li><strong>test</strong>(adding missing tests, refactoring tests, no production code change)</li>
-<li><strong>chore</strong>(updating grunt tasks etc; no production code change)</li>
+<li><code>data-toggle=&quot;modal&quot;</code> 打开模态框</li>
+<li><code>data-target=&quot;#myModal&quot;</code> 指向模态框的id</li>
 </ul>
 
-<p>##Example</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">feat: Summarize changes in around 50 characters or less
+<h3 id="模态框部分">模态框部分</h3>
 
-More detailed explanatory text, if necessary. Wrap it to about 72
-characters or so. In some contexts, the first line is treated as the
-subject of the commit and the rest of the text as the body. The
-blank line separating the summary from the body is critical (unless
-you omit the body entirely); various tools like `log`, `shortlog`
-and `rebase` can get confused if you run the two together.
+<p>模态框上一层的<code>&lt;div&gt;</code>必须要有一个和<code>data-target</code>中一样的id，这样才能匹配。</p>
 
-Explain the problem that this commit is solving. Focus on why you
-are making this change as opposed to how (the code explains that).
-Are there side effects or other unintuitive consequenses of this
-change? Here&#39;s the place to explain them.
+<ul>
+<li><code>.modal</code>类指定了这个<code>&lt;div&gt;</code>里的内容是模态框，把屏幕焦点带到这个模态框上。</li>
+<li><code>.fade</code>类给这个模态框进入和切出时加了一个转换效果。</li>
+<li><code>role=&quot;dialog&quot;</code>让视力不好使用screen reader的人更好用</li>
+<li><code>.modal-dialog</code>类为这个<code>&lt;div&gt;</code>设置合适的大小和周围边界</li>
+</ul>
 
-Further paragraphs come after blank lines.
+<h3 id="模态框内容">模态框内容</h3>
 
- - Bullet points are okay, too
+<ul>
+<li>类为<code>class=&quot;modal-content&quot;</code>的<code>&lt;div&gt;</code>为模态框设置样式，它的里面包括头部，内容和脚注</li>
+<li><code>.modal-header</code></li>
+<li><code>.modal-body</code></li>
+<li><code>.modal-footer</code></li>
+</ul>
 
- - Typically a hyphen or asterisk is used for the bullet, preceded
-   by a single space, with blank lines in between, but conventions
-   vary here
-
-If you use an issue tracker, put references to them at the bottom,
-like this:
-
-Resolves: #123
-See also: #456, #789
-</code></pre></div>
   </div>
   
     <ul class="tag_box inline">
@@ -347,8 +355,8 @@ See also: #456, #789
 
   
      
-    	<li><a href="/categories.html#programming style-ref">
-    		programming style <span>4</span>
+    	<li><a href="/categories.html#web-ref">
+    		web <span>7</span>
     	</a></li>
     
   
@@ -366,9 +374,9 @@ See also: #456, #789
 
   
      
-    	<li><a href="/tags.html#git-ref">git <span>2</span></a></li>
+    	<li><a href="/tags.html#bootstrap-ref">bootstrap <span>1</span></a></li>
      
-    	<li><a href="/tags.html#programming style-ref">programming style <span>4</span></a></li>
+    	<li><a href="/tags.html#frontend-ref">frontend <span>3</span></a></li>
     
   
 
@@ -380,11 +388,11 @@ See also: #456, #789
   <div class="pagination">
       <ul>
       
-        <li class="prev"><a href="/web/2015/06/04/HTML5-Storage-Cache" title="HTML5 Storage & Cache">&larr; Previous</a></li>
+        <li class="prev"><a href="/python/2015/11/17/urllib-urllib2-request" title="urllib, urllib2, requests">&larr; Previous</a></li>
       
         <li><a href="/archive.html">Archive</a></li>
       
-        <li class="next"><a href="/frontend/2015/06/12/gulp-setup" title="Gulp Setup">Next &rarr;</a></li>
+        <li class="next disabled"><a>Next &rarr;</a>
       
       </ul>
     </div>
