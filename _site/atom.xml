@@ -4,7 +4,7 @@
  <title>LeftTree&#39;s Blog</title>
  <link href="http://lefttree.github.io/atom.xml" rel="self"/>
  <link href="http://lefttree.github.io"/>
- <updated>2015-12-01T12:35:16-08:00</updated>
+ <updated>2015-12-03T01:28:59-08:00</updated>
  <id>http://lefttree.github.io</id>
  <author>
    <name>Xiang Li</name>
@@ -18,31 +18,34 @@
    <updated>2015-12-01T00:00:00-08:00</updated>
    <id>http://lefttree.github.io/web/2015/12/01/modal-plugin</id>
    <content type="html">&lt;p&gt;翻译自&lt;a href=&quot;http://www.w3schools.com/bootstrap/bootstrap_modal.asp&quot;&gt;w3schools&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Trigger the modal with a button --&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;button&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;button&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;btn btn-info btn-lg&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-toggle=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;modal&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-target=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;#myModal&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Open Modal&lt;span class=&quot;nt&quot;&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;
 
-&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Modal --&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;myModal&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;modal fade&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;dialog&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;modal-dialog&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;!-- Trigger the modal with a button --&gt;
 
-    &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Modal content--&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;modal-content&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;modal-header&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;button&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;button&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;close&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-dismiss=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;modal&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;ni&quot;&gt;&amp;amp;times;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;h4&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;modal-title&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Modal Header&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h4&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;modal-body&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Some text in the modal.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;modal-footer&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;button&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;button&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;btn btn-default&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-dismiss=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;modal&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Close&lt;span class=&quot;nt&quot;&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;p&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-info btn-lg&quot; data-toggle=&quot;modal&quot; data-target=&quot;#myModal&quot;&gt;Open Modal&lt;/button&gt;&lt;/p&gt;
 
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&quot;&amp;quot;触发&amp;quot;部分&quot;&gt;&amp;quot;触发&amp;quot;部分&lt;/h3&gt;
+&lt;!-- Modal --&gt;
+
+&lt;div id=&quot;myModal&quot; class=&quot;modal fade&quot; role=&quot;dialog&quot;&gt;
+  &lt;div class=&quot;modal-dialog&quot;&gt;
+
+    &lt;!-- Modal content--&gt;
+    &lt;div class=&quot;modal-content&quot;&gt;
+      &lt;div class=&quot;modal-header&quot;&gt;
+        &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;modal&quot;&gt;&amp;times;&lt;/button&gt;
+        &lt;h4 class=&quot;modal-title&quot;&gt;Modal Header&lt;/h4&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;modal-body&quot;&gt;
+        &lt;p&gt;Some text in the modal.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;modal-footer&quot;&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot; data-dismiss=&quot;modal&quot;&gt;Close&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;quot-触发-quot-部分&quot;&gt;&amp;quot;触发&amp;quot;部分&lt;/h3&gt;
 
 &lt;p&gt;触发模态框，需要一个按钮或者链接。&lt;/p&gt;
 
@@ -165,7 +168,7 @@
 event上，我利用里面的display部分的code, 将原有的&lt;code&gt;jit.js&lt;/code&gt;的event当作parameter传入，就达到了在
 其他event trigger时显示context menu的目的。&lt;/p&gt;
 
-&lt;h3 id=&quot;修改地址:&quot;&gt;修改地址:&lt;/h3&gt;
+&lt;h3 id=&quot;修改地址&quot;&gt;修改地址:&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://github.com/lefttree/Context.js&quot;&gt;github&lt;/a&gt;&lt;/p&gt;
 </content>
@@ -538,7 +541,7 @@ Some Languages like JavaScript implement a slightly more complex setup for the s
 &lt;p&gt;GTD&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;reading,-writng&quot;&gt;Reading, writng&lt;/h2&gt;
+&lt;h2 id=&quot;reading-writng&quot;&gt;Reading, writng&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;feedly&lt;/p&gt;
@@ -1113,7 +1116,7 @@ list(collections.deque(1,2,3))
    <link href="http://lefttree.github.io/web/2015/07/22/strict-mode"/>
    <updated>2015-07-22T00:00:00-07:00</updated>
    <id>http://lefttree.github.io/web/2015/07/22/strict-mode</id>
-   <content type="html">&lt;h3 id=&quot;why-strict-mode(from-mdn)&quot;&gt;Why Strict mode(From MDN)&lt;/h3&gt;
+   <content type="html">&lt;h3 id=&quot;why-strict-mode-from-mdn&quot;&gt;Why Strict mode(From MDN)&lt;/h3&gt;
 
 &lt;p&gt;Strict mode makes several changes to normal JavaScript semantics.&lt;/p&gt;
 
@@ -1218,7 +1221,7 @@ But still &lt;strong&gt;ineffiecient&lt;/strong&gt;&lt;/p&gt;
 mangoFruit.showName(); //​
 mangoFruit.nativeTo();
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&quot;combination-of-constructor/prototype-pattern&quot;&gt;Combination of Constructor/Prototype Pattern&lt;/h3&gt;
+&lt;h3 id=&quot;combination-of-constructor-prototype-pattern&quot;&gt;Combination of Constructor/Prototype Pattern&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;The most popular one&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;// constructor function to create car objects
@@ -1286,7 +1289,7 @@ var johnCar = new Car(&amp;#39;Ford&amp;#39;, &amp;#39;F150&amp;#39;, &amp;#39;2
 &lt;li&gt;  &lt;a href=&quot;#propagation&quot;&gt;Propagation&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;+-debouncing&quot;&gt;+   &lt;a href=&quot;#debouncing&quot;&gt;Debouncing&lt;/a&gt;&lt;/h2&gt;&lt;/li&gt;
+&lt;h2 id=&quot;debouncing&quot;&gt;+   &lt;a href=&quot;#debouncing&quot;&gt;Debouncing&lt;/a&gt;&lt;/h2&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;chapter-3&quot;&gt;Chapter 3&lt;/h2&gt;
@@ -1339,7 +1342,7 @@ This feature - being able to reference a specific instance of local variables in
 
 &lt;h2 id=&quot;chapter-4&quot;&gt;Chapter 4&lt;/h2&gt;
 
-&lt;h3 id=&quot;data-structures:-objects-and-arrays&quot;&gt;Data Structures: Objects and Arrays&lt;/h3&gt;
+&lt;h3 id=&quot;data-structures-objects-and-arrays&quot;&gt;Data Structures: Objects and Arrays&lt;/h3&gt;
 
 &lt;h4 id=&quot;properties&quot;&gt;Properties&lt;/h4&gt;
 
@@ -1402,9 +1405,9 @@ Object values can be modified&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;every()&lt;/code&gt;
 &lt;code&gt;some()&lt;/code&gt;&lt;/p&gt;
 
-&lt;h4 id=&quot;call(),-bind()-and-apply()&quot;&gt;call(), bind() and apply()&lt;/h4&gt;
+&lt;h4 id=&quot;call-bind-and-apply&quot;&gt;call(), bind() and apply()&lt;/h4&gt;
 
-&lt;h5 id=&quot;bind()&quot;&gt;Bind()&lt;/h5&gt;
+&lt;h5 id=&quot;bind&quot;&gt;Bind()&lt;/h5&gt;
 
 &lt;p&gt;We use the Bind () method primarily to call a function with the &lt;em&gt;this&lt;/em&gt; value set explicitly. &lt;/p&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -1446,7 +1449,7 @@ Object values can be modified&lt;/p&gt;
 &lt;span class=&quot;nx&quot;&gt;greetAYoungster&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Alex&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &amp;quot;Hey, Alex.&amp;quot;​&lt;/span&gt;
 &lt;span class=&quot;nx&quot;&gt;greetAYoungster&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Emma Waterloo&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &amp;quot;Hey, Emma Waterloo.&amp;quot;​&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h5 id=&quot;apply()-and-call()&quot;&gt;Apply() and call()&lt;/h5&gt;
+&lt;h5 id=&quot;apply-and-call&quot;&gt;Apply() and call()&lt;/h5&gt;
 
 &lt;p&gt;they allow us to borrow functions and set the this value in &lt;strong&gt;function invocation&lt;/strong&gt;. In addition, the &lt;code&gt;apply()&lt;/code&gt; function in particular allows us to execute a function with an array of parameters, such that each parameter is passed to the function individually when the function executes.&lt;/p&gt;
 
@@ -1454,7 +1457,7 @@ Object values can be modified&lt;/p&gt;
 - you pass the function parameters to &lt;strong&gt;apply () as an array&lt;/strong&gt;
 - while you have to &lt;strong&gt;list the parameters individually to pass them&lt;/strong&gt; to the call () method.&lt;/p&gt;
 
-&lt;h4 id=&quot;borrowing-functions-with-apply-and-call-(a-must-know)&quot;&gt;Borrowing Functions with Apply and Call (A Must Know)&lt;/h4&gt;
+&lt;h4 id=&quot;borrowing-functions-with-apply-and-call-a-must-know&quot;&gt;Borrowing Functions with Apply and Call (A Must Know)&lt;/h4&gt;
 
 &lt;h5 id=&quot;borrowing-array-methods&quot;&gt;Borrowing Array Methods&lt;/h5&gt;
 
@@ -1509,7 +1512,7 @@ Object values can be modified&lt;/p&gt;
 &lt;span class=&quot;c1&quot;&gt;// appController.avgScore is still null; it was not updated, only gameController.avgScore was updated​&lt;/span&gt;
 &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;appController&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;avgScore&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// null​&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h5 id=&quot;use-apply-()-to-execute-variable-arity-functions&quot;&gt;Use Apply () to Execute Variable-Arity Functions&lt;/h5&gt;
+&lt;h5 id=&quot;use-apply-to-execute-variable-arity-functions&quot;&gt;Use Apply () to Execute Variable-Arity Functions&lt;/h5&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// We can pass any number of arguments to the Math.max () method​&lt;/span&gt;
 &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;max&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;23&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;34&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;56&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 56&lt;/span&gt;
 &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;allNumbers&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;23&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;34&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;56&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;

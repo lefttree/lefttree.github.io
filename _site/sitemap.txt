@@ -1,13 +1,13 @@
 
-http://lefttree.github.io/404.html
-http://lefttree.github.io/archive.html
+http://lefttree.github.io/404
+http://lefttree.github.io/archive
 http://lefttree.github.io/atom.xml
-http://lefttree.github.io/categories.html
-http://lefttree.github.io/index.html
-http://lefttree.github.io/pages.html
+http://lefttree.github.io/categories
+http://lefttree.github.io/
+http://lefttree.github.io/pages
 http://lefttree.github.io/rss.xml
 http://lefttree.github.io/sitemap.txt
-http://lefttree.github.io/tags.html
+http://lefttree.github.io/tags
 
 http://lefttree.github.io/web/2015/12/01/modal-plugin
 http://lefttree.github.io/python/2015/11/17/urllib-urllib2-request

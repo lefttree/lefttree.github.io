@@ -1,0 +1,933 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>LeftTree - Eloquent Javascript Notes</title>
+      <meta name="viewport" content="width=device-width">
+
+      <!-- atom & rss feed -->
+      <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+      <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+  </head>
+  <body>
+    <div class="site">
+      <div class="sidebar" id="sidebar">
+        <div class="header">
+          <h1 class="title"><a href="http://lefttree.github.io"><img id="logo" src="/assets/themes//images/newLogo.jpg"></a></h1>
+          <span class="tagline">Xiang Li</span>
+        </div>
+        <hr>
+        <!--<div class="posts">-->
+          <!--<ul class="posts-list">-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/web/2015/12/01/modal-plugin">-->
+                  <!--<span class="post-date">01 Dec 2015</span>-->
+                  <!--Bootstrap modal plugin-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/python/2015/11/17/urllib-urllib2-request">-->
+                  <!--<span class="post-date">17 Nov 2015</span>-->
+                  <!--urllib, urllib2, requests-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/web/2015/11/10/contextMenu">-->
+                  <!--<span class="post-date">10 Nov 2015</span>-->
+                  <!--Javascript Context Menu - 自定义右键菜单-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/web/2015/11/01/microblog">-->
+                  <!--<span class="post-date">01 Nov 2015</span>-->
+                  <!--我的microblog上线了！-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/life/2015/10/22/the-7-habits">-->
+                  <!--<span class="post-date">22 Oct 2015</span>-->
+                  <!--高效能人士的7个习惯-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/javascript/2015/10/20/javascript-scope-closure">-->
+                  <!--<span class="post-date">20 Oct 2015</span>-->
+                  <!--Javascript Scope and Closures-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/tool/2015/10/09/chrome-extensions">-->
+                  <!--<span class="post-date">09 Oct 2015</span>-->
+                  <!--Chrome Extension 推荐-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/linux/2015/10/06/mount-remote-folder">-->
+                  <!--<span class="post-date">06 Oct 2015</span>-->
+                  <!--NFS Mount Remote Folder-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/web/2015/09/25/netease-music">-->
+                  <!--<span class="post-date">25 Sep 2015</span>-->
+                  <!--海外的用户正常听网易云音乐-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/reading/2015/08/24/%E4%B8%8D%E8%A6%81%E5%81%9A%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E5%99%A8">-->
+                  <!--<span class="post-date">24 Aug 2015</span>-->
+                  <!--不要做程序生成器-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/programming%20style/2015/08/20/Javascript-Style-Guide-Notes">-->
+                  <!--<span class="post-date">20 Aug 2015</span>-->
+                  <!--Javascript Style Guide Notes-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/python/2015/08/18/python-mutable-arguments">-->
+                  <!--<span class="post-date">18 Aug 2015</span>-->
+                  <!--Python Mutable Default Arguments-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/python/2015/08/13/python-dictionary-key">-->
+                  <!--<span class="post-date">13 Aug 2015</span>-->
+                  <!--Python Dictionary Key-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/python/2015/07/28/python-stack-queue">-->
+                  <!--<span class="post-date">28 Jul 2015</span>-->
+                  <!--Python stack and queue-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/web/2015/07/22/strict-mode">-->
+                  <!--<span class="post-date">22 Jul 2015</span>-->
+                  <!--About strict mode-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/javascript/2015/07/07/practical-patterns-for-creating-objects">-->
+                  <!--<span class="post-date">07 Jul 2015</span>-->
+                  <!--Practical patterns for createing objects-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/notes/2015/07/07/eloquent-js-notes">-->
+                  <!--<span class="post-date">07 Jul 2015</span>-->
+                  <!--Eloquent Javascript Notes-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/programming%20style/2015/06/18/git-workflow">-->
+                  <!--<span class="post-date">18 Jun 2015</span>-->
+                  <!--Git Workflow-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/frontend/2015/06/12/react-twoway-binding">-->
+                  <!--<span class="post-date">12 Jun 2015</span>-->
+                  <!--React Two-way Binding-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/frontend/2015/06/12/gulp-setup">-->
+                  <!--<span class="post-date">12 Jun 2015</span>-->
+                  <!--Gulp Setup-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/programming%20style/2015/06/07/git-commit-style">-->
+                  <!--<span class="post-date">07 Jun 2015</span>-->
+                  <!--Git commit style-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/web/2015/06/04/HTML5-Storage-Cache">-->
+                  <!--<span class="post-date">04 Jun 2015</span>-->
+                  <!--HTML5 Storage & Cache-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/programming%20style/2015/06/03/JS-Best-Practices">-->
+                  <!--<span class="post-date">03 Jun 2015</span>-->
+                  <!--Javascript Best Practices-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+              <!--<li class="post-link">-->
+                <!--<a class="post-title" href="/web/2015/06/01/Javascript-theGoodParts">-->
+                  <!--<span class="post-date">01 Jun 2015</span>-->
+                  <!--Javascript Good Parts-->
+                <!--</a>-->
+              <!--</li>-->
+            <!---->
+          <!--</ul>-->
+        <!--</div>-->
+        <ul class="nav">
+            
+            
+            
+
+
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/archive">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags">Tags</a></li>
+      	
+      
+    
+  
+
+
+
+        </ul>
+        <div class="footer">
+          <span id="footer-links">
+            <!--<a href="http://www.xiangli.me" class="footer-link">About</a> -->
+            <!--<span class="separator">&bull;</span>-->
+            <!--[><a href="" class="footer-link">Twitter</a> <span class="separator">&bull;</span><]-->
+            <!--<a href="https://github.com/lefttree" class="footer-link">GitHub</a>-->
+            <ul class="soc">
+                <li><a class="soc-github" href="https://github.com/lefttree"></a></li>
+                <li><a class="soc-facebook" href="https://www.facebook.com/xiang.li.3726"></a></li>
+                <li><a class="soc-linkedin" href="https://www.linkedin.com/pub/xiang-li/47/639/77a"></a></li>
+                <li><a class="soc-email1" href="mailto:bylixiang@gmail.com"></a></li>
+                <li><a class="soc-rss soc-icon-last" href="http://lefttree.github.io/rss.xml"></a></li>
+            </ul>
+          </span>
+        </div>
+      </div>
+
+        
+
+<div class="content" id="home">
+  <div id="sidebar-button">
+    <img src="/assets/themes//images/sidebar-button.png">
+  </div>
+  <div id="post-info">
+    <div id="cover-photo-container">
+      <img id="cover-photo" src="/assets/themes//images/cover.jpg">
+    </div>
+    <div id="info-container">
+      <h1 id="title">Eloquent Javascript Notes</h1>
+      <span id="date">07 Jul 2015</span>
+    </div>
+  </div>
+
+  <div class="post">
+    <h2 id="table-of-contents">Table of Contents</h2>
+
+<ul>
+<li><a href="#chapter-3">Chapter 3 - Function</a>
+
+<ul>
+<li>  <a href="#parameters-and-scope">Parameters and Scope</a></li>
+<li>  <a href="#functions-as-values">Functions as Values</a></li>
+<li>  <a href="#decalration">Declaration</a></li>
+<li>  <a href="#closure">Closure</a></li>
+<li>  <a href="#functions-and-side-effects">Functions and Side Effects</a></li>
+</ul></li>
+<li><a href="#chapter-4">Chapter 4 - Data Structures</a>
+
+<ul>
+<li>  <a href="#properties">Properties</a></li>
+<li>  <a href="#mutability">Mutability</a></li>
+<li>  <a href="#the-arguments-object">The arguments object</a></li>
+</ul></li>
+<li><a href="#Chapter-5">Chapter 5 - Higher-Order Functions</a>
+
+<ul>
+<li>  <a href="#array-higher-order-functions">Array Higher-Order Functions</a></li>
+<li>  <a href="#call-bind-and-apply">call(), bind() and apply()</a></li>
+<li>  <a href="#borrowing-functions-with-apply-and-call-a-must-know">Borrowing Functions with Apply and Call (A Must Know)</a></li>
+</ul></li>
+<li><a href="#regular-expressions">Chapter 9 - Regular Expressions</a>
+
+<ul>
+<li>  <a href="#create-a-regular-expression">Create a Regular Expression</a></li>
+</ul></li>
+<li><a href="#handling-events">Chapter 14 - Handling Events</a>
+
+<ul>
+<li>  <a href="#event-objects">Event Object</a></li>
+<li>  <a href="#propagation">Propagation</a></li>
+</ul>
+
+<h2 id="debouncing">+   <a href="#debouncing">Debouncing</a></h2></li>
+</ul>
+
+<h2 id="chapter-3">Chapter 3</h2>
+
+<h3 id="functions">Functions</h3>
+
+<h4 id="parameters-and-scopes">Parameters and Scopes</h4>
+
+<p>An important property of functions is that the variables created inside of them, <em>including their parameter</em>, are <strong>local</strong> to the function.</p>
+
+<blockquote>
+<p>applies only to parameters and to variables declared with the <code>var</code> keyword</p>
+</blockquote>
+
+<p>All variables from blocks <em>around</em> a function&#39;s definition are visible - lexical scoping</p>
+
+<p><strong>functions are the only thing that create a new scope</strong></p>
+
+<h4 id="functions-as-values">Functions as Values</h4>
+
+<p>Discussed in chapter 7</p>
+
+<h4 id="declaration">Declaration</h4>
+
+<p>functions are conceptually move to the top of their scope and can be used by <strong>all</strong> the code in that scope</p>
+
+<h4 id="closure">Closure</h4>
+
+<p>Local variables really are re-created for every call
+This feature - being able to reference a specific instance of local variables in an enclosing function is called <strong>closure</strong>.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">multiplier</span><span class="p">(</span><span class="nx">factor</span><span class="p">){</span>
+    <span class="k">return</span> <span class="kd">function</span><span class="p">(</span><span class="nx">number</span><span class="p">){</span>
+        <span class="k">return</span> <span class="nx">number</span> <span class="o">*</span> <span class="nx">factor</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">twice</span> <span class="o">=</span> <span class="nx">multiplier</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">twice</span><span class="p">(</span><span class="mi">5</span><span class="p">));</span>
+<span class="c1">//parameter is itself a local variable</span>
+</code></pre></div>
+<h4 id="functions-and-side-effects">Functions and Side Effects</h4>
+
+<p>Functions
+- side effects
+- return value</p>
+
+<p>pure function : a value-production function that not only has no side effects but also doesn&#39;t rely on side effects from other code</p>
+
+<hr>
+
+<h2 id="chapter-4">Chapter 4</h2>
+
+<h3 id="data-structures-objects-and-arrays">Data Structures: Objects and Arrays</h3>
+
+<h4 id="properties">Properties</h4>
+
+<p>value.x and value[x]</p>
+
+<blockquote>
+<p>The part after the dot must be a <strong>valid variable name</strong></p>
+</blockquote>
+
+<h4 id="mutability">Mutability</h4>
+
+<p>numbers, strings and booleans are all <em>immutable</em>
+Object values can be modified</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">object1</span> <span class="o">=</span> <span class="p">{</span><span class="nx">value</span><span class="o">:</span><span class="mi">10</span><span class="p">};</span>
+<span class="kd">var</span> <span class="nx">object2</span> <span class="o">=</span> <span class="nx">object1</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">object3</span> <span class="o">=</span> <span class="p">{</span><span class="nx">value</span><span class="o">:</span><span class="mi">10</span><span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">object1</span> <span class="o">==</span> <span class="nx">object2</span><span class="p">)</span>
+<span class="c1">//true</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">object1</span> <span class="o">==</span> <span class="nx">object3</span><span class="p">)</span>
+<span class="c1">//false</span>
+
+<span class="nx">object1</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">object2</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+<span class="c1">//true</span>
+</code></pre></div>
+<p><code>object1</code> and <code>object2</code> are references to the same object</p>
+
+<h4 id="the-arguments-object">The arguments object</h4>
+
+<p>whenever a function is called, a special variable named arguments is added. It refers to an object that holds all of the arguments passed to the function.</p>
+
+<hr>
+
+<h2 id="chapter-5">Chapter 5</h2>
+
+<h3 id="higher-order-functions">Higher-Order Functions</h3>
+
+<h4 id="abstraction">Abstraction</h4>
+
+<h4 id="array-higher-order-functions">Array Higher-Order Functions</h4>
+
+<p><code>forEach()</code></p>
+
+<p><code>filter()</code></p>
+
+<p>builds up a new array with only the elements that pass the test, this function is <em>pure</em>, does not modify the array it is given</p>
+
+<p><code>map()</code></p>
+
+<p>The map method transforms an array by applying a function to all of its elments and building a new array from the returned values</p>
+
+<p><code>reduce()</code></p>
+
+<p>Combine into one value</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">[0, 1, 2, 3, 4].reduce(function(previousValue, currentValue, index, array) {
+  return previousValue + currentValue;
+});
+</code></pre></div>
+<p><code>every()</code>
+<code>some()</code></p>
+
+<h4 id="call-bind-and-apply">call(), bind() and apply()</h4>
+
+<h5 id="bind">Bind()</h5>
+
+<p>We use the Bind () method primarily to call a function with the <em>this</em> value set explicitly. </p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">user</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">data</span>        <span class="o">:</span><span class="p">[</span>
+        <span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="s2">&quot;T. Woods&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="o">:</span><span class="mi">37</span><span class="p">},</span>
+        <span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="s2">&quot;P. Mickelson&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="o">:</span><span class="mi">43</span><span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nx">clickHandler</span><span class="o">:</span><span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">randomNum</span> <span class="o">=</span> <span class="p">((</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span> <span class="p">()</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">|</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// random number between 0 and 1​</span>
+<span class="err">​</span>
+        <span class="c1">// This line is adding a random person from the data array to the text field​</span>
+        <span class="nx">$</span> <span class="p">(</span><span class="s2">&quot;input&quot;</span><span class="p">).</span><span class="nx">val</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="nx">randomNum</span><span class="p">].</span><span class="nx">name</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="nx">randomNum</span><span class="p">].</span><span class="nx">age</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="err">​</span>
+<span class="p">}</span>
+<span class="err">​</span>
+<span class="err">​</span><span class="c1">// Assign an eventHandler to the button&#39;s click event​</span>
+<span class="nx">$</span> <span class="p">(</span><span class="s2">&quot;button&quot;</span><span class="p">).</span><span class="nx">click</span> <span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">clickHandler</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="nx">user</span><span class="p">));</span>
+</code></pre></div>
+<p>We can use Bind() to borrow method or curry method.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">greet</span> <span class="p">(</span><span class="nx">gender</span><span class="p">,</span> <span class="nx">age</span><span class="p">,</span> <span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// if a male, use Mr., else use Ms.​</span>
+    <span class="kd">var</span> <span class="nx">salutation</span> <span class="o">=</span> <span class="nx">gender</span> <span class="o">===</span> <span class="s2">&quot;male&quot;</span> <span class="o">?</span> <span class="s2">&quot;Mr. &quot;</span> <span class="o">:</span> <span class="s2">&quot;Ms. &quot;</span><span class="p">;</span>
+<span class="err">​</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">age</span> <span class="o">&gt;</span> <span class="mi">25</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">&quot;Hello, &quot;</span> <span class="o">+</span> <span class="nx">salutation</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">&quot;Hey, &quot;</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// So we are passing null because we are not using the &quot;this&quot; keyword in our greet function.​</span>
+<span class="kd">var</span> <span class="nx">greetAnAdultMale</span> <span class="o">=</span> <span class="nx">greet</span><span class="p">.</span><span class="nx">bind</span> <span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="s2">&quot;male&quot;</span><span class="p">,</span> <span class="mi">45</span><span class="p">);</span>
+<span class="err">​</span>
+<span class="nx">greetAnAdultMale</span> <span class="p">(</span><span class="s2">&quot;John Hartlove&quot;</span><span class="p">);</span> <span class="c1">// &quot;Hello, Mr. John Hartlove.&quot;​</span>
+<span class="err">​</span>
+<span class="kd">var</span> <span class="nx">greetAYoungster</span> <span class="o">=</span> <span class="nx">greet</span><span class="p">.</span><span class="nx">bind</span> <span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="mi">16</span><span class="p">);</span>
+<span class="nx">greetAYoungster</span> <span class="p">(</span><span class="s2">&quot;Alex&quot;</span><span class="p">);</span> <span class="c1">// &quot;Hey, Alex.&quot;​</span>
+<span class="nx">greetAYoungster</span> <span class="p">(</span><span class="s2">&quot;Emma Waterloo&quot;</span><span class="p">);</span> <span class="c1">// &quot;Hey, Emma Waterloo.&quot;​</span>
+</code></pre></div>
+<h5 id="apply-and-call">Apply() and call()</h5>
+
+<p>they allow us to borrow functions and set the this value in <strong>function invocation</strong>. In addition, the <code>apply()</code> function in particular allows us to execute a function with an array of parameters, such that each parameter is passed to the function individually when the function executes.</p>
+
+<p>The apply and call methods are almost identical when setting the this value except that 
+- you pass the function parameters to <strong>apply () as an array</strong>
+- while you have to <strong>list the parameters individually to pass them</strong> to the call () method.</p>
+
+<h4 id="borrowing-functions-with-apply-and-call-a-must-know">Borrowing Functions with Apply and Call (A Must Know)</h4>
+
+<h5 id="borrowing-array-methods">Borrowing Array Methods</h5>
+
+<p>An <strong>array-like object</strong> is an object that has its keys defined as non-negative integers. It is best to specifically add a length property on the object that has the length of the object, since the a length property does not exist on objects it does on Arrays.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// An array-like object: note the non-negative integers used as keys​</span>
+<span class="kd">var</span> <span class="nx">anArrayLikeObj</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="o">:</span><span class="s2">&quot;Martin&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="o">:</span><span class="mi">78</span><span class="p">,</span> <span class="mi">2</span><span class="o">:</span><span class="mi">67</span><span class="p">,</span> <span class="mi">3</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;Letta&quot;</span><span class="p">,</span> <span class="s2">&quot;Marieta&quot;</span><span class="p">,</span> <span class="s2">&quot;Pauline&quot;</span><span class="p">],</span> <span class="nx">length</span><span class="o">:</span><span class="mi">4</span> <span class="p">};</span>
+
+<span class="c1">// First parameter sets the &quot;this&quot; value​</span>
+<span class="kd">var</span> <span class="nx">newArray</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span> <span class="p">(</span><span class="nx">anArrayLikeObj</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="err">​</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="p">(</span><span class="nx">newArray</span><span class="p">);</span> <span class="c1">// [&quot;Martin&quot;, 78, 67, Array[3]]​</span>
+<span class="err">​</span>
+<span class="c1">// Search for &quot;Martin&quot; in the array-like object​</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="p">(</span><span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">.</span><span class="nx">call</span> <span class="p">(</span><span class="nx">anArrayLikeObj</span><span class="p">,</span> <span class="s2">&quot;Martin&quot;</span><span class="p">)</span> <span class="o">===</span> <span class="o">-</span><span class="mi">1</span> <span class="o">?</span> <span class="kc">false</span> <span class="o">:</span> <span class="kc">true</span><span class="p">);</span> <span class="c1">// true​</span>
+<span class="err">​</span>
+<span class="c1">// Try using an Array method without the call () or apply ()​</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="p">(</span><span class="nx">anArrayLikeObj</span><span class="p">.</span><span class="nx">indexOf</span> <span class="p">(</span><span class="s2">&quot;Martin&quot;</span><span class="p">)</span> <span class="o">===</span> <span class="o">-</span><span class="mi">1</span> <span class="o">?</span> <span class="kc">false</span> <span class="o">:</span> <span class="kc">true</span><span class="p">);</span> <span class="c1">// Error: Object has no method &#39;indexOf&#39;​</span>
+<span class="err">​</span>
+<span class="c1">// Reverse the object:​</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="p">(</span><span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">reverse</span><span class="p">.</span><span class="nx">call</span> <span class="p">(</span><span class="nx">anArrayLikeObj</span><span class="p">));</span>
+<span class="c1">// {0: Array[3], 1: 67, 2: 78, 3: &quot;Martin&quot;, length: 4}​</span>
+</code></pre></div>
+<h5 id="borrowing-string-methods-with-apply-and-call">Borrowing String Methods with Apply and Call</h5>
+
+<h5 id="borrowing-other-methods">Borrowing other methods</h5>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">gameController</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">scores</span>  <span class="o">:</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">46</span><span class="p">,</span> <span class="mi">77</span><span class="p">],</span>
+    <span class="nx">avgScore</span><span class="o">:</span><span class="kc">null</span><span class="p">,</span>
+    <span class="nx">players</span> <span class="o">:</span><span class="p">[</span>
+        <span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="s2">&quot;Tommy&quot;</span><span class="p">,</span> <span class="nx">playerID</span><span class="o">:</span><span class="mi">987</span><span class="p">,</span> <span class="nx">age</span><span class="o">:</span><span class="mi">23</span><span class="p">},</span>
+        <span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="s2">&quot;Pau&quot;</span><span class="p">,</span> <span class="nx">playerID</span><span class="o">:</span><span class="mi">87</span><span class="p">,</span> <span class="nx">age</span><span class="o">:</span><span class="mi">33</span><span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+<span class="err">​</span>
+<span class="kd">var</span> <span class="nx">appController</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">scores</span>  <span class="o">:</span><span class="p">[</span><span class="mi">900</span><span class="p">,</span> <span class="mi">845</span><span class="p">,</span> <span class="mi">809</span><span class="p">,</span> <span class="mi">950</span><span class="p">],</span>
+    <span class="nx">avgScore</span><span class="o">:</span><span class="kc">null</span><span class="p">,</span>
+    <span class="nx">avg</span>     <span class="o">:</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<span class="err">​</span>
+        <span class="kd">var</span> <span class="nx">sumOfScores</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">scores</span><span class="p">.</span><span class="nx">reduce</span> <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">prev</span><span class="p">,</span> <span class="nx">cur</span><span class="p">,</span> <span class="nx">index</span><span class="p">,</span> <span class="nx">array</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">prev</span> <span class="o">+</span> <span class="nx">cur</span><span class="p">;</span>
+        <span class="p">});</span>
+<span class="err">​</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">avgScore</span> <span class="o">=</span> <span class="nx">sumOfScores</span> <span class="o">/</span> <span class="k">this</span><span class="p">.</span><span class="nx">scores</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="err">​</span>
+<span class="c1">// Note that we are using the apply () method, so the 2nd argument has to be an array​</span>
+<span class="nx">appController</span><span class="p">.</span><span class="nx">avg</span><span class="p">.</span><span class="nx">apply</span> <span class="p">(</span><span class="nx">gameController</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="p">(</span><span class="nx">gameController</span><span class="p">.</span><span class="nx">avgScore</span><span class="p">);</span> <span class="c1">// 46.4​</span>
+<span class="err">​</span>
+<span class="c1">// appController.avgScore is still null; it was not updated, only gameController.avgScore was updated​</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="p">(</span><span class="nx">appController</span><span class="p">.</span><span class="nx">avgScore</span><span class="p">);</span> <span class="c1">// null​</span>
+</code></pre></div>
+<h5 id="use-apply-to-execute-variable-arity-functions">Use Apply () to Execute Variable-Arity Functions</h5>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// We can pass any number of arguments to the Math.max () method​</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">max</span> <span class="p">(</span><span class="mi">23</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">56</span><span class="p">));</span> <span class="c1">// 56</span>
+<span class="kd">var</span> <span class="nx">allNumbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">23</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">56</span><span class="p">];</span>
+
+<span class="c1">// We cannot pass an array of numbers to the the Math.max method like this​</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">max</span> <span class="p">(</span><span class="nx">allNumbers</span><span class="p">));</span> <span class="c1">// NaN</span>
+<span class="kd">var</span> <span class="nx">allNumbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">23</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">56</span><span class="p">];</span>
+
+<span class="c1">// Using the apply () method, we can pass the array of numbers:​</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">.</span><span class="nx">apply</span> <span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">allNumbers</span><span class="p">));</span> <span class="c1">// 56</span>
+</code></pre></div>
+<hr>
+
+<h2 id="chapter-9">Chapter 9</h2>
+
+<h3 id="regular-expressions">Regular Expressions</h3>
+
+<h4 id="create-a-regular-expression">Create a regular expression</h4>
+
+<ol>
+<li><p>with RegExp constructor</p>
+
+<p><code>var re1 = new RegExp(&quot;abd&quot;);</code></p></li>
+<li><p>written as a literal value</p>
+
+<p><code>var re2 = /abc/;</code></p></li>
+</ol>
+
+<p>some chars like <code>+</code>, have special meanings in RegExp. </p>
+
+<blockquote>
+<p>when in doubt, just put a backslash before any character that is not a letter, number, or whitespace.</p>
+</blockquote>
+
+<h4 id="testing-for-matches">Testing for Matches</h4>
+
+<p><code>.test()</code> return a Boolean telling you whether the string contains a match of the pattern in the expression.</p>
+
+<h4 id="matching-a-set-of-characters">Matching a Set of Characters</h4>
+
+<p><code>[0-9]</code>, a <code>-</code> between two cahracters can be used to indiate a range of chars</p>
+
+<p>built-in shorcuts:
+- \d    any digit character
+- \w    any alphanumeric character
+- \s    any whitespace character(space, tab, newline and similar)
+- \D    a character that is not a digit
+- \W    a nonalphanumeric character
+- \S    a nonwhitespace character
+- .     any character except for newline</p>
+
+<p>These backslash codes can be used inside [], like [\d.], means any digit or a period character. But the . itself, lost the special meaning.</p>
+
+<p>To <em>invert</em> a set of characters add a ^, to express that you want to match any character <strong>except</strong> the ones in the sets.</p>
+
+<h4 id="repeating-parts-of-a-pattern">Repeating Parts of a Pattern</h4>
+
+<ul>
+<li>+     &gt;= 1</li>
+<li>*     &gt;= 0</li>
+<li>?     0 or 1</li>
+<li>{4}   4 times</li>
+<li>{2, 4}    2 - 4 times</li>
+<li>{, 5}     0 - 5 times</li>
+<li>{5, }     &gt;= 5 times</li>
+</ul>
+
+<h4 id="grouping-subexpressions">Grouping Subexpressions</h4>
+<div class="highlight"><pre><code class="language-text" data-lang="text">var cartoonCrying = /boo+(hoo+)+/i
+cartoonCrying.test(&quot;Boohoooohoohooo&quot;) -- true
+</code></pre></div>
+<ul>
+<li>The 1st and 2nd <code>+</code> apply only to the second <code>o</code> in <code>boo</code> and <code>hoo</code></li>
+<li>The 3rd <code>+</code> applies to the whole group <code>(hoo+)</code></li>
+<li>The <code>i</code> makes this regexp case insensitive</li>
+</ul>
+
+<h4 id="matches-and-groups">Matches and Groups</h4>
+
+<p><code>exec()</code> will return <code>null</code> if no match was found and return an object with information about the match otherwise</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">var match = /\d+/.exec(&quot;one two 100&quot;);
+console.log(match);
+// -&gt; [&quot;100&quot;]
+console.log(match.index);
+// -&gt; 8
+</code></pre></div>
+<p>String has a <code>match()</code> method behaves similarly</p>
+
+<p>When the regexp contains <em>subexpressions</em> grouped with parenthese, the text that matched those groups will also show up in the array.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">var quotedText = /&#39;([^&#39;]*)&#39;/;
+quotedText.exec(&quot;She said &#39;hello&#39;&quot;);
+// -&gt; [&quot;&#39;hello&#39;&quot;, &quot;hello&quot;]
+</code></pre></div>
+<p>If a group does not end up matched at all, its position in the array would hold <code>undefined</code>. If it&#39;s matched multiple times, only the last match ends up in the array.</p>
+
+<h4 id="word-and-string-boundaries">Word and String Boundaries</h4>
+
+<p>If we want to enforce that the match must span the whole string, we can add the markers ^ and $.</p>
+
+<p><strong>word boundary</strong> - \b
+a word char on one side and a nonword char on the other</p>
+
+<p>####Choice Patterns</p>
+
+<p>The Pipe Character <code>|</code> denotes a choice between the pattern to its left and the pattern to its right.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">var animalCount = /\b\d+ (pig|cow|chicken)s?\b/;
+animalCount.test(&quot;15 pigs&quot;);
+// -&gt; true
+animalCount.test(&quot;15 pigchickens&quot;);
+// -&gt; false
+</code></pre></div>
+<h4 id="replace-method">Replace Method</h4>
+
+<p>String <code>replace</code> method, the first argument can be a regexp</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">&quot;Borobudur&quot;.replace(/[ou]/, &quot;a&quot;)
+&quot;Borobudur&quot;.replace(/[ou]/g, &quot;a&quot;)
+</code></pre></div>
+<p>The real power of using regexp with <code>replace</code> comes from the fact that we can refer back to matched groups in the replace strings.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">&quot;Hopper, Grace\n McCarthy, John&quot;.replace(/([\w ]+), ([\w ]+)/g, &quot;$2 $1&quot;)
+// Grace Hopper
+// John McCarthy
+</code></pre></div>
+<p>$1 - $9, the whold match can be refered to as $&amp;</p>
+
+<p>It&#39;s also possible to pass a function to the 2nd argument to <code>replace</code>. The function will be called with the matched groups as arguments, and its return value will be inserted into the new string.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">var s = &quot;the cia and fbi&quot;;
+s.replace(/\b(fbi|cia)\b/g, function(str){
+   return str.toUpperCase(); 
+});
+// -&gt; the CIA and FBI
+</code></pre></div>
+<h4 id="greed">Greed</h4>
+<div class="highlight"><pre><code class="language-text" data-lang="text">function stripComments(code){
+    return code.replace(/\/\/.*|\/\*[^]*\*\//g, &quot;&quot;);
+}
+stripComments(&quot;1 /* a */+/* b */ 1&quot;);
+// -&gt; 1 1 (wrong)
+</code></pre></div>
+<p>The repetition operator(+, *, ?, and {}) are greedy, meaning they match as much as they can and backtrack from there. If you put a question mark after them, they become nongreedy and start by matching as little as possible.</p>
+
+<h4 id="dynamically-creating-regexp-objects">Dynamically creating regexp objects</h4>
+
+<p>Use the <code>RegExp</code> constructor</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">var name = &quot;harry&quot;;
+var text = &quot;harry is a suspicious character&quot;;
+var regexp = new RegExp(&quot;\\b(&quot; + name + &quot;)\\b&quot;, &quot;gi&quot;);
+text.replace(regexp, &quot;_$1_&quot;);
+</code></pre></div>
+<blockquote>
+<p>use 2 backslashes because we are writing them in a normal string
+the second argument is the options</p>
+</blockquote>
+
+<h4 id="search">Search</h4>
+
+<p><code>search</code> method can take a regexp as argument and returns the first index on which the expression was found, or -1 when it&#39;s not found</p>
+
+<h4 id="lastindex">lastIndex</h4>
+
+<p>Regular expression objects have properties.
+- source: the string that expression was created from
+- lastIndex: where the next match will start</p>
+
+<blockquote>
+<p>must have global(g) option enabled</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-text" data-lang="text">var pattern = /y/g;
+pattern.lastIndex = 3;
+var match = pattern.exec(&quot;xyzzy&quot;);
+match.index
+// 4
+pattern.lastIndex
+// 5
+</code></pre></div>
+<p>the call to <code>exec</code> would automatically updates the <code>lastIndex</code> property to point after the match, if no match was found, <code>lastIndex</code> is set back to 0</p>
+
+<h4 id="looping-over-matches">Looping Over Matches</h4>
+
+<p>looping through all occurances in a string, using <code>lastIndex</code> and <code>exec</code></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">var input = &quot;A string with 3 numbers in it... 42 and 88.&quot;;
+var number = /\b(\d+)\b/g;
+var match;
+while (match = number.exec(input))
+  console.log(&quot;Found&quot;, match[1], &quot;at&quot;, match.index);
+// → Found 3 at 14
+//   Found 42 at 33
+//   Found 88 at 40
+</code></pre></div>
+<hr>
+
+<h2 id="chapter-14">Chapter 14</h2>
+
+<h3 id="handling-events">Handling Events</h3>
+
+<p>####Events And DOM Nodes</p>
+
+<p><code>addEventListener</code> and <code>removeEventListener</code></p>
+
+<p>####Event Objects</p>
+
+<p>Event handler functions are passed an argument: <code>the event object</code>, the object gives us additional information about the event.</p>
+
+<p>properties:</p>
+
+<ul>
+<li>which</li>
+<li>target</li>
+<li>....</li>
+</ul>
+
+<p>####Propagation</p>
+
+<p>Event handlers registered on nodes with children will also receive some events that happen in the children, but the more <em>specific</em> handler executes first.</p>
+
+<p><code>stopPropagation</code></p>
+
+<p>####Default Actions</p>
+
+<p>Event handlers called <em>before</em> default actions. default actiosn can be prevented with <code>preventDefault</code>.</p>
+
+<p>####Event Types</p>
+
+<ul>
+<li>Key Events
+<code>keydown</code> fires not only when the key is physically pushed down. When a key is pressed and held, the event fires again every time the key <code>repeats</code>.</li>
+<li>Mouse Click</li>
+<li>Mouse Motion</li>
+<li>Scroll Events</li>
+<li>Focus Events</li>
+<li>Load Event</li>
+</ul>
+
+<p>####Script Execution Timeline</p>
+
+<p><strong>No</strong> two scripts in a single document ever run at te same moment. If a script is already running, event handlers and pieces of code scheduled in other ways have to wait for their turn.</p>
+
+<p><code>Web Workers</code> an isolated JS env browser provides to run alongside the main program.</p>
+
+<p>####Timers</p>
+
+<p><code>setTimeInterval</code> and <code>setTimeout</code></p>
+
+<p>####Debouncing</p>
+
+<p>If you do need to do something nontrivial in a repeatedly handler, you can use <code>setTimeout</code> to make sure you are not doing it too often.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="o">&lt;</span><span class="nx">textarea</span><span class="o">&gt;</span><span class="nx">Type</span> <span class="nx">something</span> <span class="nx">here</span><span class="p">...</span><span class="o">&lt;</span><span class="err">/textarea&gt;</span>
+<span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+  <span class="kd">var</span> <span class="nx">textarea</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;textarea&quot;</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">timeout</span><span class="p">;</span>
+  <span class="nx">textarea</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;keydown&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">clearTimeout</span><span class="p">(</span><span class="nx">timeout</span><span class="p">);</span>
+    <span class="nx">timeout</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;You stopped typing.&quot;</span><span class="p">);</span>
+    <span class="p">},</span> <span class="mi">500</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="o">&lt;</span><span class="err">/script&gt;</span>
+</code></pre></div>
+<p>fire during a series of events</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+  <span class="kd">function</span> <span class="nx">displayCoords</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span>
+      <span class="s2">&quot;Mouse at &quot;</span> <span class="o">+</span> <span class="nx">event</span><span class="p">.</span><span class="nx">pageX</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span> <span class="o">+</span> <span class="nx">event</span><span class="p">.</span><span class="nx">pageY</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kd">var</span> <span class="nx">scheduled</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span> <span class="nx">lastEvent</span><span class="p">;</span>
+  <span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;mousemove&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">lastEvent</span> <span class="o">=</span> <span class="nx">event</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">scheduled</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">scheduled</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+      <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">scheduled</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="nx">displayCoords</span><span class="p">(</span><span class="nx">lastEvent</span><span class="p">);</span>
+      <span class="p">},</span> <span class="mi">250</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="o">&lt;</span><span class="err">/script&gt;</span>
+</code></pre></div>
+  </div>
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-folder-open"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/categories.html#Notes-ref">
+    		Notes <span>1</span>
+    	</a></li>
+    
+  
+
+
+    </ul>
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="icon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags.html#javascript-ref">javascript <span>10</span></a></li>
+     
+    	<li><a href="/tags.html#notes-ref">notes <span>1</span></a></li>
+    
+  
+
+
+
+    </ul>
+  
+  <hr>  
+  <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/programming%20style/2015/06/18/git-workflow" title="Git Workflow">&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next"><a href="/javascript/2015/07/07/practical-patterns-for-creating-objects" title="Practical patterns for createing objects">Next &rarr;</a></li>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    
+    var disqus_developer = 1;
+    var disqus_shortname = 'lefttreegithubio'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+  </div>
+</div>
+
+
+
+    </div>
+      <!-- bootstrap -->
+      <link href="/assets/themes//css/bootstrap.2.2.2.min.css" rel="stylesheet">
+      <!-- syntax highlighting CSS -->
+      <link rel="stylesheet" href="/assets/themes//css/syntax.css">
+      <link rel="stylesheet" href="/assets/themes//css/pygments.css">
+
+      <!-- Custom CSS -->
+      <link rel="stylesheet" href="/assets/themes//css/main.css">
+
+      <!-- Responsive CSS -->
+      <link rel="stylesheet" href="/assets/themes//css/responsive.css">
+
+      <!-- Google Fonts -->
+      <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700' rel='stylesheet' type='text/css'>
+      <link href='//fonts.googleapis.com/css?family=Raleway:300,400,700' rel='stylesheet' type='text/css'>
+    <script src="/assets/themes//scripts/responsive.js" type="text/javascript"></script>
+    
+
+
+
+  </body>
+</html>
+
